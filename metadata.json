@@ -1,0 +1,6 @@
+{
+  "name": "IA Académie Plus - Skills Academy",
+  "description": "Une plateforme d'apprentissage interactive et gamifiée pour maîtriser le copywriting IA, le prompt engineering, le freelance et la création d'actifs digitaux. Comprend un parcours d'onboarding, un suivi de progression et un tuteur IA interactif connecté à Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
