@@ -56,13 +56,13 @@ export default function Onboarding({ lang, onComplete, onLoginClick }: Onboardin
             clearInterval(interval);
             setTimeout(() => {
               // Determine best path based on answers
-              let paths = ["prompt_eng", "copywriting", "freelance_career"];
-              if (answers["skill"] === "prompt_engineering") {
-                paths = ["prompt_eng", "copywriting", "freelance_career"];
+              let paths = ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"];
+              if (answers["skill"] === "prompt_engineering" || answers["skill"] === "ai_skills") {
+                paths = ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"];
               } else if (answers["skill"] === "copywriting") {
-                paths = ["copywriting", "prompt_eng", "freelance_career"];
+                paths = ["copywriting", "ai_social_selling", "chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "prompt_eng", "freelance_career"];
               } else if (answers["skill"] === "freelance") {
-                paths = ["freelance_career", "copywriting", "prompt_eng"];
+                paths = ["freelance_career", "ai_social_selling", "chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "copywriting", "prompt_eng"];
               }
               onComplete(answers, paths);
             }, 1000);

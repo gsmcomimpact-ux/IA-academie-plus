@@ -1,3 +1,5 @@
+import { COURSES } from "../data";
+
 export type Language = "fr" | "en";
 
 export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
@@ -295,6 +297,50 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
   }
 };
 
+export const ONBOARDING_QUESTIONS_FR = [
+  {
+    id: "goal",
+    text: "Quel est votre objectif principal ?",
+    type: "single",
+    options: [
+      { value: "earn_money", label: "Générer un revenu complémentaire", description: "Lancer un side-hustle en toute liberté", icon: "DollarSign" },
+      { value: "career_change", label: "Changer de carrière (Télétravail)", description: "Découvrir des métiers recherchés et flexibles", icon: "Briefcase" },
+      { value: "ai_skills", label: "Maîtriser l'Intelligence Artificielle", description: "Devenir un expert incontournable des outils IA", icon: "Cpu" },
+      { value: "time_efficiency", label: "Gagner du temps au quotidien", description: "Automatiser mes tâches répétitives au travail", icon: "Clock" }
+    ]
+  },
+  {
+    id: "experience",
+    text: "Quel est votre niveau actuel avec l'IA ?",
+    type: "single",
+    options: [
+      { value: "beginner", label: "Débutant complet", description: "Je n'ai jamais ou peu utilisé ChatGPT", icon: "Award" },
+      { value: "intermediate", label: "Utilisateur occasionnel", description: "Je pose des questions simples parfois", icon: "Sparkles" },
+      { value: "advanced", label: "Praticien régulier", description: "Je sais structurer de bons prompts", icon: "Zap" }
+    ]
+  },
+  {
+    id: "skill",
+    text: "Quelle compétence vous attire le plus ?",
+    type: "single",
+    options: [
+      { value: "prompt_engineering", label: "Prompt Engineering & IA", description: "Savoir parler aux modèles d'IA professionnels", icon: "Command" },
+      { value: "copywriting", label: "Copywriting & Création de Contenu", description: "Rédiger des textes persasifs et percutants", icon: "PenTool" },
+      { value: "freelance", label: "Freelancing & Job à Distance", description: "Trouver des clients et vendre mes services en ligne", icon: "Globe" }
+    ]
+  },
+  {
+    id: "daily_time",
+    text: "Combien de temps pouvez-vous y consacrer ?",
+    type: "single",
+    options: [
+      { value: "15", label: "15 min / jour", description: "Idéal pour apprendre en douceur", icon: "Flame" },
+      { value: "30", label: "30 min / jour", description: "Recommandé pour progresser rapidement", icon: "GraduationCap" },
+      { value: "60", label: "1 heure / jour", description: "Pour les plus motivés et pressés", icon: "TrendingUp" }
+    ]
+  }
+];
+
 export const ONBOARDING_QUESTIONS_EN = [
   {
     id: "goal",
@@ -339,6 +385,11 @@ export const ONBOARDING_QUESTIONS_EN = [
   }
 ];
 
+export const ONBOARDING_TRANSLATIONS = {
+  fr: ONBOARDING_QUESTIONS_FR,
+  en: ONBOARDING_QUESTIONS_EN
+};
+
 export const ACHIEVEMENTS_EN = [
   { id: "onboard", title: "Compass Activated", description: "Completed the custom career orientation questionnaire", icon: "Compass", color: "from-blue-500 to-teal-400" },
   { id: "prompt_novice", title: "Prompt Initiated", description: "Completed the first lesson in Prompt Engineering", icon: "Terminal", color: "from-purple-500 to-indigo-500" },
@@ -367,6 +418,398 @@ export interface TranslatedCourseContent {
 }
 
 export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseContent> = {
+  chatgpt_mastery: {
+    title: "Complete ChatGPT Course: Master AI in 20 Modules",
+    description: "Become a power-user of ChatGPT: Custom Instructions, advanced data analysis, Custom GPTs, desktop integration, and automation.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "cg_l1",
+        title: "Introduction to the ChatGPT & GPT-4o-mini Ecosystem",
+        description: "Start strong by mastering the fundamentals of GPT-4o, account settings, and interface management.",
+        steps: [
+          "ChatGPT is OpenAI's state-of-the-art model that democratized AI across the globe.",
+          "The main interface consists of three parts: the sidebar containing your thread history, the main prompt workbench, and the model selector (GPT-4o, GPT-4o-mini, or GPT-4).",
+          "GPT-4o is the smartest model, capable of multi-modal reasoning (understanding text, images, and speech).",
+          "GPT-4o-mini is a lightning-fast, highly cost-effective model designed for everyday tasks and high-volume debugging."
+        ],
+        activityInstructions: "Compose a prompt for GPT-4o-mini asking it to summarize the concept of generative AI in 3 simple, understandable bullet points.",
+        scenario: "Direct generation of a tailored bulleted content summary.",
+        audience: "Curious tech-starters.",
+        goal: "Understand generative models simply."
+      },
+      {
+        id: "cg_l2",
+        title: "The Art of Zero-Shot & Direct Prompting",
+        description: "Learn to query ChatGPT efficiently for straightforward instructions in a single step without examples.",
+        steps: [
+          "Zero-shot prompting refers to giving ChatGPT a task or a question without introducing reference examples.",
+          "This is the most common technique and works outstandingly well with GPT-4o due to its massive pre-trained knowledge base.",
+          "To optimize a zero-shot prompt, assign a clear role, input data enclosed in delimiters, and precisely specify the desired format."
+        ],
+        quizQuestion: "What is the defining trait of a Zero-shot prompt?",
+        quizOptions: [
+          "It uses recursive loops and multiple prompt training examples.",
+          "Absolutely no prior examples of desired outputs are fed to the model.",
+          "It instructs the AI to generate exactly zero tokens of text.",
+          "It gathers factual context solely from a local database."
+        ],
+        explanation: "Correct! Zero-shot prompting queries the AI directly on a task or question, counting on its internal capabilities without biasing it with examples."
+      },
+      {
+        id: "cg_l3",
+        title: "Mastering Custom Instructions",
+        description: "Configure lifelong settings inside ChatGPT to define your background, career, and preferred tone of voice.",
+        steps: [
+          "Constantly feeding ChatGPT your role, style, and professional context can become exhausting.",
+          "To solve this, ChatGPT offers 'Custom Instructions' under your account preferences.",
+          "This workspace has 2 main sections that the AI evaluates at the start of every message in all your conversations.",
+          "First section: 'What would you like ChatGPT to know about you?' (e.g. your occupation, aims, location).",
+          "Second section: 'How would you like ChatGPT to respond?' (e.g. direct, no fluff, bullet points only)."
+        ],
+        activityInstructions: "Write a background recipe for your Custom Instructions as a Freelance SEO Consultant seeking concise, direct bullet points with zero corporate fluff.",
+        scenario: "Custom Instructions system profiling recipe crafting.",
+        audience: "Enterprise search marketing professionals.",
+        goal: "Formulate a persistent professional persona copy."
+      }
+    ]
+  },
+  claude_mastery: {
+    title: "Complete Anthropic Claude Course: Master Claude in 20 Modules",
+    description: "Master Claude 3.5 Sonnet: Claude Projects, structured XML tags, interactive Artifacts, and 200K token document analysis.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "cl_l1",
+        title: "Introduction to Claude 3.5 Sonnet & the Anthropic Ecosystem",
+        description: "Grasp Anthropic’s philosophy built on alignment, safety, nuance, and advanced linguistic accuracy.",
+        steps: [
+          "Claude is the highly acclaimed family of generative language models launched by Anthropic, founded by former OpenAI research leaders.",
+          "The model flagship Claude 3.5 Sonnet often outperforms contemporary models on professional writing, logic, reasoning, and programming tasks.",
+          "Claude's Web Interface introduces unique workspace models: Groups called Projects to bundle instructions/files, and Chat Threads.",
+          "One of Claude's major traits is its humble, descriptive, and highly analytical tone, making its output sound natural and engaging."
+        ],
+        activityInstructions: "Compose a prompt instructing Claude 3.5 Sonnet to outline a persuasive argument focusing on gentle emotional nuances without bragging.",
+        scenario: "Socio-cultural analytical perspective generation model.",
+        audience: "Conscious creators and copywriters.",
+        goal: "Command Claude using humble conversational styles."
+      },
+      {
+        id: "cl_l2",
+        title: "Claude Prompting Secrets: The Power of XML Tags",
+        description: "Structure complex instructions using custom XML tags to optimize Claude's analytical focus.",
+        steps: [
+          "Unlike standard chat systems, Claude was explicitly pre-trained on programming-like structures to understand XML tags deeply.",
+          "Popular tags include <context>, <instructions>, <examples>, <source_text>, or custom wrappers like <confidential_policy>.",
+          "Encapsulating metadata and variables in XML blocks prevents Claude from mistaking your instructions for the data to process.",
+          "A recommended structure: '<instructions>Translate this document</instructions> <document>[Paste text here]</document>'."
+        ],
+        quizQuestion: "Why does Claude have such a powerful affinity for XML tags (like <instructions> or <document>) inside prompts?",
+        quizOptions: [
+          "XML tags are compiled into raw binary codes before arriving at Anthropic's server processors.",
+          "Claude was extensively pre-trained on structured XML hierarchy databases, helping it distinguish instruction layers from raw text.",
+          "It lowers the visual data consumption rate in standard interface designs.",
+          "It automatically links the chat with external vector illustration models."
+        ],
+        explanation: "Correct! Organizing documents and metadata into custom XML tags provides a clear hierarchy that isolates configuration rules from processing data."
+      },
+      {
+        id: "cl_l3",
+        title: "Revolutionizing Workflows with Claude Artifacts",
+        description: "Leverage interactive Artifact panels to co-create web templates, games, SVGs, or fully operational calculators in real-time.",
+        steps: [
+          "An 'Artifact' is a dedicated visual container that opens side-by-side with your chat when Claude generates dense, standalone code.",
+          "You can review, modify, live-execute, or interact with these visual containers directly inside your window.",
+          "This is the perfect way to design responsive web dashboards, mini React applications, or beautiful vector graphics on the fly.",
+          "To trigger an Artifact generation, prompt Claude to deliver a complete, standalone component, such as an HTML file or a React element."
+        ],
+        activityInstructions: "Fulfill a prompt triggering Claude to synthesize a fully-operational, responsive financial calculator HTML component as an Artifact.",
+        scenario: "Artifact visualization interactive system layout generation.",
+        audience: "Tech-savvy consultants and product designers.",
+        goal: "Obtain a side-panel interactive component instantly."
+      }
+    ]
+  },
+  gemini_mastery: {
+    title: "Complete Google Gemini Course: Master Gemini in 20 Modules",
+    description: "Master Google’s natively multimodal AI: 2 million token context window, elite Context Caching, Google AI Studio workspace, and integrated extensions.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "gm_l1",
+        title: "Introduction to Google Gemini & the Multimodal Ecosystem",
+        description: "Grasp Google's natively multimodal AI, designed from scratch to process text, images, audio, and high-definition video in raw form.",
+        steps: [
+          "Gemini is Google's first model series engineered from the ground up to be multimodal, co-developed by Google DeepMind and Google Research.",
+          "Unlike hybrid models, Gemini handles multiple inputs seamlessly without routing through external OCR or speech-to-text converters.",
+          "The flagship model Gemini 1.5 Pro offers unprecedented capacity, while Gemini 1.5 Flash delivers lightning-fast response times.",
+          "The Advanced web companion leverages Google's connected Extensions (Workspace, Maps, YouTube) for real-time grounded context."
+        ],
+        activityInstructions: "Compose a multimodal prompt asking Gemini to synthesize high-resolution video segments alongside raw textual coordinate metadata.",
+        scenario: "Multimodal contextual search prompt construction model.",
+        audience: "Tech leads and travel content creators.",
+        goal: "Configure multi-source analytical requests."
+      },
+      {
+        id: "gm_l2",
+        title: "The 2M Token Revolution: Large Context Window",
+        description: "Unravel one of the most significant engineering breakthroughs: the capability to upload entire code repos or long audio files in one prompt.",
+        steps: [
+          "Gemini 1.5 Pro offers an active context window of up to 2,000,000 tokens of pooled active memory.",
+          "This equals roughly 1 hour of high-definition video, 11 hours of audio, or more than 700,000 words in a single workflow.",
+          "It minimizes custom RAG database designs by natively keeping your entire project history or document bundles inside the prompt memory.",
+          "Context Caching preserves cached document references so subsequent requests cost far fewer tokens dynamically."
+        ],
+        quizQuestion: "What is the maximum context length offered by Google Gemini 1.5 Pro?",
+        quizOptions: [
+          "A default baseline limit of 32,000 standard tokens.",
+          "Up to 2,000,000 tokens of fully cached active memory.",
+          "Exactly 4,096 tokens of processing capacity.",
+          "Unlimited memory without any caching cost reductions."
+        ],
+        explanation: "Correct! Gemini 1.5 Pro features a world-class 2M token context size, redefining how creators solve large-data analytical processes."
+      },
+      {
+        id: "gm_l3",
+        title: "Google AI Studio for Developers & Creators",
+        description: "Learn to configure free API keys and build custom prompt architectures on Google’s official sandboxed environment.",
+        steps: [
+          "Google AI Studio is the direct web sandbox offered by Google to prototype models and export Gemini API keys.",
+          "It is the perfect interface to write strict system instructions, test safety parameters, and fine-tune response temperature.",
+          "You can structure prompt patterns with few-shot input examples and constrain outputs using strict JSON object schemas.",
+          "AI Studio translates your prompt workbench layouts into immediate Python, JavaScript, and cURL development packages."
+        ],
+        activityInstructions: "Draft a system instruction layout configured on AI Studio to return clean, structured real-estate JSON arrays with zero fluff.",
+        scenario: "Structured JSON schema prompt configuration template.",
+        audience: "Real estate digital agents.",
+        goal: "Set safe output parameters on Google API."
+      }
+    ]
+  },
+  deepseek_mastery: {
+    title: "Complete DeepSeek Course: Master DeepSeek in 20 Modules",
+    description: "Master DeepSeek-R1 and V3: reasoning models (Reasoning models), <think> thought processes, elite neutral prompting, optimized API pricing, and local pipelines.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "ds_l1",
+        title: "Introduction to DeepSeek-R1 & Deep Reasoning",
+        description: "Understand the mechanics of DeepSeek-R1 and its cutting-edge autonomous reasoning core.",
+        steps: [
+          "DeepSeek-R1 is a world-class reasoning-focused model that employs self-correction and continuous verification.",
+          "During generation, the model outputs a distinct internal thought process wrapped in sémantic <think> tags.",
+          "This recursive reasoning pattern lets it debug code, challenge its assumptions, and refine mathematical calculations dynamically.",
+          "As an open-weights model, DeepSeek delivers high-tier reasoning metrics for a mere fraction of contemporary proprietary costs."
+        ],
+        activityInstructions: "Draft a high-quality logistics dilemma command prompting DeepSeek-R1 to weigh risks without restricting its step-by-step thinking room.",
+        scenario: "DeepSeek-R1 structural reasoning logic template.",
+        audience: "Advanced logisticians and project directors.",
+        goal: "Leverage pure unstructured logical reasoning."
+      },
+      {
+        id: "ds_l2",
+        title: "Mastering Chain-of-Thought (CoT) and Neutral Prompts",
+        description: "Learn to construct open, objective invites that let the reasoning model use its full analytical workspace.",
+        steps: [
+          "A classic failure mode with DeepSeek-R1 is over-prompting or restricting response layouts early.",
+          "By listing hard structural requirements prematurely, you limit the token computation of its internal CoT.",
+          "The ultimate rule is to clearly define the goal while leaving the semantic path entirely open for reasoning.",
+          "Distinguish the brainstorming phase (visualized in <think>) from the final output delivered."
+        ],
+        quizQuestion: "Why is it recommended to avoid overly constraining response formats on deep reasoning models like DeepSeek-R1?",
+        quizOptions: [
+          "Because DeepSeek lacks geospatial search tracking endpoints.",
+          "Premature structure limits the activation of logical nodes in its recursive thinking sandbox, diminishing code and reasoning qualities.",
+          "Because it forces all outputs into nested comma-separated vectors.",
+          "To lower the average local hosting computational payload."
+        ],
+        explanation: "Correct! Over-formatting limits DeepSeek's internal reasoning tokens, preventing the model from exploring all possible branches of logic before replying."
+      },
+      {
+        id: "ds_l3",
+        title: "DeepSeek API & Ultra-Low-Cost Integrations",
+        description: "Learn to call the official API endpoint and leverage cost structures up to 95% cheaper than traditional market leaders.",
+        steps: [
+          "DeepSeek's API offers unrivaled economics with continuous OpenAI SDK compatibility.",
+          "Use the fast DeepSeek-V3 for daily text compilation, high-speed coding, and schema layout generation.",
+          "Implement DeepSeek-R1 for complex debugging, deep academic validation, and mathematical modeling.",
+          "API routing is clean, drop-in replacement-friendly, and offers native caching for repeating input contexts."
+        ],
+        activityInstructions: "Conceive an OpenAI-compatible API system body that queries DeepSeek-V3 to execute raw translation without greetings.",
+        scenario: "API payload structured machine-oriented configuration.",
+        audience: "Enterprise developers and solutions architects.",
+        goal: "Deploy highly optimized enterprise pipelines."
+      }
+    ]
+  },
+  kimi_mastery: {
+    title: "Complete Kimi.ai Course: Master Kimi in 20 Modules",
+    description: "Master Kimi.ai: giant document extraction, real-time live web indexing, customized Kimi+ micro-assistant workspaces, and Moonshot API setups.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "km_l1",
+        title: "Introduction to Kimi.ai & Large Context Searching",
+        description: "Unravel Kimi's (Moonshot AI) native capabilities to read massive multi-page document setups and perform live targeted web research.",
+        steps: [
+          "Kimi is crafted by Moonshot AI and succeeded rapidly by supporting world-class context limits (200,000 text characters and beyond) early.",
+          "Kimi's core strengths are rapid document ingestion speed and dynamic browsing of live search engine data without forgetting context.",
+          "Kimi excels in formatting complex query arguments, conducting rigorous literature audits, and generating elegant semantic graphs.",
+          "The main web app interface comes packed with interactive extraction modes to locate context contradictions instantly."
+        ],
+        activityInstructions: "Submit a research prompt directing Kimi to parse multiple reference web pages and formulate a unified table diagram.",
+        scenario: "Kimi multi-source web mining prompt model.",
+        audience: "Lead researchers and senior market research planners.",
+        goal: "Orchestrate real-time verified data pipelines."
+      },
+      {
+        id: "km_l2",
+        title: "Kimi+ & Orchestrating Tailored Agents",
+        description: "Unlock Kimi+ to deploy specific pre-built conversational agents executing highly focused document tasks and rules.",
+        steps: [
+          "Kimi+ offers targeted modules preconfigured for programming assistance, legal contract audit, and scholastic reviews.",
+          "These workspace agents come with expert system guidelines and authorized tools to perform accurate background lookups.",
+          "You can link multiple prompts together to build automated task loops for your daily professional business.",
+          "Mastering and optimizing Kimi+ workflows enables teams to automate heavy-lifting comparative reviews cleanly."
+        ],
+        quizQuestion: "What is the Kimi+ service within the Moonshot AI workspace?",
+        quizOptions: [
+          "A cloud photo storage option running on secondary mobile media nodes.",
+          "A curated space of customized expert agents tuned for specific complex business and coding tasks.",
+          "An assembly language simulator compiling bytes into high-level code.",
+          "An enterprise social hub to share user-created presentation templates."
+        ],
+        explanation: "Correct! Kimi+ is a direct hub of optimized AI assistants configured with strict rules to handle intense reading, typing, or programming routines."
+      },
+      {
+        id: "km_l3",
+        title: "Moonshot API & Large Context Requests",
+        description: "Integrate Moonshot's native endpoints inside your apps and manage prompt weight options without latency bottlenecks.",
+        steps: [
+          "The Moonshot API natively supports extremely long processing arrays with remarkably quick response times.",
+          "The API endpoints share complete compatibility with OpenAI's SDK, making migration or multi-model architectures seamless.",
+          "Developers must fine-tune input layouts to avoid information retrieval quality drops (the classic 'Lost in the Middle' symptom).",
+          "Acquiring expert API setup knowledge empowers you to run automated production scale text audits with absolute confidence."
+        ],
+        activityInstructions: "Configure a raw Moonshot API payload instruction commanding Kimi to extract financial KPIs from a 100-page file.",
+        scenario: "Long-context key extraction template for Moonshot API.",
+        audience: "Fullset developers and data infrastructure builders.",
+        goal: "Deploy ultra-long context data parsing integrations."
+      }
+    ]
+  },
+  leonardo_mastery: {
+    title: "Complete Leonardo.ai Course: Master Leonardo in 20 Modules",
+    description: "Master Leonardo.ai: exceptional Phoenix and Lightning renderings, Alchemy engines, Real-Time Canvas, Motion visuals, custom and fine-tuned Models.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "le_l1",
+        title: "Introduction to Leonardo.ai & Next-Generation Visual Design",
+        description: "Unravel one of the most advanced creative studios to generate photorealistic imagery with the revolutionary Phoenix engine.",
+        steps: [
+          "Leonardo.ai is a leading playground engineered for designers, digital artists, and developers, leveraging top-tier proprietary pipelines.",
+          "The flagship model Leonardo Phoenix features outstanding Prompt Adherence and native high-resolution text generation.",
+          "The suite includes powerful guided tools like ControlNet or Image-to-Image to constrain geometry during generation.",
+          "The web-based workspace easily allows creators to prompt images, synthesize 3D textures, or render high-definition animations."
+        ],
+        activityInstructions: "Compose a high-fashion photo prompt for Leonardo Phoenix integrating custom stylized text over clothing lines.",
+        scenario: "Photorealistic styling and text integration prompt paradigm.",
+        audience: "High-end product designers and creative art directors.",
+        goal: "Deploy next-gen visual assets with strict guidelines."
+      },
+      {
+        id: "le_l2",
+        title: "Alchemy & Real-Time Canvas: Precision parameters",
+        description: "Master the Alchemy post-processing render engine, live Real-Time Canvas rendering, and Prompt Guidance ratios.",
+        steps: [
+          "Alchemy acts as an elite virtual camera darkroom, enhancing lighting dynamic range, textures, and details.",
+          "Real-Time Canvas maps direct hand-drawn sketches into polished high-fidelity assets interactively.",
+          "Prompt Guidance (analogous to CFG scale) controls the balance between creative freedom and prompt strictness.",
+          "Using clean, structured negative prompts is essential to filter out optical artifacts or weird anatomy styles."
+        ],
+        quizQuestion: "What interactive feature in Leonardo.ai updates a drawing into stylized artwork live as you paint?",
+        quizOptions: [
+          "The standard Legacy Claude code translator.",
+          "The Real-Time Canvas utility, enabling live interactive sketch-to-image synthesis.",
+          "The Node.js binary pipeline backend.",
+          "The Excel analytical reporting grid."
+        ],
+        explanation: "Correct! Leonardo's Real-Time Canvas updates drawings in real time to match style vectors and text objectives."
+      },
+      {
+        id: "le_l3",
+        title: "Motion, Elements & Fine-Tuned Styles",
+        description: "Learn to animate assets via Leonardo Motion and layer fine-tuned micro-models for customized branding formats.",
+        steps: [
+          "Leonardo Motion brings life to static image generations, producing elegant camera motions and atmospheric particle shifts.",
+          "Elements are specialized theme models (e.g. Cyberpunk, Watercolor, Manga) that designers can layer and weight.",
+          "You can train custom models of characters or visual directions by submitting 10 to 20 reference pictures.",
+          "Deploying and locking private custom models ensures pristine, reusable styling outcomes across landing pages or catalogs."
+        ],
+        activityInstructions: "Structure a fantasy background prompt stacking two contrasting Leonardo Elements styles together.",
+        scenario: "Multi-style Element layering prompt model.",
+        audience: "Visual game designers and conceptual layout artists.",
+        goal: "Combine model styles with weighted adjustments."
+      }
+    ]
+  },
+  ai_social_selling: {
+    title: "Complete AI Social Selling Course: Sell on Autopilot in 20 Modules",
+    description: "Master automated social media sales: viral high-volume AI content engines, ManyChat & ChatGPT automated DMs, and self-running step-by-step funnel sequences.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "ss_l1",
+        title: "Introduction to AI Social Selling & Automated Funnels",
+        description: "Learn the foundational systems of running hands-free social selling pipelines powered by custom conversation models and persuasive templates.",
+        steps: [
+          "AI Social Selling refers to orchestrating lead acquisition and customer conversion loops on LinkedIn, Instagram, and X without manual intervention.",
+          "AI agents analyze prospect profile resumes or recent posts to write hyper-personalized outreach messages in real-time.",
+          "We construct step-by-step systems called Self-Running Funnels which nurture and sell digital products or services 24/7.",
+          "This introductory unit lays down the architectural tracks to coordinate your tools into predictable streams of revenue."
+        ],
+        activityInstructions: "Draft a prompt to analyze a potential LinkedIn lead's profile summary and formulate a hyper-personalized outreach copy.",
+        scenario: "Hyper-personalized LinkedIn outbound approach prompt template.",
+        audience: "High-end product designers and creative art directors.",
+        goal: "Compose a high-fashion photo prompt for Leonardo Phoenix integrating custom stylized text over clothing lines."
+      },
+      {
+        id: "ss_l2",
+        title: "High-Volume AI Content Ingestion Engines",
+        description: "Learn to deploy a 365-day editorial content machine with ChatGPT and Claude, scripting hundreds of Reels, TikToks, and posts.",
+        steps: [
+          "The prerequisite for organic social traction is consistent posting backed by meticulous alignment with your user pain points.",
+          "By deploying multi-agent structured prompting guidelines, you can instruct AI engines to capture your exact brand personas.",
+          "We teach the 'Content Cascade' methodology: transforming a single master research page into 20 micro-posts for multiple channels.",
+          "Leveraging these routines feeds your digital queues with high-converting items at a fraction of standard designer timelines."
+        ],
+        quizQuestion: "Which automated methodology allows steady daily publication routines derived from a single authority master file?",
+        quizOptions: [
+          "The Content Cascade (Repurposing) process supported by AI templates.",
+          "Directly copying competitor texts without stylistic edits.",
+          "Generating random software snippets irrelevant to your audience goals.",
+          "Configuring a bot program that registers bulk trending hashtags."
+        ],
+        explanation: "Correct! The Content Cascade (or content repurposing) allows compiling dozens of optimized, bite-sized assets from one core model topic."
+      },
+      {
+        id: "ss_l3",
+        title: "Step-by-Step DM & Conversational Webhook setups",
+        description: "Connect ManyChat workflows directly to ChatGPT's API to distribute free guides and close sales inside the inbox.",
+        steps: [
+          "Automating direct inbox messages is the fastest way to lift social publication conversion ratios by up to 300%.",
+          "When a viewer comments on a target keyword, a system trigger automatically opens a personalized diagnostic thread.",
+          "By binding chatbot systems with OpenAI, responses are context-aware, organic, exceptionally friendly, and convincing.",
+          "Configuring this simple pipeline ensures your CRM channels run at high capacity while you focus on scaling your enterprise."
+        ],
+        activityInstructions: "Formulate a specialized system instruction (system instruction prompt) guiding an automated conversion chatbot.",
+        scenario: "ManyChat custom AI Qualification agent system prompt.",
+        audience: "Fullset developers and data infrastructure builders.",
+        goal: "Deploy ultra-long context data parsing integrations."
+      }
+    ]
+  },
   prompt_eng: {
     title: "ChatGPT, Gemini & Generative AI Masterclass",
     description: "Learn the secrets of professional prompting to command ChatGPT, Gemini, and Claude for senior-level content, code, and analytical output.",
@@ -480,8 +923,7 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
-  {
-    id: "copywriting",
+  copywriting: {
     title: "AI copywriting: Sales Frameworks",
     description: "Write copy that captivates, connects, and converts using world-class marketing frameworks paired with leading generative engines.",
     difficulty: "Beginner",
@@ -539,8 +981,7 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
-  {
-    id: "freelance_career",
+  freelance_career: {
     title: "Propel Your Freelance Career & Side-Hustles",
     description: "Package your newly acquired professional AI services to sell on Upwork, Fiverr, or directly to businesses for premium prices.",
     difficulty: "Intermediate",
@@ -600,10 +1041,12 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
   }
 };
 
-export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[]): any[] {
-  if (lang === "fr") return baseCourses;
+export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COURSES || []): any[] {
+  const safeCourses = Array.isArray(baseCourses) ? baseCourses : [];
+  if (lang === "fr") return safeCourses;
   
-  return baseCourses.map(course => {
+  return safeCourses.map(course => {
+    if (!course) return course;
     const translatedCourse = ENGLISH_COURSES_TRANSLATIONS[course.id];
     if (!translatedCourse) return course;
     
@@ -611,13 +1054,14 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[]): any[
       ...course,
       title: translatedCourse.title,
       description: translatedCourse.description,
-      lessons: course.lessons.map((lesson: any) => {
+      lessons: (course.lessons || []).map((lesson: any) => {
+        if (!lesson) return lesson;
         const foundTrans = translatedCourse.lessons.find((l: any) => l.id === lesson.id);
         if (!foundTrans) {
           // Dynamic derived lesson from extraListData
           return {
             ...lesson,
-            title: lesson.title
+            title: (lesson.title || "")
               .replace("L'art du", "The Art of")
               .replace("La technique d'", "The Technique of ")
               .replace("La méthode d'", "The Method of ")
@@ -637,11 +1081,11 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[]): any[
           ...lesson,
           title: foundTrans.title,
           description: foundTrans.description,
-          steps: foundTrans.steps,
+          steps: foundTrans.steps || lesson.steps || [],
           quiz: lesson.quiz ? {
             ...lesson.quiz,
             question: foundTrans.quizQuestion || lesson.quiz.question,
-            options: lesson.quiz.options.map((opt: any, oIdx: number) => ({
+            options: (lesson.quiz.options || []).map((opt: any, oIdx: number) => ({
               ...opt,
               text: foundTrans.quizOptions?.[oIdx] || opt.text
             })),

@@ -42,6 +42,41 @@ const LOCAL_TRANS = {
     directorPos: "DIRECTEUR TECHNIQUE",
     printTip: "Astuce d'impression : Cliquez sur le bouton d'impression ci-dessus pour lancer le module de sauvegarde de votre navigateur. Configurez le format en Paysage (Landscape) et décochez les options de marges/en-têtes système pour un rendu parfait.",
     accomplishments: {
+      chatgpt_mastery: [
+        "Exploitation experte des Custom Instructions d'OpenAI",
+        "Création d'assistants sur mesure (Custom GPTs) sécurisés",
+        "Analyse de données complexes et automatisation de rapports"
+      ],
+      claude_mastery: [
+        "Architecture structurante en balises XML avancées",
+        "Création d'artéfacts interactifs (Artifacts HTML/React)",
+        "Analyse stratégique de documents via la fenêtre géante de 200K"
+      ],
+      gemini_mastery: [
+        "Maîtrise de la fenêtre de contexte géante (2M tokens)",
+        "Mise en cache intelligente du contexte (Context Caching)",
+        "Création d'agents d'IA connectés et intégration API d'élite"
+      ],
+      deepseek_mastery: [
+        "Architecte de prompts de raisonnement (Reasoning CoT)",
+        "Configuration avancée de DeepSeek-R1 en local (Ollama)",
+        "Intégration d'API d'élite à coût optimisé (V3 / R1)"
+      ],
+      kimi_mastery: [
+        "Maîtrise de l'ingestion de très longs documents (200k+ caractères)",
+        "Extraction d'indicateurs financiers et audits comparatifs de précision",
+        "Modélisation et interconnexion de workflows via l'API Moonshot"
+      ],
+      leonardo_mastery: [
+        "Création de visuels photoréalistes d'élite (moteur Phoenix & Lightning)",
+        "Contrôle absolu des contrastes, poses et styles (Alchemy & ControlNet)",
+        "Génération de décors, animations Motion et entraînement de modèles LoRA"
+      ],
+      ai_social_selling: [
+        "Automatisation de masse de contenu de vente (méthode de la Cascade d'IA)",
+        "Configuration de tunnels de messagerie connectés ManyChat x ChatGPT",
+        "Modélisation et qualification autonome d'ICP via webhooks Make / Zapier"
+      ],
       prompt_eng: [
         "Formulation de prompt d'élite (Rôle, Tâche, Contexte, Contraintes)",
         "Modèles d'apprentissage par l'exemple (Few-Shot Prompting)",
@@ -90,6 +125,41 @@ const LOCAL_TRANS = {
     directorPos: "CHIEF TECHNICAL OFFICER",
     printTip: "Print optimization: Select the print option above to launch the system dialog. Set print scale to Landscape format and uncheck system margins/footer options for maximum detail.",
     accomplishments: {
+      chatgpt_mastery: [
+        "Expert leveraging of OpenAI Custom Instructions profiles",
+        "Building custom secured generative assistants (Custom GPTs)",
+        "Advanced data analytics and automated python reporting"
+      ],
+      claude_mastery: [
+        "Advanced structured prompt modeling with XML tag hierarchies",
+        "Conceiving interactive dynamic UI components (HTML/React Artifacts)",
+        "Large documents synthesis mapping with the 200K token context window"
+      ],
+      gemini_mastery: [
+        "Mastering giant context window operations (2M tokens)",
+        "Configuring cost-efficient Context Caching systems",
+        "Orchestrating connected web agents and elite prompt APIs"
+      ],
+      deepseek_mastery: [
+        "Architecting reasoning prompts & Chain-of-Thought (CoT)",
+        "Advanced deployment of DeepSeek-R1 locally via Ollama",
+        "Optimized API orchestration of elite V3/R1 endpoints"
+      ],
+      kimi_mastery: [
+        "Navigating ultra-long document loads (200k+ characters)",
+        "Extracting high-precision KPIs and comparative audits",
+        "Configuring custom system automations via Moonshot API"
+      ],
+      leonardo_mastery: [
+        "Synthesizing next-gen photorealistic visuals (Phoenix & Lightning)",
+        "Precision style mapping, poses, and camera control (Alchemy & ControlNet)",
+        "Rendering Motion video assets and compiling fine-tuned LoRA models"
+      ],
+      ai_social_selling: [
+        "Mass automation of conversion-focused social copy (Content Cascade framework)",
+        "Orchestrating ManyChat x ChatGPT direct message (DM) sales funnels",
+        "Autonomous semantic profiling & qualification via Make/Zapier Webhooks"
+      ],
       prompt_eng: [
         "Elite Prompt Framing (Role, Mission, Context, Constraints)",
         "Few-Shot Exemplar Structural Engineering models",
@@ -132,6 +202,27 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   // Custom key accomplishments based on the completed course
   const getAccomplishments = () => {
     const records = LOCAL_TRANS[lang].accomplishments || LOCAL_TRANS["fr"].accomplishments;
+    if (course.id === "chatgpt_mastery") {
+      return records.chatgpt_mastery;
+    }
+    if (course.id === "claude_mastery") {
+      return records.claude_mastery;
+    }
+    if (course.id === "gemini_mastery") {
+      return records.gemini_mastery;
+    }
+    if (course.id === "deepseek_mastery") {
+      return records.deepseek_mastery;
+    }
+    if (course.id === "kimi_mastery") {
+      return records.kimi_mastery;
+    }
+    if (course.id === "leonardo_mastery") {
+      return records.leonardo_mastery;
+    }
+    if (course.id === "ai_social_selling") {
+      return records.ai_social_selling;
+    }
     if (course.id === "prompt_eng") {
       return records.prompt_eng;
     }
@@ -412,7 +503,9 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                 {t("awardedSub")}
               </p>
               <h3 className={`text-sm lg:text-base font-bold tracking-tight mt-1.5 font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
-                {course.title} ({course.category === "ai" ? t("specialization").ai : t("specialization").else})
+                {course.title} ({course.category === "ai" 
+                  ? (lang === "fr" ? "Spécialisation Intelligence Artificielle" : "Specialist Certification in Artificial Intelligence")
+                  : (lang === "fr" ? "Compétences Digitales d'Élite" : "Elite Professional Digital Skill Upgrade")})
               </h3>
             </div>
 

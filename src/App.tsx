@@ -20,7 +20,7 @@ import { Sparkles, MessageSquare, Award, Flame, LogOut, CheckCircle2, ChevronRig
 const LOCAL_STORAGE_KEY = "coursiv_academy_progress";
 
 const INITIAL_PROGRESS: UserProgress = {
-  selectedPathCourseIds: ["prompt_eng", "copywriting", "freelance_career"],
+  selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"],
   completedLessonIds: {},
   completedCourseIds: {},
   streakCount: 1,
@@ -117,7 +117,33 @@ export default function App() {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
       try {
-        setProgress(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === "object") {
+          let loadedPaths = parsed.selectedPathCourseIds || ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"];
+          const requiredCourseIds = ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"];
+          requiredCourseIds.forEach(id => {
+            if (!loadedPaths.includes(id)) {
+              // Prepend high-priority new AI courses or append them
+              if (id === "chatgpt_mastery" || id === "claude_mastery" || id === "gemini_mastery" || id === "deepseek_mastery" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "ai_social_selling") {
+                loadedPaths.unshift(id);
+              } else {
+                loadedPaths.push(id);
+              }
+            }
+          });
+          // Unique entries filter
+          loadedPaths = Array.from(new Set(loadedPaths));
+
+          setProgress({
+            ...INITIAL_PROGRESS,
+            ...parsed,
+            completedLessonIds: parsed.completedLessonIds || {},
+            completedCourseIds: parsed.completedCourseIds || {},
+            selectedPathCourseIds: loadedPaths,
+            achievements: parsed.achievements || [],
+            onboardingAnswers: parsed.onboardingAnswers || {}
+          });
+        }
       } catch (e) {
         console.error("Failed to parse saved user progression.", e);
       }
@@ -129,7 +155,7 @@ export default function App() {
       const savedAccounts = savedAccountsStr ? JSON.parse(savedAccountsStr) : null;
       if (!savedAccounts || Object.keys(savedAccounts).length === 0) {
         const demoAccount: UserProgress = {
-          selectedPathCourseIds: ["prompt_eng", "copywriting", "freelance_career"],
+          selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "prompt_eng", "copywriting", "freelance_career"],
           completedLessonIds: {
             "prompt_basics": true,
             "few_shot": true,
@@ -182,6 +208,34 @@ export default function App() {
     }
   };
 
+  // Auto-heal / migrate missing courses from progress.selectedPathCourseIds
+  useEffect(() => {
+    if (progress && progress.onboarded) {
+      const allCourseIds = COURSES.map(c => c.id);
+      const currentPaths = progress.selectedPathCourseIds || [];
+      const missingCourseIds = allCourseIds.filter(id => !currentPaths.includes(id));
+      
+      if (missingCourseIds.length > 0) {
+        let updatedPaths = [...currentPaths];
+        // Prepend high-priority AI courses or append them
+        missingCourseIds.forEach(id => {
+          if (id === "ai_social_selling" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "deepseek_mastery" || id === "gemini_mastery" || id === "claude_mastery" || id === "chatgpt_mastery") {
+            updatedPaths.unshift(id);
+          } else {
+            updatedPaths.push(id);
+          }
+        });
+        // Remove duplicates and keep order
+        updatedPaths = Array.from(new Set(updatedPaths));
+        
+        saveProgress({
+          ...progress,
+          selectedPathCourseIds: updatedPaths
+        });
+      }
+    }
+  }, [progress, progress.selectedPathCourseIds, progress.onboarded]);
+
   const handleLogout = () => {
     if (soundEnabled) playSound("click");
     // Backup active user session before wiping local state
@@ -207,7 +261,7 @@ export default function App() {
     setLoginError("");
 
     if (!loginEmail.trim() || !loginPassword.trim()) {
-      setLoginError("Veuillez remplir tous les champs.");
+      setLoginError(lang === "fr" ? "Veuillez remplir tous les champs." : "Please fill in all fields.");
       return;
     }
 
@@ -219,12 +273,12 @@ export default function App() {
       const matchedAccount = savedAccounts[targetKey];
 
       if (!matchedAccount) {
-        setLoginError("Aucun compte étudiant trouvé avec cette adresse e-mail.");
+        setLoginError(lang === "fr" ? "Aucun compte étudiant trouvé avec cette adresse e-mail." : "No student account found with this email address.");
         return;
       }
 
       if (matchedAccount.password && matchedAccount.password !== loginPassword) {
-        setLoginError("Mot de passe incorrect.");
+        setLoginError(lang === "fr" ? "Mot de passe incorrect." : "Incorrect password.");
         return;
       }
 
@@ -239,7 +293,7 @@ export default function App() {
       setShowLoginModal(false);
       setShowHomepage(false); // directly enter dashboard
     } catch (e) {
-      setLoginError("Une erreur est survenue lors de l'authentification.");
+      setLoginError(lang === "fr" ? "Une erreur est survenue lors de l'authentification." : "An error occurred during authentication.");
     }
   };
 
@@ -387,7 +441,7 @@ export default function App() {
   };
 
   const handleResetApp = () => {
-    if (window.confirm("Êtes-vous sûr de vouloir réinitialiser tout votre cursus et recommencer depuis le questionnaire ?")) {
+    if (window.confirm(lang === "fr" ? "Êtes-vous sûr de vouloir réinitialiser tout votre cursus et recommencer depuis le questionnaire ?" : "Are you sure you want to reset your full curriculum progress and start over from the onboarding?")) {
       localStorage.removeItem(LOCAL_STORAGE_KEY);
       setProgress(INITIAL_PROGRESS);
       setActiveCourseId(null);
@@ -420,8 +474,8 @@ export default function App() {
   };
 
   // Compute stats of completion
-  const totalLessons = localizedCourses.reduce((acc, c) => acc + c.totalLessons, 0);
-  const completedLessonsCount = Object.keys(progress.completedLessonIds).length;
+  const totalLessons = (localizedCourses || []).reduce((acc, c) => acc + (c?.totalLessons || 0), 0) || 1;
+  const completedLessonsCount = Object.keys(progress?.completedLessonIds || {}).length;
   const overallCompletedPercentage = Math.round((completedLessonsCount / totalLessons) * 100);
 
   return (

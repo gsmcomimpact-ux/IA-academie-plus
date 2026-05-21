@@ -100,29 +100,29 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
   const localizedCourses = getLocalizedCourses(lang);
   
   // Find current active course based on first uncompleted, or first of their roadmap
-  const activeCourseId = progress.selectedPathCourseIds[0] || localizedCourses[0].id;
-  const activeCourse = localizedCourses.find(c => c.id === activeCourseId) || localizedCourses[0];
+  const activeCourseId = progress?.selectedPathCourseIds?.[0] || (localizedCourses?.[0]?.id) || "prompt_eng";
+  const activeCourse = (localizedCourses || []).find(c => c?.id === activeCourseId) || localizedCourses?.[0] || { id: "prompt_eng", title: "Masterclass", lessons: [], totalLessons: 30 };
 
   // XP Progress values
-  const currentLevel = Math.floor(progress.xp / 100) + 1;
-  const xpInCurrentLevel = progress.xp % 100;
+  const currentLevel = Math.floor((progress?.xp || 0) / 100) + 1;
+  const xpInCurrentLevel = (progress?.xp || 0) % 105; // safe percent
 
   // Streak claimed today checker
   const todayStr = new Date().toISOString().split("T")[0];
-  const isCheckedInToday = progress.lastCheckInDate === todayStr;
+  const isCheckedInToday = progress?.lastCheckInDate === todayStr;
 
-  const daysOfWeek = t("daysOfWeek") as string[];
+  const daysOfWeek = (t("daysOfWeek") as string[]) || [];
   // Mock calendar status based on streak
   const currentDayIdx = (new Date().getDay() + 6) % 7; // Monday = 0, Sunday = 6
 
   // Check if they completed a course
   const getCourseCompletedCount = (course: Course) => {
-    return course.lessons.filter(l => progress.completedLessonIds[l.id]).length;
+    return (course?.lessons || []).filter(l => l && progress?.completedLessonIds?.[l.id]).length;
   };
 
   // Get user focus title description
   const getUserFocusTitle = () => {
-    const mainInterest = progress.onboardingAnswers["skill"];
+    const mainInterest = progress?.onboardingAnswers?.["skill"];
     if (mainInterest === "prompt_engineering") {
       return lang === "fr" ? "Praticien Prompt Engineer" : "Prompt Engineering Specialist";
     }
@@ -162,7 +162,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
           {/* Level XP Progress Bar */}
           <div className="space-y-2">
             <div className="flex justify-between items-center text-xs text-slate-400 font-mono">
-              <span>{t("level").toUpperCase()} {currentLevel}</span>
+              <span>{String(t("level")).toUpperCase()} {currentLevel}</span>
               <span>{xpInCurrentLevel} / 100 XP</span>
             </div>
             <div className="h-2.5 w-full bg-slate-800 rounded-full overflow-hidden">
@@ -216,7 +216,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                   </div>
                   <div className="h-8 w-[1px] bg-slate-800" />
                   <div className="text-center font-mono">
-                    <div className="text-[10px] text-slate-400">{t("xpRewardLabel")}</div>
+                    <div className="text-[10px] text-slate-400">{t("xpMaxLabel")}</div>
                     <div className="font-bold text-slate-200">+{activeCourse.totalLessons * 50}</div>
                   </div>
                 </div>
@@ -292,6 +292,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
 
             {/* Academic Certificates Panel */}
             <CertificatesPanel 
+              lang={lang}
               progress={progress}
               onSelectCourse={onSelectCourse}
               onViewCertificate={onViewCertificate}
