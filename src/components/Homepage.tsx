@@ -551,6 +551,8 @@ export default function Homepage({
                         <Star className="w-5 h-5 text-pink-400" />
                       ) : course.id === "ai_social_selling" ? (
                         <Sparkles className="w-5 h-5 text-amber-400" />
+                      ) : course.id === "viral_video_audio" ? (
+                        <PlayCircle className="w-5 h-5 text-indigo-400" />
                       ) : (
                         <Terminal className="w-5 h-5 text-indigo-400" />
                       )}

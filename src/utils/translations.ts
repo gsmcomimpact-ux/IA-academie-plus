@@ -810,6 +810,62 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
+  viral_video_audio: {
+    title: "Viral Video & Audio AI Production: 20 Modules",
+    description: "Master cinematic video creation and high-performance audio engineering: Text-to-Video generation using Runway and Sora, ElevenLabs voice cloning, and Suno background composition.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "vv_l1",
+        title: "Introduction to AI Video & Audio Creation",
+        description: "Learn the cutting-edge AI pipelines to draft highly viral short videos (Runway, Sora, Kling, Luma) and synthesise professional audio scripts (ElevenLabs, Suno, Udio).",
+        steps: [
+          "AI video generation has dramatically evolved, sporting models capable of synthesizing complex movie scenes from raw textual prompts.",
+          "Voice synthesis solutions like ElevenLabs can clone individual human voices with complete emotional warmth in under 30 seconds.",
+          "Specialized music architectures such as Suno or Udio can structure complete rhythmic backdrops matching your visual pace.",
+          "The core secret of virality lies in the perfect synchronicity between an engaging script, a magnetic voice, and highly kinetic cuts."
+        ],
+        activityInstructions: "Compose a high-fidelity cinematic prompt for Runway Gen-3 describing dynamic futuristic lighting and realistic reflections.",
+        scenario: "Interactive high-fidelity Sci-Fi video generation.",
+        audience: "Digital content publishers and creative media directors.",
+        goal: "Generate realistic neon light reflections over rainy textures."
+      },
+      {
+        id: "vv_l2",
+        title: "Mastering Text-to-Video & Image Animation",
+        description: "Learn the secrets of keyframing, motion brush controls, and realistic camera sweeps using Runway and Luma.",
+        steps: [
+          "Runway and Luma turn dry static assets into flowing cinematic clips through precise directional brush controls (Motion Brush).",
+          "Advanced prompts specify focal lengths, dynamic pan sweeps, realistic light refractions, and pacing thresholds.",
+          "Locking your visual cuts to the exact tempo and pauses of your voice-over raises viewer retention by over 50%.",
+          "Deploying proper negative tags in video generators blocks unexpected limb duplication or weird transition artifacts."
+        ],
+        quizQuestion: "Which tool or parameter in image-to-video generators lets you instruct the model exactly which parts of your static visual to animate?",
+        quizOptions: [
+          "The Motion Brush (pinceau de mouvement) available in Runway's studio console.",
+          "Exporting the picture to an Excel file with coordinates.",
+          "Writing a custom CSS shadow layout inside your HTML wrapper.",
+          "Pressing the hard cache erase command."
+        ],
+        explanation: "Correct! The Motion Brush empowers creators to paint precisely over specific layers (such as flowing hair or falling snow), leaving other sections still."
+      },
+      {
+        id: "vv_l3",
+        title: "Professional Voice-Cloning & Sound Orchestration",
+        description: "Configure custom voice clones, synthesize custom dialogue, and compose orchestral background scores.",
+        steps: [
+          "ElevenLabs incorporates fine-tuning parameters to tweak voice stability, tone clarity, and dramatic theatricality.",
+          "Suno and Udio allow crafting custom songs by parsing structured lyric blueprints generated with ChatGPT or Claude.",
+          "Fine editing requires placing critical visual action changes precisely on the musical beats of your backtrack.",
+          "Ethical use guidelines dictate utilizing only authorized materials or licensing details when engineering custom vocal clones."
+        ],
+        activityInstructions: "Formulate a music orchestration prompt in Suno to generate a dark synthwave background with an accelerated tempo.",
+        scenario: "Dark synthwave high-energy action backdrop generation.",
+        audience: "Sound designers and horizontal video creators.",
+        goal: "Output a rhythmic synthesizer backing track."
+      }
+    ]
+  },
   prompt_eng: {
     title: "ChatGPT, Gemini & Generative AI Masterclass",
     description: "Learn the secrets of professional prompting to command ChatGPT, Gemini, and Claude for senior-level content, code, and analytical output.",
@@ -1041,6 +1097,245 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
   }
 };
 
+export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string }[]> = {
+  chatgpt_mastery: [
+    { title: "Anatomy & Creation of Custom GPTs", desc: "Build your own personalized assistants with reference guidelines, custom files, and persistent logic." },
+    { title: "Leveraging Advanced Data Analysis", desc: "Upload Excel or CSV files and instruct ChatGPT to execute Python code under the hood and generate charts." },
+    { title: "Real-Time Web Scraping Methods", desc: "Perform live market intelligence and competitive analysis recursively on the web via search tools." },
+    { title: "JSON Response Formatting for Developers", desc: "Enforce structured JSON schema outputs to integrate ChatGPT smoothly into web applications." },
+    { title: "DALL-E 3 Graphic Generation Secrets", desc: "Master complex artistic prompts to design high-impact visuals, mockups, and vector-style logos." },
+    { title: "Advanced Sentiment & Semantic Cultural Translation", desc: "Translate marketing copies while preserving local idiomatic expressions and high emotional charm." },
+    { title: "Code Refactoring & Complex Bug Resolution", desc: "Feed complete software modules to ChatGPT to perform peer review, structure cleaning, and formatting." },
+    { title: "Intelligent Context Window Planning", desc: "Optimize how you feed massive documents or chapters to prevent losing reference details." },
+    { title: "ChatGPT Desktop App & Power Shortcuts", desc: "Embed ChatGPT at the heart of your operating system to trigger prompts in under two seconds." },
+    { title: "Interactive Advanced Voice-to-Voice Modes", desc: "Engage in natural-sounding English spoken practice and receive mock interview coaching in real-time." },
+    { title: "Writing Style Reverse Engineering", desc: "Provide sample pages of your writing to let ChatGPT extract your exact syntax and vocabulary pattern." },
+    { title: "Corporate Financial Reports Audit in PDF", desc: "Import balance sheets or income statements to detect margins, leaks, and potential optimization points." },
+    { title: "Custom Employee Onboarding Workflows", desc: "Structure interactive scenario models to train junior members on standard operating procedures." },
+    { title: "SEO Semantic Keyword Mapping", desc: "Sift through broad keyword clusters and search intent trees using ChatGPT's grouping capabilities." },
+    { title: "Drafting High-Fidelity Contracts & Legal Frameworks", desc: "Structure preliminary agreements, NDAs, and usage policies before final review by legal counsel." },
+    { title: "Click-Driven Newsletter Campaign Automation", desc: "Draft automated streams of highly engaging, narrative-focused emails that drive link clicks." },
+    { title: "Final Assessment & ChatGPT Certified Expert Examination", desc: "Demonstrate complete command under real-world scenarios to secure your official diploma." }
+  ],
+  claude_mastery: [
+    { title: "Anatomy of Claude Cyber Projects", desc: "Build dedicated projects (Claude Projects) combining instructions, style templates, and custom code folders." },
+    { title: "Analyzing Giant PDF Dossiers (up to 200K tokens)", desc: "Exploit Anthropic's giant context window to perform comprehensive audits on contracts and reference manuals." },
+    { title: "Designing Interactive Prototypes with React & HTML", desc: "Accelerate SaaS design loops by deploying fully clickable frontend components inside Claude's visual frame." },
+    { title: "Creative SVG and Interactive Data Visualizations", desc: "Draft gorgeous, responsive vector diagrams and interactive flowcharts to decorate business documents." },
+    { title: "Claude Developer API Prompt Tuning", desc: "Fine-tune system prompts, temperatures, and parameters to integrate Claude into backend pipelines." },
+    { title: "Multi-File Debugging & Structural Refactoring", desc: "Submit complex, dependent code bases and instruct Claude to secure system coherence and fix bugs." },
+    { title: "Advanced Semantic & Creative Literary Translation", desc: "Translate prose or narrative sheets while preserving poetic layers, double meanings, and emotional flow." },
+    { title: "Interactive Audio Transcription Parsing", desc: "Turn 3-hour long-form meeting transcription texts into executive bullet summaries and action lists." },
+    { title: "Optimizing Claude Desktop for Keyboard Mastery", desc: "Call Anthropic's official desktop client instantly via keyboard hotkeys to accelerate text workflows." },
+    { title: "Reverse Prompting Complex Systems and Logic", desc: "Force Claude to dissect stellar writing outputs or formulas to outline the perfect input prompt blueprint." },
+    { title: "Legal Agreement Analysis & Liability Checks", desc: "Run automated audits over service level agreements and terms sheets to highlight risk factors." },
+    { title: "Mapping Inductive & Socratic Brainstorms", desc: "Guide team brainstorms by forcing Claude to ask unexpected, highly revealing diagnostic questions." },
+    { title: "Designing Advanced B2B Roleplay Scenarios", desc: "Nurture sales teams by training Claude to act as an uncooperative buyer demanding discounts." },
+    { title: "Strict Rule Guardrails & System Prompts Engineering", desc: "Configure strict behavioral guidelines for customer support agents that never deviate from standard policies." },
+    { title: "Automated Intermediate SQL Planning Trees", desc: "Construct clean relational schemas, complex database queries, and optimized data flow models." },
+    { title: "Deep Reasoning and Strategic Dilemma Balancing", desc: "Analyze high-stakes business decisions by looking at structural pros and cons with balanced academic precision." },
+    { title: "Final Assessment & Certified Claude AI Expert Examination", desc: "Demonstrate expert command of Claude's advanced tool suite to secure your certified diploma." }
+  ],
+  gemini_mastery: [
+    { title: "Advanced Configuration of Google Gemini Extensions", desc: "Link and query Gmail, Google Drive, Google Maps, and Flights live within your conversational context." },
+    { title: "Native HD Video Frame Analysis", desc: "Upload full webinar files or video recordings and ask Gemini to identify highlights down to the exact second." },
+    { title: "Context Caching Integration in Google AI Studio", desc: "Slash your persistent API costs by up to 90% by hosting permanent document embeddings in active memory." },
+    { title: "Strict Structured JSON Data Parsing", desc: "Force Gemini to strictly format outputs as computer-readable objects, skipping conversational narrative." },
+    { title: "Function Calling: Interfacing Gemini with Live APIs", desc: "Declare backend logical routines and let the model decide when and how to trigger them in real-time." },
+    { title: "Analytic Auditing of Multi-Year Group Financials", desc: "Use the 2 million token context window to cross-reference multi-year financial statements of separate subsidiaries." },
+    { title: "Designing Custom Gems for Personal Productivity", desc: "Create private, customized assistant models with persistent moderation guidelines right on Google Advanced." },
+    { title: "Eliminated Hallucinations with Google Search Grounding", desc: "Blend Gemini's reasoning with real-time web search verification to ensure zero factual errors." },
+    { title: "Single-Job Book Translation & Local Accords", desc: "Translate 400-page manuscripts in one go while retaining highly accurate colloquial accents and slang." },
+    { title: "Deploying Streaming API Token Outputs", desc: "Improve user experience in custom apps by rendering generated thoughts word-by-word with zero delay." },
+    { title: "Formulating Fine-Grained API Safety Filters", desc: "Configure safety block thresholds granularly on Vertex AI or Google AI Studio to handle user inputs." },
+    { title: "Constructing Multi-Character Script Treatments", desc: "Write complex movies or corporate scenario lines by letting Gemini enforce semantic consistency for each role." },
+    { title: "Reverse Engineering Custom Prompts from Graphics", desc: "Upload screenshots of websites or layouts and synthesize precise prompt structures to recreate them." },
+    { title: "Automating Tasks inside Google Docs & Sheets Workspace", desc: "Directly link spreadsheets to Gemini APIs to automate high-volume translation or data enrichment." },
+    { title: "Interactive Form Generation Powered by Gemini Logic", desc: "Build smart feedback surveys where fields adapt or change dynamically based on prior responses." },
+    { title: "Optimizing Long-Context System Instructions", desc: "Master designing system boundaries for complex customer support chatbots, securing extreme compliance." },
+    { title: "Final Assessment & Certified Google Gemini Expert Examination", desc: "Prove complete mastery under real-world stress to win your final certified graduation credential." }
+  ],
+  deepseek_mastery: [
+    { title: "Understanding DeepSeek's Mixture-of-Experts (MoE) Layout", desc: "Dive into V3's architecture, which activates selected neural pathways to achieve maximum computing efficiency." },
+    { title: "Running DeepSeek-R1 Locally via Ollama", desc: "Install, configure, and host quantized open-weight DeepSeek-R1 models offline on your own home system." },
+    { title: "Prompt Tuning to Streamline R1 Reasoning", desc: "Refine prompt styles and direct boundaries to structure reasoning steps without muting its ultimate cognitive power." },
+    { title: "High-Caliber Code Synthesis with DeepSeek-Coder", desc: "Design software algorithms, complex database structures, and responsive backend applications with ease." },
+    { title: "Relational Multi-Vendor RFP Auditing", desc: "Automate analyzing complex vendor proposals and rank them according to specific procurement rules." },
+    { title: "OpenAI-Compatible API System Integrations", desc: "Integrate DeepSeek's API seamlessly into Node.js or Python systems using OpenAI SDK libraries." },
+    { title: "Double-Verification Audits on Budget Formulas", desc: "Train the R1 reasoning engine to cross-validate financial models and discover formula errors." },
+    { title: "Accelerated Patent Auditing & Competitive Searches", desc: "Scan patent documents and identify potential intellectual property claims using step-by-step reading rules." },
+    { title: "Drafting Detailed White Papers & Science Briefs", desc: "Synthesize advanced engineering and research topics into accessible, polished educational brochures." },
+    { title: "Cross-System Software Architecture Debugging", desc: "Trace dependency bugs across multiple software files simultaneously by feeding whole modules to DeepSeek-R1." },
+    { title: "Encoding Standard Data Arrays for Core Pipelines", desc: "Generate standard schema outputs and data dictionaries to feed enterprise business logic structures." },
+    { title: "System Vulnerability & Network Log Scanning", desc: "Feed server activity logs and system setups to find points of interest or security compliance breaches." },
+    { title: "Simulating High-Stakes Business Negotiations", desc: "Set up virtual negotiation rooms powered by DeepSeek-R1's deductive reasoning to simulate difficult arbitrage sessions." },
+    { title: "Automating Dynamic Training Modules & Curriculum Planning", desc: "Build robust lessons and structured training guides matching scientific objectives from simple topic drafts." },
+    { title: "Relational SQL Query Structuring & Database Tuning", desc: "Build robust SQL queries, nested joins, and index layouts to clean up database bottlenecks." },
+    { title: "Evaluating Complex Math & Logic Formulas", desc: "Solve complex optimization problems and verify mathematical formulas step-by-step with zero margin of error." },
+    { title: "Final Assessment & Certified DeepSeek AI Expert Examination", desc: "Succeed on reasoning challenges to obtain your credentials in reasoning engineering." }
+  ],
+  kimi_mastery: [
+    { title: "Ingesting Giant PDF Research Files", desc: "Submit mammoth studies and research documents to Kimi and perform precise, surgical keyword searches." },
+    { title: "Deploying Real-Time Live Web Search Audits", desc: "Activate live web search to audit recent news, funding events, or technology releases." },
+    { title: "Collaborative Multi-File Contract Auditing", desc: "Upload multiple legal agreements in parallel and let Kimi show contradictions or risky SLA terms." },
+    { title: "Accelerating Academic Review of Science Papers", desc: "Save hours by letting Kimi extract experimental methodologies and results from complex studies." },
+    { title: "Integrating Moonshot AI Backend Code Debugging", desc: "Program custom backend scripts linking to Moonshot's API to analyze and optimize software functions." },
+    { title: "Thwarting Extraction Hallucinations on Giant Data Sets", desc: "Enforce double-confirmation loops to secure the absolute factual correctness of extracted business KPIs." },
+    { title: "Architecting Permanent Writing Personas on Kimi+", desc: "Build tailor-made writing helpers that consistently respect your tone, voice, and formatting." },
+    { title: "Long-Context Character Consistency in Creative Fiction", desc: "Submit large manuscript templates and draft coherent chapters matching character behaviors perfectly." },
+    { title: "API Moonshot: Cache Management to Slash Network Costs", desc: "Understand Moonshot's caching pipeline to save API resources when processing large documents." },
+    { title: "Formulating Executive Memos for High-Level Boards", desc: "Convert hundreds of messy financial spreadsheets into clean, high-value, bulleted memos." },
+    { title: "High-Fidelity Book Translation with Kimi", desc: "Translate creative books or long manuals while fully respecting sentence pacing and regional dialects." },
+    { title: "Codeless Knowledge Vault Integrations via RAG", desc: "Exploit Kimi's massive memory to host extensive company wikis directly inside the live session." },
+    { title: "Real-Time Tracking of Competitive Industry Trends", desc: "Cross-analyze recent reports from leading analysts to discover lucrative market opportunities." },
+    { title: "Dynamic Language Adaptation for Complex Local Dialects", desc: "Configure highly personalized translation models that capture cultural sayings with absolute elegance." },
+    { title: "Automated Compliance Auditing on Standard Operations", desc: "Identify gaps in standard routines by comparing actual logs against national guidelines automatically." },
+    { title: "Assembling Executive Summaries through Social Scraping", desc: "Merge social trends with research reports to draft summarized market briefs for corporate teams." },
+    { title: "Final Assessment & Certified Kimi.ai Expert Examination", desc: "Unlock your premium certification by passing the ultimate long-context data analysis test." }
+  ],
+  leonardo_mastery: [
+    { title: "Advanced API Configuration for Leonardo Phoenix", desc: "Integrate Leonardo's latest multi-modal image engine into backend web projects and software." },
+    { title: "Mastering ControlNet for Perfect Human Poses", desc: "Deploy pose mappings and edge detection lines to enforce detailed physical postures on generated models." },
+    { title: "Designing Seamless 3D Texture Tiles", desc: "Build seamless repeating patterns for use in web backgrounds, fashion, or 2D/3D video game engines." },
+    { title: "8K Universal Upscaling & Fine Detail Creation", desc: "Enlarge visual designs from crisp HD to ultimate 8K while generating intricate, ultra-fine textures." },
+    { title: "Fashion Moodboarding & Color Palette Generation", desc: "Combine textures, cuts, and color schemes to outline premium, highly accurate design mockups." },
+    { title: "Infinite Outpainting with Canvas 2.0", desc: "Expand your favorite visual canvases and construct gorgeous secondary horizons." },
+    { title: "Targeted Inpainting for Microscopic Adjustments", desc: "Repaint tiny, specific layers of your images to swap accessories or change facial expressions with surgical precision." },
+    { title: "Creative Layering of Advanced Elements Styles", desc: "Blend up to three custom graphic elements at varying weights to render a totally unique styling." },
+    { title: "Training Your First Custom Avatar Portrait Model", desc: "Upload reference headshots to synthesize your own face inside arbitrary backgrounds or fantasy settings." },
+    { title: "Conceptual Art Direction for Genre Cinema", desc: "Structure cinematic lighting, dramatic shading, and high-impact concept boards for creative storytelling." },
+    { title: "Designing Vector-Style Logos and Brand Assets", desc: "Deploy crisp flat-vector directives to render highly recognizable modern graphic assets." },
+    { title: "Maximizing Generation Budgets & Daily Credits", desc: "Plan image sizing, aspect ratios, and model batching configurations to maximize your outputs." },
+    { title: "Creating Kinetic Video Shorts with Leonardo Motion", desc: "Turn static images into viral, moving assets designed for TikTok, Reels, or short ads." },
+    { title: "Structuring Consistent Graphic Packs for 2D Games", desc: "Generate items, weapon packs, and avatar icons bound by strict visual consistency rules." },
+    { title: "Polishing Advanced Negative Prompts", desc: "Eliminate skin deformation, plastic textures, or lighting anomalies systematically from your work." },
+    { title: "Automating Commercial E-Commerce Mockups", desc: "Take draft product shots and embed them inside premium luxury settings instantly." },
+    { title: "Final Assessment & Certified Leonardo.ai Expert Examination", desc: "Validate your creative artistry and earn your certified digital creator diploma." }
+  ],
+  ai_social_selling: [
+    { title: "Semantic ICP Profiling with AI", desc: "Leverage AI to pull core buyer pain points, objections, and hidden desires from raw social search datasets." },
+    { title: "Viral Social Media Hooks Tuned for Algorithms", desc: "Build highly magnetic opening sentences designed to prevent infinite scrolling on LinkedIn and TikTok." },
+    { title: "Outbound Lead Automation with PhantomBuster & Claude", desc: "Configure search scraping workflows and use Claude to write hyper-personalized social intros." },
+    { title: "Kinetic TikTok & Reels Script Generation with AI", desc: "Draft high-retention 30-second scripts with high-value core arguments and seamless closing CTAs." },
+    { title: "Designing Viral PDF Carousel Slides on LinkedIn", desc: "Draft engaging multi-page visual carousels and export to PDF files in under 3 minutes." },
+    { title: "Setting up Custom Voice Bots for Automated Inbound Support", desc: "Clone your voice or premium actors to handle questions or resolve prospect doubts." },
+    { title: "Cross-Channel Traffic Auditing via Advanced Data Analysis", desc: "Import social metrics to identify the absolute best hours, formats, and topics to drive sales." },
+    { title: "Scraping & Qualifying Instagram Leads with AI", desc: "Scan active competitor comments and filter ideal prospects automatically using LLMs." },
+    { title: "Writing Compelling E-Book Lead Magnets from A to Z", desc: "Use AI to write premium booklets, cheatsheets, and action guides that build email subscriber lists fast." },
+    { title: "Building Notion & Airtable CRM Webhooks on Make", desc: "Sync conversion chat logs directly with sales tables without writing a single line of backend code." },
+    { title: "WhatsApp Abandoned Cart Personalization with ChatGPT", desc: "Recover lost sales with custom interactive WhatsApp notifications written on the fly by GPT." },
+    { title: "Behavioral Email Nurturing Funnels with GPT-4o", desc: "Nurture new leads with automated emails that adapt dynamically based on user engagement patterns." },
+    { title: "Competitive Intelligence Scraping for Hidden Market Gaps", desc: "Analyze competitor content maps to surface neglected content angles you can exploit." },
+    { title: "Structuring High-Impact Ad Creatives with Midjourney & Leonardo", desc: "Build visually striking image materials that slash lead acquisition costs." },
+    { title: "Generating Dynamic Personalized Video Outreach on HeyGen", desc: "Generate personalized clips in bulk where the AI says the lead's name and displays their website." },
+    { title: "Metrics Tuning & CRO of Chatbot Sales Funnels", desc: "Audit chatbot script drop-off rates and refine conversational rules to lift final sales." },
+    { title: "Final Assessment & Certified AI Social Selling Certification Exam", desc: "Complete the final hands-on challenge to secure your expert social seller credentials." }
+  ],
+  viral_video_audio: [
+    { title: "Retention-Minded Scriptwriting for Video Shorts", desc: "Instruct AI to weave strong attention hooks every 3 seconds to keep viewers engaged from start to finish." },
+    { title: "AI-Assisted Beats Syncing inside CapCut", desc: "Utilize automated beat detection scripts to align visual clips seamlessly with your backing audio." },
+    { title: "Animating Lifelike Talking Avatars with HeyGen & D-ID", desc: "Bind synthetic voice-overs with lifelike actor models, securing flawless lipsync and micro-expressions." },
+    { title: "Text-to-Audio Realistic Sound FX Generation", desc: "Generate rain, heavy slams, rustling leaves, or alien spaceship engines directly from text prompts." },
+    { title: "Full-Body Labially Synced Video Translation", desc: "Translate speaker videos into 15+ languages while adapting lip movements to match the target language." },
+    { title: "Vocal Restoration & Cleanups with Adobe Podcast", desc: "Restore low-grade smartphone recordings to professional studio microphone quality instantly." },
+    { title: "Modulating Emotional Voice Tones & Humour", desc: "Adjust stability and style sliders to weave whispering, laughing, or deep confidence into vocals." },
+    { title: "Orchestrating Suno Musical Blueprints", desc: "Master tags like [Verse], [Chorus], and [Outro] in Suno to construct cohesive cinematic melodies." },
+    { title: "Automated Animated Captions with Submagic", desc: "Generate animated, highly readable captions styled with emojis and colored highlights automatically." },
+    { title: "Seamless Video Face-Swapping for Brand Building", desc: "Substitute actor faces with brand ambassadors cleanly to preserve social media profile consistency." },
+    { title: "Advanced Video Inpainting & Object Deletion", desc: "Mask distracting elements in video clips and use AI to infill backgrounds cleanly." },
+    { title: "Mass Video Generation Workflows (ChatGPT + Canva)", desc: "Build a visual template engine to batch-create dozens of shorts of educational slides at once." },
+    { title: "Analyzing Acoustic Patterns of Viral Audio Trends", desc: "Leverage AI to trace tempo alignments and voice pitch structures underlying standard viral patterns." },
+    { title: "Cinema Ad Generation with Midjourney & Runway", desc: "Draft high-resolution storyboards in Midjourney and animate frames using Runway cameras for minimal cost." },
+    { title: "Navigating Synthetic Media Flags on Social Channels", desc: "Modify digital video signatures and parameters to avoid automated AI tags on vertical channels." },
+    { title: "Automating Podcast Splitting via OpusClip", desc: "Let AI extract the 10 best highlights of a long video, auto-crop in 9:16, and add titles." },
+    { title: "Final Assessment & Certified Video Creator Exam", desc: "Submit your viral portfolio mockup to win your official certified digital editor credentials." }
+  ],
+  prompt_eng: [
+    { title: "The Art of Context Windows & Token Management", desc: "Learn to optimize prompt length so the AI never loses its working memory." },
+    { title: "The Semantic Anchoring Technique", desc: "Lock core instructions at the start of the chat to prevent conversational drift." },
+    { title: "Structured Reverse Prompting", desc: "Instruct the AI to write high-fidelity prompts for itself based on your examples." },
+    { title: "The Tree-of-Thoughts Method", desc: "Solve highly complex reasoning puzzles by branching multiple parallel lines of logic." },
+    { title: "Business SWOT Analysis Prompting", desc: "Quickly analyze competitor strengths, weaknesses, opportunities, and threats with AI." },
+    { title: "Code Optimization & Debugging", desc: "Review, document, optimize, and debug software code cleanly using advanced prompting." },
+    { title: "System Instructions Engineering", desc: "Configure underlying, permanent guidelines below the chat box or inside custom tools." },
+    { title: "Mastering Gemini & Google Workspace Integrations", desc: "Seamlessly query Sheets and Docs directly using Gemini's workspace integrations." },
+    { title: "Interdependent Conversational Threads", desc: "Build multi-agent workflows where one critique AI constantly refines another." },
+    { title: "Massive Content Rewriting", desc: "Paraphrase or reformulate long publications elegantly while fully preserving the original meaning." },
+    { title: "Routine Prompt-Tuning", desc: "Slash your daily administrative task burden by designing automated custom routines." },
+    { title: "Dynamic Podcast Scripting", desc: "Draft highly engaging sound dialogues featuring natural-sounding lines." },
+    { title: "Advanced Anti-Hallucination Tactics", desc: "Secure factual grounding and force models to cite verified sources strictly." },
+    { title: "Creative Multimodal Prompting", desc: "Master combining audio, image, and text cues for complex multimodal outputs." },
+    { title: "Disruptive Product Ideation", desc: "Leverage commercial models to think outside the box and invent future industries." },
+    { title: "Recursive Self-Correction", desc: "Force the AI to audit its own output three times over before showing the final result." },
+    { title: "Complex Reports Summarization", desc: "Condense long meetings or 80-page business studies into 5 memorable key bullets." },
+    { title: "Financial Statements Audits & Ratios", desc: "Deconstruct and verify corporate balance sheets and performance sheets in seconds." },
+    { title: "Immersive Scenario & Narrative Generation", desc: "Build compelling, highly interactive text-based roleplays starring custom characters." },
+    { title: "Accelerated Academic & Scientific Search", desc: "Query language models to summarize convoluted medical or research documents without expert jargon." },
+    { title: "Writing Precise Relational SQL Queries", desc: "Use human sentences to manipulate, query, and structure enterprise databases." },
+    { title: "Designing Persistent Productivity Coaches", desc: "Construct a custom daily planning bot that keeps you locked in on key targets." },
+    { title: "Automated Sentiment & Review Classification", desc: "Directly analyze app store reviews and group feedback automatically into buckets." },
+    { title: "Final Assessment & Prompt Engineering Certification Exam", desc: "Validate your master prompting status to secure your official academic diploma." }
+  ],
+  copywriting: [
+    { title: "The FAB Framework (Features, Advantages, Benefits)", desc: "Translate tech details into life-enriching perks." },
+    { title: "The 4Us Method for Quick Action", desc: "Write with Urgence, Unicité, Utilité, and Ultra-specificity to hook your buyers." },
+    { title: "The Art of Captivating Storytelling", desc: "Tell a relatable story that establishes a deep human connection with core audiences." },
+    { title: "Designing Audience Qualification Surveys", desc: "Directly find and validate your ideal customer profiles by asking revealing questions." },
+    { title: "Short Video Intro Hooks (TikTok, Reels, Shorts)", desc: "Capture attention within the first 2 seconds to avoid easy swiping." },
+    { title: "The Art of Clickable Email Subject Lines", desc: "Boost email open rates using clever syntactic intrigue variables." },
+    { title: "Hypnotic Bullet-Point Value Pillars", desc: "Spark desire to read the complete product list through gorgeous, clickable formatting." },
+    { title: "The 4Ps Copywriting Framework (Picture, Promise, Prove, Push)", desc: "Set up a highly memorable mental image of success before pushing the conversion deal." },
+    { title: "The Art of Conversational Calls to Action (CTA)", desc: "Melt cognitive barriers to trigger immediate clicks or sales purchases." },
+    { title: "Building Elite Opt-In Landing Pages", desc: "Convert casual traffic into highly targeted and qualified leads with minimal friction." },
+    { title: "Drafting Deep Reassurance FAQs", desc: "Resolve core purchasing concerns for skeptical buyers at the edge of ordering." },
+    { title: "Integrating Conversational Social Proof & Reviews", desc: "Utilize verified customer reviews and case studies to validate your authority." },
+    { title: "Weaving Natural Scarcity & Genuine Urgency", desc: "Make users realize that delaying is equivalent to relinquishing a massive edge." },
+    { title: "Optimizing Multi-Email Welcome Flows", desc: "Follow a strategic blueprint to build deep loyalty with new readers." },
+    { title: "Long-Form PDF Sales Copy Structure", desc: "Draft comprehensive sales letters that systematically address objections one-by-one." },
+    { title: "Structuring Ironclad Refund Guarantees", desc: "Slash perceived consumer risk by absorbing success accountability yourself." },
+    { title: "Shopify Product Page Copywriting & Storytelling", desc: "Make hesitant visitors complete checkout by building custom product narratives." },
+    { title: "Abandoned Cart Email Recovery Campaigns", desc: "Remind shoppers what they left behind in their carts by addressing simple fears." },
+    { title: "Price Anchor & Framing Tactics", desc: "Elevate product worth by contrasting it with expensive alternative services." },
+    { title: "High-Engagement Educational Newsletters", desc: "Feed subscribers with real value while pitching product links naturally." },
+    { title: "Empathetic Inclusive Communication Scales", desc: "Tune copywriting terms to match the exact mental vulnerability of ideal buyers." },
+    { title: "Boosting Facebook Ads Click-Through Ratios (CTR)", desc: "Stop social feed drifting by deploying powerful scrolling hooks." },
+    { title: "The Bridge-Building Method", desc: "Establish a smooth path between current user pain and the promised future solution." },
+    { title: "LinkedIn B2B Thought Leadership Writing", desc: "Master the professional tone of voice required to convince corporate managers." },
+    { title: "Structuring Engaging Sales Webinar Slides", desc: "Learn visual slide layouts that keep live viewers hooked on your webinar copy." },
+    { title: "Deep Objection Handling FAQ Columns", desc: "Systematically clear common buyer concerns and convert cold prospects fast." },
+    { title: "Final Assessment & Certified Elite Copywriting Examination", desc: "Test your grasp of conversion psychology on the ultimate academic copywriting case." }
+  ],
+  freelance_career: [
+    { title: "Optimizing Your LinkedIn Profile for Inbound Prospects", desc: "Turn your LinkedIn page into a smooth and automated client acquisition funnel." },
+    { title: "Designing Magnetic Digital Portfolios", desc: "Showcase outstanding AI case files even if you have zero past agency clients." },
+    { title: "Negotiating High-Ticket Value Deals", desc: "Gain total confidence to present high pricing sheets in front of corporate buyers." },
+    { title: "Packaging Recurring Retainer Contracts", desc: "Secure predictable monthly recurring revenue with long-term advisory packages." },
+    { title: "Direct LinkedIn & Twitter Client Sourcing", desc: "Identify purchase intent indicators and pitch prospects before anyone else." },
+    { title: "Cold Outreach Excellence", desc: "Draft concise introductory emails that yield real enthusiastic responses from clients." },
+    { title: "Handling Critical Client Reviews Calmly", desc: "Melt customer frustration and convert a delivery speed issue into a glowing review." },
+    { title: "The Closing Psychology on Discovery Calls", desc: "Guide potential clients down a comfortable decision line on Zoom demo calls." },
+    { title: "Setting up Your Freelance Business Entities", desc: "Configure legal operations and business banking with absolute confidence." },
+    { title: "Automating Freelance Invoices & Financials", desc: "Eliminate boring paperwork by configuring automated invoicing hooks." },
+    { title: "Personal Branding for Authority Status", desc: "Establish yourself as the go-to authority for generative business practices." },
+    { title: "The Free Diagnostic Audit Hook", desc: "Acquire clients by offering a complimentary, quick digital optimization audit." },
+    { title: "Outsourcing & Team Delegations", desc: "Transition from independent freelancer to boutique digital agency coordinator." },
+    { title: "Packaging Custom AI Automations", desc: "Present automated chatbot and custom workflow solutions to local businesses." },
+    { title: "Selling Team Training Workshops to Small Businesses", desc: "Run group educational workshops on AI productivity for corporate divisions." },
+    { title: "Structuring Productive Home Workspaces", desc: "Manage creative hours carefully and avoid mental fatigue." },
+    { title: "Creating Winning Profiles on Malt and Freelancer Platforms", desc: "Highlight specialized tags and rank on freelancing search engines." },
+    { title: "Personalized Outreach Using Short Videos (Loom)", desc: "Acquire clients by sending brief, free video diagnostic screen shares." },
+    { title: "The Rule of 3 Value-Driven Follow-Ups", desc: "Politely follow up on unresolved business offers without sounding pushy." },
+    { title: "Structuring Ongoing Maintenance Retainers", desc: "Keep clients happy over the long term with recurring system audits." },
+    { title: "Authority Content Channels (YouTube, Blog)", desc: "Write helpful diagnostic articles that pull corporate leads to you." },
+    { title: "Partnering Inside Freelance Networks", desc: "Build alliances with other independent designers to exchange overflow projects." },
+    { title: "Drafting Solid Freelancer Service Agreements", desc: "Protect draft deliveries and secure upfront client onboarding deposits." },
+    { title: "Maximizing Client Lifetime Value (LTV)", desc: "Identify opportunities to upsell new advanced services to existing happy customers." },
+    { title: "Mastering Imposter Syndrome", desc: "Trust the massive value and hours of work that your AI mastery saves clients." },
+    { title: "Niche Specialize Mapping for High Rates", desc: "Understand why specializing in one narrow industry elevates your authority and prices." },
+    { title: "Final Assessment & Certified Freelance Master Examination", desc: "Demonstrate commercial readiness inside the ultimate freelancing test." }
+  ]
+};
+
 export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COURSES || []): any[] {
   const safeCourses = Array.isArray(baseCourses) ? baseCourses : [];
   if (lang === "fr") return safeCourses;
@@ -1059,21 +1354,67 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
         const foundTrans = translatedCourse.lessons.find((l: any) => l.id === lesson.id);
         if (!foundTrans) {
           // Dynamic derived lesson from extraListData
+          let translatedTitle = lesson.title || "";
+          let translatedDesc = lesson.description || "";
+          
+          const baseCount = translatedCourse.lessons.length;
+          const idParts = lesson.id.split("_l");
+          const lessonNum = idParts.length > 1 ? parseInt(idParts[1], 10) : 1;
+          const extraIndex = lessonNum - baseCount - 1;
+          
+          if (ENGLISH_EXTRA_LESSONS[course.id] && ENGLISH_EXTRA_LESSONS[course.id][extraIndex]) {
+            translatedTitle = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].title;
+            translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
+          }
+
+          // Let's build the translated steps
+          const translatedSteps = [
+            `In this lesson on "${translatedTitle}", we analyze the core concepts to solidify your professional skills.`,
+            `Understanding this concept gives you a clear competitive advantage and allows you to outperform the average practitioner.`,
+            `Put today's learnings into practice by drafting structured instructions or taking the interactive test.`,
+            `Be sure to pass this unit to unlock your overall progress toward your certified degree.`
+          ];
+
+          // Let's build the translated quiz if it exists
+          const translatedQuiz = lesson.quiz ? {
+            ...lesson.quiz,
+            question: `What fundamental principle best defines the success of: "${translatedTitle}"?`,
+            options: [
+              { text: "Applying structured techniques and studied contexts.", isCorrect: true },
+              { text: "Producing raw material without specifying clear stopping constraints.", isCorrect: false },
+              { text: "Outsourcing all work to AI without human audit.", isCorrect: false },
+              { text: "Ignoring client feedback and utilizing the same strategy indefinitely.", isCorrect: false }
+            ],
+            explanation: `Congratulations, correct answer! To excel in "${translatedTitle}", it is vital to apply rigorous structures and validation methods.`
+          } : undefined;
+
+          // Let's build the translated promptObjective if it exists
+          const translatedPromptObjective = lesson.promptObjective ? {
+            ...lesson.promptObjective,
+            taskDescription: `Write a perfect application prompt to implement: ${translatedTitle}.`,
+            systemTemplate: `Simulate high-fidelity validation of: ${translatedTitle}`,
+            placeholderText: `Type your custom prompt recipe for: ${translatedTitle}...`,
+            exampleSolution: `Act as an IA Académie Plus Expert. Help me develop an operational template centered around the skill of: "${translatedTitle}".`
+          } : undefined;
+
+          // Let's build the translated copyObjective if it exists
+          const translatedCopyObjective = lesson.copyObjective ? {
+            ...lesson.copyObjective,
+            scenario: `Business implementation scenario: ${translatedTitle}`,
+            audience: "Professionnels, project managers, and high-budget potential clients.",
+            goal: "Hook attention and demonstrate the absolute value of your service.",
+            placeholderText: `Enter your custom copywriting text for: ${translatedTitle}...`,
+            exampleSolution: `Discover our exclusive method as a certified authority on "${translatedTitle}". Boost your productivity starting today.`
+          } : undefined;
+
           return {
             ...lesson,
-            title: (lesson.title || "")
-              .replace("L'art du", "The Art of")
-              .replace("La technique d'", "The Technique of ")
-              .replace("La méthode d'", "The Method of ")
-              .replace("Le prompt d'", "The Prompt for ")
-              .replace("Maîtrise de", "Mastering")
-              .replace("Maîtriser", "Mastering")
-              .replace("Créer", "Creating")
-              .replace("Vendre", "Selling")
-              .replace("Optimiser", "Optimizing")
-              .replace("Concevoir", "Designing")
-              .replace("Organiser", "Structuring"),
-            description: "Advanced learning module outlining expert core methodologies and tactics."
+            title: translatedTitle,
+            description: translatedDesc,
+            steps: translatedSteps,
+            quiz: translatedQuiz,
+            promptObjective: translatedPromptObjective,
+            copyObjective: translatedCopyObjective
           };
         }
         

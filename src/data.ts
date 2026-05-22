@@ -1247,6 +1247,17 @@ export const COURSES: Course[] = [
     lessons: generateCourseLessons("ai_social_selling", baseSocialSellingLessons, socialSellingExtraLessonsData, 20)
   },
   {
+    id: "viral_video_audio",
+    title: "Création Vidéo Virale & Audio IA : 20 Modules",
+    category: "ai",
+    description: "Maîtrisez la création de vidéos hautement virales et d'audios d'exception : de la génération text-to-video avec Runway à l'art du clonage vocal ElevenLabs.",
+    iconName: "Video",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("viral_video_audio", baseViralVideoAudioLessons, viralVideoAudioExtraLessonsData, 20)
+  },
+  {
     id: "prompt_eng",
     title: "Masterclass ChatGPT, Gemini & Generative AI",
     category: "ai",

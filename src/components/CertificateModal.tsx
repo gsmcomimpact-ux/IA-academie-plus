@@ -77,6 +77,11 @@ const LOCAL_TRANS = {
         "Configuration de tunnels de messagerie connectés ManyChat x ChatGPT",
         "Modélisation et qualification autonome d'ICP via webhooks Make / Zapier"
       ],
+      viral_video_audio: [
+        "Génération Text-to-Video cinématique hautes performances (Runway & Sora)",
+        "Clonage vocal hyper-réaliste et expressif via onze curseurs ElevenLabs",
+        "Composition orchestrale, sound design et mixage natif par l'IA"
+      ],
       prompt_eng: [
         "Formulation de prompt d'élite (Rôle, Tâche, Contexte, Contraintes)",
         "Modèles d'apprentissage par l'exemple (Few-Shot Prompting)",
@@ -160,6 +165,11 @@ const LOCAL_TRANS = {
         "Orchestrating ManyChat x ChatGPT direct message (DM) sales funnels",
         "Autonomous semantic profiling & qualification via Make/Zapier Webhooks"
       ],
+      viral_video_audio: [
+        "Cinematic high-performance Text-to-Video synthesis (Runway & Sora)",
+        "Hyper-realistic voice cloning & dramatic line voicing (ElevenLabs)",
+        "Suno orchestral composition, realistic foley effects & audio mixing"
+      ],
       prompt_eng: [
         "Elite Prompt Framing (Role, Mission, Context, Constraints)",
         "Few-Shot Exemplar Structural Engineering models",
@@ -222,6 +232,9 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
     }
     if (course.id === "ai_social_selling") {
       return records.ai_social_selling;
+    }
+    if (course.id === "viral_video_audio") {
+      return records.viral_video_audio;
     }
     if (course.id === "prompt_eng") {
       return records.prompt_eng;
