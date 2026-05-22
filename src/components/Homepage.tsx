@@ -4,7 +4,8 @@ import {
   Sparkles, Award, ShieldCheck, Cpu, ArrowRight, CheckCircle, 
   BookOpen, Star, Zap, Flame, Terminal, PlayCircle, HelpCircle, 
   Lock, Bookmark, CheckCircle2, ChevronDown, Check, GraduationCap,
-  LogIn, LogOut
+  LogIn, LogOut, CheckSquare, Layers, Globe, Calendar, DollarSign,
+  Code, FileText, Video, Smartphone, Send, Brain, Users, RefreshCw
 } from "lucide-react";
 import { COURSES } from "../data";
 import { UI_TRANSLATIONS, getLocalizedCourses } from "../utils/translations";
@@ -22,11 +23,11 @@ interface HomepageProps {
 
 const LOCAL_TRANS = {
   fr: {
-    heroBadge: "★ DEBRIDEZ VOTRE CARRIÈRE DIGITALE À 100% ★",
+    heroBadge: "★ DÉBRIDEZ VOTRE CARRIÈRE DIGITALE À 100% ★",
     heroTitlePart1: "Formez-vous aux ",
     heroTitleHighlight: "Outils IA d'Élite",
     heroTitlePart2: " et Obtenez votre Diplôme.",
-    heroSub: "Maîtrisez les secrets d'application réels de ChatGPT, Gemini et Claude. Pratiquez dans une sandbox interactive accompagnée d'un tuteur IA dédié, et obtenez un certificat officiel de fin de formation nominatif au format PDF haute qualité téléchargeable immédiatement.",
+    heroSub: "Maîtrisez les secrets d'application réels de ChatGPT, Claude, DeepSeek et Lovable. Pratiquez dans une sandbox interactive de formulation de prompts, et obtenez un certificat officiel de fin de formation nominatif au format PDF haute qualité téléchargeable immédiatement.",
     certPDF: "Certifications Officielles PDF",
     certPDFDesc: "Avec identification unique vérifiable",
     activationFee: "Accès Cursus Complet : 15$ unique",
@@ -52,7 +53,7 @@ const LOCAL_TRANS = {
     
     ourCurriculum: "PROGRAMME DE L'ACADÉMIE",
     masterAITools: "Maîtrisez les Outils Réels de l'IA",
-    masterAIToolsSub: "Explorez nos 3 streams majeurs d'apprentissage d'élite. Chaque cours contient 10 leçons d'ingénierie avancées, des simulations de sandbox connectées à Gemini et un examen de validation.",
+    masterAIToolsSub: "Explorez nos 18 formations d'élite. Chaque cursus contient entre 20 et 30 modules progressifs, une sandbox pratique autonome et un examen de validation de fin d'étude.",
     curriculumLessons: "LEÇONS AU PROGRAMME :",
     hoursOfTraining: "heures d'entraînement",
     
@@ -121,7 +122,7 @@ const LOCAL_TRANS = {
     heroTitlePart1: "Train on ",
     heroTitleHighlight: "Elite AI Tools",
     heroTitlePart2: " and Earn Your Diploma.",
-    heroSub: "Master the real application secrets of ChatGPT, Gemini, and Claude. Practice in an interactive coding sandbox with a dedicated AI tutor, and obtain an official personalized completion certificate in high-quality printable PDF format instantly.",
+    heroSub: "Master the real application secrets of ChatGPT, Claude, DeepSeek, and Lovable. Practice in an interactive prompt engineering sandbox, and obtain an official personalized completion certificate in high-quality printable PDF format instantly.",
     certPDF: "Official PDF Certifications",
     certPDFDesc: "With unique verifiable safety key",
     activationFee: "Full Course Access: $15 one-time",
@@ -147,7 +148,7 @@ const LOCAL_TRANS = {
     
     ourCurriculum: "OUR ACADEMY PROGRAM",
     masterAITools: "Master Real AI Tools",
-    masterAIToolsSub: "Explore our 3 major elite educational streams. Each course contains 10 advanced engineering lessons, sandbox simulations connected to Gemini, and a validation exam.",
+    masterAIToolsSub: "Explore our 18 elite learning courses. Each syllabus contains 20 to 30 progressive lessons, autonomous practice benches, and final validation certifications.",
     curriculumLessons: "CURRICULUM LESSONS:",
     hoursOfTraining: "hours of training",
     
@@ -234,6 +235,22 @@ export default function Homepage({
   const [submittedDemo, setSubmittedDemo] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
   const [verificationResult, setVerificationResult] = useState<{ found: boolean; course?: string; recipient?: string } | null>(null);
+  
+  // Custom interactive demo prompt evaluator states
+  const [sandboxPrompt, setSandboxPrompt] = useState("");
+  const [sandboxEvaluation, setSandboxEvaluation] = useState<{
+    score: number;
+    feedback: string;
+    suggestions: string[];
+    analyzed: boolean;
+  } | null>(null);
+  const [evaluating, setEvaluating] = useState(false);
+
+  // Filter state for courses list
+  const [courseFilter, setCourseFilter] = useState<"all" | "prompts" | "content" | "nocode">("all");
+
+  // Certificate Theme state
+  const [certTheme, setCertTheme] = useState<"obsidian" | "parchment">("obsidian");
 
   // FAQ Expand state
   const [faqOpen, setFaqOpen] = useState<Record<number, boolean>>({
@@ -243,8 +260,133 @@ export default function Homepage({
     3: false
   });
 
+  React.useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const verifyCode = params.get("verify");
+      if (verifyCode) {
+        setVerificationCode(verifyCode);
+        setActiveTab("certs");
+        
+        const uppercaseCode = verifyCode.toUpperCase().trim();
+        if (uppercaseCode.startsWith("CRSV-")) {
+          let matchedCourse = lang === "fr" ? "Masterclass ChatGPT, Gemini & Generative AI" : "ChatGPT, Gemini & Generative AI Masterclass";
+          if (uppercaseCode.includes("COPY")) {
+            matchedCourse = lang === "fr" ? "Écriture Persuasive & Copywriting de Vente" : "AI copywriting: Sales Frameworks";
+          } else if (uppercaseCode.includes("FREE")) {
+            matchedCourse = lang === "fr" ? "Carrière Freelance IA & Consultant Indépendant" : "Propel Your Freelance Career & Side-Hustles";
+          } else if (uppercaseCode.includes("LOV") || uppercaseCode.includes("DEV")) {
+            matchedCourse = lang === "fr" ? "Cours Complet Lovable.dev : Dominez le No-Code IA" : "Complete Lovable.dev Course: Master No-Code AI";
+          }
+          setVerificationResult({
+            found: true,
+            course: matchedCourse,
+            recipient: fullName || (lang === "fr" ? "Clara Martin (Diplômée Élite)" : "Clara Martin (Elite Graduate)")
+          });
+        } else {
+          setVerificationResult({
+            found: false
+          });
+        }
+
+        setTimeout(() => {
+          const element = document.querySelector("#certification-details");
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 600);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [lang, fullName]);
+
   const toggleFaq = (index: number) => {
     setFaqOpen(prev => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  const activeCategoryLabelFr = () => {
+    if (courseFilter === "all") return "Toutes les 18 Formations Disponibles";
+    if (courseFilter === "prompts") return "🧠 Ingénierie de Prompt & LLMs d'Élite";
+    if (courseFilter === "content") return "🎨 Création de Médias, Vidéos & Copywriting";
+    return "💻 No-Code, Automatisation & Business";
+  };
+
+  const activeCategoryLabelEn = () => {
+    if (courseFilter === "all") return "All 18 Available Executive Courses";
+    if (courseFilter === "prompts") return "🧠 Advanced Prompting & Large Language Models";
+    if (courseFilter === "content") return "🎨 Generative Video, Cinematic Media & Copywriting";
+    return "💻 No-Code Architecture, Automation & Freelancing";
+  };
+
+  // Evaluate prompt structure dynamically to show off the platform's sandbox capacities
+  const handleEvaluatePrompt = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!sandboxPrompt.trim()) return;
+
+    setEvaluating(true);
+    setSandboxEvaluation(null);
+
+    setTimeout(() => {
+      const text = sandboxPrompt.toLowerCase();
+      let score = 30; // base score
+      let foundElements = [];
+
+      // Check role assignment
+      if (text.includes("agis en tant que") || text.includes("tu es un") || text.includes("act as a") || text.includes("you are a") || text.includes("expert") || text.includes("rôle")) {
+        score += 20;
+        foundElements.push(lang === "fr" ? "Assignation de Rôle [OK]" : "Role Assignment [OK]");
+      }
+      // Check task description
+      if (text.includes("rédige") || text.includes("crée") || text.includes("analyse") || text.includes("génère") || text.includes("write") || text.includes("create") || text.includes("analyze") || text.includes("generate")) {
+        score += 20;
+        foundElements.push(lang === "fr" ? "Tâche & Format de sortie [OK]" : "Task & Output format [OK]");
+      }
+      // Check context
+      if (text.includes("contexte") || text.includes("pour mon") || text.includes("dans le but de") || text.includes("target") || text.includes("cible") || text.includes("context")) {
+        score += 15;
+        foundElements.push(lang === "fr" ? "Éléments de Contexte [OK]" : "Context Parameters [OK]");
+      }
+      // Check constraints/negative parameters
+      if (text.includes("ne fais pas") || text.includes("exclus") || text.includes("limite") || text.includes("sans") || text.includes("don't") || text.includes("constraints") || text.includes("contraintes")) {
+        score += 15;
+        foundElements.push(lang === "fr" ? "Définition des limites & règles d'or [OK]" : "Constraints & Golden Rules defined [OK]");
+      }
+
+      let feedback = "";
+      let suggestions: string[] = [];
+
+      if (score >= 80) {
+        feedback = lang === "fr" 
+          ? `Fantastique ! Votre prompt est extrêmement bien structuré (${score}%). Il respecte les principes fondamentaux de l'ingénierie de prompt en combinant rôle, mission claire, et délimitations pragmatique.` 
+          : `Amazing! Your prompt structure is highly mature (${score}%). It perfectly applies core prompt engineering principles by specifying a descriptive role, a clear mission, and operational boundaries.`;
+        suggestions = lang === "fr" 
+          ? ["Injectez des exemples de résultats attendus (Few-shot prompting) pour atteindre 100%.", "Demandez au modèle d'expliquer son raisonnement pas à pas."] 
+          : ["Inject expected output examples (Few-shot prompting) to reach 100%.", "Explicitly instruct the model to think step-by-step."];
+      } else if (score >= 50) {
+        feedback = lang === "fr"
+          ? `Bon début (${score}%). Votre prompt indique correctement la tâche, mais manque de structure opérationnelle pour forcer l'IA à adopter la posture d'un professionnel chevronné.`
+          : `Decent start (${score}%). Your prompt specifies the raw task, but lacks the operational framing to force the AI to reason like a seasoned senior expert.`;
+        suggestions = lang === "fr"
+          ? ["Ajoutez un préambule définissant un rôle d'expert ('Agis en tant que...').", "Spécifiez le ton, la structure du format de sortie (ex: Markdown, JSON).", "Indiquez des contraintes strictes à éviter d'écrire."]
+          : ["Prepend a dedicated expert role ('Act as a senior...').", "Define the output format (e.g., Markdown, nested tables).", "Set strict styling guidelines or constraints to keep output clean."];
+      } else {
+        feedback = lang === "fr"
+          ? `Structure très simpliste (${score}%). L'IA va vous répondre de façon générique ou superficielle, car le prompt se limite à une question basique sans balises sémantiques.`
+          : `Very simplistic structure (${score}%). The model will give you generic and shallow results, as this prompt reads as a basic request without any semantic boundaries.`;
+        suggestions = lang === "fr"
+          ? ["Détaillez qui doit écrire, pour quelle cible, et sous quel format précis.", "Découvrez notre premier module ChatGPT & Gemini pour révolutionner immédiatement vos retours."]
+          : ["Detail who is writing, who the target audience is, and the exact tone layout.", "Explore our ChatGPT & Gemini introductory track to transform your AI outputs immediately."];
+      }
+
+      setSandboxEvaluation({
+        score,
+        feedback,
+        suggestions,
+        analyzed: true
+      });
+      setEvaluating(false);
+    }, 1200);
   };
 
   const handleVerifyCert = (e: React.FormEvent) => {
@@ -258,6 +400,8 @@ export default function Homepage({
         matchedCourse = lang === "fr" ? "Écriture Persuasive & Copywriting de Vente" : "AI copywriting: Sales Frameworks";
       } else if (uppercaseCode.includes("FREE")) {
         matchedCourse = lang === "fr" ? "Carrière Freelance IA & Consultant Indépendant" : "Propel Your Freelance Career & Side-Hustles";
+      } else if (uppercaseCode.includes("LOV") || uppercaseCode.includes("DEV")) {
+        matchedCourse = lang === "fr" ? "Cours Complet Lovable.dev : Dominez le No-Code IA" : "Complete Lovable.dev Course: Master No-Code AI";
       }
       setVerificationResult({
         found: true,
@@ -274,10 +418,10 @@ export default function Homepage({
   const homeText = LOCAL_TRANS[lang] || LOCAL_TRANS["fr"];
 
   const menuItems = [
-    { id: "hero", label: lang === "fr" ? "Accueil & FAQ" : "Home & FAQ", selector: "#hero-landing" },
-    { id: "courses", label: lang === "fr" ? "Formations" : "Courses", selector: "#courses-grid" },
-    { id: "certs", label: lang === "fr" ? "Diplômes & PDF" : "Certificates & PDF", selector: "#certification-details" },
-    { id: "pricing", label: lang === "fr" ? "Académie Premium" : "Premium Academy", selector: "#pricing-section" }
+    { id: "hero", label: lang === "fr" ? "Présentation" : "Overview", selector: "#hero-landing" },
+    { id: "courses", label: lang === "fr" ? "Formations Catalog" : "Course Catalog", selector: "#courses-grid" },
+    { id: "certs", label: lang === "fr" ? "Diplômes Vérifiables" : "Credentials Portal", selector: "#certification-details" },
+    { id: "pricing", label: lang === "fr" ? "Accès Unique" : "One-Time Access", selector: "#pricing-section" }
   ];
 
   const scrollToSection = (selector: string, id: "hero" | "courses" | "certs" | "pricing") => {
@@ -288,40 +432,59 @@ export default function Homepage({
     }
   };
 
+  // Group or filter 18 courses
+  const filteredCoursesList = localizedCourses.filter(course => {
+    if (courseFilter === "all") return true;
+    if (courseFilter === "prompts") {
+      // engineering and search tools
+      return ["prompt_eng", "chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "grok_mastery", "copilot_mastery", "manus_mastery", "perplexity_mastery", "admin_redaction"].includes(course.id);
+    }
+    if (courseFilter === "content") {
+      // copywriting, voice & motion graphics
+      return ["copywriting", "viral_video_audio", "veo_mastery", "leonardo_mastery"].includes(course.id);
+    }
+    if (courseFilter === "nocode") {
+      // lovable, social, freelancing
+      return ["lovable_mastery", "ai_social_selling", "freelance_career"].includes(course.id);
+    }
+    return true;
+  });
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-300 antialiased overflow-x-hidden pb-16">
       
-      {/* BACKGROUND GLOW DECORATIONS */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-[800px] right-10 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-1/3 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* BACKGROUND DECORATIVE ELEMENTS */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-[800px] right-10 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[2000px] left-10 w-[450px] h-[450px] bg-pink-500/3 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 left-1/3 w-[650px] h-[650px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* STICKY MENU BAR */}
-      <nav className="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 sticky top-0 z-40">
+      {/* STICKY HEADER AND BANNER LOGO */}
+      <nav className="bg-slate-950/85 backdrop-blur-md border-b border-slate-900 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
-          {/* LOGO */}
+          {/* BRAND */}
           <div className="flex items-center gap-2.5 cursor-pointer group select-none">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500 flex items-center justify-center font-extrabold text-slate-950 shadow-lg shadow-emerald-500/10">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center font-extrabold text-slate-950 shadow-md shadow-emerald-500/15 group-hover:scale-105 transition-transform">
               IA
             </div>
             <div className="flex flex-col">
-              <span className="font-sans font-black text-lg tracking-tight leading-none bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="font-sans font-black text-lg sm:text-xl tracking-tight leading-none bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
                 {lang === "fr" ? "IA Académie" : "AI Academy"}
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-1">PLUS</span>
+              <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase mt-1 font-bold">PLUS</span>
             </div>
           </div>
 
-          {/* DYNAMIC MENU LINKS */}
-          <div className="hidden md:flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-xl border border-slate-900/85">
+          {/* MENUS BUTTONS FOR DESKTOP */}
+          <div className="hidden lg:flex items-center gap-1.5 bg-slate-900/60 p-1 rounded-xl border border-slate-900/90">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.selector, item.id as any)}
-                className={`py-2 px-4 rounded-lg text-xs font-semibold transition-all font-sans cursor-pointer ${
+                className={`py-2 px-3.5 rounded-lg text-xs font-semibold transition-all font-sans cursor-pointer ${
                   activeTab === item.id 
-                    ? "bg-slate-950 border border-slate-800 text-emerald-400 font-bold shadow-sm" 
+                    ? "bg-slate-950 border border-slate-800 text-emerald-400 font-bold shadow" 
                     : "text-slate-400 hover:text-white"
                 }`}
               >
@@ -330,13 +493,13 @@ export default function Homepage({
             ))}
           </div>
 
-          {/* ACTIVE PORTAL BUTTON */}
-           <div className="flex items-center gap-2">
+          {/* STUDENTS CTAS OR LOGINS */}
+          <div className="flex items-center gap-2">
             {hasPaid && hasOnboarded ? (
               <>
                 <button
                   onClick={onGoToDashboard}
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2.5 px-4 sm:px-5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer font-sans"
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-2.5 px-4 sm:px-5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer font-sans shadow"
                 >
                   {t("portalPro")}
                   <ArrowRight className="w-4 h-4" />
@@ -344,11 +507,10 @@ export default function Homepage({
                 {onLogoutClick && (
                   <button
                     onClick={onLogoutClick}
-                    className="bg-slate-900 hover:bg-slate-850 hover:border-red-500/20 text-slate-400 hover:text-red-450 border border-slate-800 py-2.5 px-4 rounded-xl transition-all cursor-pointer font-sans text-xs flex items-center gap-1.5 font-bold"
-                    title={t("deconnexion")}
+                    className="bg-slate-900 hover:bg-slate-850 hover:border-red-500/20 text-slate-400 hover:text-red-450 border border-slate-855 py-2.5 px-3 rounded-xl transition-all cursor-pointer font-sans text-xs flex items-center gap-1.5 font-bold"
                   >
                     <LogOut className="w-4 h-4" />
-                    <span>{t("deconnexion")}</span>
+                    <span className="hidden sm:inline">{t("deconnexion")}</span>
                   </button>
                 )}
               </>
@@ -356,17 +518,16 @@ export default function Homepage({
               <>
                 <button
                   onClick={onLoginClick}
-                  className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-800 text-slate-300 font-bold py-2.5 px-3.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer font-sans"
+                  className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-800 text-slate-300 font-bold py-2.5 px-3.5 rounded-xl text-xs transition-colors flex items-center gap-1.5 cursor-pointer font-sans shadow-sm"
                 >
-                  <LogIn className="w-4 h-4" />
-                  {lang === "fr" ? "Connexion" : "Log In"}
+                  <LogIn className="w-4 h-4 text-emerald-450" />
+                  <span>{lang === "fr" ? "Espace Étudiant" : "Student Login"}</span>
                 </button>
                 <button
-                  id="commencer-training-nav"
                   onClick={onStartOnboarding}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-2.5 px-3.5 sm:px-5 rounded-xl text-xs transition-all flex items-center gap-1.5 cursor-pointer font-sans"
+                  className="hidden sm:flex bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs transition-all items-center gap-1.5 cursor-pointer font-sans shadow shadow-emerald-500/10 hover:scale-[1.01]"
                 >
-                  {lang === "fr" ? "S'inscrire à l'Académie" : "Register to Academy"}
+                  {lang === "fr" ? "S'inscrire" : "Enroll"}
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </>
@@ -375,16 +536,18 @@ export default function Homepage({
         </div>
       </nav>
 
-      {/* HERO SECTION */}
-      <section id="hero-landing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* CORE HERO SECTION */}
+      <section id="hero-landing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        {/* HERO INTRO CONTENT */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="space-y-3">
-            <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-extrabold tracking-widest border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-black tracking-widest border border-emerald-500/20 px-3.5 py-1.5 rounded-full inline-block">
               {homeText.heroBadge}
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-black text-white tracking-tight leading-none">
               {homeText.heroTitlePart1}
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-400 via-teal-450 to-indigo-400 bg-clip-text text-transparent">
                 {homeText.heroTitleHighlight}
               </span>
               {homeText.heroTitlePart2}
@@ -394,137 +557,387 @@ export default function Homepage({
             </p>
           </div>
 
-          {/* Dynamic trust block info */}
-          <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-2">
+          {/* KEY TRUST LABELS */}
+          <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center py-2 bg-slate-900/20 border border-slate-900 p-4 rounded-2xl">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-                <ShieldCheck className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/15 shadow-sm">
+                <ShieldCheck className="w-5.5 h-5.5" />
               </div>
               <div>
                 <div className="text-xs font-bold text-slate-200">{homeText.certPDF}</div>
-                <div className="text-[11px] text-slate-400">{homeText.certPDFDesc}</div>
+                <div className="text-[11px] font-mono text-emerald-400">{homeText.certPDFDesc}</div>
               </div>
             </div>
 
-            <div className="h-[1px] w-full sm:h-8 sm:w-[1px] bg-slate-900" />
+            <div className="hidden sm:block h-10 w-[1px] bg-slate-800" />
 
-            <div className="flex items-center gap-2.5 w-full sm:w-auto">
-              <div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
-                <Zap className="w-5 h-5" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/15 shadow-sm">
+                <Zap className="w-5.5 h-5.5" />
               </div>
               <div>
                 <div className="text-xs font-bold text-slate-200">{homeText.activationFee}</div>
-                <div className="text-[11px] text-slate-400">{homeText.activationFeeDesc}</div>
+                <div className="text-[11px] font-mono text-indigo-400">{homeText.activationFeeDesc}</div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-1">
             <button
               onClick={onStartOnboarding}
-              className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-405 hover:to-teal-405 text-slate-950 font-black py-4 px-8 rounded-2xl text-sm uppercase tracking-widest font-mono flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/10 transition-all hover:scale-[1.01]"
+              className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-450 hover:to-teal-405 text-slate-950 font-black py-4 px-8 rounded-2xl text-sm uppercase tracking-widest font-mono flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/15 transition-all hover:scale-[1.01]"
             >
               {homeText.startJourney}
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 text-slate-950" />
             </button>
             
             <button
               onClick={() => scrollToSection("#courses-grid", "courses")}
-              className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-800 text-slate-300 font-bold py-4 px-6 rounded-2xl text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-850 text-slate-300 font-bold py-4 px-6 rounded-2xl text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
-              {homeText.exploreCourses}
+              <Layers className="w-4 h-4 text-emerald-400" />
+              <span>{homeText.exploreCourses} (18 Cursus)</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-2.5 text-xs text-slate-500">
-            <span className="flex items-center gap-1 text-slate-400 font-bold"><Flame className="w-4 h-4 text-orange-500" />{homeText.studentsRegistered}</span>
-            <span>•</span>
-            <span className="flex items-center gap-0.5"><Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />{homeText.satisfaction}</span>
+          {/* SOCIAL PROOF MARGIN ACCENTS */}
+          <div className="flex items-center gap-4 text-[11px] text-slate-500 font-mono">
+            <span className="flex items-center gap-1.5 text-slate-400 font-bold">
+              <Flame className="w-4 h-4 text-orange-500" /> 
+              {homeText.studentsRegistered}
+            </span>
+            <span className="text-slate-800">•</span>
+            <span className="flex items-center gap-1">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" /> 
+              {homeText.satisfaction}
+            </span>
+            <span className="hidden sm:inline text-slate-800">•</span>
+            <span className="hidden sm:inline flex items-center gap-1 text-slate-400 font-bold">
+              <Award className="w-4 h-4 text-emerald-400" />
+              {lang === "fr" ? "Organisme d'Excellence" : "Center of Excellence"}
+            </span>
           </div>
         </div>
 
-        {/* RIGHT DECORATIVE CARD: CERTIFICATE HERO VISUAL PREVIEW */}
+        {/* RIGHT VISUAL CERTIFICATE / DYNAMIC LIVE PREVIEW */}
         <div className="lg:col-span-5 relative mt-6 lg:mt-0">
           <div className="absolute inset-x-0 top-12 bottom-0 bg-indigo-500/5 rounded-3xl blur-2xl pointer-events-none" />
           
-          <div className="relative bg-slate-900 border-2 border-slate-800 p-6 rounded-3xl space-y-5 shadow-2xl">
+          <div className="relative bg-slate-900 border border-slate-800 p-5 rounded-3xl space-y-4 shadow-2xl">
             <div className="flex justify-between items-center text-xs font-mono">
-              <span className="text-emerald-400 font-bold flex items-center gap-1 font-mono">
-                <Sparkles className="w-4 h-4 animate-pulse" /> {homeText.previewBadge}
+              <span className="text-emerald-400 font-bold flex items-center gap-1 font-mono uppercase">
+                <Sparkles className="w-3.5 h-3.5 animate-pulse" /> {homeText.previewBadge}
               </span>
-              <span className="text-slate-500">{homeText.previewHeader}</span>
+              <div className="flex rounded-lg bg-slate-950 border border-slate-850 p-0.5">
+                <button 
+                  onClick={() => setCertTheme("obsidian")}
+                  className={`px-2 py-1 text-[9px] rounded font-bold transition-colors cursor-pointer ${certTheme === "obsidian" ? "bg-emerald-500 text-slate-950" : "text-slate-500 hover:text-white"}`}
+                >
+                  Obsidian
+                </button>
+                <button 
+                  onClick={() => setCertTheme("parchment")}
+                  className={`px-2 py-1 text-[9px] rounded font-bold transition-colors cursor-pointer ${certTheme === "parchment" ? "bg-amber-100 text-slate-950" : "text-slate-500 hover:text-white"}`}
+                >
+                  Parchment
+                </button>
+              </div>
             </div>
 
-            {/* Simulated certificate widget */}
-            <div className="bg-slate-950 border border-slate-850 p-5 rounded-2xl text-center space-y-4 shadow-inner relative">
-              <div className="absolute top-2 left-2 w-3 h-3 border-t border-l border-amber-500/30" />
-              <div className="absolute top-2 right-2 w-3 h-3 border-t border-r border-amber-500/30" />
-              <div className="absolute bottom-2 left-2 w-3 h-3 border-b border-l border-amber-500/30" />
-              <div className="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-amber-500/30" />
+            {/* LIVE CUSTOMIZABLE CERTIFICATE INTERACTION BOX */}
+            <div className={`border p-5 rounded-2xl text-center space-y-4 shadow-inner relative transition-colors duration-500 ${
+              certTheme === "obsidian" 
+                ? "bg-slate-950 border-slate-850 text-slate-100" 
+                : "bg-amber-50/95 border-amber-200 text-slate-900"
+            }`}>
+              
+              {/* Sceau de tradition borders */}
+              <div className={`absolute top-2 left-2 w-3.5 h-3.5 border-t border-l ${certTheme === "obsidian" ? "border-[#d4af37]/35" : "border-[#8a6d29]/40"}`} />
+              <div className={`absolute top-2 right-2 w-3.5 h-3.5 border-t border-r ${certTheme === "obsidian" ? "border-[#d4af37]/35" : "border-[#8a6d29]/40"}`} />
+              <div className={`absolute bottom-2 left-2 w-3.5 h-3.5 border-b border-l ${certTheme === "obsidian" ? "border-[#d4af37]/35" : "border-[#8a6d29]/40"}`} />
+              <div className={`absolute bottom-2 right-2 w-3.5 h-3.5 border-b border-r ${certTheme === "obsidian" ? "border-[#d4af37]/35" : "border-[#8a6d29]/40"}`} />
 
               <div className="space-y-0.5">
-                <div className="text-[8px] font-mono tracking-widest text-[#d4af37] font-bold uppercase">{homeText.certHonor}</div>
-                <h3 className="font-serif italic font-extrabold text-white text-base">{homeText.certTitle}</h3>
+                <div className={`text-[8px] font-mono tracking-widest font-extrabold uppercase ${
+                  certTheme === "obsidian" ? "text-[#d4af37]" : "text-[#7d5d1c]"
+                }`}>
+                  {homeText.certHonor}
+                </div>
+                <h3 className={`font-serif italic font-black text-base ${
+                  certTheme === "obsidian" ? "text-white" : "text-slate-900"
+                }`}>
+                  {homeText.certTitle}
+                </h3>
               </div>
 
               <div className="space-y-1">
-                <p className="text-[8px] font-mono text-slate-500 uppercase tracking-widest">{homeText.certAwardedTo}</p>
-                <div className="bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent font-serif italic text-sm font-bold border-b border-slate-850 pb-1 max-w-[190px] mx-auto truncate">
+                <p className={`text-[8px] font-mono uppercase tracking-widest ${
+                  certTheme === "obsidian" ? "text-slate-500" : "text-slate-400"
+                }`}>{homeText.certAwardedTo}</p>
+                
+                <div className={`font-serif italic text-sm font-bold border-b pb-1 max-w-[200px] mx-auto truncate ${
+                  certTheme === "obsidian" 
+                    ? "bg-gradient-to-r from-emerald-400 via-teal-350 to-indigo-400 bg-clip-text text-transparent border-slate-850" 
+                    : "text-[#8a6d29] border-amber-200"
+                }`}>
                   {submittedDemo && demoCertName.trim() ? demoCertName.trim() : homeText.certAwardedName}
                 </div>
               </div>
 
-              <div className="">
-                <p className="text-[8px] text-slate-500 leading-normal">
+              <div>
+                <p className={`text-[8px] leading-normal font-sans ${
+                  certTheme === "obsidian" ? "text-slate-500" : "text-slate-650 font-medium"
+                }`}>
                   {homeText.certAwardText}
                 </p>
-                <h4 className="text-[10px] font-bold text-emerald-400 mt-1">
-                  {lang === "fr" ? "Masterclass ChatGPT, Gemini & Generative AI" : "ChatGPT, Gemini & Generative AI Masterclass"}
+                <h4 className={`text-[11px] font-black mt-1 uppercase font-semibold ${
+                  certTheme === "obsidian" ? "text-emerald-400" : "text-emerald-700"
+                }`}>
+                  {lang === "fr" ? "Expertise en Modèle Supabase & Lovable.dev" : "Certified Lovable.dev & Supabase Expert"}
                 </h4>
               </div>
 
-              <div className="flex justify-between items-end border-t border-slate-900 pt-3 text-[7px] font-mono text-slate-500">
-                <div className="text-left">
+              <div className={`flex justify-between items-end border-t pt-3 text-[7px] font-mono ${
+                certTheme === "obsidian" ? "border-slate-900/80 text-slate-500" : "border-amber-150 text-slate-450"
+              }`}>
+                <div className="text-left font-mono">
                   <span>{homeText.refLabel}</span>
-                  <div className="font-bold text-slate-300">CRSV-AI-8F97E2</div>
+                  <div className={`font-bold ${certTheme === "obsidian" ? "text-slate-300" : "text-slate-800"}`}>
+                    CRSV-LOV-2B1D9E
+                  </div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center border ${
+                  certTheme === "obsidian" 
+                    ? "bg-[#d4af37]/10 text-[#d4af37] border-[#d4af37]/20" 
+                    : "bg-amber-500/10 text-amber-700 border-amber-600/20"
+                }`}>
                   <Award className="w-4 h-4" />
                 </div>
-                <div className="text-right">
+                <div className="text-right font-mono">
                   <span>{homeText.creditLabel}</span>
-                  <div className="font-bold text-slate-300">{homeText.creditVal}</div>
+                  <div className={`font-bold ${certTheme === "obsidian" ? "text-slate-300" : "text-slate-800"}`}>
+                    {homeText.creditVal}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick interactive sandbox to change name */}
-            <div className="space-y-2">
-              <div className="text-xs font-medium text-slate-300">{homeText.previewNameLabel}</div>
-              <div className="flex gap-2">
-                <input 
-                  type="text" 
-                  value={demoCertName}
-                  onChange={(e) => {
-                    setDemoCertName(e.target.value);
-                    setSubmittedDemo(true);
-                  }}
-                  placeholder={homeText.previewNamePlaceholder}
-                  className="flex-1 bg-slate-950 border border-slate-800 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500 font-sans"
-                />
-              </div>
+            {/* Interactive widget input name */}
+            <div className="space-y-1.5 pt-1">
+              <label className="text-[10px] uppercase font-mono tracking-wider font-bold text-slate-400">{homeText.previewNameLabel}</label>
+              <input 
+                type="text" 
+                value={demoCertName}
+                onChange={(e) => {
+                  setDemoCertName(e.target.value);
+                  setSubmittedDemo(true);
+                }}
+                placeholder={homeText.previewNamePlaceholder}
+                className="w-full bg-slate-950 border border-slate-850 rounded-xl py-2 px-3 text-xs text-white focus:outline-none focus:border-emerald-500"
+              />
               <p className="text-[10px] text-slate-500 leading-normal">
-                {homeText.previewWarning}
+                💡 {homeText.previewWarning}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CORE SKILL ACADEMY CURRICULUM GRID */}
-      <section id="courses-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 space-y-12">
+      {/* RECEPTIVE PARTNER OR OUTLET LOGO BELTS */}
+      <section className="bg-slate-900/25 border-y border-slate-900/80 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
+            {lang === "fr" 
+              ? "DEBOUCHÉS, FREELANCE & PRODUCTIVITÉ : NOS DIPLÔMÉS EXÉCUTENT DANS LES MEILLEURS ESPACES ET POUR DES CLIENTS FINANCIERS" 
+              : "CAREER OUTCOME, FREELANCING & EFFICIENCY: OUR STUDENTS BUILD AND CONSULT WORLDWIDE FOR TOP DIGITAL ENTERPRISES"}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 pt-1 opacity-45 select-none text-white font-mono font-black text-sm tracking-widest">
+            <span className="hover:opacity-90 transition-opacity">● INDÉPENDANT PRO</span>
+            <span className="hover:opacity-90 transition-opacity">◆ UPWORK TOP RATED</span>
+            <span className="hover:opacity-90 transition-opacity">■ MALTE CONSULTING</span>
+            <span className="hover:opacity-90 transition-opacity">▲ STRIPE VERIFIED</span>
+            <span className="hover:opacity-90 transition-opacity">★ GITHUB EXPORTABLE</span>
+          </div>
+        </div>
+      </section>
+
+      {/* CORE BENEFITS SECTION: "WHY CHOOSE IA ACADÉMIE PLUS?" */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
         <div className="text-center space-y-2 max-w-2xl mx-auto">
-          <span className="text-[10px] font-mono uppercase bg-indigo-500/10 text-indigo-400 font-bold border border-indigo-500/20 px-3 py-1 rounded-full col-span-3">
+          <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-extrabold border border-emerald-500/20 px-3.5 py-1.5 rounded-full inline-block">
+            {lang === "fr" ? "LA DIFFÉRENCE ACADÉMIE PLUS" : "THE ACADEMY PLUS EXPERIENCE"}
+          </span>
+          <h2 className="text-2.5xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+            {lang === "fr" ? "Pourquoi apprendre avec notre méthodologie ?" : "Why study using our interactive framework?"}
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400">
+            {lang === "fr" 
+              ? "Nous avons éliminé les longues vidéos passives de 40 heures. Notre approche est résolument active, rapide et connectée directement au concret." 
+              : "We removed the endless hours of generic video lectures. Our educational workflow is active, hyper-practical, and immediately applicable."}
+          </p>
+        </div>
+
+        {/* 4 BENTO CARDS DETAILS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-slate-900 border border-slate-900/60 p-6 rounded-2xl space-y-3 hover:border-emerald-500/25 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 text-emerald-400">
+              <Terminal className="w-5 h-5" />
+            </div>
+            <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Bac à Sable Pratique" : "Interactive Prompt Sandbox"}</h3>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              {lang === "fr" 
+                ? "Chaque module de formation se compose d’un banc d’essai interactif pour composer vos invites de prompt et mesurer instantanément votre score pédagogique." 
+                : "Every educational track comes with real prompt-engineering sandboxes where you practice formulating structures with real-time scoring feedback."}
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-900/60 p-6 rounded-2xl space-y-3 hover:border-indigo-500/25 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 text-indigo-400">
+              <Brain className="w-5 h-5" />
+            </div>
+            <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Tuteur IA Dédié" : "24/7 Intelligent Copilot"}</h3>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              {lang === "fr" 
+                ? "Un copilote interactif branché aux modèles de pointe d'IA pour analyser vos doutes, éclairer les points techniques et vous assister pendant l'écriture de vos codes." 
+                : "An expert companion powered by state-of-the-art architectures to solve your bugs, answer technical inquiries, and guide you directly in real-time."}
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-900/60 p-6 rounded-2xl space-y-3 hover:border-teal-500/25 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center border border-teal-500/20 text-teal-400">
+              <Zap className="w-5 h-5" />
+            </div>
+            <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Licence Unique à Vie" : "No Reoccurring Fees"}</h3>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              {lang === "fr" 
+                ? "Payez une seule fois un forfait de 15$. Aucune facture mensuelle surprise. Les 18 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
+                : "Pay a simple one-time activation fee of $15. No monthly surprises. Access all current and future 18 executive courses, updates, and templates forever."}
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-900/60 p-6 rounded-2xl space-y-3 hover:border-pink-500/25 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center border border-pink-500/20 text-pink-400">
+              <Award className="w-5 h-5" />
+            </div>
+            <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Diplômes Traceables PDF" : "verifiable PDF Credential"}</h3>
+            <p className="text-xs text-slate-400 leading-relaxed font-sans">
+              {lang === "fr" 
+                ? "Générez un diplôme numérique d'honneur de format paysage de qualité supérieure, idéal à placer sur LinkedIn ou à joindre lors d'un recrutement." 
+                : "Download gorgeous certificate achievements, exportable in landscape ultra-res format. Ready for LinkedIn portfolios, recruitment audits, and print sheets."}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* DYNAMIC PROMPT EVALUATOR SANDBOX PREVIEW WIDGET */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-tr from-slate-900 via-slate-950 to-slate-900 rounded-3xl border border-slate-900 space-y-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-xl pointer-events-none" />
+        
+        <div className="text-center space-y-2">
+          <span className="text-[9px] font-mono bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-extrabold px-3 py-1 rounded-full uppercase">
+            {lang === "fr" ? "ENTRAÎNEMENT INTERACTIF" : "INTERACTIVE DEMO BENCH"}
+          </span>
+          <h2 className="text-xl sm:text-2xl font-black text-white">
+            {lang === "fr" ? "Testez votre technique de prompt en direct !" : "Test your prompting skills instantly!"}
+          </h2>
+          <p className="text-xs text-slate-400 max-w-xl mx-auto">
+            {lang === "fr" 
+              ? "Saisissez un court exemple de prompt dans l'éditeur ci-dessous pour ressentir comment notre système d'IA évalue la clarté opérationnelle des consignes d'un étudiant."
+              : "Enter a brief structured prompt below to experience how our smart evaluation grading framework checks the semantic clarity of user prompts."}
+          </p>
+        </div>
+
+        <form onSubmit={handleEvaluatePrompt} className="max-w-2xl mx-auto space-y-4">
+          <div className="bg-slate-950 border border-slate-850 p-4 rounded-2xl relative">
+            <textarea
+              value={sandboxPrompt}
+              onChange={(e) => setSandboxPrompt(e.target.value)}
+              placeholder={lang === "fr" 
+                ? "Ex: Rédige-moi un courriel de relance client professionnel sans jargon..." 
+                : "e.g., Act as senior copywriting expert, write target customer email focusing on PAS dynamic model..."}
+              rows={3}
+              className="w-full bg-transparent text-xs text-slate-200 outline-none resize-none font-sans"
+            />
+            <div className="flex justify-between items-center mt-3 pt-3 border-t border-slate-900 font-mono text-[9px] text-slate-500">
+              <span className="flex items-center gap-1">
+                <Terminal className="w-3.5 h-3.5" /> 
+                {lang === "fr" ? "Méthode: Évaluation Formelle" : "Syllabus Analysis Mode"}
+              </span>
+              <button
+                type="submit"
+                disabled={evaluating || !sandboxPrompt.trim()}
+                className={`py-2 px-4 rounded-xl text-xs font-bold font-mono uppercase tracking-wider flex items-center gap-1.5 transition-all select-none cursor-pointer ${
+                  !sandboxPrompt.trim() 
+                    ? "bg-slate-900 text-slate-650 pointer-events-none" 
+                    : "bg-emerald-500 text-slate-950 shadow shadow-emerald-500/10 hover:bg-emerald-400"
+                }`}
+              >
+                {evaluating ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    {lang === "fr" ? "Évaluation..." : "Grading..."}
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-3.5 h-3.5" />
+                    {lang === "fr" ? "Évaluer mon Prompt" : "Evaluate My Structure"}
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </form>
+
+        {sandboxEvaluation && (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-2xl mx-auto bg-slate-900 border border-slate-850 p-5 rounded-2xl space-y-4 text-left"
+          >
+            {/* Score circle bar */}
+            <div className="flex items-center gap-4 border-b border-slate-950 pb-3">
+              <div className="relative flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full border border-slate-800 flex items-center justify-center font-bold text-xs text-emerald-400 bg-slate-950">
+                  {sandboxEvaluation.score}%
+                </div>
+              </div>
+              <div>
+                <h4 className="font-extrabold text-slate-200 text-xs uppercase font-mono tracking-wider">
+                  {lang === "fr" ? "Rapport d'analyse du Prompt" : "Semantic Grade Report"}
+                </h4>
+                <p className="text-[10px] text-slate-500 font-sans leading-none mt-1">
+                  ⭐ {sandboxEvaluation.score >= 80 ? (lang === "fr" ? "Excellent potentiel fonctionnel" : "Excellent structural coverage") : (lang === "fr" ? "Besoins d'ajustements structurels" : "Structural changes required")}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-300 leading-normal font-sans">
+              {sandboxEvaluation.feedback}
+            </p>
+
+            <div className="space-y-1.5 pt-1">
+              <h5 className="text-[10px] uppercase font-mono font-bold text-slate-400">
+                {lang === "fr" ? "Axes d'amélioration conseillés :" : "Syllabus Recommendations :"}
+              </h5>
+              <ul className="space-y-1">
+                {sandboxEvaluation.suggestions.map((suggestion, idx) => (
+                  <li key={idx} className="text-[11px] text-slate-450 flex items-start gap-1.5 font-sans leading-normal">
+                    <CheckSquare className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
+                    <span>{suggestion}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </section>
+
+      {/* CORE SKILL ACADEMY CURRICULUM GRID WITH 18 COMPREHENSIVE COURSES */}
+      <section id="courses-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 space-y-10">
+        
+        {/* Header Title */}
+        <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <span className="text-[10px] font-mono uppercase bg-indigo-500/10 text-indigo-400 font-extrabold border border-indigo-500/20 px-3.5 py-1.5 rounded-full inline-block col-span-3">
             {homeText.ourCurriculum}
           </span>
           <h2 className="text-2.5xl sm:text-4xl font-black text-white tracking-tight">
@@ -535,8 +948,63 @@ export default function Homepage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {localizedCourses.map((course) => {
+        {/* Dynamic Category Filtering buttons */}
+        <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl mx-auto pt-2">
+          <button
+            onClick={() => setCourseFilter("all")}
+            className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap select-none ${
+              courseFilter === "all" 
+                ? "bg-slate-150 text-slate-950 font-black shadow" 
+                : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400"
+            }`}
+          >
+            📂 {lang === "fr" ? "Tous les Cursus (18)" : "All Courses (18)"}
+          </button>
+          
+          <button
+            onClick={() => setCourseFilter("prompts")}
+            className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap select-none ${
+              courseFilter === "prompts" 
+                ? "bg-emerald-500 text-slate-950 font-black shadow" 
+                : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400 hover:text-emerald-400"
+            }`}
+          >
+            🧠 {lang === "fr" ? "Prompts & Modèles" : "Prompts & LLMs"}
+          </button>
+
+          <button
+            onClick={() => setCourseFilter("content")}
+            className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap select-none ${
+              courseFilter === "content" 
+                ? "bg-indigo-500 text-slate-100 font-black shadow" 
+                : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400 hover:text-indigo-400"
+            }`}
+          >
+            🎨 {lang === "fr" ? "Création & Médias" : "Content & Video"}
+          </button>
+
+          <button
+            onClick={() => setCourseFilter("nocode")}
+            className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap select-none ${
+              courseFilter === "nocode" 
+                ? "bg-amber-500 text-slate-950 font-black shadow animate-pulse" 
+                : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400 hover:text-amber-400"
+            }`}
+          >
+            💻 {lang === "fr" ? "No-Code & Business" : "No-Code & Freelancing"}
+          </button>
+        </div>
+
+        {/* Category Specific Status Subtitle */}
+        <div className="text-center pt-1">
+          <p className="text-[11px] font-mono uppercase bg-slate-900 text-slate-400 inline-block px-3 py-1.5 rounded-xl border border-slate-850/60 font-medium">
+            🚩 Categorie Active : <strong className="text-white">{lang === "fr" ? activeCategoryLabelFr() : activeCategoryLabelEn()}</strong>
+          </p>
+        </div>
+
+        {/* Catalog Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+          {filteredCoursesList.map((course) => {
             return (
               <div 
                 key={course.id}
@@ -545,41 +1013,48 @@ export default function Homepage({
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="p-2.5 bg-slate-950 border border-slate-850 text-indigo-400 rounded-xl">
-                      {course.id === "prompt_eng" ? (
-                        <Cpu className="w-5 h-5 text-emerald-400" />
+                      {course.id === "prompt_eng" || course.id === "chatgpt_mastery" || course.id === "claude_mastery" || course.id === "gemini_mastery" || course.id === "deepseek_mastery" || course.id === "kimi_mastery" || course.id === "grok_mastery" ? (
+                        <Cpu className="w-5 h-5 text-emerald-450 animate-pulse" />
                       ) : course.id === "copywriting" ? (
                         <Star className="w-5 h-5 text-pink-400" />
-                      ) : course.id === "ai_social_selling" ? (
+                      ) : course.id === "ai_social_selling" || course.id.includes("selling") ? (
                         <Sparkles className="w-5 h-5 text-amber-400" />
-                      ) : course.id === "viral_video_audio" ? (
-                        <PlayCircle className="w-5 h-5 text-indigo-400" />
+                      ) : course.id === "viral_video_audio" || course.id === "veo_mastery" ? (
+                        <Video className="w-5 h-5 text-indigo-400" />
+                      ) : course.id === "lovable_mastery" ? (
+                        <Globe className="w-5 h-5 text-teal-400" />
                       ) : (
-                        <Terminal className="w-5 h-5 text-indigo-400" />
+                        <Terminal className="w-5 h-5 text-slate-350" />
                       )}
                     </span>
-                    <span className="text-[9px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/15">
+                    <span className="text-[10px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/15">
                       {course.difficulty}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="font-extrabold text-sm sm:text-base text-slate-100 tracking-tight">{course.title}</h3>
-                    <p className="text-xs text-slate-400 mt-2 leading-relaxed">{course.description}</p>
+                    <h3 className="font-extrabold text-sm sm:text-base text-slate-500 hover:text-slate-100 transition-colors tracking-tight line-clamp-2 leading-snug">{course.title}</h3>
+                    <p className="text-xs text-slate-400 mt-2 leading-relaxed font-sans">{course.description}</p>
                   </div>
 
-                  {/* Lessons detail list */}
+                  {/* Syllabus lists mapping */}
                   <div className="space-y-2 pt-2">
                     <div className="text-[9px] font-bold font-mono text-slate-500 uppercase">{homeText.curriculumLessons}</div>
-                    {course.lessons.map((lesson: any) => (
+                    {course.lessons.slice(0, 3).map((lesson: any) => (
                       <div key={lesson.id} className="flex items-center gap-2 text-xs text-slate-350">
-                        <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                         <span className="truncate">{lesson.title}</span>
                       </div>
                     ))}
+                    {course.lessons.length > 3 && (
+                      <div className="text-[9.5px] font-mono text-indigo-400 font-bold pl-5">
+                       ✦ +{course.lessons.length - 3} {lang === "fr" ? "modules d'analyse avancées supplémentaires..." : "additional advanced analysis modules..."}
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-slate-950 flex justify-between items-center text-xs font-mono text-slate-500">
+                <div className="pt-4 mt-6 border-t border-slate-950 flex justify-between items-center text-[10px] font-mono text-slate-500">
                   <span>⏱ {course.estimatedHours}h {homeText.hoursOfTraining}</span>
                   <span className="text-indigo-400 font-bold uppercase">{course.category.toUpperCase()} WORKSPACE</span>
                 </div>
@@ -589,12 +1064,12 @@ export default function Homepage({
         </div>
       </section>
 
-      {/* DETAILED VERIFIABLE CERTIFICATION & PDF DOWLOAD EXPLAINER */}
+      {/* DETAILED VERIFIABLE CERTIFICATION PORTAL CARDS */}
       <section id="certification-details" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Verification Form Widget */}
+        {/* Real Certification verification block */}
         <div className="lg:col-span-6 bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-5 shadow-2xl relative">
-          <div className="absolute top-0 right-0 bg-emerald-500/10 border-b border-l border-slate-800 text-[9px] font-mono uppercase font-bold text-emerald-400 tracking-wider px-3 py-1 rounded-bl-xl">
+          <div className="absolute top-0 right-0 bg-emerald-505/10 border-b border-l border-slate-800 text-[10px] font-mono uppercase font-bold text-emerald-400 tracking-wider px-3.5 py-1.5 rounded-bl-xl">
             {homeText.secureBadge}
           </div>
 
@@ -605,7 +1080,7 @@ export default function Homepage({
 
           <form onSubmit={handleVerifyCert} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-mono text-slate-400 uppercase block">{homeText.verifyInputLabel}</label>
+              <label className="text-[10px] font-mono text-slate-400 uppercase block font-bold">{homeText.verifyInputLabel}</label>
               <div className="flex gap-2">
                 <input 
                   type="text"
@@ -617,7 +1092,7 @@ export default function Homepage({
                 />
                 <button
                   type="submit"
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 rounded-xl text-xs transition-colors cursor-pointer"
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-5 rounded-xl text-xs font-mono uppercase tracking-widest cursor-pointer shadow"
                 >
                   {homeText.verifySubmit}
                 </button>
@@ -647,7 +1122,7 @@ export default function Homepage({
               ) : (
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest font-mono">{homeText.certFailHeader}</div>
-                  <p className="text-[11px] text-slate-404 mt-1">
+                  <p className="text-[11px] text-slate-400 mt-1">
                     {homeText.certFailText}
                   </p>
                 </div>
@@ -655,9 +1130,10 @@ export default function Homepage({
             </motion.div>
           )}
 
-          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-850 flex items-center gap-3">
-            <div className="p-2 bg-indigo-500/10 rounded-lg text-indigo-400">
-              <BookOpen className="w-4 h-4" />
+          {/* Verification requirements */}
+          <div className="p-3.5 bg-slate-950/70 rounded-xl border border-slate-850 flex items-center gap-3">
+            <div className="p-2 bg-[#d4af37]/10 rounded-lg text-[#d4af37]">
+              <Award className="w-5 h-5" />
             </div>
             <p className="text-[10px] text-slate-500 leading-normal">
               <strong>{homeText.verificationUnderLabel}</strong> {homeText.verificationUnderDesc}
@@ -665,7 +1141,7 @@ export default function Homepage({
           </div>
         </div>
 
-        {/* Textual Benefits of Certificate */}
+        {/* Credentials features detail lists */}
         <div className="lg:col-span-6 space-y-6">
           <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
             {homeText.transparencyBadge}
@@ -711,7 +1187,86 @@ export default function Homepage({
         </div>
       </section>
 
-      {/* TRANSPARENT PRICING SECTION */}
+      {/* HIGHEST VALUE TESTIMONIALS (SOCIAL PROOF) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-900 space-y-12">
+        <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-extrabold border border-emerald-500/20 px-3.5 py-1.5 rounded-full inline-block">
+            {lang === "fr" ? "TÉMOIGNAGES COMPLETS" : "ALUMNI REVIEWS"}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">
+            {lang === "fr" ? "Ils ont multiplié leur productivité par 10" : "They upgraded their real-world workflows"}
+          </h2>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            {lang === "fr" 
+              ? "Découvrez l'avis authentique de professionnels et travailleurs indépendants formés au sein de notre académie d'excellence." 
+              : "Read authentic feedback from digital entrepreneurs, consultants, and creators who chose the Academy plus program."}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-slate-900 border border-slate-850 p-6 rounded-2xl flex flex-col justify-between space-y-4">
+            <div className="space-y-2 font-sans">
+              <div className="flex gap-0.5 text-amber-505">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-550" />)}
+              </div>
+              <p className="text-xs italic text-slate-300 leading-relaxed">
+                {lang === "fr" 
+                  ? "« Grâce au cours complet Lovable.dev, j'ai livré un MVP SaaS complet en 3 jours pour un client immobilier et facturé 2 400 €. L'académie m'a remboursé ses 15 dollars dès la première heure ! »"
+                  : "« Thanks to the Lovable.dev track, I compiled and shipped a functional SaaS MVP in 3 days for a real-estate client and invoiced $2,400. This $15 academy paid itself back on my very first project hour! »"}
+              </p>
+            </div>
+            <div className="flex items-center gap-3 border-t border-slate-950 pt-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-xs uppercase font-mono">AR</div>
+              <div>
+                <div className="text-xs font-bold text-slate-200">Alexandre R.</div>
+                <div className="text-[9.5px] font-mono text-slate-500">{lang === "fr" ? "Architecte No-Code Freelance" : "No-Code Consultant"}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-850 p-6 rounded-2xl flex flex-col justify-between space-y-4 font-sans">
+            <div className="space-y-2">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-550" />)}
+              </div>
+              <p className="text-xs italic text-slate-300 leading-relaxed">
+                {lang === "fr" 
+                  ? "« Les modules sur Claude, ChatGPT et Midjourney ont complètement restructuré mon flux d'organisation. J'économise aujourd'hui près de 15 heures de réécriture par semaine pour mes clients d'infoprenariat. »"
+                  : "« The syllabus units on Claude, ChatGPT, and Midjourney completely restructured my agency's content processes. I'm saving upwards of 15 tedious copying hours weekly now! »"}
+              </p>
+            </div>
+            <div className="flex items-center gap-3 border-t border-slate-950 pt-3">
+              <div className="w-8 h-8 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 flex items-center justify-center font-bold text-xs uppercase font-mono">SM</div>
+              <div>
+                <div className="text-xs font-bold text-slate-200">Sophia M.</div>
+                <div className="text-[9.5px] font-mono text-slate-500">{lang === "fr" ? "Directrice de Cabinet de Contenu" : "Content Marketing Lead"}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-850 p-6 rounded-2xl flex flex-col justify-between space-y-4 font-sans">
+            <div className="space-y-2">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-550" />)}
+              </div>
+              <p className="text-xs italic text-slate-300 leading-relaxed">
+                {lang === "fr" 
+                  ? "« La pédagogie d'évaluation par sandbox interactive est ultra ludique et motivante. Le tuteur IA m'a aidé à valider mes assertions de prompts pas à pas. Mon diplôme PDF m'a aidé à rassurer mes associés. »"
+                  : "« The interactive sandbox evaluation method is highly engaging. The custom AI Tutor backed up my prompt structuring concepts step-by-step. My corporate partners were extremely reassured of my skill certification. »"}
+              </p>
+            </div>
+            <div className="flex items-center gap-3 border-t border-slate-950 pt-3">
+              <div className="w-8 h-8 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 flex items-center justify-center font-bold text-xs uppercase font-mono">TD</div>
+              <div>
+                <div className="text-xs font-bold text-slate-200">Thomas B.</div>
+                <div className="text-[9.5px] font-mono text-slate-500">{lang === "fr" ? "Analyste Expert Grand-Compte" : "Lead Business Analyst"}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FIXED TRANSPARENT ACCESSIBLE PRICING TAB */}
       <section id="pricing-section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 space-y-12">
         <div className="text-center space-y-2">
           <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20 px-3 py-1 rounded-full">
@@ -725,7 +1280,7 @@ export default function Homepage({
           </p>
         </div>
 
-        <div className="bg-slate-900 border-2 border-emerald-500/20 p-8 rounded-3xl relative overflow-hidden text-center space-y-6 max-w-xl mx-auto shadow-2xl">
+        <div className="bg-slate-900 border-2 border-emerald-500/25 p-8 rounded-3xl relative overflow-hidden text-center space-y-6 max-w-xl mx-auto shadow-2xl">
           <div className="absolute top-0 right-0 bg-emerald-500/10 text-[9px] font-mono font-bold text-emerald-400 px-3 py-1 border-b border-l border-slate-800 rounded-bl-xl uppercase tracking-wider">
             {homeText.savingsBadge}
           </div>
@@ -741,37 +1296,37 @@ export default function Homepage({
           <div className="space-y-3 pt-3 text-left max-w-sm mx-auto text-xs text-slate-300">
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{homeText.pricingBullet1}</span>
+              <span>{lang === "fr" ? "L'accès intégral et illimité aux 18 formations" : "Full premium lifetime enrollment to all 18 tracks"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{homeText.pricingBullet2}</span>
+              <span>{lang === "fr" ? "Tuteur d'IA génératif disponible 24 heures sur 24" : "Generative AI tutor available 24/7"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{homeText.pricingBullet3}</span>
+              <span>{lang === "fr" ? "Bacs à sables (sandbox) pratiques interactifs de codages" : "Interactive prompt and code testing playgrounds"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{homeText.pricingBullet4}</span>
+              <span>{lang === "fr" ? "Générateur et vérificateur de diplômes PDF officiel" : "Traceable digital landscape certificate builders"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{homeText.pricingBullet5}</span>
+              <span>{lang === "fr" ? "Zéro mensualité, mise à jour gratuite garantie des leçons" : "Zero monthly subscription, permanent syllabus updates"}</span>
             </div>
           </div>
 
           <button
             onClick={onStartOnboarding}
-            className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-405 hover:to-teal-405 text-slate-950 font-black py-4 rounded-xl text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-2.5 cursor-pointer shadow-lg shadow-emerald-500/10 active:scale-[0.99]"
+            className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-405 hover:to-teal-405 text-slate-950 font-black py-4 rounded-xl text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-2.5 cursor-pointer shadow-lg shadow-emerald-500/10 active:scale-[0.99] transition-transform"
           >
             {homeText.pricingCta}
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 text-slate-950" />
           </button>
         </div>
       </section>
 
-      {/* CORE FAQ ACCORDION */}
+      {/* DETAILED FAQ ACCORDION SUMMARY */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-900 space-y-8">
         <div className="text-center space-y-2">
           <h2 className="text-xl sm:text-2.5xl font-black text-white tracking-tight uppercase font-mono">
@@ -792,7 +1347,7 @@ export default function Homepage({
                   onClick={() => toggleFaq(index)}
                   className="w-full text-left p-5 flex justify-between items-center text-xs sm:text-sm font-bold text-slate-200 hover:text-white transition-colors cursor-pointer select-none"
                 >
-                  <span className="font-sans">{faq.q}</span>
+                  <span className="font-sans leading-snug">{faq.q}</span>
                   <ChevronDown className={`w-4 h-4 text-emerald-400 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                 </button>
 

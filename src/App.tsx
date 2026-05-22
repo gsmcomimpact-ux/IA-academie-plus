@@ -20,7 +20,7 @@ import { Sparkles, MessageSquare, Award, Flame, LogOut, CheckCircle2, ChevronRig
 const LOCAL_STORAGE_KEY = "coursiv_academy_progress";
 
 const INITIAL_PROGRESS: UserProgress = {
-  selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "prompt_eng", "copywriting", "freelance_career"],
+  selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "grok_mastery", "copilot_mastery", "manus_mastery", "perplexity_mastery", "admin_redaction", "veo_mastery", "lovable_mastery", "prompt_eng", "copywriting", "freelance_career"],
   completedLessonIds: {},
   completedCourseIds: {},
   streakCount: 1,
@@ -119,12 +119,12 @@ export default function App() {
       try {
         const parsed = JSON.parse(saved);
         if (parsed && typeof parsed === "object") {
-          let loadedPaths = parsed.selectedPathCourseIds || ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "prompt_eng", "copywriting", "freelance_career"];
-          const requiredCourseIds = ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "prompt_eng", "copywriting", "freelance_career"];
+          let loadedPaths = parsed.selectedPathCourseIds || ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "grok_mastery", "copilot_mastery", "manus_mastery", "perplexity_mastery", "admin_redaction", "veo_mastery", "lovable_mastery", "prompt_eng", "copywriting", "freelance_career"];
+          const requiredCourseIds = ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "grok_mastery", "copilot_mastery", "manus_mastery", "perplexity_mastery", "admin_redaction", "veo_mastery", "lovable_mastery", "prompt_eng", "copywriting", "freelance_career"];
           requiredCourseIds.forEach(id => {
             if (!loadedPaths.includes(id)) {
-              // Prepend high-priority new AI courses or append them
-              if (id === "chatgpt_mastery" || id === "claude_mastery" || id === "gemini_mastery" || id === "deepseek_mastery" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "ai_social_selling" || id === "viral_video_audio") {
+               // Prepend high-priority new AI courses or append them
+              if (id === "chatgpt_mastery" || id === "claude_mastery" || id === "gemini_mastery" || id === "deepseek_mastery" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "ai_social_selling" || id === "viral_video_audio" || id === "grok_mastery" || id === "copilot_mastery" || id === "manus_mastery" || id === "perplexity_mastery" || id === "admin_redaction" || id === "veo_mastery" || id === "lovable_mastery") {
                 loadedPaths.unshift(id);
               } else {
                 loadedPaths.push(id);
@@ -155,7 +155,7 @@ export default function App() {
       const savedAccounts = savedAccountsStr ? JSON.parse(savedAccountsStr) : null;
       if (!savedAccounts || Object.keys(savedAccounts).length === 0) {
         const demoAccount: UserProgress = {
-          selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "prompt_eng", "copywriting", "freelance_career"],
+          selectedPathCourseIds: ["chatgpt_mastery", "claude_mastery", "gemini_mastery", "deepseek_mastery", "kimi_mastery", "leonardo_mastery", "ai_social_selling", "viral_video_audio", "grok_mastery", "copilot_mastery", "manus_mastery", "perplexity_mastery", "admin_redaction", "veo_mastery", "lovable_mastery", "prompt_eng", "copywriting", "freelance_career"],
           completedLessonIds: {
             "prompt_basics": true,
             "few_shot": true,
@@ -188,6 +188,12 @@ export default function App() {
     } catch (e) {
       console.error("Failed to seed demo accounts.", e);
     }
+
+    try {
+      if (window.location.search.includes("verify=")) {
+        setShowHomepage(true);
+      }
+    } catch (e) {}
   }, []);
 
   // Save progress trigger
@@ -219,7 +225,7 @@ export default function App() {
         let updatedPaths = [...currentPaths];
         // Prepend high-priority AI courses or append them
         missingCourseIds.forEach(id => {
-          if (id === "viral_video_audio" || id === "ai_social_selling" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "deepseek_mastery" || id === "gemini_mastery" || id === "claude_mastery" || id === "chatgpt_mastery") {
+          if (id === "lovable_mastery" || id === "veo_mastery" || id === "admin_redaction" || id === "perplexity_mastery" || id === "manus_mastery" || id === "copilot_mastery" || id === "grok_mastery" || id === "viral_video_audio" || id === "ai_social_selling" || id === "kimi_mastery" || id === "leonardo_mastery" || id === "deepseek_mastery" || id === "gemini_mastery" || id === "claude_mastery" || id === "chatgpt_mastery") {
             updatedPaths.unshift(id);
           } else {
             updatedPaths.push(id);

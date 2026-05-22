@@ -1079,6 +1079,601 @@ const baseViralVideoAudioLessons: Lesson[] = [
   }
 ];
 
+const baseGrokLessons: Lesson[] = [
+  {
+    id: "gk_l1",
+    title: "Introduction à Grok.ai & Recherche en Temps Réel sur X",
+    description: "Comprenez l'écosystème xAI, l'intégration historique exclusive avec le flux de données en direct de la plateforme X, et le fonctionnement des requêtes réelles.",
+    durationMin: 12,
+    steps: [
+      "Grok est le modèle de langage avancé développé par xAI, la société d'intelligence artificielle fondée par Elon Musk.",
+      "L'atout majeur de Grok réside dans son accès exclusif en temps réel aux données publiques, posts et conversations de la plateforme X.",
+      "Le mode 'Fun' (humour) et le mode 'Normal' (factuel) permettent d'ajuster le tempérament et la tonalité des réponses générées.",
+      "Formuler des requêtes d'actualité chaude sur Grok permet de court-circuiter les moteurs de recherche traditionnels pour synthétiser des événements en cours."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour demander à Grok d'analyser les retours d'opinions récents sur X concernant une tendance technologique brûlante en isolant les arguments constructifs.",
+      systemTemplate: "Sondage de tendance d'opinion en temps réel avec Grok.",
+      placeholderText: "Saisissez votre invite d'actualité pour Grok...",
+      exampleSolution: "Analyse les toutes dernières publications sur X à propos de la dernière mise à jour de DeepSeek-R1. Synthétise les 3 points de satisfaction majeurs et les 2 critiques récurrentes exprimées par les développeurs aujourd'hui."
+    }
+  },
+  {
+    id: "gk_l2",
+    title: "Maîtriser les Modèles de Raisonnement Grok-3 (Reasoning)",
+    description: "Apprenez à utiliser le mode de pensée profonde (<think>) de Grok-3 pour décomposer des problèmes mathématiques, de code ou d'analyses complexes.",
+    durationMin: 15,
+    steps: [
+      "Les derniers modèles Grok-3 intègrent des capacités de Deep Reasoning permettant d'activer des chaînes de pensées systématiques pas-à-pas.",
+      "La fenêtre d'analyse de réflexion intermédiaire permet de debugger et de voir tout le cheminement déductif avant l'affichage de la réponse finale.",
+      "Idéal pour l'ingénierie et la logique complexe, Grok-3 résout des équations et des bugs de programmation avec une rigueur de niveau doctorat.",
+      "N'hésitez pas à poser des contraintes strictes pour orienter la réflexion logique de Grok sans inhiber son arborescence de pensée."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "gk_q2",
+      question: "Quel élément différencie principalement le mode 'Reasoning' (pensée profonde) du mode de réponse standard dans Grok-3 ?",
+      options: [
+        { text: "L'affichage d'un conteneur de réflexion intermédiaire détaillant le cheminement logique pas-à-pas.", isCorrect: true },
+        { text: "Une augmentation systématique du nombre de publicités sur X.", isCorrect: false },
+        { text: "La désactivation de toutes les connexions web.", isCorrect: false },
+        { text: "La traduction obligatoire de toutes les réponses en latin.", isCorrect: false }
+      ],
+      explanation: "Parfait ! Le mode Reasoning permet de suivre en temps réel la chaîne de pensée de Grok-3, ce qui est extrêmement précieux pour auditer la justesse de sa réflexion."
+    }
+  },
+  {
+    id: "gk_l3",
+    title: "Création d'Images de Pointe avec le Générateur d'Image de Grok (Flux)",
+    description: "Prenez en main la génération visuelle haute-fidélité intégrée à Grok grâce au moteur d'avant-garde Flux.1 de Black Forest Labs.",
+    durationMin: 15,
+    steps: [
+      "Grok intègre en natif l'un des meilleurs générateurs d'images au monde : le modèle Flux de Black Forest Labs.",
+      "Flux excelle dans le respect minutieux des invites textuelles, le rendu anatomique réaliste, et l'intégration parfaite de texte lisible dans les images.",
+      "Des prompts efficaces pour Grok décrivent avec précision le cadrage, la texture des matériaux, le grain cinématographique et l'ambiance lumineuse (ex: golden hour).",
+      "Sachez que vous pouvez directement demander à Grok de modifier un visuel précédemment généré en lui indiquant les calques à altérer."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Formulez un prompt artistique pour Flux à travers Grok afin de générer un portrait photoréaliste complexe incorporant du texte écrit lisible sur un panneau.",
+      systemTemplate: "Flux text integration graphic prompt design.",
+      placeholderText: "Décrivez la scène, le texte exact à afficher et le style...",
+      exampleSolution: "A warm neon glowing sign on a dark grunge brick wall that clearly reads 'AI ACADÉMIE', high-fidelity textures, realistic reflections on puddles beneath, shot on 35mm lens, corporate style."
+    }
+  }
+];
+
+const grokExtraLessonsData = [
+  { title: "Configuration de Grok pour l'analyse de sentiment de marché", desc: "Utilisez le flux en direct pour cartographier le sentiment autour d'un actif financier ou d'une marque de luxe." },
+  { title: "Grok pour l'écriture créative et le mode 'Humour' (Fun Mode)", desc: "Maîtrisez les ressorts de la tonalité subversive et satirique pour rédiger des fils de discussion LinkedIn/X extrêmement viraux." },
+  { title: "Audit et comparaison de bases de code complexes avec Grok-3 Coder", desc: "Soumettez vos scripts et fichiers interdépendants pour que Grok en récrive la structure en optimisant l'exécution." },
+  { title: "Extraire des données et leads directement depuis la barre de recherche Grok", desc: "Découvrez comment structurer vos invites pour lister des contacts professionnels clés ou des entreprises en croissance selon les bios X." },
+  { title: "Utilisation avancée du multi-fichiers et glisser-déposer de documents", desc: "Téléversez des rapports d'audit ou du code source et demandez à Grok de corréler les informations en temps réel." },
+  { title: "Comprendre les biais et filtrages de sécurité natifs de xAI", desc: "Naviguez intelligemment autour des politiques de sécurité de Grok pour conserver des réponses d'une absolue honnêteté intellectuelle." },
+  { title: "Grok API : Configuration et déploiement de clés de développement", desc: "Découvrez l'accès à l'API de xAI pour envoyer des requêtes programmatiques à Grok-3 et l'intégrer dans vos applications." },
+  { title: "Optimiser les invites d'actualité chaude et fact-checking de nouvelles", desc: "Utilisez les filtres temporels implicites de Grok pour démêler le vrai du faux sur les événements de l'actualité mondiale." },
+  { title: "Techniques de prompting pour l'intégration de texte parfait dans Flux via Grok", desc: "Ralliez des typographies nettes et lisibles à vos créations graphiques de marque, flacons, et logos commerciaux." },
+  { title: "Construire des personas de discussion subversifs et mémorables", desc: "Paramétrez des assistants virtuels dotés d'un sens aiguisé de l'humour ou d'une posture philosophique spécifique." },
+  { title: "Extraire des insights de rapports annuels PDF complexes", desc: "Profitez de la mémoire étendue de Grok pour isoler rapidement les indicateurs financiers critiques." },
+  { title: "Synchroniser Grok et des bases de connaissances d'entreprise", desc: "Comment concevoir un pont de documentation permanent pour accélérer le support technique de vos clients." },
+  { title: "Grok pour le brainstorming d'idées de startups technologiques", desc: "Défiez le modèle avec des angles de rupture industrielle et laissez Grok modéliser les plans d'affaires correspondants." },
+  { title: "Maîtriser les prompts multilingues et traductions idiomatiques", desc: "Exploitez l'esprit connecté du réseau pour des traductions de copies ultra-naturelles qui préservent l'ironie locale." },
+  { title: "La détection automatique d'anomalies de logique et de calculs", desc: "Déployez le raisonnement logique pas-à-pas de Grok pour auditer vos chaînes d'assemblage ou d'exécutions de requêtes SQL." },
+  { title: "Automatisation de la revue de presse matinale thématique", desc: "Structurez une invite d'actualité récurrente qui sélectionne et synthétise les 5 événements marquants sous forme de mémo." },
+  { title: "L'évaluation finale de Certification d'Expert Grok.ai & xAI", desc: "Examen complet académique en conditions réelles sur l'écosystème xAI, le prompting chaud et Flux pour obtenir votre diplôme." }
+];
+
+const baseCopilotLessons: Lesson[] = [
+  {
+    id: "co_l1",
+    title: "Introduction à Microsoft Copilot & Intégration Windows / Office",
+    description: "Comprenez l'architecture de Microsoft Copilot, son intégration avec Bing Search et l'écosystème Windows 11 pour automatiser vos tâches quotidiennes.",
+    durationMin: 12,
+    steps: [
+      "Microsoft Copilot est l'assistant d'intelligence artificielle de Microsoft, propulsé par les modèles d'élite de OpenAI (GPT-4o).",
+      "Grâce à l'intégration Bing Search, Copilot fournit des réponses connectées à l'actualité avec des sources citées de manière transparente.",
+      "L'intégration native dans Windows 11 permet de contrôler les paramètres système, d'ouvrir des applications et de résumer des captures d'écran d'un simple raccourci.",
+      "Copilot respecte la protection des données commerciales (Enterprise Data Protection) en empêchant l'utilisation de vos fichiers pour l'entraînement du modèle."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne professionnelle pour demander à Copilot de structurer un résumé comparatif des 3 dernières annonces de Microsoft en citant les sources web.",
+      systemTemplate: "Recherche connectée Microsoft Copilot et citation de sources.",
+      placeholderText: "Saisissez votre invite connectée pour Microsoft Copilot...",
+      exampleSolution: "Recherche sur le web et analyse les dernières fonctionnalités annoncées pour Microsoft Copilot Pro cette semaine. Synthétise-les sous forme de liste à puces et cite précisément les URLs des articles sources."
+    }
+  },
+  {
+    id: "co_l2",
+    title: "Maîtriser Copilot Pro et les Copilot GPTs personnalisés",
+    description: "Découvrez les fonctionnalités de l'abonnement Copilot Pro et apprenez à concevoir vos propres assistants personnalisés (Copilot GPTs).",
+    durationMin: 15,
+    steps: [
+      "Copilot Pro offre un accès prioritaire aux derniers modèles GPT d'OpenAI, même pendant les heures de pointe de trafic.",
+      "Les Copilot GPTs permettent de créer des versions personnalisées de Microsoft Copilot dédiées à des tâches spécifiques (ex: Coach sportif, Correcteur de code).",
+      "Vous pouvez configurer votre Copilot GPT en lui fournissant une base de connaissances (RAG) composée de vos propres fichiers PDF ou de vos instructions personnalisées.",
+      "Une fois créé, votre Copilot GPT peut être partagé en privé, avec votre organisation, ou rendu public pour l'ensemble des utilisateurs."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "co_q2",
+      question: "Quelle est la principale valeur ajoutée de la création d'un Copilot GPT personnalisé ?",
+      options: [
+        { text: "Créer un assistant spécialisé configuré avec des instructions et des fichiers de connaissances spécifiques pour un besoin précis.", isCorrect: true },
+        { text: "Augmenter la vitesse de votre connexion internet de 50%.", isCorrect: false },
+        { text: "Générer automatiquement des clés de licence Windows gratuites.", isCorrect: false },
+        { text: "Remplacer l'intégralité de la suite Office par des macros VBA.", isCorrect: false }
+      ],
+      explanation: "Excellent ! Les Copilot GPTs personnalisés vous évitent de réécrire les mêmes contextes et règles à chaque session en intégrant directement vos connaissances."
+    }
+  },
+  {
+    id: "co_l3",
+    title: "Productivité Ultime : Copilot dans Word, Excel et PowerPoint",
+    description: "Apprenez à générer des documents de présentation, analyser des tableaux de données et rédiger des rapports professionnels au sein de la suite Office.",
+    durationMin: 15,
+    steps: [
+      "Dans Microsoft Word, Copilot peut rédiger un premier jet d'article complet, reformuler des paragraphes ou résumer un document existant de 50 pages.",
+      "Dans PowerPoint, vous pouvez générer une présentation de 10 diapositives à partir d'un simple fichier texte ou d'une description synthétique.",
+      "Dans Excel, Copilot aide à analyser les tendances des données, créer des formules complexes et générer des graphiques de visualisation dynamiques sans programmation.",
+      "L'utilisation de prompts structurés dans Office (avec contexte et objectifs clairs) garantit un taux d'hallucinations extrêmement faible sur vos données d'entreprise."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour demander à Copilot dans Excel de générer une formule Excel complexe calculant une prime dynamique basée sur plusieurs critères.",
+      systemTemplate: "Génération de formules Excel complexes et robustes avec Copilot.",
+      placeholderText: "Saisissez les critères de calcul de prime pour Copilot...",
+      exampleSolution: "Écris une formule Excel imbriquée avec SI et ET pour calculer une prime : si la colonne Performance (B) est supérieure à 90% et la colonne Satisfaction (C) est supérieure à 4.5/5, la prime est de 10%, sinon si la Performance est supérieure à 80%, la prime est de 5%, sinon 0%."
+    }
+  }
+];
+
+const copilotExtraLessonsData = [
+  { title: "Automatiser la rédaction d'e-mails professionnels avec Copilot dans Outlook", desc: "Apprenez à rédiger des réponses contextuelles d'un simple clic et à résumer de longs fils de discussion de messagerie." },
+  { title: "Analyse avancée de feuilles de calcul géantes dans Excel", desc: "Soumettez des fichiers volumineux et demandez à Copilot de repérer des corrélations ou des anomalies de facturation." },
+  { title: "Générer des visuels percutants d'illustrations avec Microsoft Designer", desc: "Exploitez le moteur d'images DALL-E 3 intégré de Copilot pour concevoir des logos et supports marketing." },
+  { title: "Création autonome de rapports d'activité à l'aide de Copilot dans Word", desc: "Fusionnez les notes de plusieurs réunions et fichiers sources pour rédiger une synthèse formelle." },
+  { title: "Optimiser les réunions en direct avec Copilot dans Microsoft Teams", desc: "Obtenez des résumés de réunion en temps réel, listez les tâches assignées et suivez les questions non résolues." },
+  { title: "Prise de notes intelligente avec Copilot dans OneNote", desc: "Organisez vos comptes-rendus désordonnés en listes de tâches structurées et plans de projet clairs." },
+  { title: "Copilot Studio : Personnaliser l'expérience pour les entreprises", desc: "Découvrez la plateforme de création d'agents d'entreprise de Microsoft pour connecter vos bases de données internes (SQL, SharePoint)." },
+  { title: "Recherche documentaire avancée dans SharePoint avec Copilot", desc: "Trouvez instantanément l'information exacte noyée dans des milliers de dossiers partagés au sein de votre réseau interne." },
+  { title: "Techniques de prompting pour optimiser les résumés sous PowerPoint", desc: "Apprenez à structurer des requêtes pour transformer des présentations d'ingénieurs complexes en diapositives claires pour les décideurs." },
+  { title: "Gérer et nettoyer sa boîte de réception avec les règles assistées Copilot", desc: "Établissez des priorités intelligentes sur les messages entrants à forte valeur ajoutée commerciale." },
+  { title: "Rédiger des propositions commerciales et appels d'offres percutants", desc: "Utilisez Copilot pour formuler des réponses formelles aux cahiers des charges clients en un temps record." },
+  { title: "Concevoir des macros et scripts Excel automatisés grâce à Copilot", desc: "Écrivez du code VBA ou des Office Scripts sans aucune connaissance technique pour automatiser vos tâches comptables récurrentes." },
+  { title: "Sécuriser l'accès aux données sensibles avec l'infrastructure Enterprise Data", desc: "Comprenez les architectures d'accès de Microsoft 365 pour s'assurer que Copilot ne dévoile jamais d'informations confidentielles." },
+  { title: "Élaborer une roadmap produit interactive dans PowerPoint", desc: "Générez des graphiques de planification temporelle à partir de vos fichiers Word de spécifications." },
+  { title: "Copilot pour la traduction et localisation de documents multilingues", desc: "Adaptez des documents marketing et juridiques complexes dans plus de 40 langues avec style et fidélité de vocabulaire." },
+  { title: "Résoudre des cas complexes de modélisation de ventes sur Excel", desc: "Laissez Copilot vous guider pour structurer vos projections de flux de trésorerie mensuels d'une année sur l'autre." },
+  { title: "L'évaluation finale de Certification d'Expert Microsoft Copilot & M365", desc: "Validez vos compétences globales sur l'utilisation de Copilot dans Office et Windows pour décrocher votre diplôme." }
+];
+
+const baseManusLessons: Lesson[] = [
+  {
+    id: "mn_l1",
+    title: "Introduction à Manus.ai & Révolution des Agents de Computer Use",
+    description: "Découvrez comment l'architecture révolutionnaire de Manus.ai (Computer Use) lui permet de contrôler un navigateur web complet et un système d'exploitation pour exécuter des tâches à votre place.",
+    durationMin: 15,
+    steps: [
+      "Manus.ai va au-delà des simples assistants textuels : c'est un agent d'action capable de cliquer, faire défiler et saisir des données sur n'importe quel site web.",
+      "Le concept de 'Computer Use' (utilisation de l'ordinateur) permet à l'IA d'interagir avec les interfaces graphiques exactement comme le ferait un opérateur humain.",
+      "Manus dispose d'un environnement d'exécution isolé (Sandbox v2) dans lequel il peut exécuter du code, installer des bibliothèques et tester des scripts.",
+      "La sécurité est garantie par un contrôle strict des sessions d'agent et de la journalisation continue de chaque clic et saisie vidéo."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne décrivant un objectif d'automatisation complexe pour Manus.ai, comme l'exploration d'un site de e-commerce de niche pour lister ses meilleurs vendeurs.",
+      systemTemplate: "Orchestration des agents autonomes sous Manus.ai.",
+      placeholderText: "Saisissez la tâche d'agent autonome pour Manus.ai...",
+      exampleSolution: "Va sur le site de e-commerce example.com, parcours la catégorie 'Meilleures Ventes', récolte le nom, le prix et les avis des 10 premiers produits, et structure-moi le tout dans un tableau téléchargeable en CSV."
+    }
+  },
+  {
+    id: "mn_l2",
+    title: "Maîtriser la Recherche d'Information Autonome et l'Extraction de Leads",
+    description: "Apprenez à guider les agents de Manus.ai pour effectuer des études de marché approfondies, trouver des contacts pertinents et enrichir des bases de données de prospects.",
+    durationMin: 15,
+    steps: [
+      "Manus.ai peut naviguer sur LinkedIn, Google Maps, l'annuaire d'entreprises et d'autres plateformes en parallèle pour croiser les données.",
+      "Il gère les redirections de liens, les popups de cookies et les formulaires de recherche de manière totalement autonome.",
+      "Contrairement à un scraper de données statique, Manus comprend le sens sémantique de la page et sait s'adapter aux changements de mise en page.",
+      "Vous pouvez lui demander d'affiner son ciblage au fur et à mesure en observant son flux vidéo en temps réel."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "mn_q2",
+      question: "Pourquoi Manus.ai est-il supérieur aux outils classiques de web scraping ?",
+      options: [
+        { text: "Il utilise une vision par ordinateur intelligente et s'adapte dynamiquement aux changements d'interfaces et de structures de sites.", isCorrect: true },
+        { text: "Il fonctionne sans aucune connexion internet.", isCorrect: false },
+        { text: "Il est capable de pirater des serveurs protégés instantanément.", isCorrect: false },
+        { text: "Il ne nécessite aucun crédit de calcul ou token.", isCorrect: false }
+      ],
+      explanation: "Parfait ! La force de Manus.ai réside dans son adaptabilité sémantique et visuelle qui lui permet de déjouer les obstacles classiques des scrapers."
+    }
+  },
+  {
+    id: "mn_l3",
+    title: "Déploiement de Code et Prototypage Rapide avec Manus.ai",
+    description: "Découvrez comment utiliser Manus.ai pour concevoir, coder, déployer et déboguer de petites applications web complètes au sein de sa sandbox.",
+    durationMin: 20,
+    steps: [
+      "Dans son terminal sécurisé, Manus peut initialiser des projets Node.js, Python, ou React à la volée.",
+      "L'agent est capable d'auto-analyser les messages d'erreur de compilation pour appliquer des correctifs de manière itérative.",
+      "Il peut déployer le prototype finalisé sur des plateformes éphémères ou d'hébergement pour vous fournir un lien fonctionnel.",
+      "Vous pouvez interagir directement avec l'agent pour ajouter des fonctionnalités ou changer le style graphique de l'interface créée."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne demandant à Manus de concevoir un outil de conversion de devises interactif en HTML/JS simple et de le tester en local.",
+      systemTemplate: "Génération de prototypes frontend autonomes avec Manus.ai.",
+      placeholderText: "Saisissez votre consigne de codage pour Manus.ai...",
+      exampleSolution: "Crée une page web interactive simple en HTML, CSS (Tailwind) et JavaScript pour convertir des devises en direct à l'aide d'une API de taux de change gratuite. Teste et démarre-la dans ta sandbox."
+    }
+  }
+];
+
+const manusExtraLessonsData = [
+  { title: "Automatisation de la veille concurrentielle stratégique globale", desc: "Configurez Manus pour visiter chaque semaine 10 sites clés et dressez un document de synthèse des nouveautés." },
+  { title: "Extraction et enrichissement de bases de prospects en masse", desc: "Obtenez un répertoire qualifié de contacts professionnels ciblant un secteur géographique précis." },
+  { title: "Création autonome de rapports complets de synthèse financière", desc: "Laissez l'agent naviguer sur les portails boursiers pour récolter et mettre en forme les ratios de performance." },
+  { title: "Gérer et orchestrer des tâches multi-onglets complexes", desc: "Explorez les stratégies de prompts multi-étapes pour maintenir la cohérence de l'agent sur de longs scénarios." },
+  { title: "Résolution de bugs complexes et refactoring de code", desc: "Soumettez un code défaillant et laissez Manus l'analyser, le tester en sandbox et produire une version corrigée." },
+  { title: "Déboguage et configuration automatique d'APIs tierces", desc: "Laissez l'agent programmer et tester ses requêtes vis-à-vis d'une documentation API ouverte." },
+  { title: "Génération automatique d'illustrations et supports visuels", desc: "Préparez des prompts complexes pour orchestrer des outils de design graphique et collecter les assets finaux." },
+  { title: "Planification d'itinéraires complets et réservations logistiques", desc: "Déléguez la recherche de correspondances de trains, de vols et d'hôtels alignés à votre budget spécifique." },
+  { title: "Analyse d'études scientifiques et synthèse documentaire", desc: "Envoyez l'agent chercher des publications académiques de pointe et extraire des consensus sur un sujet précis." },
+  { title: "Écriture et programmation autonome de newsletters", desc: "Laissez Manus synthétiser les articles d'actualité marquants de la journée et rédiger un brouillon de courriel percutant." },
+  { title: "Suivi de portefeuille d'actifs et alertes automatisées", desc: "Programmez l'agent pour surveiller des cours de cryptomonnaies ou d'actions et vous envoyer une alerte ciblée." },
+  { title: "Audit SEO autonome de sites et de mots-clés concurrents", desc: "Analysez les performances et la structure de liens de vos rivaux pour découvrir des failles d'optimisation." },
+  { title: "Configuration automatique de bases de données et requêtes SQL", desc: "Utilisez Manus pour modéliser vos schémas relationnels et valider l'exécution de requêtes complexes." },
+  { title: "Graphes d'études de marché interactifs", desc: "Visualisez à l'aide de graphiques personnalisés construits par Manus les parts de marché actuelles d'un secteur industriel." },
+  { title: "Intégration et pilotage d'applications Web SaaS", desc: "Raccordez l'agent à vos tableaux de bord favoris (Notion, Trello) pour centraliser la gestion d'informations éparses." },
+  { title: "Synthèse d'appels d'offres et rédaction des premiers drafts de réponse", desc: "Analysez de longs cahiers des charges administratifs et laissez l'agent formuler les réponses techniques." },
+  { title: "L'évaluation finale de Certification d'Expert Manus.ai & Agents d'Action", desc: "Validez vos compétences sur les agents autonomes et l'utilisation de Manus.ai pour obtenir votre diplôme d'élite." }
+];
+
+const basePerplexityLessons: Lesson[] = [
+  {
+    id: "px_l1",
+    title: "Introduction à Perplexity.ai & Anatomie de la Recherche Conversationnelle",
+    description: "Comprenez comment Perplexity réinvente la recherche web en combinant de grands modèles de langage avec un moteur d'indexation web en temps réel pour générer des réponses sourcées.",
+    durationMin: 15,
+    steps: [
+      "Perplexity n'est pas qu'un simple chatbot : il formule des réponses directes et synthétiques étayées par des citations et sources web vérifiables.",
+      "L'index sémantique de Perplexity extrait les extraits les plus pertinents du web pour enrichir instantanément la fenêtre contextuelle du LLM.",
+      "La transparence est totale grâce aux numéros d'indexation cliquables qui permettent d'auditer l'intégrité de chaque affirmation méticuleusement.",
+      "L'organisation logique par collections permet de sauvegarder vos recherches stratégiques et de les partager facilement avec vos collègues de travail."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Formulez une requête de recherche complexe pour évaluer la capacité de Perplexity à synthétiser trois innovations récentes en médecine de précision d'après l'année en cours.",
+      systemTemplate: "Structuration de recherches académiques fiables et sourcées sous Perplexity.ai.",
+      placeholderText: "Saisissez votre question de recherche...",
+      exampleSolution: "Quelles sont les trois innovations majeures publiées cette année dans le domaine de l'immunothérapie personnalisée ? Synthétise les résultats en incluant obligatoirement des citations médicales reconnues."
+    }
+  },
+  {
+    id: "px_l2",
+    title: "Modes Focus, Pro Search et Copilot Intelligent",
+    description: "Apprenez à orienter la recherche sémantique grâce aux options de focus (Web, Academic, Writing, YouTube, Reddit) et activez le mode Pro Search pour des investigations guidées interactives.",
+    durationMin: 15,
+    steps: [
+      "Le mode 'Pro Search' pose des questions de clarification pour affiner vos besoins avant de déclencher des requêtes parallèles optimisées.",
+      "Sélectionner le focus 'Academic' isole la recherche au sein des revues scientifiques relues par des pairs (comme d'ArXiv, PubMed, etc.).",
+      "Le focus 'Writing' désactive la navigation web, se concentrant exclusivement sur la génération fluide de textes clairs sans hallucinations en direct.",
+      "Le focus 'Reddit/Discussions' permet de sonder l'opinion publique authentique en scannant les fils de discussion de forums en direct."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "px_q2",
+      question: "Quelle est la particularité du mode d'exploration 'Pro Search' sous Perplexity ?",
+      options: [
+        { text: "Il pose des questions de clarification complémentaires et orchestre des requêtes multi-étapes pour creuser le sujet en profondeur.", isCorrect: true },
+        { text: "Il traduit automatiquement toutes les réponses uniquement en latin médiéval.", isCorrect: false },
+        { text: "Il double la vitesse matérielle de votre connexion par fibre optique.", isCorrect: false },
+        { text: "Il interdit l'accès aux sites officiels pour privilégier les bruits de couloir et rumeurs.", isCorrect: false }
+      ],
+      explanation: "Parfait ! Le Pro Search agit comme un analyste de recherche junior qui vous questionne d'abord pour cibler parfaitement sa moisson d'informations."
+    }
+  },
+  {
+    id: "px_l3",
+    title: "Orchestrer ses Espaces via les Collections et l'Éditeur 'Pages'",
+    description: "Créez de véritables rapports web publics grâce à Perplexity Pages et configurez vos collections privées avec des instructions systèmes adaptées.",
+    durationMin: 20,
+    steps: [
+      "Perplexity Pages transforme un simple fil de recherche en un article web structuré et joliment mis en page en un seul clic.",
+      "Les Collections permettent d'isoler des projets et de définir des instructions système personnalisées (Custom Instructions) pour ce dossier spécifique.",
+      "Vous pouvez enrichir vos Pages en insérant manuellement des sections additionnelles, des images générées et des fichiers PDF joints.",
+      "Le partage collaboratif via URL publique facilite la diffusion d'études de marché hautement qualifiées à vos clients."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt destiné à charger des consignes système strictes dans une collection Perplexity consacrée à de la veille concurrentielle sur la FinTech.",
+      systemTemplate: "Création de collections et d'instructions sémantiques ciblées.",
+      placeholderText: "Saisissez les instructions de votre collection de recherche...",
+      exampleSolution: "Agis comme un analyste financier senior de la FinTech. Structure toutes tes réponses en trois parties distinctes : 1. Résumé Exécutif des Faits, 2. Impacts Concurrentiels, 3. Sources d'Origine Vérifiées par des URLs valides. Ne répète jamais d'informations non corroborées."
+    }
+  }
+];
+
+const perplexityExtraLessonsData = [
+  { title: "Configuration experte d'instructions de profils et de personas personnalisés", desc: "Définissez vos préférences professionnelles pour que chaque recherche de Perplexity s'adapte à votre industrie sans redondance." },
+  { title: "Analyse comparée de documents et rapports annuels volumineux", desc: "Chargez de multiples fichiers PDF volumineux et demandez à Perplexity d'en extraire les données comptables croisées." },
+  { title: "Veille concurrentielle automatisée dans le domaine de la Tech", desc: "Installez une routine de recherche pour recenser toutes les annonces de vos concurrents directs avec sources." },
+  { title: "Rapprochement et synthèse de la jurisprudence juridique", desc: "Examinez des dossiers complexes avec le focus académique/légal pour repérer les précédents judiciaires." },
+  { title: "Structurer des rapports de tendances SEO à l'aide de Perplexity", desc: "Explorez les volumes d'intérêt et de questions réelles posées sur le web pour concevoir une stratégie de cocons sémantiques." },
+  { title: "Exploiter Perplexity Pro comme substitut d'études de marché", desc: "Orchestrez des sessions Pro Search pour cartographier un marché émergent avec ses acteurs majeurs et barrières à l'entrée." },
+  { title: "Créer des newsletters sectorielles captivantes avec l'éditeur Pages", desc: "Générez un dossier d'actualité thématique hebdomadaire prêt à envoyer à vos équipes ou clients." },
+  { title: "Sonder les communautés en ligne avec le focus Discussions", desc: "Découvrez ce que les internautes pensent d'un produit concurrent afin d'isoler ses faiblesses d'ergonomie." },
+  { title: "Extraction de codes fonctionnels complexes ou solutions de bugs", desc: "Sélectionnez le focus 'Code' pour obtenir des réponses dénuées de blabla textuel inutile avec une syntaxe TypeScript parfaite." },
+  { title: "Optimiser les processus d'écriture de mémoires universitaires", desc: "Utilisez le focus Académique pour trouver et lister de véritables publications de recherche indexées sur Google Scholar ou Scopus." },
+  { title: "Générer et éditer des illustrations au sein des rapports Pages", desc: "Commandez l'intégration visuelle d'images adaptées pour rythmer vos articles et dossiers partagés." },
+  { title: "Planification d'études de cas business approfondies", desc: "Générez un dossier d'argumentation de vente complet et structuré en interrogeant les données économiques récentes." },
+  { title: "Déboguage d'APIs et comparaison de frameworks d'ingénierie", desc: "Faites évaluer les gains de performance entre deux approches de codage à l'aide de sources de documentations à jour." },
+  { title: "Veille médiatique sur les réseaux et réseaux sociaux d'opinions", desc: "Rassemblez les meilleures réactions de personnalités influentes à la suite de scandales ou de lancements majeurs." },
+  { title: "Audit sémantique et vérification de faits de fake news", desc: "Commandez une confrontation de thèses contraires pour en certifier la validité scientifique à l'aide de sources de confiance." },
+  { title: "Prototypage de plans d'affaires (Business Plans) interactifs", desc: "Consultez et collectez des statistiques de croissance sectorielles récentes pour étayer vos tableurs financiers." },
+  { title: "L'évaluation finale de Certification d'Expert Perplexity.ai & Recherche Cognitive", desc: "Démontrez votre maîtrise complète de l'ingénierie de recherche conversationnelle pour décrocher votre certificat d'excellence." }
+];
+
+const baseAdminRedactionLessons: Lesson[] = [
+  {
+    id: "ad_l1",
+    title: "Introduction à la Rédaction Administrative Assistée par l'IA et Directives Générales",
+    description: "Comprenez les spécificités du style administratif (neutralité, précision, impersonnalité, courtoisie) et apprenez à guider l'IA pour qu'elle respecte scrupuleusement ces codes rigides.",
+    durationMin: 15,
+    steps: [
+      "La rédaction administrative obéit à des règles strictes : le ton doit rester parfaitement neutre, objectif, dépassionné, et les formules de politesse doivent respecter le protocole hiérarchique.",
+      "L'ia tend naturellement de manière générale à être trop chaleureuse ou publicitaire. Vous devez la brider à l'aide de contraintes stylistiques drastiques.",
+      "Précisez toujours à l'IA le public cible (administration publique, ministre, citoyen, partenaire commercial) et les formules protocolaires attendues.",
+      "Une bonne consigne administrative définit clairement le rôle (Ex: 'Secrétaire d'Administration'), l'objet précis, et exclut l'usage de superlatifs ou d'adjectifs subjectifs."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne structurée pour demander à l'IA de concevoir le brouillon d'un courrier formel de refus de subvention, en justifiant légalement sans blesser le destinataire.",
+      systemTemplate: "Garantir un ton administratif parfaitement neutre et impersonnel.",
+      placeholderText: "Saisissez votre consigne de refus de subvention...",
+      exampleSolution: "Agis en tant que responsable administratif. Rédige un brouillon de lettre au style impersonnel ('Nous vous informons...', 'Il est constaté...') pour refuser l'aide demandée au motif de dossier incomplet, dans un ton courtois et dénué d'affect."
+    }
+  },
+  {
+    id: "ad_l2",
+    title: "Bâtir des Courriels Professionnels et des Notes de Synthèse Sans Erreurs",
+    description: "Apprenez à structurer des notes de cadrage internes, des circulaires d'information et des mémo-synthèses impeccables à partir d'informations désordonnées.",
+    durationMin: 15,
+    steps: [
+      "Une note de synthèse doit être concise, hiérarchisée (en s'appuyant sur un plan logique) et faire ressortir immédiatement les points critiques à destination des décideurs.",
+      "Pour rédiger un courriel interne de recadrage ou de directive, l'IA permet de polir les angles vifs tout en maintenant une autorité institutionnelle respectueuse.",
+      "Le recours à l'IA pour corriger la syntaxe complexe et relever le registre linguistique de vos écrits garantit des documents administratifs d'une dignité professionnelle absolue.",
+      "En fournissant des brouillons désorganisés sous forme de liste à puces, vous pouvez instruire l'IA de réorganiser la note d'information selon un plan classique : Contexte, Constats, Décision."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "ad_q2",
+      question: "Pourquoi est-il utile d'utiliser l'IA pour retravailler un brouillon de courrier à caractère disciplinaire ?",
+      options: [
+        { text: "Pour lisser l'affect personnel du rédacteur, veiller au respect des formes légales obligatoires et garantir un ton irréprochable.", isCorrect: true },
+        { text: "Pour que l'IA choisisse arbitrairement la sanction à votre place.", isCorrect: false },
+        { text: "Pour allonger inutilement le document avec des termes poétiques obsolètes.", isCorrect: false },
+        { text: "Pour envoyer directement le message à l'inspecteur du travail sans relecture.", isCorrect: false }
+      ],
+      explanation: "Parfait ! L'IA excelle à filtrer l'émotion d'un premier jet écrit sous le coup du stress afin de restituer une œuvre objective, factuelle et juridiquement défendable."
+    }
+  },
+  {
+    id: "ad_l3",
+    title: "Répondre aux Réclamations et Rédiger des Comptes-rendus Officiels",
+    description: "Apprenez à désamorcer les tensions lors de réponses aux usagers mécontents et à structurer des procès-verbaux de réunion professionnels.",
+    durationMin: 20,
+    steps: [
+      "Lorsqu'un usager dépose une réclamation, l'IA aide à formuler une réponse empathique sans pour autant concéder de passe-droit non réglementaire.",
+      "Pour la rédaction de comptes-rendus ou de procès-verbaux, vous pouvez soumettre les notes d'audios bruts à l'IA pour obtenir une transcription de haute tenue.",
+      "L'usage de structures répétables lors du prompting permet d'obtenir des analyses de dossiers homogènes, facilitant le travail de archivage.",
+      "Il convient de demeurer extrêmement vigilant sur la non-divulgation d'informations personnelles identifiables (RGPD) lors de la soumission de vos textes à l'IA."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt ordonnant à l'IA de transformer un échange de notes désordonné de réunion syndicale en un compte-rendu officiel neutre et digeste.",
+      systemTemplate: "Formulation de procès-verbaux et comptes-rendus institutionnels neutres.",
+      placeholderText: "Saisissez les notes de réunion brutes...",
+      exampleSolution: "Répartis ces notes de réunion dans un plan tripartite rigoureux comprenant l'ordre du jour, la synthèse des discussions sans citer les noms propres de façon polémique, et les résolutions concrètes adoptées."
+    }
+  }
+];
+
+const baseVeoLessons: Lesson[] = [
+  {
+    id: "ve_l1",
+    title: "Introduction à Google Veo 3 & La Révolution de la Vidéo Générative",
+    description: "Découvrez le modèle vidéo de pointe de Google. Comprenez l'architecture de simulation physique, la résolution photoréaliste et la transcription sémantique temporelle.",
+    durationMin: 15,
+    steps: [
+      "Google Veo 3 repousse les limites de la génération vidéo en modélisant précisément les lois de la physique pour des mouvements organiques parfaits.",
+      "Il interprète les invites de texte (text-to-video) longues et complexes pour assurer une direction artistique globale.",
+      "La cohérence sémantique spatio-temporelle de Veo évite les déformations bizarres d'objets survenant lors de longs panoramiques.",
+      "L'analyse approfondie de scènes permet d'allier un rendu photoréaliste moderne avec un contrôle total des textures et de l'éclairage."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une invite cinématique ultra-détaillée décrivant une traversée de forêt brumeuse par un randonneur pour évaluer la capacité de rendu physique atmosphérique de Veo 3.",
+      systemTemplate: "Ingénierie de prompts vidéo pour Google Veo 3.",
+      placeholderText: "Saisissez votre prompt vidéo cinématique...",
+      exampleSolution: "Plan moyen cinématique en travelling latéral arrière. Un randonneur marche lentement dans une forêt de pins dense au lever du soleil. Brume volumétrique dense percée par des rayons de lumière dorés (god rays). Profondeur de champ anamorphique, bokeh doux, rendu photoréaliste ultra-détaillé 8k, style Google Veo 3."
+    }
+  },
+  {
+    id: "ve_l2",
+    title: "Grammaire Cinématographique et Mouvements Caméra Avancés dans Veo",
+    description: "Apprenez à piloter et guider les mouvements de caméra virtuelles pour rythmer vos séquences comme un véritable directeur de la photographie.",
+    durationMin: 15,
+    steps: [
+      "Pour dicter une intention de caméra claire à Veo, servez-vous du vocabulaire professionnel du cinéma (pan, tilt, zip zoom, dolly, grue, travelling sémantique).",
+      "La description explicite de la focale de l'objectif (ex: 35mm anamorphique, objectif grand angle 18mm ou macro) redéfinit radicalement les proportions spatiales.",
+      "Le contrôle d'ambiance lumineuse (ex: éclairage trois points, clair-obscur, néons cyberpunk réactifs, lumière tamisée) modifie l'identité visuelle instantanément.",
+      "Vous pouvez modifier la cadence apparente en ordonnant des ralentis dramatiques ou de vigoureux time-lapses au sein même du prompt sémantique."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "ve_q2",
+      question: "Quel terme technique garantit à Veo la simulation d'un zoom physique à haute vitesse avec distorsion sémantique ?",
+      options: [
+        { text: "Un zoom rapide (Zip Zoom) combiné à une description de profondeur de champ macro.", isCorrect: true },
+        { text: "Un effet stroboscopique de fondu enchaîné statique.", isCorrect: false },
+        { text: "Un rendu orthogonal sans objectif caméra.", isCorrect: false },
+        { text: "Une extension temporelle de seed par outpainting.", isCorrect: false }
+      ],
+      explanation: "Superbe ! Le Zip Zoom couplé à des détails de caméra précis impose à Veo 3 un comportement de caméra physique ultra-dynamique."
+    }
+  },
+  {
+    id: "ve_l3",
+    title: "Raccords de Plans, Édition d'Images (Image-to-Video) et Outpainting",
+    description: "Maîtrisez les techniques de liaison temporelle et animez des esquisses statiques à l'aide de l'outil d'inpainting/outpainting de Veo.",
+    durationMin: 20,
+    steps: [
+      "La génération image-to-video vous permet de charger un concept art de haute qualité pour le transformer en une séquence animée cohérente.",
+      "L'inpainting vidéo s'avère précieux pour masquer et modifier une portion défectueuse de la vidéo sans re-générer la totalité du plan d'origine.",
+      "Grâce à l'outpainting de Veo 3, étendez les bords d'un plan vertical en 9:16 pour en faire un plan panoramique horizontal de cinéma de format 2.39:1.",
+      "L'extension temporelle rationnelle permet de rajouter de précieuses secondes à une scène mémorable en conservant la continuité parfaite du décor."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Structurez une invite d'outpainting et d'expansion temporelle pour prolonger un survol océanique par un drone cinématographique.",
+      systemTemplate: "Orchestration d'outpainting sémantique vidéo.",
+      placeholderText: "Rédigez le prompt d'extension sémantique...",
+      exampleSolution: "Extension temporelle de la scène de vol. La caméra drone continue son survol fluide au-dessus de l'océan vaporeux, vagues écumeuses se fracassant contre des falaises volcaniques noires au loin, maintien du grain de pellicule cinématographique et de la plage dynamique de couleurs."
+    }
+  }
+];
+
+const baseLovableLessons: Lesson[] = [
+  {
+    id: "lv_l1",
+    title: "Introduction à Lovable.dev & La Révolution du Développement d'Applications par l'IA",
+    description: "Découvrez la puissance de Lovable.dev pour concevoir de vraies applications Web full-stack complètes à l'aide de simples instructions en langage naturel.",
+    durationMin: 15,
+    steps: [
+      "Lovable.dev combine la puissance des LLM avec un environnement de développement web complet pour créer des applications React, Tailwind et TypeScript en temps réel.",
+      "L'application interprète directement vos exigences fonctionnelles pour construire des interfaces magnifiques, réactives et propres.",
+      "Le cycle itératif de Lovable repose sur le principe de 'Prompt-Build-Verify' pour corriger instantanément vos demandes en direct.",
+      "L'interface est conçue pour manipuler à la fois l'aspect visuel en WYSIWYG et le code sous-jacent de manière transparente."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne décrivant un tableau de bord SaaS minimaliste pour le suivi d'objectifs, avec un style élégant et une barre latérale de navigation.",
+      systemTemplate: "Ingénierie d'instructions pour Lovable.dev.",
+      placeholderText: "Saisissez les consignes pour Lovable...",
+      exampleSolution: "Crée une application SaaS de suivi d'objectifs professionnels avec un menu latéral propre (Tableau de bord, Objectifs, Paramètres), une vue centrale affichant des cartes de KPI (Objectifs atteints, Taux de complétion, Jours restants), un design épuré utilisant des tons ardoise et des animations subtiles."
+    }
+  },
+  {
+    id: "lv_l2",
+    title: "Prompting de Composants Réutilisables & Intégration Supabase",
+    description: "Apprenez à structurer des requêtes ultra-précises pour concevoir des formulaires intellects et connecter une véritable base de données persistante.",
+    durationMin: 15,
+    steps: [
+      "Pour forcer Lovable à générer des structures évolutives, détaillez l'usage souhaité des hooks React et la séparation des composants.",
+      "L'intégration de Supabase en un clic crée automatiquement la structure de la base de données PostgreSQL selon vos descriptions verbales.",
+      "Vous pouvez interroger, mettre à jour ou supprimer des lignes de vos tables en décrivant simplement l'action souhaitée à l'assistant d'IA.",
+      "L'assistant met en place de façon automatisée les types de liaisons TypeScript avec la base de données distante de manière sécurisée."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "lv_q2",
+      question: "Comment Lovable.dev assure-t-il la persistance de données pour une application générée ?",
+      options: [
+        { text: "En configurant et connectant automatiquement un projet Supabase (PostgreSQL) complet via vos instructions conversationnelles.", isCorrect: true },
+        { text: "En chargeant toutes les données dans un fichier texte brut stocké dans le cache local temporaire de l'ordinateur.", isCorrect: false },
+        { text: "En demandant au développeur de configurer manuellement un serveur SQL local.", isCorrect: false },
+        { text: "En interdisant toute interaction avec des serveurs externes.", isCorrect: false }
+      ],
+      explanation: "Parfait ! La force de Lovable réside dans sa connexion bidirectionnelle immédiate avec Supabase, permettant de piloter des bases PostgreSQL complexes en langage naturel."
+    }
+  },
+  {
+    id: "lv_l3",
+    title: "Gestion des Liaisons de Code, Déploiement Netlify & Export GitHub",
+    description: "Apprenez à inspecter le code généré, exporter votre projet vers GitHub et le publier instantanément en production pour le monde entier.",
+    durationMin: 20,
+    steps: [
+      "Dans l'éditeur, vous pouvez à tout moment cliquer sur 'View Code' pour auditer l'architecture des fichiers React et des hooks.",
+      "L'intégration GitHub transparente vous permet d'effectuer des pushs réguliers et de conserver le contrôle de votre code source pour les développeurs chevronnés.",
+      "La publication d'application s'effectue en un clic sur des infrastructures optimisées comme Netlify, avec mise à jour automatisée à chaque modification.",
+      "Si Lovable génère un bug, vous pouvez utiliser l'historique sémantique pour retourner en arrière ou lui demander d'analyser la console de débogage."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt ordonnant à Lovable d'analyser un composant existant et d'y ajouter des animations d'entrée s’appuyant sur Framer Motion.",
+      systemTemplate: "Intégration et animation interactive de code sous Lovable.",
+      placeholderText: "Formulez le prompt d'animation de composant...",
+      exampleSolution: "Inspecte le composant de carte de statistiques et ajoute un effet d'entrée stéréoscopique fluide (fade-in up) avec un délai progressif pour chaque élément à l'aide de framer-motion."
+    }
+  }
+];
+
+const lovableExtraLessonsData = [
+  { title: "Concevoir une architecture de base de données relationnelle via l'Éditeur sémantique", desc: "Décrivez vos relations de tables (un à plusieurs, plusieurs à plusieurs) pour que Lovable structure vos clés étrangères sous Supabase." },
+  { title: "Intégration et synchronisation parfaite de Stripe pour vos abonnements SaaS", desc: "Créez des formulaires de paiement et connectez la passerelle Stripe avec gestion des webhooks d'abonnement en langage naturel." },
+  { title: "Personnalisation fine de Tailwind CSS et des thèmes Shadcn/ui", desc: "Prenez le contrôle de l'identité de marque en enjoignant Lovable de modifier des variables CSS globales de shadcn." },
+  { title: "Gérer les états complexes avec React Context et Zustand sous Lovable", desc: "Organisez les flux de données inter-composants sans surcharger les propriétés de vos arbres de composants." },
+  { title: "Mettre en place l'authentification sécurisée avec Supabase Auth", desc: "Permettez à vos usagers de s'inscrire, de se connecter et de récupérer leur mot de passe par courriel ou avec des fournisseurs sociaux." },
+  { title: "Connecter des API tierces (OpenAI, Twilio, SendGrid) de manière sécurisée", desc: "Instruisez Lovable pour encapsuler vos clés d'API secrètes dans des Edge Functions Supabase inaccessibles depuis le navigateur." },
+  { title: "Création de tableaux de bord interactifs avec graphiques Recharts", desc: "Transformez vos données tabulaires brutes de base de données en de splendides graphiques à bulles, en aires ou circulaires dynamiques." },
+  { title: "Maîtriser l'historique des versions et le retour en arrière sémantique", desc: "Apprenez à naviguer intelligemment entre les différentes itérations de votre site pour restaurer une version précédente saine." },
+  { title: "Optimisation du responsive design et des animations fluides Framer Motion", desc: "Garantissez une adéquation parfaite de votre interface sur mobile tout en intégrant des transitions de pages haut de gamme." },
+  { title: "Gestion des fichiers multimédias et de l'upload d'images via Supabase Storage", desc: "Configurez des buckets sécurisés pour héberger et redistribuer des photos de profils ou de produits des utilisateurs." },
+  { title: "Déboguer les erreurs TypeScript et l'alignement des liaisons de types", desc: "Apprenez à guider l'IA pour corriger les assertions de types flous ou les conflits d'interfaces lors de mises à jour de dépendances." },
+  { title: "Concevoir des formulaires multi-étapes dynamiques avec validation Zod", desc: "Intégrer des barres de progression et des règles de validation de champs strictes pour sécuriser l'enregistrement d'informations." },
+  { title: "Politiques de sécurité RLS (Row Level Security) sur Supabase", desc: "Verrouillez l'accès à vos données pour s'assurer qu'un utilisateur connecté ne puisse lire ou écrire que ses propres données." },
+  { title: "Création de fonctionnalités de recherche textuelle et de filtres facettés", desc: "Configurez des requêtes d'indexation complexes sous Supabase pour trier vos produits ou articles à la volée." },
+  { title: "Optimiser le SEO et intégrer des balises Meta dynamiques sur Lovable", desc: "Configurez l'indexation de vos pages de manière dynamique avec la gestion d'URLs d'aperçus enrichis (OpenGraph)." },
+  { title: "Configurer des webhooks de paiement et synchroniser l'état utilisateur", desc: "Mettez en place des écouteurs d'événements pour répercuter instantanément un achat validé dans l'activité de vos clients." },
+  { title: "L'évaluation finale de Certification d'Expert Lovable.dev & Full-Stack No-Code IA", desc: "Démontrez vos capacités à orchestrer du prototypage dynamique, de la gestion de base de données et de la mise en production d'élite." }
+];
+
+const veoExtraLessonsData = [
+  { title: "Paramétrage précis du grain de pellicule et des émulsions de caméras mythiques", desc: "Commandez l'esthétique organique des pellicules Kodak 35mm ou Lomography pour donner une âme vintage à vos rendus." },
+  { title: "Contrôle physique des dynamiques de fluides et collisions de particules", desc: "Découvrez les architectures de prompts spécifiques pour animer de l'eau, du feu, ou du sable de manière hyper-réaliste." },
+  { title: "Assurer la consistance d’un personnage sur plusieurs plans successifs", desc: "Appliquez les techniques d'ancrage textuel et de seed pour retrouver un même visage d'une scène à l'autre." },
+  { title: "Techniques avancées d’Inpainting pour modifier un objet en mouvement", desc: "Masquez précisément une zone écran pour substituer un vêtement ou ajouter des éléments fantastiques à la scène." },
+  { title: "Création de publicités immersives en 3D stéréoscopique", desc: "Structurez des prompts pensés pour de la projection de profondeur spatiale destinée aux plateformes de réalité augmentée." },
+  { title: "Orchestrer de la synchronisation de mouvements labiaux et avatars parlants", desc: "Associez les sorties vocales réalistes de vos synthétiseurs audio aux expressions de visages simulées par Veo 3." },
+  { title: "Rapprochement de styles artistiques et animation hybride 2D/3D", desc: "Utilisez l'intelligence de transfert de style pour infuser des styles impressionnistes ou d'esquisse à vos vidéos physiques." },
+  { title: "Diriger l'In-Camera transitions et les plans séquences complexes", desc: "Enchaînez plusieurs actions fluides dans un seul plan continu spectaculaire sans recourir au montage de transition traditionnel." },
+  { title: "L'art du Story-Boarding automatisé avec Midjourney et Veo 3", desc: "Apprenez à concevoir une charte graphique fixe splendide puis à animer systématiquement chaque écran de présentation." },
+  { title: "Optimiser le rendu des visages et la psychologie des expressions humaines", desc: "Formulez les émotions humaines subtiles (mélancolie, étonnement furtif, joie partagée) afin d'élever l'impact de vos dialogues." },
+  { title: "Concevoir des ralentis de science-fiction stylisés (Bullet Time)", desc: "Simulez l'effet de caméra circulaire tournant autour d'un sujet figé dans le temps avec une restitution parfaite des reflets." },
+  { title: "Graphes et overlays graphiques dynamiques animés en direct", desc: "Intégrez des structures de données mouvantes et des widgets technologiques au sein de vos arrière-plans vidéo." },
+  { title: "Veille concurrentielle de spots publicitaires et réplication sémantique", desc: "Repérez les structures d'animation porteuses sur les réseaux et programmez des adaptations fidèles dans Veo 3." },
+  { title: "Simuler des environnements macroscopiques et microscopiques crédibles", desc: "Plongez dans l'infiniment petit en dirigeant la caméra de Veo le long de cellules ou d'architectures électroniques de pointe." },
+  { title: "Gestion de la lumière volumétrique et des conditions climatiques extrêmes", desc: "Apprivoisez l'interaction de tempêtes de neige, d'orages électriques, ou de couchers de soleil désertiques sur vos décors." },
+  { title: "Création de maquettes publicitaires complètes et intégration de packaging", desc: "Découvrez comment projeter des logos ou designs de produits statiques sur des objets saisis ou manipulés en vidéo." },
+  { title: "L'évaluation finale de Certification d'Expert Google Veo 3 & Vidéo Cinématique IA", desc: "Validez votre maîtrise supérieure de la direction artistique vidéo et de la simulation physique de Veo 3 pour décrocher votre diplôme." }
+];
+
+const adminRedactionExtraLessonsData = [
+  { title: "Orchestration de la neutralité de ton et du style impersonnel", desc: "Verrouillez les structures de phrases pour supprimer tout lyrisme ou adjectif subjectif de vos écrits administratifs." },
+  { title: "Adapter la structure hiérarchique : de la note de cadrage au rapport formel", desc: "Ajustez le formatage et le niveau de détail selon l'échelon du destinataire de votre communication." },
+  { title: "Rédiger des réponses formelles aux recours gracieux et contentieux", desc: "Structurez des argumentations s'appuyant sur des textes réglementaires pour asseoir vos positions." },
+  { title: "Automatiser les réponses types courantes aux réclamations des usagers", desc: "Créez des canevas de courriers de réponse chaleureux mais fermes, respectant la charte de service." },
+  { title: "Reformuler des documents denses en langage clair et accessible aux usagers", desc: "Appliquez les chartes étatiques de simplification du langage administratif pour être compris de tous." },
+  { title: "Sécuriser les formulations juridiques et éviter les clauses abusives ou ambiguës", desc: "Sollicitez un examen critique de vos ébauches de contrats ou conventions pour limiter les risques de litiges." },
+  { title: "Générer des modèles de notifications officielles conformes", desc: "Structurez vos courriers d'avertissement, de mise en demeure ou d'acceptation de congés complexes." },
+  { title: "Rédiger une synthèse de compte-rendu de conseil municipal", desc: "Transformez des débats oraux animés en une synthèse concise retraçant fidèlement les décisions votées." },
+  { title: "Repérer et synthétiser les points critiques d’un rapport d’audit", desc: "Demandez à l'IA de synthétiser des rapports de plusieurs dizaines de pages sous forme de table de risques." },
+  { title: "Concevoir des communiqués de presse institutionnels percutants", desc: "Apprenez à rédiger des annonces publiques claires pour rassurer les usagers face à un incident ou une réforme." },
+  { title: "Rédiger les clauses techniques d'un cahier des charges d'appel d'offres", desc: "Formulez des critères de sélection objectifs et neutres, évitant tout favoritisme involontaire." },
+  { title: "Maîtriser les formules protocolaires et le degré de déférence", desc: "Générez la salutation exacte requise pour une ambassade, un préfet ou un élu de premier plan." },
+  { title: "Rendre vos écrits administratifs inclusifs de manière harmonieuse", desc: "Trouvez le juste milieu pour assurer la parité sémantique sans alourdir la lecture de vos missives d'autorité." },
+  { title: "Traduction soignée et fidèle de directives administratives bilatérales", desc: "Adaptez des documents réglementaires ou des consignes sécurité dans plusieurs langues avec exactitude." },
+  { title: "Générer des fiches de poste administratives claires et attractives", desc: "Rédigez des descriptions de fonctions objectives et des grilles de critères d'évaluation de profils." },
+  { title: "Auditer la conformité RGPD de vos courriers administratifs types", desc: "Vérifiez que vos modèles n'exigent pas d'informations indésirables ou stockées hors de portée réglementaire." },
+  { title: "L'évaluation finale de Certification d'Expert en Rédaction Administrative par l'IA", desc: "Validez vos compétences sur les subtilités du style protocolaire pour décrocher votre certificat académique." }
+];
+
 const viralVideoAudioExtraLessonsData = [
   { title: "Génération de scripts de vidéos courtes (Reels/TikTok/Shorts) optimisés pour la rétention", desc: "Commandez à l'IA d'intercaler des hooks d'une puissance maximale toutes les 3 secondes pour fidéliser instantanément l'attention." },
   { title: "Synchroniser automatiquement le son et l'image à l'aide de CapCut assisté par l'IA", desc: "Profitez des algorithmes de détection automatique des beats de fond pour caler vos clips de manière rythmée." },
@@ -1112,7 +1707,7 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
@@ -1256,6 +1851,83 @@ export const COURSES: Course[] = [
     estimatedHours: 15,
     totalLessons: 20,
     lessons: generateCourseLessons("viral_video_audio", baseViralVideoAudioLessons, viralVideoAudioExtraLessonsData, 20)
+  },
+  {
+    id: "grok_mastery",
+    title: "Cours Complet Grok.ai : Dompter Grok en 20 Modules",
+    category: "ai",
+    description: "Dominez Grok 3 et Flux.1 de xAI : recherche en temps réel connectée au réseau social X, mode Reasoning super-calculateur de pensée intermédiaire, et génération d'images avec Flux d'une perfection anatomique.",
+    iconName: "Cpu",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("grok_mastery", baseGrokLessons, grokExtraLessonsData, 20)
+  },
+  {
+    id: "copilot_mastery",
+    title: "Cours Complet Microsoft Copilot.ia : Dominez Copilot en 20 Modules",
+    category: "ai",
+    description: "Devenez un expert de Microsoft Copilot : intégration profonde avec Windows 11 et la suite Office 365 (Word, Excel, PowerPoint, Outlook), création de Copilot GPTs personnalisés avec vos propres connaissances, et collaboration intelligente.",
+    iconName: "Cpu",
+    difficulty: "Intermediate",
+    estimatedHours: 12,
+    totalLessons: 20,
+    lessons: generateCourseLessons("copilot_mastery", baseCopilotLessons, copilotExtraLessonsData, 20)
+  },
+  {
+    id: "manus_mastery",
+    title: "Cours Complet Manus.ia : Dominez Manus en 20 Modules",
+    category: "ai",
+    description: "Plongez au cœur de l'agent d'action autonome Manus.ai. Maîtrisez la délégation de recherches de marché massives, l'exploration du web interactive avec vision sémantique, le codage automatique en sandbox, et l'orchestration multi-agents complexes.",
+    iconName: "Cpu",
+    difficulty: "Advanced",
+    estimatedHours: 14,
+    totalLessons: 20,
+    lessons: generateCourseLessons("manus_mastery", baseManusLessons, manusExtraLessonsData, 20)
+  },
+  {
+    id: "perplexity_mastery",
+    title: "Cours Complet Perplexity.ia : Dominez la Recherche Cognitive en 20 Modules",
+    category: "ai",
+    description: "Devenez un as de la recherche d'information sur le web grâce à Perplexity.ai. Maîtrisez les requêtes Pro Search complexes, l'indexation de documents, la veille sémantique via les collections privées et l'éditeur de rapports publics Pages.",
+    iconName: "Search",
+    difficulty: "Intermediate",
+    estimatedHours: 10,
+    totalLessons: 20,
+    lessons: generateCourseLessons("perplexity_mastery", basePerplexityLessons, perplexityExtraLessonsData, 20)
+  },
+  {
+    id: "admin_redaction",
+    title: "IA & Rédaction Administrative : Dominez l'Écrit Institutionnel en 20 Modules",
+    category: "ai",
+    description: "Maîtrisez l’usage de l’intelligence artificielle appliquée aux exigences et protocoles de l’écrit administratif. Rédigez des courriers, notes de synthèse, comptes-rendus et recours juridiquement solides, précis et neutres.",
+    iconName: "FileText",
+    difficulty: "Intermediate",
+    estimatedHours: 12,
+    totalLessons: 20,
+    lessons: generateCourseLessons("admin_redaction", baseAdminRedactionLessons, adminRedactionExtraLessonsData, 20)
+  },
+  {
+    id: "veo_mastery",
+    title: "Cours Complet Google Veo 3 : Dominez la Vidéo Cinématique en 20 Modules",
+    category: "ai",
+    description: "Plongez au cœur de Google Veo 3, le modèle de génération vidéo de Google. Maîtrisez le prompting cinématique de pointe, le contrôle caméra sémantique, la cohérence des personnages et les simulations physiques d'eau ou de feu.",
+    iconName: "Video",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("veo_mastery", baseVeoLessons, veoExtraLessonsData, 20)
+  },
+  {
+    id: "lovable_mastery",
+    title: "Cours Complet Lovable.dev : Dominez le Développement No-Code IA en 20 Modules",
+    category: "ai",
+    description: "Devenez un créateur d'applications d'élite en éco-conduisant Lovable.dev. Maîtrisez la génération d’applications full-stack, l'intégration Supabase PostgreSQL, la gestion des paiements Stripe et le déploiement sécurisé en production.",
+    iconName: "Globe",
+    difficulty: "Advanced",
+    estimatedHours: 14,
+    totalLessons: 20,
+    lessons: generateCourseLessons("lovable_mastery", baseLovableLessons, lovableExtraLessonsData, 20)
   },
   {
     id: "prompt_eng",

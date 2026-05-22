@@ -82,6 +82,41 @@ const LOCAL_TRANS = {
         "Clonage vocal hyper-réaliste et expressif via onze curseurs ElevenLabs",
         "Composition orchestrale, sound design et mixage natif par l'IA"
       ],
+      grok_mastery: [
+        "Recherche de données d'opinion chaude en temps réel via le flux X",
+        "Maîtrise du mode de pensée profonde intermédiaire de Grok-3 (Reasoning)",
+        "Création visuelle d'illustrations d'exception Flux.1 dotées de texte lisible"
+      ],
+      copilot_mastery: [
+        "Intégration et automatisation profonde avec Microsoft Word, Excel et PowerPoint",
+        "Conception de Copilot GPTs personnalisés avec des bases de connaissances (RAG)",
+        "Pilotage système et orchestration des flux de productivité via Windows 11 Copilot"
+      ],
+      manus_mastery: [
+        "Maîtrise complète de l'agent autonome d'action Manus.ai et du Computer Use",
+        "Délégation autonome de l'extraction de leads stratégiques et extraction de données web",
+        "Conception, test et débogage d'applications frontend en environnement sécurisé Sandbox"
+      ],
+      perplexity_mastery: [
+        "Formulation experte de requêtes de ciblage complexes avec le mode Pro Search",
+        "Filtres avancés et isolation thématique via les modes Focus (Academic, Code, Discussions)",
+        "Création d'articles structurés Pages et administration de Collections de veille privées"
+      ],
+      admin_redaction: [
+        "Maîtrise du style administratif (neutralité, précision, formulation impersonnelle)",
+        "Conception de notes de synthèse et de comptes-rendus officiels irréprochables",
+        "Orchestration de réponses formelles sécurisées aux réclamations et recours légaux"
+      ],
+      veo_mastery: [
+        "Ingénierie de prompts cinématiques avancés et contrôle de cadrage sémantique",
+        "Maîtrise de l'inpainting, de l'outpainting et de l'animation d'assets fixes",
+        "Simulation hyper-réaliste de physiques environnementales complexes et éclairages"
+      ],
+      lovable_mastery: [
+        "Génération d'applications full-stack performantes et esthétiques en langage naturel",
+        "Intégration d'architectures relationnelles Postgres et politiques RLS Supabase",
+        "Connexion sécurisée d'API tierces, Stripe Checkout et déploiement en production"
+      ],
       prompt_eng: [
         "Formulation de prompt d'élite (Rôle, Tâche, Contexte, Contraintes)",
         "Modèles d'apprentissage par l'exemple (Few-Shot Prompting)",
@@ -170,6 +205,41 @@ const LOCAL_TRANS = {
         "Hyper-realistic voice cloning & dramatic line voicing (ElevenLabs)",
         "Suno orchestral composition, realistic foley effects & audio mixing"
       ],
+      grok_mastery: [
+        "Real-time trending public sentiment sourcing via the live X stream",
+        "Expertise in Grok-3 intermediate deep thought process reasoning logs",
+        "High-fidelity visual design & typography using native Flux.1 engines"
+      ],
+      copilot_mastery: [
+        "Deep integration and office task automation with Word, Excel, and PowerPoint",
+        "Custom Copilot GPT orchestration incorporating custom knowledge bases (RAG)",
+        "Direct Windows 11 machine automation and efficient M365 email management"
+      ],
+      manus_mastery: [
+        "Complete mastery of the Manus.ai autonomous action agent and Computer Use capabilities",
+        "Autonomous delegation of strategic lead sourcing and cognitive web data scraping",
+        "Engineering, verifying, and debugging sandbox web applications directly through natural speech"
+      ],
+      perplexity_mastery: [
+        "Expert prompting across Pro Search guided execution pathways",
+        "Advanced isolation filtering through Academic, Code, and Discussion Focus streams",
+        "Transforming raw answers into Page layouts and organizing private Research Collections"
+      ],
+      admin_redaction: [
+        "Executive style framing adhering to absolute neutrality, protocol, and clarity",
+        "Synthesizing scattered meeting notes into flawless summaries and official records",
+        "Resolving public or corporate grievances with legally sound responsive templates"
+      ],
+      veo_mastery: [
+        "High-fidelity cinematic prompt engineering and semantic camera movement control",
+        "Mastering inpainting, outpainting, image-to-video editing, and clips expansion",
+        "Realistic physical simulation of environmental fluids, lightning, and atmospheric conditions"
+      ],
+      lovable_mastery: [
+        "Generating beautiful and performant full-stack apps using natural language prompting",
+        "Integrating relational Postgres databases and Row Level Security on Supabase",
+        "Connecting Stripe payments gateways, external APIs, and seamless production deployments"
+      ],
       prompt_eng: [
         "Elite Prompt Framing (Role, Mission, Context, Constraints)",
         "Few-Shot Exemplar Structural Engineering models",
@@ -236,6 +306,27 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
     if (course.id === "viral_video_audio") {
       return records.viral_video_audio;
     }
+    if (course.id === "grok_mastery") {
+      return records.grok_mastery;
+    }
+    if (course.id === "copilot_mastery") {
+      return records.copilot_mastery;
+    }
+    if (course.id === "manus_mastery") {
+      return records.manus_mastery;
+    }
+    if (course.id === "perplexity_mastery") {
+      return records.perplexity_mastery;
+    }
+    if (course.id === "admin_redaction") {
+      return records.admin_redaction;
+    }
+    if (course.id === "veo_mastery") {
+      return records.veo_mastery;
+    }
+    if (course.id === "lovable_mastery") {
+      return records.lovable_mastery;
+    }
     if (course.id === "prompt_eng") {
       return records.prompt_eng;
     }
@@ -278,6 +369,17 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
       {/* Print Style Injector */}
       <style>{`
         @media print {
+          @page {
+            size: A4 landscape;
+            margin: 0;
+          }
+          body {
+            margin: 0;
+            padding: 0;
+            background: none;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
           body * {
             visibility: hidden;
           }
@@ -285,18 +387,22 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             visibility: visible;
           }
           .printable-cert-area {
-            position: absolute;
+            position: fixed;
             left: 0;
             top: 0;
-            width: 100% !important;
-            height: auto !important;
+            width: 297mm !important;
+            height: 210mm !important;
             margin: 0 !important;
-            padding: 0 !important;
+            padding: 24mm 32mm !important;
             border: none !important;
-            background: ${certStyle === "classic" ? "#fbfbf8" : "#020617"} !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            background: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
+            background-color: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             color: ${certStyle === "classic" ? "#0f172a" : "#ffffff"} !important;
             print-color-adjust: exact;
             -webkit-print-color-adjust: exact;
+            box-sizing: border-box !important;
           }
           .no-print {
             display: none !important;
@@ -538,7 +644,8 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             </div>
 
             {/* Bottom Row - Signatures and Certificate Verification Seal */}
-            <div className="w-full grid grid-cols-3 items-end gap-2 mt-4 pt-4 border-t border-slate-800/20">
+            {/* Bottom Row - Signatures, QR Code and Certificate Verification Seal */}
+            <div className="w-full grid grid-cols-4 items-end gap-2 mt-4 pt-4 border-t border-slate-800/20">
               {/* Date & verification ID */}
               <div className="text-left font-mono">
                 <div className="text-[7px] text-slate-500 uppercase tracking-widest">{t("issuedOn")}</div>
@@ -547,17 +654,30 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                 <div className={`text-[8.5px] font-bold tracking-tight opacity-75 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
               </div>
 
+              {/* QR Code Column */}
+              <div className="flex flex-col items-center justify-center">
+                <div className="bg-white p-1 rounded border border-slate-200 shadow-sm shrink-0 flex items-center justify-center">
+                  <img 
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=64x64&color=020617&data=${encodeURIComponent(window.location.origin + "?verify=" + certId)}`} 
+                    alt="Verification QR Code" 
+                    className="w-11 h-11"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className={`text-[6.5px] font-mono tracking-wider mt-1.5 uppercase ${certStyle === "classic" ? "text-slate-550" : "text-slate-400"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
+              </div>
+
               {/* Gold Verification Badge / Seal */}
               <div className="flex flex-col items-center justify-center relative">
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center p-2 relative shadow-lg ${
+                <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center p-2 relative shadow-lg ${
                   certStyle === "classic" 
                     ? "bg-amber-600 text-amber-50 outline-double outline-2 outline-offset-2 outline-amber-600" 
                     : "bg-emerald-500 text-slate-950 outline-dashed outline-2 outline-offset-2 outline-emerald-500"
                 }`}>
-                  <Award className="w-8 h-8 animate-pulse" />
+                  <Award className="w-6 h-6 lg:w-8 lg:h-8 animate-pulse" />
                   {/* Decorative golden ribbon underlay (CSS visual only) */}
-                  <div className="absolute top-12 left-2 w-2 h-6 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
-                  <div className="absolute top-12 right-2 w-2 h-6 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
+                  <div className="absolute top-10 lg:top-12 left-1.5 w-1.5 lg:w-2 h-4 lg:h-6 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
+                  <div className="absolute top-10 lg:top-12 right-1.5 w-1.5 lg:w-2 h-4 lg:h-6 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
                 </div>
                 <span className={`text-[7px] font-mono tracking-widest font-bold mt-2 uppercase ${certStyle === "classic" ? "text-amber-800" : "text-slate-400"}`}>{t("sealLabel")}</span>
               </div>

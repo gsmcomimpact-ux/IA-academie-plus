@@ -866,6 +866,399 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
+  grok_mastery: {
+    title: "Complete Grok.ai Course: Mastering Grok in 20 Modules",
+    description: "Dominate Grok 3 and Flux.1 by xAI: real-time search connected to the X social network, deep reasoning thinking engine with raw intermediate thoughts, and anatomically perfect image synthesis via Flux.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "gk_l1",
+        title: "Introduction to Grok.ai & Real-Time Search on X",
+        description: "Understand the xAI ecosystem, the exclusive historical integration with the live X platform data stream, and how live search queries operate.",
+        steps: [
+          "Grok is the advanced language model developed by xAI, the artificial intelligence company founded by Elon Musk.",
+          "Grok's primary competitive advantage is its exclusive, real-time access to public posts, breaking news, and trending conversations on the X platform.",
+          "The 'Fun' mode (satirical, humorous) and 'Normal' mode (factual) allow you to calibrate the temperament and stance of the generated responses.",
+          "Using Grok for trending global topics bypasses legacy search engines to synthesize current perspectives and timeline updates immediately."
+        ],
+        activityInstructions: "Compose a prompt instructing Grok to audit raw feedback and sentiment on X concerning a trending technology breakthrough, filtering for constructiveness.",
+        scenario: "Real-time trending public opinion sentiment auditing.",
+        audience: "Social media managers, marketing analysts, and news writers.",
+        goal: "Isolate recurring developer feedback from live X streams."
+      },
+      {
+        id: "gk_l2",
+        title: "Mastering Grok-3 Deep Reasoning Models",
+        description: "Learn to utilize the deep thinking mode (<think>) of Grok-3 to dismantle mathematical, programmatic, or highly complex logic problems.",
+        steps: [
+          "The latest Grok-3 models integrate deep reasoning capabilities, triggering extensive step-by-step thinking strategies before generating answers.",
+          "An expandable, live intermediate thought container lets you audit and debug the model's deductive chain of thought before the final response is shown.",
+          "Highly specialized in engineering, math, and logical architecture, Grok-3 scores at doctoral levels on programming and logical benchmarks.",
+          "You can apply strict target parameters and output directions to shape Grok's logical execution without limiting its reasoning paths."
+        ],
+        quizQuestion: "What is the primary visual and structural feature that sets the Grok-3 Reasoning mode apart from standard chat modes?",
+        quizOptions: [
+          "The display of a dedicated intermediate thought container showcasing the step-by-step logical chain of reason.",
+          "A mandatory increase in general timeline ads displayed on X.",
+          "Completely shutting down all active internet and web connections.",
+          "Forcing all responses to be translated and outputted in Latin."
+        ],
+        explanation: "Perfect! Grok-3's Reasoning mode processes an extensive step-by-step raw chain of thought beforehand, shedding transparent light on its logical deductions."
+      },
+      {
+        id: "gk_l3",
+        title: "High-Fidelity Generation with the Grok Art Engine (Flux)",
+        description: "Take control of the state-of-the-art cinematic image generator integrated directly within Grok, powered by the Flux.1 architecture.",
+        steps: [
+          "Grok natively interfaces with Flux, an elite visual generation system developed by Black Forest Labs.",
+          "Flux is highly celebrated for its flawless anatomy rendering, photorealistic materials, and pristine integration of legible written text within the visuals.",
+          "Excellent Flux prompts describe cinematic aspect ratios, focal apertures, textured surfaces, film grain, and atmospheric lighting (e.g., golden hour).",
+          "You can prompt Grok to iteratively modify an art asset by pointing out specific elements to update or alter in next generations.",
+          "Formulate an ultra-detailed cinematic concept prompt and utilize spatial layers to guarantee optimal layout placement."
+        ],
+        activityInstructions: "Draft a cinematic graphic design prompt for Flux via Grok to render a highly realistic urban portrait incorporating perfectly legible text written on a physical sign.",
+        scenario: "Prismatic Flux photorealism and typography branding design.",
+        audience: "Art directors, graphic managers, and visual content creators.",
+        goal: "Generate a brick storefront with a highly legible name plate."
+      }
+    ]
+  },
+  copilot_mastery: {
+    title: "Complete Microsoft Copilot Course: Master Copilot in 20 Modules",
+    description: "Become a Microsoft Copilot expert: deep integration with Windows 11 and the Office 365 suite (Word, Excel, PowerPoint, Outlook), custom Copilot GPTs built with your own data, and intelligent workspace collaboration.",
+    difficulty: "Intermediate",
+    lessons: [
+      {
+        id: "co_l1",
+        title: "Introduction to Microsoft Copilot & Windows/Office Integration",
+        description: "Understand the general architecture of Microsoft Copilot, its integration with Bing Search and Windows 11 systems to automate digital tasks.",
+        steps: [
+          "Microsoft Copilot is Microsoft's advanced artificial intelligence companion, powered by OpenAI's elite language models (GPT-4o).",
+          "Leveraging public Bing Search integration, Copilot delivers real-time factual answers with transparent clickable web source citations.",
+          "Native integration inside Windows 11 lets you manage hardware settings, launch applications, and summarize screen content using quick hotkeys.",
+          "Copilot enforces strict Enterprise Data Protection (EDP) standards, ensuring your private organization files are never stored or used to train public models."
+        ],
+        activityInstructions: "Draft a professional search and research prompt to ask Copilot for a clear overview of the 3 latest Microsoft announcements with reliable URLs.",
+        scenario: "Connected search and real-time news retrieval on Copilot.",
+        audience: "Professionals, researchers, and general digital workers.",
+        goal: "Isolate latest ecosystem updates with clear sources."
+      },
+      {
+        id: "co_l2",
+        title: "Mastering Copilot Pro and Custom Copilot GPTs",
+        description: "Discover the added value of the Copilot Pro subscription and learn how to construct custom tailored virtual assistants (Copilot GPTs).",
+        steps: [
+          "Copilot Pro offers premium prioritized access to the latest GPT models from OpenAI, securing fast response times even during peak hours.",
+          "Copilot GPTs allow you to design custom versions of Copilot tailored to specific tasks or domains (e.g., Code reviewer, Writing coach).",
+          "You can configure your Copilot GPT by uploading private reference files (PDF, docx) to serve as a custom grounded knowledge base (RAG).",
+          "Once completed, your custom Copilot GPT can be shared privately, with your organization workspace, or shared publicly."
+        ],
+        quizQuestion: "What is the primary technical and productive benefit of creating a custom Copilot GPT?",
+        quizOptions: [
+          "Building a specialized assistant pre-configured with dedicated instructions and loaded knowledge reference files for specific recurring tasks.",
+          "Increasing local hardware internet download and upload speed by up to 50%.",
+          "Automatically generating valid Windows activation licenses for free.",
+          "Replacing all Microsoft Office software licenses with automated VBA macros."
+        ],
+        explanation: "Excellent! Custom Copilot GPTs eliminate the friction of restating templates and context, serving as persistent specialized workspaces."
+      },
+      {
+        id: "co_l3",
+        title: "Ultimate Productivity: Copilot in Word, Excel, and PowerPoint",
+        description: "Learn to synthesize pristine corporate documents, model spreadsheet calculations, and generate visually rich slides inside the Office suite.",
+        steps: [
+          "In Microsoft Word, Copilot can write complete initial content drafts, rewrite select paragraphs, and summarize massive 50-page reports.",
+          "In PowerPoint, you can instantly render a beautifully designed 10-slide draft deck from a simple text outline or word document.",
+          "In Excel, Copilot helps analyze financial sheets, formulate complex cellular formulas, and generate rich interactive chart visualizations.",
+          "Providing structured prompts with rich context and boundaries ensures remarkably high output precision on your business worksheets."
+        ],
+        activityInstructions: "Compose a prompt instructing Copilot in Excel to write a multi-variable dynamic formula to compute tiered sales bonuses.",
+        scenario: "Constructing error-free advanced spreadsheet functions.",
+        audience: "Accountants, data analysts, and project managers.",
+        goal: "Output a nested Excel formula calculating dynamic percentages."
+      }
+    ]
+  },
+  manus_mastery: {
+    title: "Complete Manus.ai Course: Master Manus in 20 Modules",
+    description: "Dive deep into the autonomous action agent Manus.ai. Master delegating massive market research, interactive web exploration with semantic computer-use vision, automatic sandbox coding, and complex multi-agent orchestrations.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "mn_l1",
+        title: "Introduction to Manus.ai & The Action Agent Revolution",
+        description: "Discover how the revolutionary Computer Use architecture of Manus.ai lets it control a full web browser and operating system to execute complex digital workflows.",
+        steps: [
+          "Manus.ai goes beyond simple text generation: it is an action agent capable of clicking, scrolling, and entering inputs across any website.",
+          "The 'Computer Use' concept allows the AI to interact with graphical interfaces exactly like a human operator.",
+          "Manus possesses an isolated execution sandbox where it can run code, install packages, and test scripts autonomously.",
+          "Security is guaranteed by strict agent limits and continuous secure video logging of matches and inputs."
+        ],
+        activityInstructions: "Write an automation prompt asking Manus to browse a niche e-commerce site to extract and inventory top sellers.",
+        scenario: "Orchestrating autonomous agents under Manus.ai.",
+        audience: "Growth hackers, operations managers, and automation engineers.",
+        goal: "Inventory top sellers with precise data points."
+      },
+      {
+        id: "mn_l2",
+        title: "Mastering Autonomous Fact Finding & Lead Generation",
+        description: "Learn to instruct Manus.ai agents to perform in-depth market research, harvest key professional contacts, and enrich pipelines.",
+        steps: [
+          "Manus.ai can browse LinkedIn, Google Maps, local registries, and other directories simultaneously to compile and cross-reference leads.",
+          "It manages site redirects, cookie banners, sign-up popups, and advanced search criteria autonomously.",
+          "Unlike static scrapers, Manus understands visual and semantic page context, adapting seamlessly to layouts.",
+          "You can refine search directions live by watching its task stream video feed."
+        ],
+        quizQuestion: "Why is Manus.ai fundamentally superior to traditional scraping software?",
+        quizOptions: [
+          "It utilizes intelligent computer vision and adapts dynamically to layout or page transitions.",
+          "It works entirely offline with zero latency.",
+          "It automatically overrides passwords of protected corporate servers.",
+          "It does not require any computing power or tokens."
+        ],
+        explanation: "Correct! Manus's computer vision and semantic adaptability bypass traditional anti-scraping blocks and brittle webpage structures."
+      },
+      {
+        id: "mn_l3",
+        title: "Rapid Prototyping & Code Deployment via Manus Sandbox",
+        description: "Discover how to harness Manus.ai to build, test, debug, and deploy full lightweight frontend applications within its secure sandbox.",
+        steps: [
+          "Within its terminal, Manus can initiate React, Node.js, and Python projects on the fly.",
+          "The agent is smart enough to read build/test error logs and apply corrective patches recursively.",
+          "It can deploy final functional code to temporary servers and share live working links with you.",
+          "You can speak or text directly to the agent to change colors, styles, or add complex interactive features."
+        ],
+        activityInstructions: "Compose a prompt instructing Manus to design an interactive currency converter in HTML/JS and test it.",
+        scenario: "Building frontend applications with automated action agents.",
+        audience: "Founders, product designers, and web developers.",
+        goal: "A functional, localized currency converter webpage."
+      }
+    ]
+  },
+  perplexity_mastery: {
+    title: "Complete Perplexity.ai Course: Master Cognitive Search in 20 Modules",
+    description: "Deepen your factual investigation, semantic analysis, and market research skills on Perplexity.ai. Master the intricacies of Pro Search multi-step paths, custom Focus categories, private data ingestion, and building professional Web Pages.",
+    difficulty: "Intermediate",
+    lessons: [
+      {
+        id: "px_l1",
+        title: "Introduction to Perplexity.ai & Anatomy of Conversational Search",
+        description: "Explore the core engine architecture of Perplexity.ai, learning how it merges dynamic query routing with real-time web indexation and automated summarization.",
+        steps: [
+          "Perplexity.ai synthesizes real-time knowledge directly, backed by transparent, clickable, and structured inline source citations.",
+          "Its semantic parser isolates the most trustworthy portions of top webpages, feeding them to state-of-the-art LLMs.",
+          "Clickable citations ensure complete factual integrity, enabling rapid validation and reducing context alignment errors.",
+          "Collections allow you to save research streams and share comprehensive files with your team or organization."
+        ],
+        activityInstructions: "State a strategic prompt asking Perplexity to outline three breakthrough biotech updates during this exact year.",
+        scenario: "Structuring robust scientific fact-finding missions.",
+        audience: "Researchers, content creators, and corporate analysts.",
+        goal: "Isolate factual, peer-reviewed biotech milestones with clickable links."
+      },
+      {
+        id: "px_l2",
+        title: "Modes Focus, Pro Search, and AI Copilot",
+        description: "Master focus restrictions (Web, Academic, YouTube, Discussions/Reddit, Writing) and trigger multi-step guided research using Pro Search engines.",
+        steps: [
+          "Pro Search behaves like a professional assistant, requesting clarifications and executing multiple queries in parallel to deliver deep responses.",
+          "The Academic focus isolates findings to peer-reviewed scholarly files like those found in PubMed, arXiv, and Google Scholar directories.",
+          "The Writing focus disables live web results, ensuring quick text-only tasks with no hallucinations or search background noise.",
+          "The Discussions focus analyzes threads and conversations representing public forums and Reddit to deliver raw sentiment reports."
+        ],
+        quizQuestion: "What primary execution benefit does a user gain by utilizing the Pro Search mode?",
+        quizOptions: [
+          "It prompts for clarification questions and spawns multi-stage parallel searches to compile in-depth information.",
+          "It filters out official academic papers to favor rumors and word-of-mouth reports.",
+          "It increases local bandwidth and router capacity by more than 50%.",
+          "It forces responses to translate natively into a retro terminal design scheme."
+        ],
+        explanation: "Fantastic! Pro Search asks clarifying questions first to ensure target search results align exactly with what you intended to find."
+      },
+      {
+        id: "px_l3",
+        title: "Orchestrating Knowledge bases using Collections & Pages",
+        description: "Convert chaotic search queries into beautifully presented public web directories via Perplexity Pages, and customize private workspace directions using Collections.",
+        steps: [
+          "Perplexity Pages automatically transforms an active thread into a professionally structured and styled article with a single click.",
+          "Collections allow you to group relative materials and load custom system guidelines specific to that search pipeline.",
+          "You can augment your public Pages manually by adding text blocks, editing generated artwork, and dragging in PDF assets.",
+          "Public URLs enable seamless distribution of refined competitive analyses directly to your clients."
+        ],
+        activityInstructions: "Compose custom instructions for a FinTech collection to ensure replies are formatted cleanly into structured reports.",
+        scenario: "Implementing workspace customization with distinct guidelines.",
+        audience: "Product managers, strategy leads, and system administrators.",
+        goal: "Clear system guidelines that enforce formatting rules for all future queries."
+      }
+    ]
+  },
+  admin_redaction: {
+    title: "Complete AI for Administrative Writing Course: Master Institutional Prose in 20 Modules",
+    description: "Master applying generative artificial intelligence to the precise requirements of administrative prose. Design professional letters, synthesis notes, formal Circular reports, compliant templates, and legally sound replies.",
+    difficulty: "Intermediate",
+    lessons: [
+      {
+        id: "ad_l1",
+        title: "Introduction to AI-Assisted Administrative Writing & General Guidelines",
+        description: "Understand the core concepts of administrative tone (neutrality, objectivity, impersonal voice, politeness) and learn how to constrain AI within these strict boundaries.",
+        steps: [
+          "Administrative prose adheres to strict codes: the tone must remain objective and impersonal, while greetings must precisely match hierarchical protocol.",
+          "Generative AI is naturally conversational, dramatic, or marketing-focused. You must restrict its style using powerful negative constraints.",
+          "Always state the target audience of the document (public entities, citizens, company boards) and list the expected formal salutations.",
+          "A well-framed administrative instruction defines the precise role (e.g. 'Public Inquiries Specialist'), the core objective, and bans hyperbolic verbs or subjective views."
+        ],
+        activityInstructions: "Draft a restricted instruction asking the AI to compose a formal letter declining a funding request, stating the regulatory justifications politely.",
+        scenario: "Constraining AI tone to absolute formal standards.",
+        audience: "State employees, corporate administrators, and operations directors.",
+        goal: "A neutral, regulatory letter draft without subjective wording."
+      },
+      {
+        id: "ad_l2",
+        title: "Drafting Flawless Professional Emails and Memo Summaries",
+        description: "Learn how to structure internal circular directives, concise briefing notes, and executive summaries from scattered pieces of data.",
+        steps: [
+          "An executive briefing memo must be structured, logically ordered, and highlight key bullet point decisions immediately for senior leaders.",
+          "When issuing internal notices or directives, AI helps polish sentences to maintain high institutional authority while remaining constructive.",
+          "Harnessing AI to correct sentence structures and uplift the vocabulary level guarantees a pristine, polished outcome.",
+          "By providing disorganized notes, you can ask the AI to re-template the circular using standard divisions: Context, Findings, Board Decisions."
+        ],
+        quizQuestion: "Why is AI highly effective for correcting and refining disciplinary notice drafts?",
+        quizOptions: [
+          "It filters out emotional phrasing from first drafts and ensures a polite, fact-based, and legally solid template.",
+          "It chooses the disciplinary sanction automatically for you.",
+          "It adds poetic metaphors to make the notification longer.",
+          "It forwards the document to inspectors automatically without re-checking."
+        ],
+        explanation: "Excellent! AI excels at filtering emotional weight from a first draft, returning an objective, legally sound, and factual correspondence."
+      },
+      {
+        id: "ad_l3",
+        title: "Managing Public Grievances and Designing Official Records",
+        description: "Learn how to defuse escalation when drafting responses to unhappy citizens or customers and structure formal minute summaries.",
+        steps: [
+          "When replying to a grievance, AI helps draft respectful responses without making unauthorized exceptions to policies.",
+          "For Council circulars, meetings, or board minutes, submit raw verbal transcripts to AI to generate pristine, structured summaries.",
+          "Utilizing repeatable styles in prompts enforces a consistent, unified database across different municipal files.",
+          "Ensure absolute confidentiality and avoid adding personally identifiable details when prompting AI to remain RGPD compliant."
+        ],
+        activityInstructions: "Write a prompt to transform a chaotic set of meeting notes into a professional, structured minutes template.",
+        scenario: "Converting unorganized transcripts into structured minute notes.",
+        audience: "Council clerks, office managers, and strategic consultants.",
+        goal: "A structured meeting report featuring agenda points and concrete resolutions."
+      }
+    ]
+  },
+  veo_mastery: {
+    title: "Complete Google Veo 3 Course: Master Cinematic Video in 20 Modules",
+    description: "Deep dive into Google Veo 3, Google's breakthrough generative video model. Master advanced cinematic prompting, semantic camera motion control, consistent actors continuity, and environmental physics simulations.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "ve_l1",
+        title: "Introduction to Google Veo 3 & The Generative Video Revolution",
+        description: "Explore Google's flagship video model. Understand physical simulation engines, realistic render fidelity, and temporal semantic alignment.",
+        steps: [
+          "Google Veo 3 pushes video generation boundaries by accurately modeling physical interactions for seamless organic movements.",
+          "It handles complex, multi-sentence prompts to ensure absolute adherence to your chosen director's style guidelines.",
+          "Veo's temporal-spatial attention mechanism prevents character mutations and scene distortions even during long sweeps.",
+          "In-depth pixel understanding lets you blend cinematic lighting with precise textures, smoke, water, and atmospheric motion."
+        ],
+        activityInstructions: "Compose an ultra-descriptive cinematic prompt illustrating a hiker walking through a foggy pine forest at sunrise to test environmental rendering.",
+        scenario: "Prompting complex physical environments in Google Veo 3.",
+        audience: "Art directors, video editors, and prompt engineers.",
+        goal: "A physical atmospheric camera move prompt."
+      },
+      {
+        id: "ve_l2",
+        title: "Cinematic Grammar and Camera Movements in Google Veo",
+        description: "Learn to command virtual cameras sémantiquement to rhythm and pace your video clips like a seasoned Director of Photography.",
+        steps: [
+          "To instruct Veo clearly, utilize professional filmmaking terms (e.g., zoom, pan, tilt, dolly, jib crane, crane sweeps, tracking shots).",
+          "Specifying relative lens guidelines (such as 35mm, wide-angle 18mm, anamorphic lenses, high depth of field) restructures global perspective scale.",
+          "Lighting controls (like key lights, film noir high contrast, reactive neon lights, soft box atmospheres) instantly dictate visual mood.",
+          "You can modify visual speed by combining temporal keywords like timelapse, slow-motion, or high frame rate cinematic 120fps."
+        ],
+        quizQuestion: "Which technical prompt addition instructs Veo to simulate a physical lens warp zoom at high speed?",
+        quizOptions: [
+          "A fast zip zoom instruction paired with depth-of-field lens descriptions.",
+          "A static cross-dissolve stroboscopic effect parameter.",
+          "An orthogonal perspective rendering instruction without lens depth.",
+          "An outpainting seed extension parameter."
+        ],
+        explanation: "Incredible choice! Combining zip zoom commands with exact lens guidelines triggers high-fidelity physical camera simulations in Veo 3."
+      },
+      {
+        id: "ve_l3",
+        title: "Image-to-Video, Inpainting, and Cinematic Outpainting Extensions",
+        description: "Master character continuity mechanics and animate static reference assets using Veo's inpainting/outpainting tools.",
+        steps: [
+          "Image-to-video capabilities allow you to upload beautiful high-resolution assets and animate them smoothly while preserving all details.",
+          "Inpainting acts as a powerful eraser to edit or replace moving objects in a video clip without restarting your entire project.",
+          "Use Veo's outpainting boundaries to extend portrait clips (9:16) into high-fidelity horizontal landscape frames (2.39:1 anamorphique).",
+          "Temporal duration extensions add precious extra screen-time to a frame, smoothly continuing action sequences without visual cuts."
+        ],
+        activityInstructions: "Design an outpainting prompt extending a drone shot of a misty ocean cliff to test seamless environment continuity.",
+        scenario: "Creating layout extensions and continuity in video scenes.",
+        audience: "Visual effects artists, marketing creatives, and film producers.",
+        goal: "An seamless outpainting workflow prompt."
+      }
+    ]
+  },
+  lovable_mastery: {
+    title: "Complete Lovable.dev Course: Master No-Code AI Web Development in 20 Modules",
+    description: "Deep dive into Lovable.dev, the gold standard of AI-driven application construction. Master high-fidelity UI prompting, relational Supabase databases, secure Stripe integrations, and robust custom deployments.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "lv_l1",
+        title: "Introduction to Lovable.dev & The Natural Language App Revolution",
+        description: "Explore the sheer power of Lovable.dev. Understand prompt-to-app engines, real-time code rendering, and iterative visual-semantic engineering.",
+        steps: [
+          "Lovable.dev merges cutting-edge large language models with a rich browser IDE to compile React, Tailwind, and TypeScript on the fly.",
+          "It parses complex feature descriptions to construct elegant, highly responsive interfaces automatically.",
+          "The interactive loop relies on the 'Prompt-Build-Verify' strategy to instantly debug and fine-tune UI layouts.",
+          "Both visual WYSIWYG manipulations and source code configurations work in complete bidirectional harmony."
+        ],
+        activityInstructions: "Compose a beautiful modular prompt specifying a clean SaaS goals-tracking dashboard with a modular sidebar and KPIs cards.",
+        scenario: "Interactive UI and core dashboard layout prompting in Lovable.",
+        audience: "Founders, web designers, and no-code developers.",
+        goal: "A beautiful responsive goals-focused dashboard prompt."
+      },
+      {
+        id: "lv_l2",
+        title: "Prompting High-Fidelity App Components & Supabase Integrations",
+        description: "Structure complex requests to implement multi-step forms and securely anchor a live relational back-end database.",
+        steps: [
+          "To enforce professional code quality, explicitly outline state handlers hook allocations and component splitting requirements.",
+          "One-click Supabase activation provisions a relational PostgreSQL host instantly mapped to your natural language specs.",
+          "You can safely write, fetch, modify, or delete persistent records simply by describing actions to the AI builder.",
+          "Lovable automatically sets up robust TypeScript declaration bindings for remote PostgreSQL tables on the fly."
+        ],
+        quizQuestion: "How does Lovable.dev implement database persistence for generated full-stack projects?",
+        quizOptions: [
+          "By automatically provisioning, binding, and querying a live Supabase PostgreSQL database purely via text instructions.",
+          "By loading records into volatile raw memory text files preserved inside the client computer cache.",
+          "By requiring the engineer to build and self-host a local SQL Server binary.",
+          "By preventing any server interaction outside the local web page canvas."
+        ],
+        explanation: "Brilliant answer! Lovable's direct integration with Supabase lets users define schemas and secure RLS policies without writing raw queries."
+      },
+      {
+        id: "lv_l3",
+        title: "Code Inspecting, Netlify Publishing & GitHub Continuous Delivery",
+        description: "Inspect generated files, push clean code to your repository, and deploy live full-stack web solutions in one click.",
+        steps: [
+          "Open the 'View Code' terminal drawer at any time to review React file structures, custom hooks, and styles.",
+          "The direct GitHub integration maintains clean commit branches, letting human visual codes exist seamlessly beside AI commits.",
+          "One-click Netlify web integrations host secure SSL productions, which update themselves on every new edit.",
+          "If Lovable introduces errors, utilize semantic git histories to reset files or supply error outputs directly to the editor."
+        ],
+        activityInstructions: "Design a request instructing Lovable to inspect an administrative table and insert entry transitions using Framer Motion.",
+        scenario: "Applying custom UX libraries and complex components under Lovable.",
+        audience: "Visual creators, React engineers, and digital marketers.",
+        goal: "A reliable continuous animation integration prompt."
+      }
+    ]
+  },
   prompt_eng: {
     title: "ChatGPT, Gemini & Generative AI Masterclass",
     description: "Learn the secrets of professional prompting to command ChatGPT, Gemini, and Claude for senior-level content, code, and analytical output.",
@@ -1249,6 +1642,139 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Navigating Synthetic Media Flags on Social Channels", desc: "Modify digital video signatures and parameters to avoid automated AI tags on vertical channels." },
     { title: "Automating Podcast Splitting via OpusClip", desc: "Let AI extract the 10 best highlights of a long video, auto-crop in 9:16, and add titles." },
     { title: "Final Assessment & Certified Video Creator Exam", desc: "Submit your viral portfolio mockup to win your official certified digital editor credentials." }
+  ],
+  grok_mastery: [
+    { title: "Grok Market Sentiment Analysis", desc: "Utilize live public streams on X to map community sentiment surrounding financial assets or global brands." },
+    { title: "Satirical Writing and Fun Mode", desc: "Master utilizing Grok's satirical tone settings to compose magnetic, highly viral posts for social networks." },
+    { title: "Audit & Optimize Complex Repositories with Grok-3 Coder", desc: "Submit multi-file software repositories and let Grok trace logical bugs and write cleaner iterations." },
+    { title: "Lead Generation via Live X Search Query Structuring", desc: "Learn to layout advanced query strings inside Grok to list industry contacts matching specific professional bios." },
+    { title: "Multi-File Upload and RAG Ingestion", desc: "Upload complex PDFs, business sheets, or source files in parallel to correlate intelligence live." },
+    { title: "Navigating xAI Native Guardrails", desc: "Calibrate prompts smartly to bypass over-cautious refusals while respecting safety guidelines." },
+    { title: "xAI API: Developer Console Integration", desc: "Generate developer credentials and submit programmatic requests to the Grok-3 endpoint inside your apps." },
+    { title: "Breaking News Verification", desc: "Leverage Grok's real-time temporal filters to cross-verify claims and isolate actual facts during breaking events." },
+    { title: "Perfecting Typography and Layout in Flux", desc: "Weave clean, legible brand names, labels, and text characters natively inside Flux graphics." },
+    { title: "Building Persistent Customized Personas on Grok", desc: "Configure custom virtual models outfitted with persistent personalities or philosophical styles." },
+    { title: "Deconstructing Complex Financial Annual Sheets", desc: "Query Grok's massive context window to synthesize and compare financial reports across quarters." },
+    { title: "Enterprise Knowledge Base Sync", desc: "How to connect Grok to enterprise data streams to deliver instant customer technical support answers." },
+    { title: "Technology Startup Brainstorming", desc: "Expose your business hypotheses to Grok's critical analyzer to validate product-market fit." },
+    { title: "Idiomatic Translations and Local Slang Optimization", desc: "Draft localized marketing copies that preserve local sayings and emotional resonance." },
+    { title: "Automated Error Tracking in Code Pipeline Scripts", desc: "Deploy step-by-step thinking reasoning logs to trace bugs in SQL scripts or ETL pathways." },
+    { title: "Curated Daily Tech Brief Summaries", desc: "Establish permanent news search rules so Grok outputs a flawless daily brief of global tech shifts." },
+    { title: "Final Assessment & xAI Certified Grok Specialist Exam", desc: "Demonstrate your domain domain mastery on real-time news retrieval and Flux design to claim your academic diploma." }
+  ],
+  copilot_mastery: [
+    { title: "Automate Professional Email Drafts with Copilot in Outlook", desc: "Learn to compose structured context-aware replies with a single click and summarize long threads." },
+    { title: "Advanced Analysis of Giant Spreadsheets inside Excel", desc: "Submit oversized workbooks and ask Copilot to uncover latent data trends or invoice discrepancies." },
+    { title: "Generate Striking Artwork and Icons via Microsoft Designer", desc: "Master utilizing Copilot's integrated DALL-E 3 engine to style marketing visual collateral." },
+    { title: "Autonomous Activity Report Styling inside Word", desc: "Synthesize disparate meeting minutes and raw documents into clean, formal corporate summaries." },
+    { title: "Optimize Real-time Live Collaboration using Teams Copilot", desc: "Track immediate meeting tasks, summarize unanswered queries, and isolate speaker key-notes live." },
+    { title: "Clean & Intelligent Workspace Structuring inside OneNote", desc: "Transform chaotic draft notes into actionable checklists and clear project roadmaps." },
+    { title: "Copilot Studio: Unleash Custom Enterprise Chatbots", desc: "Discover how to configure custom agents tied directly to core internal data pipelines (SQL, SharePoint)." },
+    { title: "Accelerate Knowledge Discovery on SharePoint Hubs", desc: "Retrieve complex company SOP and guidelines instantly without manual searching through team directories." },
+    { title: "Prompt Engineering rules for clear PowerPoint summaries", desc: "Structure target rules to turn dense, technical technical manuals into concise, board-ready slides." },
+    { title: "Inbox Decoupling and Mail Prioritization Routines", desc: "Set up smart filter priorities over incoming high-yielding commercial customer requests." },
+    { title: "Write Magnetic Custom Business Bids & RFP responses", desc: "Direct Copilot to compose professional, compliant pricing pitches and proposal documents." },
+    { title: "Write custom VBA Macros and Office Scripts without coding knowledge", desc: "Draft automated financial and layout macros to remove administrative friction recursively." },
+    { title: "Harden workspace permissions under M365 Data Architecture", desc: "Audit and verify that sensitive organization documents are never inappropriately surfaceable by Copilot." },
+    { title: "Chart interactive Product Roadmaps inside PowerPoint", desc: "Generate modular, chronological timeline schemas based on Word feature spec drafts." },
+    { title: "Localizing & Translating legal layouts in 40+ languages", desc: "Map professional terms faithfully across cultural borders, ensuring style accuracy." },
+    { title: "Formulate reliable Monthly Cash-Flow Projections inside Excel", desc: "Command Excel Copilot to construct year-over-year forecasting datasets smoothly." },
+    { title: "Final Assessment & Microsoft Copilot Certified Specialist Exam", desc: "Demonstrate complete command over productivity automation to secure your official graduation credentials." }
+  ],
+  manus_mastery: [
+    { title: "Automating Global Strategic Competitive Intelligence Updates", desc: "Configure Manus to crawl 10 competitor sites weekly and compile a comprehensive update of news." },
+    { title: "B2B Lead Enrichment and Bulk Sourcing", desc: "Harvest professional target directories with verified contact data for any given location." },
+    { title: "Autonomous Financial Statement and Ratio Compilation", desc: "Let the agent navigate investor portals to collect and compute financial health metrics." },
+    { title: "Managing Long Orchestrated Multi-Tab Scenarios", desc: "Discover prompting blueprints to prevent agent misalignment during deep web interactions." },
+    { title: "Codebase Debugging and Automated Refactoring Methods", desc: "Feed broken files directly into Manus, authorizing autonomous correction and sandbox verification." },
+    { title: "Debugging Live API Queries across Open Docs", desc: "Direct Manus to program, run, and self-correct integration procedures based on raw API pages." },
+    { title: "Assembling Graphic Assets and Illustration Templates", desc: "Command the agent to command graphics software and systematically index visual structures." },
+    { title: "Complex Logistics, Lodging, and Multi-Leg Routes", desc: "Hand over train schedules, hotel options, and price comparisons to Manus to design your ideal travel plan." },
+    { title: "Academic Consensus Sourcing with Real Papers", desc: "Deploy Manus to scour scholar portals and formulate a structured paper on relevant findings." },
+    { title: "Autonomous Newsletter Publishing Pipelines", desc: "Command Manus to identify hot news articles, outline highlights, and compile a beautiful email copy." },
+    { title: "Financial Portfolio Monitoring and Alert Setups", desc: "Train your agent to keep safe tabs on specific stock tickers and trigger instant messaging notifications." },
+    { title: "Conducting Visual SEO Audits and Site Crawler Maps", desc: "Locate semantic crawl anomalies and keyword gaps on competitor landing configurations." },
+    { title: "Automated MySQL Relations and Query Checks", desc: "Model schema entities and let Manus write and confirm the safety of raw database requests." },
+    { title: "Creating Seamless Live Market Share Visuals", desc: "Command Manus to build, execute, and render interactive visuals displaying real industry market shares." },
+    { title: "Connecting Cloud SaaS and Operations dashboards", desc: "Authorize Manus to sync custom Notion sheets with modern task boards autonomously." },
+    { title: "Deconstructing Massive Bids and Crafting RFC responses", desc: "Analyze heavy administration proposals and let Manus outline the technical requirements draft." },
+    { title: "Final Assessment & Certified Manus.ai Specialist Examination", desc: "Validate your autonomous agent orchestration expertise to earn your academic diploma." }
+  ],
+  perplexity_mastery: [
+    { title: "Expert Setup of Custom Profiles and Search Personas", desc: "Define your precise corporate preferences to ensure all results align with your field, bias-free." },
+    { title: "Deep Content Audit of Giant PDF and Annual Reports", desc: "Ingest multiple heavy files and let Perplexity execute precise cross-comparisons instantly." },
+    { title: "Automating Daily Competitive Intelligence and Alerts", desc: "Design scheduled query paths to keep systematic tabs on newly announced rival releases." },
+    { title: "Correlating Legal Precedents with Academic Focus", desc: "Sift through complex directories and isolate exact court records and litigation histories." },
+    { title: "Building Modular SEO Keyword Strategies via Search Intents", desc: "Investigate organic user intents to map structural cluster models with zero overlap." },
+    { title: "Pro Search as a Junior Business Analyst Partner", desc: "Leverage clarifying routines to chart complete competitor matrix cards and entry barriers." },
+    { title: "Drafting Weekly Newsletters inside Pages", desc: "Aggregate key trends into elegant, ready-to-publish digital memos for partners or team members." },
+    { title: "Sensing Sincere Community Opinions across Forums", desc: "Isolate actual product vulnerabilities using Reddit discussions to inform roadmap strategies." },
+    { title: "Extracting Clean TypeScript Code with Code Focus", desc: "Filter out chatty conversational fillers and query directly for optimal TypeScript scripts." },
+    { title: "Optimizing Academic Literature Review Flows", desc: "Query Scholar portals to compile real, peer-reviewed bibliographies and citations." },
+    { title: "Inserting Visual Elements in Published Pages", desc: "Inject perfect AI illustrations and layout graphics to lift presentation quality." },
+    { title: "Structuring Extensive Business Case Studies", desc: "Gather up-to-date industrial metrics to build deep diagnostic reports." },
+    { title: "Comparing Complex Library and Framework Docs", desc: "Verify breaking changes and compare performance claims across separate documentation portals." },
+    { title: "Monitoring Creator Feedback and Brand Sentiment", desc: "Compile key opinion leader remarks following public launches or corporate changes." },
+    { title: "Deconstructing Rumors and Spotting Fact Gaps", desc: "Confront clashing theories to verify credibility against mainstream journals." },
+    { title: "Drafting Solid Interactive Business Plans", desc: "Collect the latest macroeconomic ratios to justify financial projection models." },
+    { title: "Final Assessment & Certified Perplexity.ai Specialist Exam", desc: "Prove your conversational research abilities to claim your cognitive citation diploma." }
+  ],
+  admin_redaction: [
+    { title: "Orchestrating Absolute Neutrality of Tone and Impersonal Style", desc: "Enforce strict syntactic guidelines to strip any dramatic feelings or colloquial adjectives from administrative writes." },
+    { title: "Adapting Hierarchy Layout Formats: Note vs. Final Report", desc: "Calibrate and frame details perfectly according to the rank and expectations of the target reader." },
+    { title: "Drafting Formal Statutory Responses to Administrative Appeals", desc: "Formulate solid, structured cases citing related legal codes to ground institutional positions." },
+    { title: "Automating Standard Template Responses to Incoming Public Claims", desc: "Design reliable, warm but firm outlines that respect state service charters." },
+    { title: "Simplifying Dense Regulatory Documents into Citizen-Grade Summaries", desc: "Apply readability rules to convert complex government directives into language accessible to everyone." },
+    { title: "Securing Contract Phrasing and Evaluating Risk Constraints", desc: "Perform a critical review of your draft agreements to eliminate ambiguities or legal loopholes." },
+    { title: "Designing Standardized Official Notification Mail Outlines", desc: "Compose formal notices of default, disciplinary warnings, or regulatory leaves." },
+    { title: "Drafting Concise Summaries of Municipal Board Assemblies", desc: "Convert energetic spoken hearings into compliant, objective records of voted points." },
+    { title: "Synthesizing and Highlighting Critical Items in Heavy Audit Files", desc: "Command AI to compress extensive auditing documents into structured, high-priority risk lists." },
+    { title: "Designing Striking Public Press Releases for Government Institutions", desc: "Learn to write clear, reassuring public briefs regarding policy reforms or operations updates." },
+    { title: "Drafting Technical Clauses for Competitive RFP Layouts", desc: "Formulate objective criteria rules to ensure neutral, unbiased bidder evaluations." },
+    { title: "Mastering Administrative Salutations and Correct Honorific Rankings", desc: "Generate the precise formal salutations required for mayors, delegates, or high dignitaries." },
+    { title: "Enforcing Parity and Balance in Authoritative Documents", desc: "Find the ideal syntactic balance to write inclusive texts without over-burdening official correspondence." },
+    { title: "Accurately Translating Regulatory Procedures Across Borders", desc: "Adapt security policies or administrative guidelines in multiple languages with total terminology fidelity." },
+    { title: "Drafting Clear and Attractive Public Sector Job Specs and Matrices", desc: "Draft objective task checklists and standard qualification scoreboards for recruiting." },
+    { title: "Auditing GDPR Compliance of Standard Letter Outlines", desc: "Validate that template scripts do not request or store unnecessary personal citizen information." },
+    { title: "Final Assessment & Certified AI Administrative Writer Exam", desc: "Prove your mastery of official communication rules to claim your certified administrative prose diploma." }
+  ],
+  veo_mastery: [
+    { title: "Precise Film Grain Settings and Emulation of Legendary Cameras", desc: "Command the organic aesthetic of 35mm film stock or vintage camera models to inject realism into your renders." },
+    { title: "Physical Fluid Dynamics and Particle Collision Controls", desc: "Discover specific prompting schemas to animate water, fire, smoke, and sand with perfect physical realism." },
+    { title: "Guaranteeing Personage Consistency Across Sequential Cuts", desc: "Apply textual anchors and solid seeding models to lock in character faces and outfits across separate scenes." },
+    { title: "Advanced Inpainting Workflows to Substitute Moving Objects", desc: "Mask moving elements to seamlessly swap clothes, replace backgrounds, or integrate fantastical objects." },
+    { title: "Creating Immersive 3D Stereoscopic Commercial Mocks", desc: "Build tailored camera paths optimized for spatial depth and augmented reality projections." },
+    { title: "Orchestrating Lips-Syncing and Natural Talking Avatars", desc: "Align precise voice generator tracks with realistic facial movements simulated directly by Veo." },
+    { title: "Blending Artistic Styles and Hybrid 2D/3D Animation", desc: "Utilize style transfer prompts to inject watercolor, oil paint, or manual sketch tones into physical renders." },
+    { title: "Directing Continuous Single-Take Moves (Plan Séquence)", desc: "Maintain absolute scene continuity over multiple actions without introducing editing cuts." },
+    { title: "Automated Story-Boarding with Midjourney and Veo 3", desc: "Establish consistent visual mood-boards and animate them sequentially while retaining style integrity." },
+    { title: "Optimizing Human Facial Expression and Emotional Psychology", desc: "Prompt subtle facial gestures (grief, surprise, micro-smiles) to maximize scene emotional depth." },
+    { title: "Designing Stylized Cinematic Slow Motion (Bullet Time)", desc: "Simulate orbiting camera sweeps revolving around a frozen object under pristine lightning reflections." },
+    { title: "Embedding Interactive Motion Graphic Diagrams and Overlays", desc: "Superimpose beautiful data visualizers, maps, and technology layouts directly within your virtual frames." },
+    { title: "Competitive Assessment of Viral Video Layouts and Replication", desc: "Analyze high-performing trends sémantiquement and construct identical camera flows in Veo 3." },
+    { title: "Simulating Accurate Microscopic and Macroscopic Landscapes", desc: "Fly through miniature environments like electronic boards or cellular structures with photoreal depth." },
+    { title: "Volumetric Lightning, Fog, and Extreme Meteorological Events", desc: "Command physical storm, blizzard, sandstorm, or dramatic sunbeams to interact with your settings." },
+    { title: "Designing Industrial Consumer Packaging and Brand Placement Mocks", desc: "Seamlessly map 2D brand packaging onto moving 3D items held or manipulated in real video space." },
+    { title: "Final Assessment & Certified Google Veo 3 Specialist Examination", desc: "Validate your cinematography direction and physical simulation mastery of Veo 3 to claim your academic credentials." }
+  ],
+  lovable_mastery: [
+    { title: "Designing High-Fidelity Data Relational Schemas with Semantic Editors", desc: "Formulate tables mapping (one-to-many, many-to-many) to let Lovable render robust foreign key attributes on Supabase." },
+    { title: "Integrating Stripe Subscription Gateways for SaaS Workflows", desc: "Implement payment checkouts and integrate Stripe webhook listeners entirely using modular text comments." },
+    { title: "Customizing Tailwind Configurations and Global Shadcn Variables", desc: "Inject absolute brand authority by requesting custom color pallets, line weights, and radius parameters." },
+    { title: "Global React State Orchestration using Context and Zustand on Lovable", desc: "Set up fast global data stores to share cross-component states without props-drilling." },
+    { title: "Securing Users Database Registrations with Supabase Authentication", desc: "Enable registration, standard logins, email validation, or single-sign-on (SSO) with direct visual components." },
+    { title: "Connecting Secure Cloud APIs via Supabase Edge Serverless Functions", desc: "Protect private keys (OpenAI, Resend, Twilio) inside server-insulated edge functions." },
+    { title: "Crafting Exquisite KPI Dashboards using Dynamic Recharts Graphics", desc: "Convert standard SQL tuples into beautiful, fully animated bar, area, or pie visual charts." },
+    { title: "Reverting Semantic Mistakes using Sandbox Time-Travel Version History", desc: "Audit chronological application snapshots and safely reverse faulty edits in seconds." },
+    { title: "Optimizing Mobile Layouts and Orchestrating Framer Motion Effects", desc: "Refine responsive containers while adding organic fade-in and sliding transition cues." },
+    { title: "Integrating User File Uploads with Secure Supabase Storage Buckets", desc: "Configure media storage to allow users to upload profile avatars, receipts, or attachments safely." },
+    { title: "Debugging Strict TypeScript Type Alignments and Errors", desc: "Direct the model to fix interface incompatibilities, implicit any-type issues, or prop discrepancies." },
+    { title: "Designing Conversational Multi-Step Wizards with Strict Zod Guardrails", desc: "Install step-by-step onboarding sequences with real-time UI validation schemas." },
+    { title: "Locking Core Rows via Supabase Row Level Security (RLS) Policies", desc: "Add strict security rules ensuring authenticated users can only access their specific records." },
+    { title: "Implementing High-Speed Text Search Engines and Faceted Queries", desc: "Enable granular category filtering and instantaneous fuzzy character matching over your items." },
+    { title: "Enhancing Organic Traffic with Meta tags and Dynamic OpenGraph SEO", desc: "Configure metadata elements dynamically to generate gorgeous enriched preview frames on social posts." },
+    { title: "Synchronizing Transactions Context inside Client Workspaces", desc: "Establish event triggers to immediately adapt user access status once Stripe payment is confirmed." },
+    { title: "Final Assessment & Certified Lovable.dev No-Code Specialist Exam", desc: "Prove your full-stack design speed and integration skills to claim your master certification." }
   ],
   prompt_eng: [
     { title: "The Art of Context Windows & Token Management", desc: "Learn to optimize prompt length so the AI never loses its working memory." },
