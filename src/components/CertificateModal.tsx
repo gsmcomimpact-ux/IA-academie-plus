@@ -656,15 +656,15 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
               {/* QR Code Column */}
               <div className="flex flex-col items-center justify-center">
-                <div className="bg-white p-1 rounded border border-slate-200 shadow-sm shrink-0 flex items-center justify-center">
+                <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-md shrink-0 flex items-center justify-center transition-all hover:scale-105">
                   <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=64x64&color=020617&data=${encodeURIComponent(window.location.origin + "?verify=" + certId)}`} 
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=090d16&data=${encodeURIComponent(window.location.origin + "?verify=" + certId + "&name=" + encodeURIComponent(userName))}`} 
                     alt="Verification QR Code" 
-                    className="w-11 h-11"
+                    className="w-12 h-12"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <span className={`text-[6.5px] font-mono tracking-wider mt-1.5 uppercase ${certStyle === "classic" ? "text-slate-550" : "text-slate-400"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
+                <span className={`text-[6.5px] font-mono tracking-wider mt-1.5 uppercase font-semibold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/90"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
               </div>
 
               {/* Gold Verification Badge / Seal */}

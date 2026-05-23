@@ -264,12 +264,33 @@ export default function Homepage({
     try {
       const params = new URLSearchParams(window.location.search);
       const verifyCode = params.get("verify");
+      const urlName = params.get("name");
       if (verifyCode) {
         setVerificationCode(verifyCode);
         setActiveTab("certs");
         
         const uppercaseCode = verifyCode.toUpperCase().trim();
-        if (uppercaseCode.startsWith("CRSV-")) {
+        
+        // Dynamic search in COURSES to extract exact certificate and title match
+        const foundBaseCourse = COURSES.find(course => {
+          const expectedId = `CRSV-${course.category.toUpperCase()}-${Math.abs(course.id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) * 12345).toString(16).toUpperCase()}`;
+          return expectedId === uppercaseCode || expectedId.replace("CRSV-", "") === uppercaseCode;
+        });
+
+        if (foundBaseCourse) {
+          const localizedCourseObj = getLocalizedCourses(lang, COURSES).find(c => c.id === foundBaseCourse.id);
+          const matchedCourseTitle = localizedCourseObj ? localizedCourseObj.title : foundBaseCourse.title;
+          const recipientName = urlName 
+            ? decodeURIComponent(urlName) 
+            : (fullName || (lang === "fr" ? "Clara Martin (Diplômée Élite)" : "Clara Martin (Elite Graduate)"));
+
+          setVerificationResult({
+            found: true,
+            course: matchedCourseTitle,
+            recipient: recipientName
+          });
+        } else if (uppercaseCode.startsWith("CRSV-")) {
+          // Fallback legacy support
           let matchedCourse = lang === "fr" ? "Masterclass ChatGPT, Gemini & Generative AI" : "ChatGPT, Gemini & Generative AI Masterclass";
           if (uppercaseCode.includes("COPY")) {
             matchedCourse = lang === "fr" ? "Écriture Persuasive & Copywriting de Vente" : "AI copywriting: Sales Frameworks";
@@ -281,7 +302,7 @@ export default function Homepage({
           setVerificationResult({
             found: true,
             course: matchedCourse,
-            recipient: fullName || (lang === "fr" ? "Clara Martin (Diplômée Élite)" : "Clara Martin (Elite Graduate)")
+            recipient: urlName ? decodeURIComponent(urlName) : (fullName || (lang === "fr" ? "Clara Martin (Diplômée Élite)" : "Clara Martin (Elite Graduate)"))
           });
         } else {
           setVerificationResult({
@@ -394,7 +415,22 @@ export default function Homepage({
     if (!verificationCode.trim()) return;
 
     const uppercaseCode = verificationCode.toUpperCase().trim();
-    if (uppercaseCode.startsWith("CRSV-")) {
+    
+    // Dynamic match against list of 18 courses
+    const foundBaseCourse = COURSES.find(course => {
+      const expectedId = `CRSV-${course.category.toUpperCase()}-${Math.abs(course.id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) * 12345).toString(16).toUpperCase()}`;
+      return expectedId === uppercaseCode || expectedId.replace("CRSV-", "") === uppercaseCode;
+    });
+
+    if (foundBaseCourse) {
+      const localizedCourseObj = getLocalizedCourses(lang, COURSES).find(c => c.id === foundBaseCourse.id);
+      const matchedCourseTitle = localizedCourseObj ? localizedCourseObj.title : foundBaseCourse.title;
+      setVerificationResult({
+        found: true,
+        course: matchedCourseTitle,
+        recipient: fullName || (lang === "fr" ? "Clara Martin (Diplômée Élite)" : "Clara Martin (Elite Graduate)")
+      });
+    } else if (uppercaseCode.startsWith("CRSV-")) {
       let matchedCourse = lang === "fr" ? "Masterclass ChatGPT, Gemini & Generative AI" : "ChatGPT, Gemini & Generative AI Masterclass";
       if (uppercaseCode.includes("COPY")) {
         matchedCourse = lang === "fr" ? "Écriture Persuasive & Copywriting de Vente" : "AI copywriting: Sales Frameworks";
