@@ -1714,47 +1714,283 @@ function generateCourseLessons(
     const types: ("quiz" | "prompt_sandbox" | "copy_sandbox")[] = ["quiz", "prompt_sandbox", "copy_sandbox"];
     const activityType = types[lessonNum % types.length];
 
-    const lesson: Lesson = {
-      id,
-      title: data.title,
-      description: data.desc,
-      durationMin: 10 + (lessonNum % 10),
-      steps: [
-        `Dans cette leçon sur "${data.title}", nous analysons les structures fondamentales pour asseoir vos compétences professionnelles.`,
-        `Comprendre ce concept vous donne un avantage concurrentiel direct et vous permet de surperformer la moyenne des praticiens sur le marché du travail.`,
-        `Mettez en pratique ce que vous apprenez aujourd'hui en rédigeant des consignes structurées ou en effectuant l'évaluation interactive.`,
-        `Assurez-vous de valider cette unité pour débloquer votre progression globale vers l'obtention de votre diplôme certifié A4.`
-      ],
-      activityType
-    };
+    // Custom content generation per category
+    let steps: string[] = [];
+    let customQuiz = null;
+    let customPromptObjective = null;
+    let customCopyObjective = null;
 
-    if (activityType === "quiz") {
-      lesson.quiz = {
+    const lowerTitle = data.title.toLowerCase();
+    const lowerDesc = data.desc.toLowerCase();
+
+    // 1. NO-CODE & WEB DEV (Lovable, Supabase, APIs, etc.)
+    if (lowerTitle.includes("supabase") || lowerTitle.includes("api") || lowerTitle.includes("lovable") || lowerTitle.includes("stripe") || lowerTitle.includes("react") || lowerTitle.includes("sql") || lowerTitle.includes("base de données") || lowerTitle.includes("code") || lowerTitle.includes("déploiement") || lowerTitle.includes("bouton") || lowerTitle.includes("page")) {
+      steps = [
+        `Cette leçon aborde l'intégration technique de "${data.title}" pour construire des applications modernes. Qu'il s'agisse de concevoir des bases de données relationnelles ou d'orchestrer des requêtes, la maîtrise de cette brique est indispensable pour tout développeur No-Code senior. Vous apprendrez à structurer votre architecture pour assurer flexibilité et robustesse.`,
+        `Le principe clé consiste à structurer vos modèles de données de manière propre (PostgreSQL) et sécuriser les accès à l'aide de politiques de sécurité au niveau des lignes (RLS). Sous Lovable.dev, vous configurez Supabase et Stripe d'un clic en décrivant verbalement vos besoins, ce qui génère automatiquement les schémas de données et les types TypeScript correspondants.`,
+        `Pour mettre cela en œuvre : 1. Modélisez vos relations de tables (un-à-plusieurs, plusieurs-à-plusieurs) ; 2. Connectez l’authentification de manière fiable ; 3. Stockez les clés sensibles (comme les secrets d'API) dans des variables d'environnement distantes sécurisées ; 4. Utilisez des hooks réactifs légers comme React Context ou Zustand pour faire transiter vos variables proprement.`,
+        `Conseil d'expert : Lors de l'écriture d'API ou de requêtes complexes, assurez-vous de toujours gérer les états de chargement (loading) et les cas d'erreur d'une manière rassurante pour l'utilisateur final. Validez l'exercice pratique ci-contre pour décrocher vos points et progresser vers l'obtention de votre diplôme de fin de formation sous format A4 Paysage.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Quelle est la règle absolue pour sécuriser vos données ou connexions de bases de données dans "${data.title}" ?`,
+        options: [
+          { text: "Activer les politiques de sécurité RLS (Row Level Security) de Supabase et masquer les clés d'API secrètes côté serveur.", isCorrect: true },
+          { text: "Laisser les identifiants d'administration en clair dans le code client React.", isCorrect: false },
+          { text: "Interdire toute connexion réseau sur l'application.", isCorrect: false },
+          { text: "Utiliser un fichier texte simple ouvert au public.", isCorrect: false }
+        ],
+        explanation: `Excellent ! La sécurité est critique : l'authentification et les accès aux tables de la base de données SQL s'appuient toujours sur des politiques de Row Level Security (RLS) de Supabase et des secrets cachés côté serveur.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt parfait pour Lovable.dev décrivant la configuration d'un module de base de données relationnelle sécurisé appliqué à : ${data.title}.`,
+        systemTemplate: `Simulate high-fidelity validation of database relations: ${data.title}`,
+        placeholderText: `Saisissez votre configuration de table et politique RLS pour ${data.title}...`,
+        exampleSolution: `Crée une table "profiles" sur Supabase reliée aux utilisateurs de Supabase Auth avec les colonnes id (uuid, clé primaire), full_name (text), et website (text). Active la sécurité Row Level Security (RLS) et crée une politique permettant aux utilisateurs de ne modifier que leur propre profil.`
+      };
+
+      customCopyObjective = {
+        scenario: `Présentation d'une architecture No-code / Base de données sécurisée : ${data.title}`,
+        audience: "Porteurs de projets SaaS sceptiques sur la sécurité du No-Code.",
+        goal: "Les convaincre que Lovable et Supabase garantissent une souveraineté et sécurité totale des données.",
+        placeholderText: `Rédigez votre argumentaire de sécurité pour ${data.title}...`,
+        exampleSolution: `Marre des bases de données rigides et peu sécurisées ? Notre architecture s'appuie sur le moteur PostgreSQL de Supabase combiné au Row Level Security (RLS) le plus robuste du marché. Chaque accès utilisateur est hermétiquement verrouillé et vérifié au niveau du serveur, vous offrant la sécurité d'une banque d'affaires à la vitesse du No-Code IA.`
+      };
+    }
+    // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, etc.)
+    else if (lowerTitle.includes("video") || lowerTitle.includes("vidéo") || lowerTitle.includes("cinématique") || lowerTitle.includes("audio") || lowerTitle.includes("elevenlabs") || lowerTitle.includes("suno") || lowerTitle.includes("voix") || lowerTitle.includes("capcut") || lowerTitle.includes("runway") || lowerTitle.includes("heygen") || lowerTitle.includes("avatar") || lowerTitle.includes("bruitage")) {
+      steps = [
+        `Le module "${data.title}" explore la pointe de la création vidéo et de l'ingénierie sonore par intelligence artificielle. Avec des outils comme Google Veo 3, Runway, ElevenLabs ou Suno, de simples lignes d'instructions sémantiques se transforment en clips publicitaires cinématiques et doublages d'un réalisme stupéfiant.`,
+        `Pour la vidéo, la grammaire cinématographique est reine : précisez toujours la focale de l'objectif (ex: 35mm anamorphique), les mouvements de caméra (travelling, grue, dolly zoom) et les conditions météorologiques ou d'éclairage. Pour l'audio, structurez vos voix d'élite en spécifiant l'âge, l'accent, le ton (chaleureux, confessionnel) et contrôlez le rythme en injectant des balises de pauses dramatiques.`,
+        `Workflow recommandé pour un rendu de niveau professionnel : 1. Scénarisez un story-board détaillé avec une IA d'écriture ; 2. Générez les illustrations haute résolution ; 3. Utilisez le motion-to-video pour animer les images ; 4. Intégrez des voix-off clonées à haute charge émotionnelle ; 5. Assemblez et sous-titrez dynamiquement via des outils assistés comme CapCut, OpusClip ou Submagic.`,
+        `Attention : Évitez de surcharger vos vidéos de mouvements contradictoires et conservez une cohérence sémantique d'un plan à un autre pour éviter que l'IA ne déforme les objets. Pour valider vos acquis et enrichir votre parcours de formation, complétez le défi et débloquez l'évaluation interactive ci-contre.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de la création et du montage liés à "${data.title}", comment garantissez-vous la cohérence entre le son et l'image ?`,
+        options: [
+          { text: "En calant les scènes sur le rythme de l'audio et en utilisant le clonage vocal à haute expressivité sémantique pour simuler le bon jeu d'acteur.", isCorrect: true },
+          { text: "En ignorant le tempo sonore et en laissant la vidéo tourner au ralenti aléatoire.", isCorrect: false },
+          { text: "En changeant radicalement de voix et de style musical à chaque nouvelle seconde.", isCorrect: false },
+          { text: "En supprimant totalement tout effet sonore ou dialogue du montage final.", isCorrect: false }
+        ],
+        explanation: `Superbe ! Harmoniser des visuels saisissants créés par Veo avec de petits clips sonores expressifs construits par Suno et ElevenLabs crée une illusion cinéma irrésistible.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt cinématique haute définition à destination de Google Veo ou Runway pour concrétiser le script visuel de : ${data.title}.`,
+        systemTemplate: `High-fidelity cinematic framing prompt template for: ${data.title}`,
+        placeholderText: `Focale, éclairage, mouvement de caméra, action... Saisissez votre prompt pour ${data.title}...`,
+        exampleSolution: `Plan moyen cinématique en travelling latéral fluide. Intérieur d'un cockpit futuriste aux nuances d'acier avec néons bleus et oranges réactifs. Un pilote concentré manipule des commandes tactiles lumineuses. Rendu ultra-réaliste 8k grain de pellicule anamorphique 35mm, éclairage doux, style Google Veo 3.`
+      };
+
+      customCopyObjective = {
+        scenario: `Lancement d'une agence de création de contenu vidéo/audio IA : ${data.title}`,
+        audience: "Chefs d'entreprises modernes voulant moderniser leur communication pour pas cher.",
+        goal: "Les persuader de souscrire à un forfait d'accompagnement vidéo mensuel stratégique.",
+        placeholderText: `Rédigez votre newsletter promotionnelle pour ${data.title}...`,
+        exampleSolution: `Le saviez-vous ? 84% des acheteurs sur internet valident leur panier après avoir visionné une courte vidéo. Grâce à notre moteur de production vidéo cinématique multilingue assisté par IA, nous concevons des capsules publicitaires de qualité digne de Netflix en moins de 48 heures pour un dixième des coûts de tournage habituels. Réservez votre audit de marque offert !`
+      };
+    }
+    // 3. COPYWRITING, PSYCHOLOGY & MARKETING
+    else if (lowerTitle.includes("copywriting") || lowerTitle.includes("aida") || lowerTitle.includes("pas") || lowerTitle.includes("fab") || lowerTitle.includes("vente") || lowerTitle.includes("newsletter") || lowerTitle.includes("e-mail") || lowerTitle.includes("social selling") || lowerTitle.includes("titre") || lowerTitle.includes("client") || lowerTitle.includes("storytelling") || lowerTitle.includes("newsletter") || lowerTitle.includes("accroche") || lowerTitle.includes("objection") || lowerTitle.includes("garantie") || lowerTitle.includes("publicité")) {
+      steps = [
+        `L'étude de "${data.title}" vous plonge dans les arcanes de la psychologie de vente appliquée à l'écriture persuasive. En copywriting, chaque mot doit servir un but unique : capter l'intérêt immédiat de l'internaute, susciter une émotion profonde, écarter les objections intimes et déclencher l’acte de commande.`,
+        `Les meilleurs frameworks mondiaux s'articulent autour du PAS (Problème, Agitation, Solution) ou du célèbre AIDA (Attention, Intérêt, Désir, Action). Pour retenir l'internaute qui scrolle, votre titre doit utiliser l'un des trois piliers de l'accroche : susciter une curiosité irrésistible, promettre un bénéfice direct ultra-spécifique, ou éliminer une contrainte contraignante (ex: sans mémoriser de grammaire).`,
+        `Pour structurer votre copie persuasive : 1. Identifiez la cible et sa plus grande souffrance secrète ; 2. Transformez chaque fonctionnalité technique froide en bénéfices de vie mémorables ; 3. Intégrez de la preuve sociale (avis, chiffres d'autorité) ; 4. Terminez par un appel à l'action (CTA) clair avec une offre irrésistible de rareté limitée.`,
+        `Conseil d'expert : Ne parlez pas de votre marque, parlez uniquement des désirs et de la réussite de votre prospect. Validez l'exercice d'écriture persuasive ci-contre pour collecter vos 50 XP et compléter ce module vers votre accréditation et l'obtention du diplôme.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Pour maximiser le taux de conversion lors de l'application de "${data.title}", quelle règle s'avère primordiale ?`,
+        options: [
+          { text: "Mettre l'accent sur les bénéfices de transformation concrets pour le client final plutôt que de lister uniquement des fonctionnalités techniques.", isCorrect: true },
+          { text: "Rédiger d'immenses paragraphes compacts de jargon technique sans aérer.", isCorrect: false },
+          { text: "Promettre des promesses mirobolantes irréalistes sans aucune preuve de crédibilité.", isCorrect: false },
+          { text: "Supprimer tout appel à l'action (CTA) pour ne pas presser le lecteur.", isCorrect: false }
+        ],
+        explanation: `Félicitations ! Les clients n'achètent pas un produit mais une transformation émotionnelle ou un gain de performance. Traduire des faits en bénéfices concrets est le fondement historique du copywriting.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt pour paramétrer un assistant IA Copywriter expert du framework adéquat appliqué à : ${data.title}.`,
+        systemTemplate: `Configuring high-conversion copywriting template generators: ${data.title}`,
+        placeholderText: `Directives de style, rôle, frameworks et contraintes pour ${data.title}...`,
+        exampleSolution: `Agis en tant que Copywriter senior expert du Social Selling. Rédige un modèle de prompt structurant un post de vente s'appuyant sur le framework AIDA. Le post doit s'adresser à des entrepreneurs débordés, adopter un ton percutant et amener le lecteur à s'inscrire à notre atelier gratuit.`
+      };
+
+      customCopyObjective = {
+        scenario: `Application pratique de Copywriting : ${data.title}`,
+        audience: "Professionnels surmenés et indépendants souhaitant des résultats rapides.",
+        goal: "Faire cliquer le prospect sur le bouton d'inscription immédiat.",
+        placeholderText: `Entrez votre texte de copywriting pour ${data.title}...`,
+        exampleSolution: `Combien de heures passez-vous chaque semaine à rédiger des textes sans jamais obtenir de retour ? C'est épuisant de travailler dans le vide. Notre nouvelle méthode de Copywriting assistée par IA vous livre des structures de vente validées en 4 secondes chronomètre en main. Cliquez ici, téléchargez le pack d'exemples gratuits et doublez vos taux de clics dès aujourd'hui !`
+      };
+    }
+    // 4. CHATGPT, CLAUDE, GEMINI, DEEPSEEK, PROMPTING EXPERT
+    else if (lowerTitle.includes("prompt") || lowerTitle.includes("prompting") || lowerTitle.includes("claude") || lowerTitle.includes("chatgpt") || lowerTitle.includes("gemini") || lowerTitle.includes("deepseek") || lowerTitle.includes("raisonnement") || lowerTitle.includes("xml") || lowerTitle.includes("grok") || lowerTitle.includes("perplexity") || lowerTitle.includes("instructions") || lowerTitle.includes("contexte") || lowerTitle.includes("agent") || lowerTitle.includes("kimi") || lowerTitle.includes("model")) {
+      steps = [
+        `Cette unité de formation sur "${data.title}" décortique l'ingénierie avancée des instructions (Prompt Engineering) pour dialoguer avec les plus puissants modèles mondiaux de manière fluide. La différence entre un amateur et un expert réside dans la structure syntaxique et sémantique de ses invites.`,
+        `Pour optimiser vos prompts, appliquez la méthode des délimiteurs XML (particulièrement sur Claude 3.5 Sonnet) pour séparer hermétiquement vos consignes administratives des données textuelles à traiter. Des techniques de Deep Reasoning comme le Chain-of-Thought (pensée étape par étape) ou le Tree-of-Thoughts permettent de démultiplier la justesse logique de modèles comme DeepSeek-R1 ou GPT-4o-mini de plus de 80% sur des logiques complexes.`,
+        `Méthodologie d'écriture : 1. Allouez au modèle un rôle senior hyper-ciblé (ex: expert en cyber-sécurité d'élite) ; 2. Décrivez le contexte précis et le but recherché ; 3. Utilisez des consignes et contraintes négatives strictes (ex: n'utilise jamais de jargon corporatiste) ; 4. Ajoutez du Few-Shot Prompting en injectant des exemples de paires d'entrées et de sorties idéales.`,
+        `Astuce d'expert : Pensez à concevoir des Custom GPTs ou des Projets Claude spécialisés pour capitaliser sur vos fichiers de connaissances d'entreprise et obtenir une stabilité absolue lors de vos exécutions. Complétez le sandbox ou le quiz ci-contre pour certifier votre maîtrise.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Pourquoi l'ingénierie de structure (Few-Shot, XML, Chain-of-Thought) est-elle recommandée pour "${data.title}" ?`,
+        options: [
+          { text: "Elle guide pas à pas la fenêtre de contexte de l'IA, décomposant l'arbre de logique sémantique de calcul et délimitant parfaitement les directives du texte à traiter.", isCorrect: true },
+          { text: "Elle force l'IA à répondre avec des caractères de couleur bleue pour imposer de la lisibilité.", isCorrect: false },
+          { text: "Elle permet d'économiser l'énergie électrique en suspendant temporairement les serveurs cloud.", isCorrect: false },
+          { text: "Elle crypte le prompt d'origine pour en interdire toute copie par des tiers.", isCorrect: false }
+        ],
+        explanation: `Félicitations, bonne réponse ! Répartir vos briefings à l'aide de délimiteurs clairs et ordonner à l'IA de penser étape par étape élimine les aberrations de probabilité et élimine les hallucinations.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt parfait, structuré à l'aide de balises XML pour tester la logique de : ${data.title}.`,
+        systemTemplate: `Structured high-fidelity testing console for: ${data.title}`,
+        placeholderText: `Utilisez <instructions>, <donnees>, etc. pour structurer votre prompt pour ${data.title}...`,
+        exampleSolution: `<role>Agis en tant qu'Auditeur Sémantique Senior.</role>\n<instructions>\nAnalyse le texte contenu dans la balise <data> ci-dessous sous l'angle de la lisibilité et propose 2 axes d'optimisation immédiats.\n</instructions>\n<data>[Insérez votre texte ici]</data>`
+      };
+
+      customCopyObjective = {
+        scenario: `Formation d'une équipe corporative au prompting appliqué à : ${data.title}`,
+        audience: "Des collaborateurs stressés qui perdent du temps à réécrire des explications trop longues.",
+        goal: "Les persuader de l'intérêt d'implanter la technique étudiée pour diviser leur travail par trois.",
+        placeholderText: `Comment leur présenteriez-vous l'impact de ${data.title}...`,
+        exampleSolution: `L'intelligence artificielle n'est pas magique, elle obéit simplement à votre rigueur de communication. En apprenant à structurer vos invites s'appuyant sur notre formule de Prompting avancée (Rôle, Tâche, Contexte, Contraintes), vous transformez ChatGPT en un collaborateur ultra-brillant capable de rédiger vos livrables professionnels de manière impeccable dès le premier essai.`
+      };
+    }
+    // 5. FREELANCE, CLIENT CLOSING & COMMERCIAL
+    else if (lowerTitle.includes("freelance") || lowerTitle.includes("micro-enterprise") || lowerTitle.includes("upwork") || lowerTitle.includes("malt") || lowerTitle.includes("tarif") || lowerTitle.includes("closing") || lowerTitle.includes("négocier") || lowerTitle.includes("contrat") || lowerTitle.includes("portfolio") || lowerTitle.includes("retainer") || lowerTitle.includes("client") || lowerTitle.includes("ventes") || lowerTitle.includes("prospection")) {
+      steps = [
+        `Dans cette leçon sur "${data.title}", nous étudions l'art d'entreprendre et de prospérer en tant que freelance à l'ère de l'intelligence artificielle. Devenir un crack technique est vain si vous ne savez pas vendre, négocier et packager vos compétences de manière irrésistible pour les entreprises.`,
+        `La règle d'or consiste à bannir la facturation au taux horaire — qui punit intrinsèquement votre productivité et votre maîtrise des outils d'automatisation d'IA — au profit de la vente forfaitaire axée sur le résultat (ex: Pack de 4 newsletters prêtes à envoyer par semaine). Sur Upwork ou dans vos cold emails, accrochez le client sur sa douleur business prioritaire dès l'introduction, au lieu de faire lister vos diplômes.`,
+        `Pour trouver vos premiers clients fortunés de manière pérenne : 1. Optimisez vos profils sociaux pour attirer du trafic entrant ciblé (LinkedIn Inbound) ; 2. Offrez une mini-évaluation technique ou audit éphémère gratuit pour démontrer votre valeur ; 3. Proposez une offre tarifaire construite en trois options (Base, Recommandé, Premium) pour exploiter l'ancrage psychologique.`,
+        `Gardez en mémoire : Vos clients n'achètent pas de l'IA, ils achètent du temps de cerveau disponible récupéré, de l'indépendance de gestion ou du chiffre d'affaires complémentaire. Validez l'exercice et recevez vos +50 XP pour progresser avec aplomb vers votre certification.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Quelle posture commerciale vous permet de justifier de hauts tarifs en freelance avec "${data.title}" ?`,
+        options: [
+          { text: "Vendre une solution packagée complète axée sur la résolution d'une douleur (ex: gain de temps, acquisition) plutôt que de vendre de de la sous-traitance à l'heure.", isCorrect: true },
+          { text: "Multiplier les copier-coller impersonnels à l'aveugle auprès de 1000 entreprises.", isCorrect: false },
+          { text: "Casser constamment ses prix pour être le moins cher de la planète.", isCorrect: false },
+          { text: "Interdire au client de voir des références ou de consulter vos exemples passés.", isCorrect: false }
+        ],
+        explanation: `Excellent ! Les entreprises de premier plan recherchent des partenaires de valeur qui résolvent des problèmes précis de manière packagée. Le forfait valorise l'efficacité de vos workflows IA.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt pour formuler une proposition d'accompagnement commercial ou un courriel d'introduction d'élite ciblé sur : ${data.title}.`,
+        systemTemplate: `Generating magnetic freelance business proposals for: ${data.title}`,
+        placeholderText: `Compréhension du problème client, livrables, tarification pour ${data.title}...`,
+        exampleSolution: `Agis en tant que Consultant Commercial d'élite. Rédige un brouillon de proposition d'audit pour un projet de "${data.title}" appliqué à une agence de voyage en ligne. Le message doit faire moins de 150 mots et se concentrer sur le gain d'efficacité.`
+      };
+
+      customCopyObjective = {
+        scenario: `Négociation contractuelle et closing d'affaire : ${data.title}`,
+        audience: "Un client professionnel inquiet qui trouve vos prestations haut de gamme trop onéreuses.",
+        goal: "Lui faire comprendre le retour sur investissement (ROI) logique pour qu'il signe l'acompte.",
+        placeholderText: `Écrivez votre réponse de négociation d'autorité pour ${data.title}...`,
+        exampleSolution: `Je comprends tout à fait que 1500€ représente un budget d'engagement. Cependant, en automatisant vos écritures et votre support client grâce à ce module de "${data.title}", vous récupérez en moyenne 14 heures de temps de vos collaborateurs qualifiés par semaine. À l'année, cela équivaut à plus de 15 000€ d'économie nette. Cet investissement s'autofinance donc dès le premier mois. Préfère-t-on démarrer la phase de cadrage ce mardi ?`
+      };
+    }
+    // 6. ADMINISTRATIVE DRIVEN
+    else if (lowerTitle.includes("admin") || lowerTitle.includes("administrative") || lowerTitle.includes("note") || lowerTitle.includes("courrier") || lowerTitle.includes("compte-rendu") || lowerTitle.includes("procès-verbal") || lowerTitle.includes("usager") || lowerTitle.includes("subvention") || lowerTitle.includes("réclamation") || lowerTitle.includes("rgpd") || lowerTitle.includes("neutralité")) {
+      steps = [
+        `Le module "${data.title}" traite des protocoles de la rédaction administrative et institutionnelle assistée par l'intelligence artificielle. Les écrits officiels obéissent à un cadre d'expression rigide où le ton se doit d'être impersonnel, neutre et respectueux de la déférence hiérarchique.`,
+        `L'IA est d'un soutien inestimable pour filtrer l'affect émotionnel éventuel d'un premier jet hâtif, vous garantissant des écrits d'une tenue objective, réglementaire et courtoise. En encadrant l'IA de barrières de style adéquates, elle formule des courriers de réassurance ou des notes de synthèse conformes aux instructions nationales sans aucune dérive stylistique.`,
+        `Lignes de conduite clés : 1. Adoptez des formes passives d'expression ('Il convient de noter...', 'La demande est déclarée irrecevable') ; 2. Fonder vos arguments sur des mentions réglementaires claires ; 3. Synthétisez des désaccords complexes de réunions sans dénaturer les positions des tiers ; 4. Garantissez la protection des données personnelles (conformité RGPD).`,
+        `À présent, mettez en pratique cet arsenal protocolaire d'autorité dans l'atelier interactif ci-contre, étape essentielle pour comptabiliser vos points et valider l'obtention de votre diplôme final.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans la rédaction officielle liée à "${data.title}", quel style sémantique doit être rigoureusement maintenu ?`,
+        options: [
+          { text: "Une neutralité et objectivité absolue, s'appuyant sur des tournures impersonnelles argumentées sans aucun affect.", isCorrect: true },
+          { text: "Un ton familier humoristique agrémenté de nombreux superlatifs enthousiastes.", isCorrect: false },
+          { text: "Un refus d'explication laconique laissant libre cours à l'indécision réglementaire.", isCorrect: false },
+          { text: "Un style de prose poétique fleuri utilisant des termes obsolètes.", isCorrect: false }
+        ],
+        explanation: `Excellent ! Le respect des codes administratifs impose la sérénité du débat public, la courtoisie protocolaire et l'effacement de l'individualité du rédacteur derrière l'autorité d'institution.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt pour formuler le refus neutre ou la convocation officielle sur le thème de : ${data.title}.`,
+        systemTemplate: `Generating standard neutral and formal regulatory drafts: ${data.title}`,
+        placeholderText: `Objet, faits, justificatifs et formules administratives pour ${data.title}...`,
+        exampleSolution: `Agis en tant que Secrétaire en Chef d'Administration. Rédige un projet de lettre formelle pour convoquer un administré défaillant au titre de "${data.title}". Le ton doit demeurer neutre, respectueux des protocoles légaux, et exempt de toute accusation verbale subjective.`
+      };
+
+      customCopyObjective = {
+        scenario: `Désamorçage d'une réclamation d'usager : ${data.title}`,
+        audience: "Un citoyen outré par un délai prolongé de traitement de son dossier officiel.",
+        goal: "Apaiser sa colère, lui expliquer le besoin d'instruction réglementaire et restaurer la confiance.",
+        placeholderText: `Rédigez la réponse d'autorité et de réassurance pour ${data.title}...`,
+        exampleSolution: `Madame, Monsieur, nous avons bien pris acte de votre courrier de signalement concernant le délai d'instruction de votre dossier relatif à "${data.title}". La complétude de votre demande nécessite l'examen croisé de plusieurs pièces justificatives obligatoires pour garantir l'équité de traitement de tous les usagers. Nous vous assurons du traitement diligent de votre dossier par nos services et reviendrons vers vous dès la fin de cette phase réglementaire. Nous vous remercions pour votre compréhension.`
+      };
+    }
+    // 7. GENERIC FALLBACK (STILL HIGHLY INTENSE & DETAIL-RICH)
+    else {
+      steps = [
+        `Dans cette leçon thématique consacrée à "${data.title}", nous explorons les fondements opérationnels et les innovations phares de ce domaine d'activité. Maîtriser cette compétence d'élite vous permet d'automatiser des flux répétitifs et d'acquérir une expertise sémantique très recherchée par les décisionnaires.`,
+        `Voici le cœur de la méthodologie étudiée : nous analysons comment formuler des instructions claires et utiliser des raccourcis logiques pour atteindre vos objectifs d'affaires. En comprenant l'état d'esprit et les contraintes de votre client final, vous structurez des livrables de haute tenue, exempts de toute fioriture superficielle.`,
+        `Les trois grandes étapes de la mise en œuvre de cette compétence comprennent : 1. L’évaluation et la cartographie de la situation actuelle ; 2. L’assemblage rigoureux d'ébauches sémantiques ciblées ; 3. Le contrôle d'intégrité final pour s'assurer du respect des directives d'excellence et éliminer tout risque d'erreur opérationnelle.`,
+        `Votre plan d'action immédiat : Prenez pleinement connaissance de l'exercice proposé sur le panneau interactif, suivez notre méthodologie d'analyse étape par étape, et transmettez votre proposition pour enregistrer vos récompenses académiques de 50 XP.`
+      ];
+
+      customQuiz = {
         id: `${prefix}_q${lessonNum}`,
         question: `Quel principe fondamental définit le mieux le succès de : "${data.title}" ?`,
         options: [
-          { text: "L'application des techniques de structuration et des contextes étudiés.", isCorrect: true },
-          { text: "Produire une matière brute sans formuler de contrainte d'arrêt précise.", isCorrect: false },
-          { text: "Externaliser l'intégralité du travail à une IA sans vérification humaine.", isCorrect: false },
-          { text: "Ignorer le retour client et conserver la même stratégie sans fin.", isCorrect: false }
+          { text: "L'application des techniques de structuration, d'analyse des besoins clients et de validation sémantique rigoureuse étudiées.", isCorrect: true },
+          { text: "Produire une matière brute aléatoire sans formuler de contrainte d'arrêt précise.", isCorrect: false },
+          { text: "Externaliser l'intégralité du travail à une IA sans aucun contrôle ni correction humaine dévouée.", isCorrect: false },
+          { text: "Ignorer le retour critique et conserver la même disposition sans fin.", isCorrect: false }
         ],
-        explanation: `Félicitations, bonne réponse ! Pour exceller dans "${data.title}", il est primordial d'appliquer des structures rigoureuses et des contextes de validation systématiques.`
+        explanation: `Félicitations, bonne réponse ! Pour exceller dans "${data.title}", il est primordial de marier des approches méthodologiques rigoureuses avec des contrôles de qualité humains rigoureux.`
       };
-    } else if (activityType === "prompt_sandbox") {
-      lesson.promptObjective = {
+
+      customPromptObjective = {
         taskDescription: `Rédigez un prompt parfait d'application pour mettre en pratique : ${data.title}.`,
         systemTemplate: `Simulate high-fidelity validation of: ${data.title}`,
         placeholderText: `Saisissez votre prompt pour : ${data.title}...`,
         exampleSolution: `Agis en tant qu'Expert de l'IA Académie Plus. Aide-moi à développer un modèle opérationnel centré sur la compétence de "${data.title}".`
       };
-    } else {
-      lesson.copyObjective = {
+
+      customCopyObjective = {
         scenario: `Mise en pratique commerciale : ${data.title}`,
         audience: "Professionnels, chefs de projets et clients potentiels à fort budget.",
         goal: "Attirer l'attention et convaincre de la valeur de votre prestation.",
         placeholderText: `Entrez votre texte de copywriting pour ${data.title}...`,
         exampleSolution: `Découvrez notre méthode exclusive en tant que leader certifié sur "${data.title}". Améliorez votre productivité immédiatement dès cette semaine.`
       };
+    }
+
+    const lesson: Lesson = {
+      id,
+      title: data.title,
+      description: data.desc,
+      durationMin: 10 + (lessonNum % 10),
+      steps,
+      activityType
+    };
+
+    if (activityType === "quiz") {
+      lesson.quiz = customQuiz;
+    } else if (activityType === "prompt_sandbox") {
+      lesson.promptObjective = customPromptObjective;
+    } else {
+      lesson.copyObjective = customCopyObjective;
     }
 
     result.push(lesson);
