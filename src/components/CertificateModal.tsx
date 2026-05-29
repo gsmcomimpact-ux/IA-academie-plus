@@ -617,52 +617,51 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.05)_0%,transparent_70%)]" />
           )}
 
-          {/* DIPLOMA SHEET */}
           <div 
-            className={`printable-cert-area relative w-full h-auto min-h-[460px] aspect-[1.414/1] rounded-2xl border-8 p-6 lg:p-10 flex flex-col justify-between items-center text-center shadow-xl transition-colors duration-300 ${
+            className={`printable-cert-area relative w-full h-auto min-h-[520px] aspect-[1.414/1] rounded-2xl border-[10px] p-8 lg:p-14 flex flex-col justify-between items-center text-center shadow-xl transition-colors duration-300 ${
               certStyle === "classic"
                 ? "bg-[#faf9f5] border-[#d4af37] text-slate-800 shadow-[#000000]/5"
                 : "bg-gradient-to-tr from-slate-950 to-slate-900 border-amber-500/20 text-slate-100 shadow-[#000000]/40"
             }`}
           >
             {/* Corner Decorative Ornaments (Classic has nice golden borders, Dark has modern neat corners) */}
-            <div className={`absolute top-2.5 left-2.5 w-6 h-6 border-t-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute top-2.5 right-2.5 w-6 h-6 border-t-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute bottom-2.5 left-2.5 w-6 h-6 border-b-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute bottom-2.5 right-2.5 w-6 h-6 border-b-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
+            <div className={`absolute top-3.5 left-3.5 w-8 h-8 border-t-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
+            <div className={`absolute top-3.5 right-3.5 w-8 h-8 border-t-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
+            <div className={`absolute bottom-3.5 left-3.5 w-8 h-8 border-b-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
+            <div className={`absolute bottom-3.5 right-3.5 w-8 h-8 border-b-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
 
             {/* Header branding */}
-            <div className="space-y-1">
-              <div className="flex items-center justify-center gap-1.5 font-sans">
-                <div className={`w-9 h-6 rounded flex items-center justify-center font-black text-[10px] ${certStyle === "classic" ? "bg-amber-800 text-white" : "bg-emerald-500 text-slate-950"}`}>
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-center gap-2 font-sans">
+                <div className={`w-11 h-7 rounded flex items-center justify-center font-black text-xs md:text-[13px] ${certStyle === "classic" ? "bg-amber-800 text-white" : "bg-emerald-500 text-slate-950"}`}>
                   IA+
                 </div>
-                <span className={`font-sans font-black text-sm tracking-tight capitalize ${certStyle === "classic" ? "text-amber-900" : "bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent"}`}>
+                <span className={`font-sans font-black text-base lg:text-xl tracking-tight capitalize ${certStyle === "classic" ? "text-amber-900" : "bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent"}`}>
                   IA Académie Plus
                 </span>
-                <span className="text-[8px] uppercase font-mono tracking-widest opacity-60">
+                <span className="text-[10px] lg:text-xs uppercase font-mono tracking-widest opacity-65 font-bold">
                   STUDIO
                 </span>
               </div>
-              <div className={`text-[8px] font-mono uppercase tracking-widest ${certStyle === "classic" ? "text-amber-800/80" : "text-emerald-400"}`}>
+              <div className={`text-[10px] md:text-xs font-mono uppercase tracking-widest font-bold ${certStyle === "classic" ? "text-amber-800/80" : "text-emerald-400"}`}>
                 {t("officielBadge")}
               </div>
             </div>
 
             {/* Certificate Title */}
-            <div className="my-2 space-y-2">
-              <h1 className={`font-serif tracking-wide text-2xl lg:text-3.5xl font-black italic ${certStyle === "classic" ? "text-amber-900" : "text-white"}`}>
+            <div className="my-2.5 space-y-2.5">
+              <h1 className={`font-serif tracking-normal text-3xl sm:text-4xl lg:text-5xl font-black italic select-none ${certStyle === "classic" ? "text-amber-900" : "text-white"}`}>
                 {t("certTitle")}
               </h1>
-              <div className={`w-20 h-0.5 mx-auto rounded-full ${certStyle === "classic" ? "bg-amber-850" : "bg-emerald-500"}`} />
-              <p className={`text-[9px] uppercase tracking-widest font-mono text-slate-500 px-4`}>
+              <div className={`w-28 h-1 mx-auto rounded-full ${certStyle === "classic" ? "bg-amber-850" : "bg-emerald-500"}`} />
+              <p className="text-[11px] lg:text-xs uppercase tracking-widest font-mono text-slate-400/85 font-bold px-4">
                 {t("awardedTo")}
               </p>
             </div>
 
             {/* Participant Name */}
-            <div className="my-1.5">
-              <span className={`text-xl lg:text-3xl font-extrabold font-serif underline decoration-dashed decoration-amber-500/40 underline-offset-8 ${
+            <div className="my-2">
+              <span className={`text-2xl sm:text-3xl lg:text-5xl font-extrabold font-serif underline decoration-dashed decoration-amber-500/60 underline-offset-10 ${
                 certStyle === "classic" ? "text-slate-900" : "text-white"
               }`}>
                 {userName}
@@ -670,11 +669,11 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             </div>
 
             {/* Achievement Text */}
-            <div className="max-w-md my-2">
-              <p className="text-xs text-slate-400 leading-relaxed font-sans">
+            <div className="max-w-xl my-2 space-y-1.5">
+              <p className="text-xs sm:text-sm lg:text-base text-slate-400 leading-relaxed font-sans mt-1">
                 {t("awardedSub")}
               </p>
-              <h3 className={`text-sm lg:text-base font-bold tracking-tight mt-1.5 font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
+              <h3 className={`text-sm sm:text-base lg:text-xl font-bold tracking-tight font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
                 {course.title} ({course.category === "ai" 
                   ? (lang === "fr" ? "Spécialisation Intelligence Artificielle" : "Specialist Certification in Artificial Intelligence")
                   : (lang === "fr" ? "Compétences Digitales d'Élite" : "Elite Professional Digital Skill Upgrade")})
@@ -682,15 +681,15 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             </div>
 
             {/* Skills validation row */}
-            <div className={`max-w-lg mt-1 p-2 md:p-3 rounded-xl border flex flex-col items-center justify-center ${
+            <div className={`max-w-xl mt-1.5 p-3 md:p-4 rounded-xl border flex flex-col items-center justify-center ${
               certStyle === "classic" ? "bg-slate-900/5 border-slate-900/10" : "bg-slate-950/40 border-slate-800"
             }`}>
-              <div className="text-[8px] font-mono uppercase tracking-widest text-slate-500 mb-1">{t("skillsRequired")}</div>
-              <div className="flex flex-wrap gap-x-3 gap-y-1 justify-center text-[10px] font-medium text-slate-300 font-sans">
+              <div className="text-[9.5px] lg:text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2 font-bold">{t("skillsRequired")}</div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center text-xs font-medium text-slate-300 font-sans">
                 {getAccomplishments().map((val, idx) => (
-                  <span key={idx} className="flex items-center gap-1">
-                    <span className={`text-[11px] ${certStyle === "classic" ? "text-amber-700 font-bold" : "text-emerald-400"}`}>✓</span>
-                    <span className={`text-[9px] ${certStyle === "classic" ? "text-slate-700" : "text-slate-350"}`}>{val}</span>
+                  <span key={idx} className="flex items-center gap-1.5">
+                    <span className={`text-[13px] ${certStyle === "classic" ? "text-amber-700 font-black" : "text-emerald-400"}`}>✓</span>
+                    <span className={`text-xs lg:text-[13px] font-semibold ${certStyle === "classic" ? "text-slate-700" : "text-slate-300"}`}>{val}</span>
                   </span>
                 ))}
               </div>
@@ -698,13 +697,13 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
             {/* Bottom Row - Signatures and Certificate Verification Seal */}
             {/* Bottom Row - Signatures, QR Code and Certificate Verification Seal */}
-            <div className="w-full grid grid-cols-4 items-end gap-2 mt-4 pt-4 border-t border-slate-800/20">
+            <div className="w-full grid grid-cols-4 items-end gap-3 mt-4 pt-4 border-t border-slate-800/20">
               {/* Date & verification ID */}
               <div className="text-left font-mono">
-                <div className="text-[7px] text-slate-500 uppercase tracking-widest">{t("issuedOn")}</div>
-                <div className={`text-[10px] font-bold ${certStyle === "classic" ? "text-slate-700" : "text-slate-200"}`}>{formattedDate}</div>
-                <div className="text-[6.5px] text-slate-500 uppercase tracking-widest mt-1.5">{t("matricule")}</div>
-                <div className={`text-[8.5px] font-bold tracking-tight opacity-75 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
+                <div className="text-[9px] text-slate-500 uppercase tracking-widest font-bold">{t("issuedOn")}</div>
+                <div className={`text-xs lg:text-sm font-black ${certStyle === "classic" ? "text-slate-700" : "text-slate-100"}`}>{formattedDate}</div>
+                <div className="text-[8.5px] text-slate-500 uppercase tracking-widest mt-2 font-bold">{t("matricule")}</div>
+                <div className={`text-[10px] lg:text-xs font-bold tracking-tight opacity-90 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
               </div>
 
               {/* QR Code Column */}
@@ -713,36 +712,36 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=090d16&data=${encodeURIComponent(window.location.origin + "?verify=" + certId + "&name=" + encodeURIComponent(userName))}`} 
                     alt="Verification QR Code" 
-                    className="w-12 h-12"
+                    className="w-14 h-14 lg:w-16 lg:h-16"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <span className={`text-[6.5px] font-mono tracking-wider mt-1.5 uppercase font-semibold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/90"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
+                <span className={`text-[8px] lg:text-[9px] font-mono tracking-wider mt-2 uppercase font-bold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/95"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
               </div>
 
               {/* Gold Verification Badge / Seal */}
               <div className="flex flex-col items-center justify-center relative">
-                <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center p-2 relative shadow-lg ${
+                <div className={`w-14 h-14 lg:w-18 lg:h-18 rounded-full flex items-center justify-center p-2.5 relative shadow-lg ${
                   certStyle === "classic" 
                     ? "bg-amber-600 text-amber-50 outline-double outline-2 outline-offset-2 outline-amber-600" 
                     : "bg-emerald-500 text-slate-950 outline-dashed outline-2 outline-offset-2 outline-emerald-500"
                 }`}>
-                  <Award className="w-6 h-6 lg:w-8 lg:h-8 animate-pulse" />
+                  <Award className="w-8 h-8 lg:w-10 lg:h-10 animate-pulse" />
                   {/* Decorative golden ribbon underlay (CSS visual only) */}
-                  <div className="absolute top-10 lg:top-12 left-1.5 w-1.5 lg:w-2 h-4 lg:h-6 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
-                  <div className="absolute top-10 lg:top-12 right-1.5 w-1.5 lg:w-2 h-4 lg:h-6 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
+                  <div className="absolute top-12 lg:top-15 left-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
+                  <div className="absolute top-12 lg:top-15 right-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
                 </div>
-                <span className={`text-[7px] font-mono tracking-widest font-bold mt-2 uppercase ${certStyle === "classic" ? "text-amber-800" : "text-slate-400"}`}>{t("sealLabel")}</span>
+                <span className={`text-[8.5px] lg:text-[9.5px] font-mono tracking-widest font-bold mt-2.5 uppercase ${certStyle === "classic" ? "text-amber-850" : "text-slate-300"}`}>{t("sealLabel")}</span>
               </div>
 
               {/* Signature lines */}
               <div className="text-right font-sans">
-                <div className={`italic font-serif text-[11px] font-semibold text-slate-500 tracking-tight`}>
+                <div className={`italic font-serif text-xs lg:text-[14px] font-extrabold text-slate-500 tracking-tight`}>
                   {t("directorTitle")}
                 </div>
-                <div className={`mt-0.5 w-full h-[1px] ${certStyle === "classic" ? "bg-slate-300" : "bg-slate-800"}`} />
-                <div className="text-[7px] font-mono text-slate-500 uppercase tracking-widest mt-1">{t("directorPos")}</div>
-                <div className={`font-mono text-[9px] font-semibold mt-0.5 ${certStyle === "classic" ? "text-slate-800" : "text-slate-200"}`}>IA Académie Plus AI</div>
+                <div className={`mt-1 w-full h-[1px] ${certStyle === "classic" ? "bg-slate-350" : "bg-slate-700"}`} />
+                <div className="text-[8.5px] lg:text-[9.5px] font-mono text-slate-500 uppercase tracking-widest mt-1.5 font-bold">{t("directorPos")}</div>
+                <div className={`font-mono text-xs lg:text-[13px] font-bold mt-1.5 ${certStyle === "classic" ? "text-slate-850" : "text-slate-100"}`}>IA Académie Plus AI</div>
               </div>
             </div>
 
