@@ -371,7 +371,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
         @media print {
           @page {
             size: A4 landscape;
-            margin: 0;
+            margin: 0 !important;
           }
           html, body {
             margin: 0 !important;
@@ -381,12 +381,14 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             overflow: hidden !important;
             background: none !important;
             background-color: transparent !important;
+            position: fixed !important;
           }
           /* Hide all general webpage wrappers and other views */
           #root {
             display: block !important;
-            height: auto !important;
-            min-height: 0 !important;
+            height: 210mm !important;
+            max-height: 210mm !important;
+            overflow: hidden !important;
             margin: 0 !important;
             padding: 0 !important;
             background: none !important;
@@ -395,19 +397,23 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
           #root > div > *:not(#certificate-modal-overlay) {
             display: none !important;
           }
-          header, main, footer, .no-print, button {
+          header, main, footer, .no-print, button, iframe {
             display: none !important;
           }
           /* Make sure parents prevent page-breaks and do not leak dark layouts */
           .min-h-screen {
             display: block !important;
-            height: auto !important;
-            min-height: 0 !important;
+            height: 210mm !important;
+            max-height: 210mm !important;
+            overflow: hidden !important;
             background: none !important;
             background-color: transparent !important;
           }
-          /* Position the certificate modal perfectly to occupy exactly one page */
-          #certificate-modal-overlay {
+          /* Position the certificate modal overlay under print format precisely */
+          #certificate-modal-overlay,
+          #certificate-modal-overlay > div,
+          #certificate-modal-overlay > div > div:last-child {
+            display: block !important;
             position: fixed !important;
             left: 0 !important;
             top: 0 !important;
@@ -419,10 +425,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             background: none !important;
             background-color: transparent !important;
             box-shadow: none !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            z-index: 999999 !important;
+            z-index: 9999999 !important;
             overflow: hidden !important;
             page-break-inside: avoid !important;
             page-break-after: avoid !important;
@@ -445,8 +448,8 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             background: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             background-color: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             color: ${certStyle === "classic" ? "#0f172a" : "#ffffff"} !important;
-            print-color-adjust: exact;
-            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact !important;
+            -webkit-print-color-adjust: exact !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
@@ -454,6 +457,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             page-break-inside: avoid !important;
             page-break-after: avoid !important;
             break-after: avoid !important;
+            overflow: hidden !important;
           }
         }
       `}</style>
