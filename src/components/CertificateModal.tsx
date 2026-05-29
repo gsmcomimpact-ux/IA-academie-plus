@@ -364,7 +364,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto font-sans">
+    <div id="certificate-modal-overlay" className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto font-sans">
       
       {/* Print Style Injector */}
       <style>{`
@@ -373,39 +373,87 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             size: A4 landscape;
             margin: 0;
           }
-          body {
-            margin: 0;
-            padding: 0;
-            background: none;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 297mm !important;
+            height: 210mm !important;
+            overflow: hidden !important;
+            background: none !important;
+            background-color: transparent !important;
           }
-          body * {
-            visibility: hidden;
+          /* Hide all general webpage wrappers and other views */
+          #root {
+            display: block !important;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: none !important;
+            background-color: transparent !important;
           }
-          .printable-cert-area, .printable-cert-area * {
-            visibility: visible;
+          #root > div > *:not(#certificate-modal-overlay) {
+            display: none !important;
           }
-          .printable-cert-area {
-            position: fixed;
-            left: 0;
-            top: 0;
+          header, main, footer, .no-print, button {
+            display: none !important;
+          }
+          /* Make sure parents prevent page-breaks and do not leak dark layouts */
+          .min-h-screen {
+            display: block !important;
+            height: auto !important;
+            min-height: 0 !important;
+            background: none !important;
+            background-color: transparent !important;
+          }
+          /* Position the certificate modal perfectly to occupy exactly one page */
+          #certificate-modal-overlay {
+            position: fixed !important;
+            left: 0 !important;
+            top: 0 !important;
             width: 297mm !important;
             height: 210mm !important;
             margin: 0 !important;
-            padding: 24mm 32mm !important;
+            padding: 0 !important;
             border: none !important;
+            background: none !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 999999 !important;
+            overflow: hidden !important;
+            page-break-inside: avoid !important;
+            page-break-after: avoid !important;
+            break-after: avoid !important;
+          }
+          .printable-cert-area {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 297mm !important;
+            height: 210mm !important;
+            margin: 0 !important;
+            padding: 20mm 28mm !important;
+            border-width: 8px !important;
+            border-style: solid !important;
+            border-color: ${certStyle === "classic" ? "#d4af37" : "rgba(245, 158, 11, 0.2)"} !important;
             border-radius: 0 !important;
             box-shadow: none !important;
+            box-sizing: border-box !important;
             background: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             background-color: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             color: ${certStyle === "classic" ? "#0f172a" : "#ffffff"} !important;
             print-color-adjust: exact;
             -webkit-print-color-adjust: exact;
-            box-sizing: border-box !important;
-          }
-          .no-print {
-            display: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            page-break-inside: avoid !important;
+            page-break-after: avoid !important;
+            break-after: avoid !important;
           }
         }
       `}</style>
