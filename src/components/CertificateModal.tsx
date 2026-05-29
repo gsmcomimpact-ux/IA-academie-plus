@@ -432,11 +432,12 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             break-after: avoid !important;
           }
           .printable-cert-area {
-            position: absolute !important;
+            position: fixed !important;
             left: 0 !important;
             top: 0 !important;
             width: 297mm !important;
             height: 210mm !important;
+            z-index: 10000000 !important;
             margin: 0 !important;
             padding: 20mm 28mm !important;
             border-width: 8px !important;
