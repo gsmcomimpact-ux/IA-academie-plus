@@ -373,92 +373,212 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             size: A4 landscape;
             margin: 0 !important;
           }
+          /* Completely collapse other elements on the site from layout to make SURE it occupies exactly ONE COPY of target A4 page list */
+          body > :not(#root) {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+          #root > :not(div.min-h-screen) {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+          div.min-h-screen > :not(#certificate-modal-overlay) {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+          /* Standard html and body definitions */
           html, body {
             margin: 0 !important;
             padding: 0 !important;
             width: 297mm !important;
             height: 210mm !important;
-            overflow: hidden !important;
-            background: none !important;
-            background-color: transparent !important;
-            position: fixed !important;
-          }
-          /* Hide all general webpage wrappers and other views */
-          #root {
-            display: block !important;
-            height: 210mm !important;
+            min-height: 210mm !important;
             max-height: 210mm !important;
             overflow: hidden !important;
-            margin: 0 !important;
+            background-color: transparent !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          /* Outer structural layout of App must match A4 landscape format */
+          div.min-h-screen {
             padding: 0 !important;
-            background: none !important;
-            background-color: transparent !important;
-          }
-          #root > div > *:not(#certificate-modal-overlay) {
-            display: none !important;
-          }
-          header, main, footer, .no-print, button, iframe {
-            display: none !important;
-          }
-          /* Make sure parents prevent page-breaks and do not leak dark layouts */
-          .min-h-screen {
-            display: block !important;
+            margin: 0 !important;
+            width: 297mm !important;
             height: 210mm !important;
-            max-height: 210mm !important;
-            overflow: hidden !important;
+            min-height: 210mm !important;
             background: none !important;
-            background-color: transparent !important;
-          }
-          /* Position the certificate modal overlay under print format precisely */
-          #certificate-modal-overlay,
-          #certificate-modal-overlay > div,
-          #certificate-modal-overlay > div > div:last-child {
             display: block !important;
-            position: fixed !important;
+          }
+          /* Hide all other elements but the modal and certificate */
+          body * {
+            visibility: hidden !important;
+          }
+          #certificate-modal-overlay,
+          #certificate-modal-overlay * {
+            visibility: visible !important;
+          }
+          /* Force hide elements with no-print */
+          .no-print, .no-print * {
+            visibility: hidden !important;
+            display: none !important;
+            height: 0 !important;
+          }
+          /* Adjust overlay layout for printing */
+          #certificate-modal-overlay {
+            position: absolute !important;
             left: 0 !important;
             top: 0 !important;
             width: 297mm !important;
             height: 210mm !important;
-            margin: 0 !important;
             padding: 0 !important;
-            border: none !important;
+            margin: 0 !important;
             background: none !important;
-            background-color: transparent !important;
+            backdrop-filter: none !important;
+            display: block !important;
+          }
+          /* Adjust wrapper popup */
+          #certificate-modal-overlay > div {
+            border: none !important;
             box-shadow: none !important;
-            z-index: 9999999 !important;
-            overflow: hidden !important;
-            page-break-inside: avoid !important;
-            page-break-after: avoid !important;
-            break-after: avoid !important;
+            background: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 297mm !important;
+            height: 210mm !important;
+            display: block !important;
+          }
+          /* Adjust the right container (the canvas wrapper parent) */
+          #certificate-modal-overlay > div > div:last-child {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 297mm !important;
+            height: 210mm !important;
+            background: none !important;
+            display: block !important;
           }
           .printable-cert-area {
-            position: fixed !important;
+            position: absolute !important;
             left: 0 !important;
             top: 0 !important;
             width: 297mm !important;
             height: 210mm !important;
-            z-index: 10000000 !important;
+            box-sizing: border-box !important;
             margin: 0 !important;
-            padding: 20mm 28mm !important;
-            border-width: 8px !important;
+            padding: 18mm 25mm !important;
+            border-width: 12px !important;
             border-style: solid !important;
-            border-color: ${certStyle === "classic" ? "#d4af37" : "rgba(245, 158, 11, 0.2)"} !important;
+            border-color: ${certStyle === "classic" ? "#d4af37" : "#059669"} !important;
             border-radius: 0 !important;
             box-shadow: none !important;
-            box-sizing: border-box !important;
             background: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             background-color: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
             color: ${certStyle === "classic" ? "#0f172a" : "#ffffff"} !important;
-            print-color-adjust: exact !important;
-            -webkit-print-color-adjust: exact !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
             align-items: center !important;
+            overflow: hidden !important;
             page-break-inside: avoid !important;
             page-break-after: avoid !important;
-            break-after: avoid !important;
-            overflow: hidden !important;
+          }
+          /* INCREASED TYPOGRAPHY / FONT SIZES CHOSEN SURGICALLY */
+          .printable-cert-area .cert-title {
+            font-size: 42pt !important;
+            margin-bottom: 4mm !important;
+            line-height: 1.15 !important;
+          }
+          .printable-cert-area .awarded-to {
+            font-size: 14pt !important;
+            margin-top: 3mm !important;
+          }
+          .printable-cert-area .recipient-name {
+            font-size: 48pt !important;
+            line-height: 1.25 !important;
+            font-weight: 900 !important;
+            display: inline-block !important;
+            margin-top: 4mm !important;
+            margin-bottom: 4mm !important;
+          }
+          .printable-cert-area .awarded-sub {
+            font-size: 14pt !important;
+            line-height: 1.45 !important;
+          }
+          .printable-cert-area .course-title {
+            font-size: 22pt !important;
+            font-weight: 800 !important;
+            margin-top: 2.5mm !important;
+          }
+          .printable-cert-area .skills-container {
+            padding: 6mm 10mm !important;
+            margin-top: 4mm !important;
+            border-width: 1px !important;
+            border-style: solid !important;
+            border-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.2)"} !important;
+            border-radius: 8px !important;
+          }
+          .printable-cert-area .skills-title {
+            font-size: 11.5pt !important;
+            margin-bottom: 2.5mm !important;
+          }
+          .printable-cert-area .skill-badge-text {
+            font-size: 13pt !important;
+            font-weight: bold !important;
+          }
+          .printable-cert-area .skill-check {
+            font-size: 13.5pt !important;
+          }
+          .printable-cert-area .cert-footer {
+            margin-top: 8mm !important;
+            padding-top: 4mm !important;
+            border-top-width: 1px !important;
+            border-top-style: solid !important;
+            border-top-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.15)"} !important;
+          }
+          .printable-cert-area .footer-label {
+            font-size: 10pt !important;
+          }
+          .printable-cert-area .footer-val-date {
+            font-size: 13pt !important;
+          }
+          .printable-cert-area .footer-val-id {
+            font-size: 12pt !important;
+          }
+          .printable-cert-area .qr-image {
+            width: 22mm !important;
+            height: 22mm !important;
+          }
+          .printable-cert-area .qr-label {
+            font-size: 9.5pt !important;
+          }
+          .printable-cert-area .seal-badge {
+            width: 22mm !important;
+            height: 22mm !important;
+          }
+          .printable-cert-area .seal-icon {
+            width: 12mm !important;
+            height: 12mm !important;
+          }
+          .printable-cert-area .seal-label {
+            font-size: 9.5pt !important;
+          }
+          .printable-cert-area .sig-title {
+            font-size: 14pt !important;
+          }
+          .printable-cert-area .sig-line {
+            height: 1.5px !important;
+            background-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.25)" : "rgba(255, 255, 255, 0.25)"} !important;
+          }
+          .printable-cert-area .sig-pos {
+            font-size: 9.5pt !important;
+          }
+          .printable-cert-area .sig-org {
+            font-size: 11.5pt !important;
           }
         }
       `}</style>
@@ -650,18 +770,18 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
             {/* Certificate Title */}
             <div className="my-2.5 space-y-2.5">
-              <h1 className={`font-serif tracking-normal text-3xl sm:text-4xl lg:text-5xl font-black italic select-none ${certStyle === "classic" ? "text-amber-900" : "text-white"}`}>
+              <h1 className={`cert-title font-serif tracking-normal text-3xl sm:text-4xl lg:text-5xl font-black italic select-none ${certStyle === "classic" ? "text-amber-900" : "text-white"}`}>
                 {t("certTitle")}
               </h1>
               <div className={`w-28 h-1 mx-auto rounded-full ${certStyle === "classic" ? "bg-amber-850" : "bg-emerald-500"}`} />
-              <p className="text-[11px] lg:text-xs uppercase tracking-widest font-mono text-slate-400/85 font-bold px-4">
+              <p className="awarded-to text-[11px] lg:text-xs uppercase tracking-widest font-mono text-slate-400/85 font-bold px-4">
                 {t("awardedTo")}
               </p>
             </div>
 
             {/* Participant Name */}
             <div className="my-2">
-              <span className={`text-2xl sm:text-3xl lg:text-5xl font-extrabold font-serif underline decoration-dashed decoration-amber-500/60 underline-offset-10 ${
+              <span className={`recipient-name text-2xl sm:text-3xl lg:text-5xl font-extrabold font-serif underline decoration-dashed decoration-amber-500/60 underline-offset-10 ${
                 certStyle === "classic" ? "text-slate-900" : "text-white"
               }`}>
                 {userName}
@@ -670,10 +790,10 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
             {/* Achievement Text */}
             <div className="max-w-xl my-2 space-y-1.5">
-              <p className="text-xs sm:text-sm lg:text-base text-slate-400 leading-relaxed font-sans mt-1">
+              <p className="awarded-sub text-xs sm:text-sm lg:text-base text-slate-400 leading-relaxed font-sans mt-1">
                 {t("awardedSub")}
               </p>
-              <h3 className={`text-sm sm:text-base lg:text-xl font-bold tracking-tight font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
+              <h3 className={`course-title text-sm sm:text-base lg:text-xl font-bold tracking-tight font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
                 {course.title} ({course.category === "ai" 
                   ? (lang === "fr" ? "Spécialisation Intelligence Artificielle" : "Specialist Certification in Artificial Intelligence")
                   : (lang === "fr" ? "Compétences Digitales d'Élite" : "Elite Professional Digital Skill Upgrade")})
@@ -681,15 +801,15 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             </div>
 
             {/* Skills validation row */}
-            <div className={`max-w-xl mt-1.5 p-3 md:p-4 rounded-xl border flex flex-col items-center justify-center ${
+            <div className={`skills-container max-w-xl mt-1.5 p-3 md:p-4 rounded-xl border flex flex-col items-center justify-center ${
               certStyle === "classic" ? "bg-slate-900/5 border-slate-900/10" : "bg-slate-950/40 border-slate-800"
             }`}>
-              <div className="text-[9.5px] lg:text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2 font-bold">{t("skillsRequired")}</div>
+              <div className="skills-title text-[9.5px] lg:text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2 font-bold">{t("skillsRequired")}</div>
               <div className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center text-xs font-medium text-slate-300 font-sans">
                 {getAccomplishments().map((val, idx) => (
                   <span key={idx} className="flex items-center gap-1.5">
-                    <span className={`text-[13px] ${certStyle === "classic" ? "text-amber-700 font-black" : "text-emerald-400"}`}>✓</span>
-                    <span className={`text-xs lg:text-[13px] font-semibold ${certStyle === "classic" ? "text-slate-700" : "text-slate-300"}`}>{val}</span>
+                    <span className={`skill-check text-[13px] ${certStyle === "classic" ? "text-amber-700 font-black" : "text-emerald-400"}`}>✓</span>
+                    <span className={`skill-badge-text text-xs lg:text-[13px] font-semibold ${certStyle === "classic" ? "text-slate-700" : "text-slate-300"}`}>{val}</span>
                   </span>
                 ))}
               </div>
@@ -697,13 +817,13 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
             {/* Bottom Row - Signatures and Certificate Verification Seal */}
             {/* Bottom Row - Signatures, QR Code and Certificate Verification Seal */}
-            <div className="w-full grid grid-cols-4 items-end gap-3 mt-4 pt-4 border-t border-slate-800/20">
+            <div className="cert-footer w-full grid grid-cols-4 items-end gap-3 mt-4 pt-4 border-t border-slate-800/20">
               {/* Date & verification ID */}
               <div className="text-left font-mono">
-                <div className="text-[9px] text-slate-500 uppercase tracking-widest font-bold">{t("issuedOn")}</div>
-                <div className={`text-xs lg:text-sm font-black ${certStyle === "classic" ? "text-slate-700" : "text-slate-100"}`}>{formattedDate}</div>
-                <div className="text-[8.5px] text-slate-500 uppercase tracking-widest mt-2 font-bold">{t("matricule")}</div>
-                <div className={`text-[10px] lg:text-xs font-bold tracking-tight opacity-90 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
+                <div className="footer-label text-[9px] text-slate-500 uppercase tracking-widest font-bold">{t("issuedOn")}</div>
+                <div className={`footer-val-date text-xs lg:text-sm font-black ${certStyle === "classic" ? "text-slate-700" : "text-slate-100"}`}>{formattedDate}</div>
+                <div className="footer-label text-[8.5px] text-slate-500 uppercase tracking-widest mt-2 font-bold">{t("matricule")}</div>
+                <div className={`footer-val-id text-[10px] lg:text-xs font-bold tracking-tight opacity-90 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
               </div>
 
               {/* QR Code Column */}
@@ -712,36 +832,36 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=090d16&data=${encodeURIComponent(window.location.origin + "?verify=" + certId + "&name=" + encodeURIComponent(userName))}`} 
                     alt="Verification QR Code" 
-                    className="w-14 h-14 lg:w-16 lg:h-16"
+                    className="qr-image w-14 h-14 lg:w-16 lg:h-16"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <span className={`text-[8px] lg:text-[9px] font-mono tracking-wider mt-2 uppercase font-bold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/95"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
+                <span className={`qr-label text-[8px] lg:text-[9px] font-mono tracking-wider mt-2 uppercase font-bold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/95"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
               </div>
 
               {/* Gold Verification Badge / Seal */}
               <div className="flex flex-col items-center justify-center relative">
-                <div className={`w-14 h-14 lg:w-18 lg:h-18 rounded-full flex items-center justify-center p-2.5 relative shadow-lg ${
+                <div className={`seal-badge w-14 h-14 lg:w-18 lg:h-18 rounded-full flex items-center justify-center p-2.5 relative shadow-lg ${
                   certStyle === "classic" 
                     ? "bg-amber-600 text-amber-50 outline-double outline-2 outline-offset-2 outline-amber-600" 
                     : "bg-emerald-500 text-slate-950 outline-dashed outline-2 outline-offset-2 outline-emerald-500"
                 }`}>
-                  <Award className="w-8 h-8 lg:w-10 lg:h-10 animate-pulse" />
+                  <Award className="seal-icon w-8 h-8 lg:w-10 lg:h-10 animate-pulse" />
                   {/* Decorative golden ribbon underlay (CSS visual only) */}
                   <div className="absolute top-12 lg:top-15 left-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
                   <div className="absolute top-12 lg:top-15 right-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
                 </div>
-                <span className={`text-[8.5px] lg:text-[9.5px] font-mono tracking-widest font-bold mt-2.5 uppercase ${certStyle === "classic" ? "text-amber-850" : "text-slate-300"}`}>{t("sealLabel")}</span>
+                <span className={`seal-label text-[8.5px] lg:text-[9.5px] font-mono tracking-widest font-bold mt-2.5 uppercase ${certStyle === "classic" ? "text-amber-850" : "text-slate-300"}`}>{t("sealLabel")}</span>
               </div>
 
               {/* Signature lines */}
               <div className="text-right font-sans">
-                <div className={`italic font-serif text-xs lg:text-[14px] font-extrabold text-slate-500 tracking-tight`}>
+                <div className="sig-title italic font-serif text-xs lg:text-[14px] font-extrabold text-slate-500 tracking-tight">
                   {t("directorTitle")}
                 </div>
-                <div className={`mt-1 w-full h-[1px] ${certStyle === "classic" ? "bg-slate-350" : "bg-slate-700"}`} />
-                <div className="text-[8.5px] lg:text-[9.5px] font-mono text-slate-500 uppercase tracking-widest mt-1.5 font-bold">{t("directorPos")}</div>
-                <div className={`font-mono text-xs lg:text-[13px] font-bold mt-1.5 ${certStyle === "classic" ? "text-slate-850" : "text-slate-100"}`}>IA Académie Plus AI</div>
+                <div className="sig-line mt-1 w-full h-[1px]" />
+                <div className="sig-pos text-[8.5px] lg:text-[9.5px] font-mono text-slate-500 uppercase tracking-widest mt-1.5 font-bold">{t("directorPos")}</div>
+                <div className="sig-org font-mono text-xs lg:text-[13px] font-bold mt-1.5">IA Académie Plus AI</div>
               </div>
             </div>
 

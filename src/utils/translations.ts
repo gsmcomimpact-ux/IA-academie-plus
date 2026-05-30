@@ -1035,6 +1035,62 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
+  procurement_mastery: {
+    title: "Complete Procurement & Supplier Risk Management Course",
+    description: "Master strategic sourcing, procurement operations, negotiation, and supplier risk management. Learn to navigate the Kraljic Matrix, model Total Cost of Ownership (TCO), draft secure RFPs, and build highly resilient, crisis-proof supply chains.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "pm_l1",
+        title: "Introduction to Strategic Sourcing & The Kraljic Matrix",
+        description: "Learn to categorize your procurement portfolio using the legendary Kraljic Matrix to optimize buying strategies and hedge supply chain vulnerabilities.",
+        steps: [
+          "Strategic Sourcing focuses on maximizing overall value and total cost efficiency rather than just squeezing unit buy prices.",
+          "The Kraljic Matrix groups purchases into 4 quadrants based on market risk (complexity) and financial impact (profit): non-critical, bottleneck, leverage, and strategic.",
+          "Strategic items require close multi-year partnerships, while leverage items benefit from active bidding and supplier shifting.",
+          "Conducting a comprehensive Spend Analysis is the vital first action to pinpoint where key savings lie."
+        ],
+        activityInstructions: "Write a high-fidelity prompt asking an AI assistant to categorize 5 key procurement items (e.g. raw steel, office laptops, cleaning services, specialized live ERP licenses, cardboard boxes) across the Kraljic Matrix.",
+        scenario: "Senior Executive Procurement & Sourcing Consulting.",
+        audience: "Procurement managers, buyers, and operations directors.",
+        goal: "Categorize expenditures with precise quadrant assignment and strategic justification."
+      },
+      {
+        id: "pm_l2",
+        title: "The Procure-to-Pay (P2P) Cycle & Designing Secure RFPs",
+        description: "Master the fundamental stages of Procure-to-Pay pipelines and design bulletproof Requests for Proposals (RFPs) to align supplier deliverables.",
+        steps: [
+          "The Procure-to-Pay (P2P) pipeline spans purchase requisitions, supplier bidding, Purchase Orders (PO), receiving, and final invoice matching.",
+          "Drafting technical RFPs with surgical specifications prevents scope creep, quality degradation, or hidden administrative fees.",
+          "Three-Way Matching cross-references the Purchase Order (PO), Receiving Log, and Supplier Invoice to eliminate billing errors and fraud risks.",
+          "Conducive negotiation in RFPs avoids forcing suppliers into unsustainable margins, keeping their services reliable and compliant long-term."
+        ],
+        quizQuestion: "What is the primary operational safeguard of 'Three-Way Matching' in corporate procurement?",
+        quizOptions: [
+          "It cross-checks the Purchase Order (PO), Receiving Log, and Supplier Invoice before approving payments to avoid errors and fraud.",
+          "It facilitates a 3-way live bidding tournament between competing suppliers to squeeze final margins.",
+          "It grades suppliers on an equal scale of ESG, financial health, and operational resilience.",
+          "It calculates dynamic logistics risks over three separate international maritime lanes."
+        ],
+        explanation: "Correct! Three-Way Matching is the cornerstone of procurement finance, ensuring the company pays only for what was ordered and physically received."
+      },
+      {
+        id: "pm_l3",
+        title: "Supplier Risk Mitigation & Business Continuity Planning (BCP)",
+        description: "Formulate resilient logistics risk plans and business continuity routines to safeguard production from global crises.",
+        steps: [
+          "Global supply chain disruptions necessitate proactive financial auditing of key and secondary suppliers.",
+          "Active Dual Sourcing (multi-source procurement) protects factories and operations from region-specific disasters or tariffs.",
+          "A Business Continuity Plan (BCP) maps out alternate sourcing corridors and steps when force majeure events lock primary suppliers.",
+          "Verifying supplier ESG scores prevents critical brand reputation damage and aligns with modern ESG regulatory guidelines."
+        ],
+        activityInstructions: "Write a crisis management prompt asking the AI to model response actions when a primary semiconductor supplier in Taiwan suffers typhoon damage.",
+        scenario: "Orchestrating urgent supply chain recovery and alternate nearshore sourcing.",
+        audience: "Supply chain managers, risk officers, and sourcing leads.",
+        goal: "A 3-step action response plan securing fallback manufacturing parts."
+      }
+    ]
+  },
   perplexity_mastery: {
     title: "Complete Perplexity.ai Course: Master Cognitive Search in 20 Modules",
     description: "Deepen your factual investigation, semantic analysis, and market research skills on Perplexity.ai. Master the intricacies of Pro Search multi-step paths, custom Focus categories, private data ingestion, and building professional Web Pages.",
@@ -1700,6 +1756,25 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Deconstructing Massive Bids and Crafting RFC responses", desc: "Analyze heavy administration proposals and let Manus outline the technical requirements draft." },
     { title: "Final Assessment & Certified Manus.ai Specialist Examination", desc: "Validate your autonomous agent orchestration expertise to earn your academic diploma." }
   ],
+  procurement_mastery: [
+    { title: "Advanced Kraljic Matrix Mapping with Semantic AI", desc: "Use advanced semantic analysis to map key supplies across Kraljic quadrants and isolate bottlenecks." },
+    { title: "Total Cost of Ownership (TCO) Equipment Modeling", desc: "Model overall lifetime equipment costs including delivery, setup, depreciation, and recycling." },
+    { title: "Drafting Bulletproof Sourcing RFPs and Specifications", desc: "Draft technical and legal tender clauses with high precision to guard vendor expectations." },
+    { title: "Simulating Vendor Negotiations with AI Roleplaying", desc: "Train your teams with real bargaining simulators using deep-game supplier persona playbanks." },
+    { title: "Key Performance Indicators (KPIs) & Supplier Scorecards", desc: "Build automated trackers for On-Time In-Full (OTIF) success, error margins, and QA metrics." },
+    { title: "Financial Solvency Audit of Strategic Subcontractors", desc: "Deconstruct financial reports to reveal early signals of supplier bankruptcy or technical failures." },
+    { title: "Supply Chain ESG Strategy & Carbon Neutrality Audits", desc: "Audit global supply lanes to enforce child-labor bans, green transport routing, and carbon-cap goals." },
+    { title: "Maritime Logistics Optimization and Incoterms 2020", desc: "Utilize FOB, CIF, or DDP Incoterms tactfully to partition customs, duty, and freight liability." },
+    { title: "Implementing an Active Multi-Regional Dual Sourcing Strategy", desc: "Establish backup local nearshore and international suppliers to eliminate material supply gaps." },
+    { title: "Supplier Contract SLA Penalties & Legal Covenants", desc: "Secure service contracts by detailing tangible performance SLAs paired with direct financial claims." },
+    { title: "Logistical Crisis Control & Alternative Corridors", desc: "Navigate logistics roadblocks by routing cargo through substitute multi-modal transport lines." },
+    { title: "International Factory Audit and QA Site Inspections", desc: "Structure factory inspection checklists, capability trials, and onboarding criteria." },
+    { title: "Optimal Safety Stocks & Economic Order Quantity (EOQ)", desc: "Calculate EOQ balance points to lower holding costs while keeping a buffer against material outages." },
+    { title: "Automated Pay cycles & Three-Way Accounting Sync", desc: "Settle billing disputes in under 24 hours with automated three-way matching workflows." },
+    { title: "Supplier Relationship Management (SRM) & Co-Engineering", desc: "Become the preferred customer of top vendor labs to co-develop breakthrough joint patents." },
+    { title: "Circular Economy Sourcing and Lifecycle Traceability", desc: "Enforce closed-loop flows utilizing parts recall, material recycling, and secure rare minerals tracking." },
+    { title: "Final Sourcing & Supplier Risk Certification Exam", desc: "Validate your abilities to secure savings, negotiate contracts, and protect the end-to-end supply chain." }
+  ],
   perplexity_mastery: [
     { title: "Expert Setup of Custom Profiles and Search Personas", desc: "Define your precise corporate preferences to ensure all results align with your field, bias-free." },
     { title: "Deep Content Audit of Giant PDF and Annual Reports", desc: "Ingest multiple heavy files and let Perplexity execute precise cross-comparisons instantly." },
@@ -2197,6 +2272,42 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
         exampleSolution: `Stop manually copying competitor prices. Our custom scraping agents monitor target e-commerce pages on autopilot, delivering structured Excel alerts of price shifts straight to your dashboard. Stay ahead of the market, automate pricing policies, and skyrocket profit margins easily.`
       };
     }
+    // 4F. PROCUREMENT & RISK MANAGEMENT
+    else if (lowerTitle.includes("kraljic") || lowerTitle.includes("sourcing") || lowerTitle.includes("procurement") || lowerTitle.includes("vendor") || lowerTitle.includes("supplier") || lowerTitle.includes("risk") || lowerTitle.includes("stock") || lowerTitle.includes("contract") || lowerTitle.includes("audit") || lowerTitle.includes("rfp") || lowerTitle.includes("solvability") || lowerTitle.includes("esg") || lowerTitle.includes("logistics")) {
+      steps = [
+        `This unit on "${title}" handles strategic sourcing and vendor risk mitigation within global supply chains. Sourcing decisions must align unit purchase values with operational durability and contractual resilience against disruption.`,
+        `To optimize buying procedures: 1. Conduct systematic spend analysis; 2. Map supplies inside the Kraljic Matrix; 3. draft clear Requests for Proposal (RFPs); 4. Run vendor audits focusing on financial sanity (e.g. Altman Z-Score) and manufacturing safety.`,
+        `Risk mitigation plans demand structured contingency operations: active Dual Sourcing, inventory buffer modeling (Economic Order Quantity/EOQ calculations), and solid Supplier Relationship Management (SRM) covenants.`,
+        `Expert instruction: Integrate strict ESG indicators in your RFP matrices to avoid supply chain compliance penalties. Practice these strategies in the interactive sandbox to gain your 50 XP and complete your degree certificate.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `When global supply networks face geopolitical or weather disruptions, what is the most reliable operational protection?`,
+        options: [
+          { text: "Executing a Business Continuity Plan (BCP) with a pre-qualified alternate nearshore or international supplier (Dual-Sourcing).", isCorrect: true },
+          { text: "Suspending all commercial logistics operations indefinitely.", isCorrect: false },
+          { text: "Relying on a single supplier and wait for local market conditions to adjust on their own.", isCorrect: false },
+          { text: "Maximizing security stocks blindly without calculating the Total Cost of Ownership (TCO).", isCorrect: false }
+        ],
+        explanation: `Correct! Strategic Dual Sourcing coupled with an active Business Continuity Plan (BCP) safeguards your production lines from single-supplier failures and cargo roadblocks.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Draft a high-fidelity system prompt to analyze supplier risks, SLA metrics, or contractual protections under: ${title}.`,
+        systemTemplate: `Analyzing logistics risks and SLA protection clauses: ${title}`,
+        placeholderText: `Define expert sourcing persona, target risks, and SLA covenants for ${title}...`,
+        exampleSolution: `Act as a Global Sourcing Attorney. Draft an SLA penalty clause regarding OTIF (On-Time In-Full) delivery for: ${title}. Set clear compliance thresholds and specify direct financial penalty rates per day for delayed shipments.`
+      };
+
+      customCopyObjective = {
+        scenario: `Renegotiating delivery pricing and contracts for: ${title}`,
+        audience: `A critical supplier requesting a significant price increase during annual contract reviews.`,
+        goal: `Leverage long-term commitment and multi-year guaranteed buy volumes to prevent the price increase.`,
+        placeholderText: `Present your negotiation argument and mutual value commitment...`,
+        exampleSolution: `While we appreciate our long-standing partnership regarding "${title}", the proposed 12% pricing increase exceeds our operational thresholds. By offering a three-year volume growth guarantee of 20%, we expect to maintain current unit buy rates or index changes directly against public commodity indices.`
+      };
+    }
     // 4G. GENERAL PROMPT ENGINEERING FALLBACK
     else {
       steps = [
@@ -2269,7 +2380,7 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
             translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
           }
 
-          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : "fr";
+          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : "fr";
 
           // Delegate to the elite English analyzer just like in French!
           const elite = getDetailedAIStepsAndQuizEN(translatedTitle, course.id, prefix, lessonNum);

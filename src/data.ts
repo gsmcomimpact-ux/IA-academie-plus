@@ -1634,6 +1634,91 @@ const lovableExtraLessonsData = [
   { title: "L'évaluation finale de Certification d'Expert Lovable.dev & Full-Stack No-Code IA", desc: "Démontrez vos capacités à orchestrer du prototypage dynamique, de la gestion de base de données et de la mise en production d'élite." }
 ];
 
+const baseProcurementLessons: Lesson[] = [
+  {
+    id: "pm_l1",
+    title: "Introduction à l'Approvisionnement Stratégique & Matrice de Kraljic",
+    description: "Apprenez à catégoriser vos achats et vos fournisseurs à l'aide de la légendaire Matrice de Kraljic pour prioriser vos efforts et sécuriser vos approvisionnements.",
+    durationMin: 15,
+    steps: [
+      "L'approvisionnement stratégique (Strategic Sourcing) vise à optimiser la valeur globale des achats plutôt que le simple prix d'acquisition.",
+      "La Matrice de Kraljic classe les achats en 4 quadrants selon le risque sur le marché (complexité) et l'impact financier (profit) : articles simples, goulets d'étranglement, leviers, et stratégiques.",
+      "Les articles stratégiques nécessitent des partenariats à long terme tandis que les articles leviers tirent avantage de la mise en concurrence.",
+      "L'analyse des dépenses (Spend Analysis) est l'étape préliminaire essentielle pour identifier où se situent les plus grands gisements d'économies."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt structuré demandant à un assistant IA de classer 5 catégories d'achats (acier brut, ordinateurs de bureau, services de nettoyage, licences ERP spécialisées, emballages cartons) selon les 4 quadrants de la Matrice de Kraljic, avec justification stratégique.",
+      systemTemplate: "Consultation senior en Achats & Approvisionnement Stratégique.",
+      placeholderText: "Saisissez votre prompt pour classer vos dépenses et modéliser vos quadrants...",
+      exampleSolution: "Agis comme un Directeur des Achats Senior. Classe les 5 produits suivants dans la Matrice de Kraljic : acier brut, ordinateurs, services de nettoyage, licences ERP cloud rattachées à la prod, et emballages carton. Fournis pour chaque produit la justification du quadrant choisi et la stratégie d'approvisionnement associée."
+    }
+  },
+  {
+    id: "pm_l2",
+    title: "Processus Procure-to-Pay (P2P) & Gestion des Appels d'Offres (RFP)",
+    description: "Maîtrisez les étapes clés d'un appel d'offres réussi et les cycles financiers allant de la demande d'achat à la facturation (Procure-to-Pay).",
+    durationMin: 15,
+    steps: [
+      "Le cycle Procure-to-Pay (P2P) englobe l'expression du besoin, la sélection du fournisseur, l'émission du bon de commande (PO), la réception physique et le rapprochement de facture.",
+      "La rédaction du cahier des charges (RFP) doit être de précision chirurgicale pour éviter des dérives budgétaires ou des non-conformités techniques majeures.",
+      "Le rapprochement à trois voies (Three-Way Matching) associe le bon de commande, le bon de réception et la facture fournisseur pour éliminer les risques de fraude et d'erreur.",
+      "La négociation professionnelle rattachée aux appels d'offres ne cherche pas à écraser les marges, mais à construire un équilibre de viabilité mutuelle."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "pm_q2",
+      question: "Qu'est-ce que le 'Three-Way Matching' (Rapprochement à trois voies) dans la gestion des approvisionnements ?",
+      options: [
+        { text: "Un contrôle croisé associant le Bon de Commande (PO), le Bon de Réception de livraison et la Facture finale pour valider le paiement.", isCorrect: true },
+        { text: "Une technique de négociation pour confronter trois fournisseurs concurrents simultanément.", isCorrect: false },
+        { text: "L'évaluation d'un fournisseur selon des critères ESG, financiers et de réputation.", isCorrect: false },
+        { text: "Une méthode de calcul du coût de transport intégrant trois incoterms différents.", isCorrect: false }
+      ],
+      explanation: "Parfait ! Le Three-Way Matching est le contrôle financier pivot qui garantit que l'entreprise ne paye que ce qu'elle a commandé et effectivement reçu."
+    }
+  },
+  {
+    id: "pm_l3",
+    title: "Gestion des Risques Fournisseurs & Plan de Continuité (BCP)",
+    description: "Développez des plans de contingence robustes pour mitiger les risques géopolitiques, logistiques et de faillites fournisseurs dans votre chaîne de valeur.",
+    durationMin: 20,
+    steps: [
+      "L'impact des défaillances de la chaîne logistique exige un audit proactif de la santé financière de vos fournisseurs stratégiques.",
+      "Le Double Sourcing (double approvisionnement) et la diversification géographique protègent vos lignes de production contre les fermetures de frontières ou crises géopolitiques.",
+      "Le plan de continuité d'activité (BCP pour Business Continuity Plan) décrit les procédures prioritaires de repli logistique en cas de force majeure.",
+      "L'évaluation ESG des fournisseurs prévient les risques réputationnels et judiciaires liés aux non-conformités environnementales et sociétales."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Formulez un prompt demandant à l'IA d'analyser un scénario où votre fournisseur unique de puces électroniques subit une force majeure. Demandez-lui d'établir un plan d'urgence (BCP, sources alternatives et gestion du stock de sécurité) en moins de 3 étapes clés.",
+      systemTemplate: "Orchestration de crise logistique et plans de secours d'approvisionnement.",
+      placeholderText: "Formulez votre plan de réponse à une rupture d'approvisionnement critique...",
+      exampleSolution: "Analyse une crise où notre fournisseur chinois unique est bloqué. Propose un plan d'urgence en 3 étapes : 1. Identification immédiate de 2 sous-traitants d'alternative en Europe de l'Est (Nearshoring). 2. Calcul du seuil d'épuisement de notre stock de sécurité. 3. Rédaction d'une note d'ajustement de production pour l'équipe opérationnelle."
+    }
+  }
+];
+
+const procurementExtraLessonsData = [
+  { title: "La Matrice de Kraljic avancée par l'Intelligence Artificielle", desc: "Apprenez à utiliser l'IA sémantique pour cartographier vos portefeuilles d'achats complexes et isoler les articles goulots d'étranglement." },
+  { title: "Modélisation du TCO (Total Cost of Ownership) pour vos Achats d'Équipements", desc: "Calculez le coût complet de possession au-delà du simple prix d'acquisition unitaire : maintenance, transport, recyclage." },
+  { title: "Rédaction de Cahiers des Charges et Appels d'Offres (RFP) Ultra-Sécurisés", desc: "Rédigez des clauses techniques et contractuelles d'une précision chirurgicale pour encadrer durablement vos attentes fournisseurs." },
+  { title: "Techniques Avancées de Négociation Commerciale et de Clôture avec l'IA", desc: "Simulez des jeux de rôles et des scénarios de négociation complexes avec des fournisseurs exclusifs de taille critique." },
+  { title: "Indicateurs Clés de Performance (KPIs) et Scorecards Fournisseur", desc: "Mettez en place des suivis de performance mesurant l'OTIF (On-Time In-Full), le taux de rebut et la conformité contractuelle." },
+  { title: "Audit Financier de Solvabilité des Partenaires et Sous-Traitants Clés", desc: "Détectez d'avance les signaux faibles de faillite technique, d'endettement à risque et de défaillance fournisseur." },
+  { title: "Politique ESG, Devoir de Vigilance et Responsabilité Sociétale de la Supply Chain", desc: "Vérifiez l'éthique de vos approvisionnements globaux vis-à-vis du droit humain, de l'empreinte carbone et de la logistique verte." },
+  { title: "Sécurisation de la Logistique Globale et Maîtrise Critique des Incoterms 2020", desc: "Arbitrez efficacement sur le choix des règles Incoterms (CIF, FOB, DDP) pour répartir au mieux les risques de douane et de transport." },
+  { title: "Mise en Place d'une Stratégie de Dual Sourcing Multi-Régionnelle Active", desc: "Mitigez les pénuries de matières premières en qualifiant simultanément une source locale et une source internationale d'appoint." },
+  { title: "Gestion Légale des Contrats Fournisseurs et Clauses SLA de Pénalités", desc: "Blindez vos contrats cadres en y intégrant des indicateurs de service réels couplés à des pénalités financières et de rupture de contrat." },
+  { title: "Gestion de Crise en Supply Chain et Plans d'Urgence logistiques", desc: "Intervenez face à un imprévu de force majeure sur une ligne de production en activant des corridors logistiques de substitution secourus." },
+  { title: "Méthodologie d'Audit sur site et de Contrôle Qualité de Fournisseurs Internationaux", desc: "Planifiez des rituels d'inspection industrielle sur site, des revues de process d'usines et des tests d'aptitude avant contractualisation." },
+  { title: "Optimisation des Stocks de Sécurité par le calcul économique intelligent ECO", desc: "Estimez scientifiquement le parfait point de commande et la quantité économique EOQ pour équilibrer coût de détention et risque de rupture." },
+  { title: "Automatisation de la Facturation et Résolution des Litiges Comptabilité-Achats", desc: "Mettez en place des workflows automatisés de rapprochement de factures pour dissiper les litiges comptables en moins de 24h." },
+  { title: "SRM (Supplier Relationship Management) et Partenariats d'Innovation", desc: "Développez des collaborations de co-engineering d'élite et devenez le Client Privilégié (Preferred Customer) de vos sous-traitants clé." },
+  { title: "Approvisionnement Durable, Économie Circulaire et Traçabilité des Flux", desc: "Mettez en œuvre le sourcing de pièces de reconditionnement, le recyclage obligatoire des composants et la traçabilité des métaux rares." },
+  { title: "L'Évaluation Finale : Certification d'Expert en Approvisionnement et Gestion des Risques", desc: "Prouvez vos aptitudes à identifier des gisements de productivité, à négocier des contrats et à protéger la chaîne de livraison globale." }
+];
+
 const veoExtraLessonsData = [
   { title: "Paramétrage précis du grain de pellicule et des émulsions de caméras mythiques", desc: "Commandez l'esthétique organique des pellicules Kodak 35mm ou Lomography pour donner une âme vintage à vos rendus." },
   { title: "Contrôle physique des dynamiques de fluides et collisions de particules", desc: "Découvrez les architectures de prompts spécifiques pour animer de l'eau, du feu, ou du sable de manière hyper-réaliste." },
@@ -2028,7 +2113,7 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
@@ -2230,6 +2315,41 @@ function generateCourseLessons(
         goal: "Apaiser sa colère, lui expliquer le besoin d'instruction réglementaire et restaurer la confiance.",
         placeholderText: `Rédigez la réponse d'autorité et de réassurance pour ${data.title}...`,
         exampleSolution: `Madame, Monsieur, nous avons bien pris acte de votre courrier de signalement concernant le délai d'instruction de votre dossier relatif à "${data.title}". La complétude de votre demande nécessite l'examen croisé de plusieurs pièces justificatives obligatoires pour garantir l'équité de traitement de tous les usagers. Nous vous assurons du traitement diligent de votre dossier par nos services et reviendrons vers vous dès la fin de cette phase réglementaire. Nous vous remercions pour votre compréhension.`
+      };
+    }
+    else if (lowerTitle.includes("kraljic") || lowerTitle.includes("sourcing") || lowerTitle.includes("approv") || lowerTitle.includes("achat") || lowerTitle.includes("fournisseur") || lowerTitle.includes("risque") || lowerTitle.includes("stock") || lowerTitle.includes("contrat") || lowerTitle.includes("audit") || lowerTitle.includes("rfp") || lowerTitle.includes("solvabilité") || lowerTitle.includes("esg") || lowerTitle.includes("logistique")) {
+      steps = [
+        `Le module "${data.title}" aborde une compétence clé de l'approvisionnement stratégique et de la maîtrise des risques de la chaîne logistique locale et globale. Chaque décision d'achat doit être guidée par l'optimisation de la valeur et la résilience contractuelle face aux forces du marché.`,
+        `Pour optimiser vos processus d'achats : 1. Effectuez une Spend Analysis exhaustive ; 2. Classez les produits dans la Matrice de Kraljic ; 3. Automatisez la rédaction de vos cahiers des charges (RFP) complets ; 4. Soumettez les fournisseurs clés à des audits financiers (indicateurs Altman Z-Score) et de conformité opérationnelle d'usine.`,
+        `La mitigation de crise repose sur des protocoles de secours stricts : le Double Sourcing actif, le calcul scientifique de la quantité économique (EOQ) de stocks de sécurité, et des partenariats robustes s'appuyant sur des protocoles de gestion des relations (SRM) à bénéfices réciproques.`,
+        `Conseil d'expert : Intégrez les critères ESG de manière obligatoire pour écarter le risque réputationnel. Utilisez la sandbox d'apprentissage interactive ci-contre pour valider de façon immédiate vos compétences opérationnelles et décrocher vos +50 XP.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'approvisionnement stratégique et de la gestion de crise liée à : "${data.title}", quel axe de défense est le plus robuste en cas de force majeure ?`,
+        options: [
+          { text: "Activer un plan BCP d'urgence, s'appuyant sur une source d'approvisionnement d'alternative (Double Sourcing) préalablement qualifiée.", isCorrect: true },
+          { text: "Attendre passivement que le marché mondial se stabilise sans intervenir.", isCorrect: false },
+          { text: "Annuler définitivement tous les contrats et cesser l'activité commerciale.", isCorrect: false },
+          { text: "Surcharger massivement et sans planification les stocks sans tenir compte du coût complet de détention (TCO).", isCorrect: false }
+        ],
+        explanation: `Parfait ! Un plan de continuité (BCP) solide associé à des sources d'achats diversifiées (Dual-Sourcing) est la clé d'une chaîne logistique résiliente.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt d'audit ou de gestion de contrat pour structurer vos relations et risques liés à : ${data.title}.`,
+        systemTemplate: `Analyzing procurement risk factors and contract protection covenants: ${data.title}`,
+        placeholderText: `Exprimez votre consigne d'analyse de risques ou d'élaboration contractuelle pour ${data.title}...`,
+        exampleSolution: `Agis en tant qu'Expert Achats Internationaux. Rédige une clause de pénalité de service (SLA) solide pour le sujet de "${data.title}", en spécifiant des seuils d'OTIF (On-Time In-Full) éliminatoires et des compensations financières automatiques en cas de rupture.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch de valeur pour renégocier un contrat d'approvisionnement : ${data.title}`,
+        audience: "Un sous-traitant majeur devenu trop gourmand lors d'une révision annuelle de prix.",
+        goal: "L'amener à reconsidérer son offre tarifaire en mettant en avant les volumes garantis à long terme.",
+        placeholderText: `Rédigez votre argumentaire de négociation et d'ancrage pour ${data.title}...`,
+        exampleSolution: `Nous apprécions la qualité de notre partenariat historique au titre de "${data.title}". Toutefois, l'augmentation tarifaire unitaire proposée de 12% est incompatible avec notre équilibre budgétaire. En engageant notre entreprise sur un volume garanti pluriannuel en hausse de 20%, nous attendons un maintien des marges et l'indexation de nos coûts sur des indices de cours de matières premières publics.`
       };
     }
     // 7. GENERIC FALLBACK (STILL HIGHLY INTENSE & DETAIL-RICH)
@@ -2490,6 +2610,17 @@ export const COURSES: Course[] = [
     estimatedHours: 14,
     totalLessons: 30,
     lessons: generateCourseLessons("freelance_career", baseFreelanceLessons, freelanceExtraLessonsData)
+  },
+  {
+    id: "procurement_mastery",
+    title: "Approvisionnement Stratégique, Achats & Gestion des Risques Fournisseurs",
+    category: "freelance",
+    description: "Devenez un expert en approvisionnement stratégique, achats industriels et gestion des risques de la chaîne logistique. Maîtrisez la matrice de Kraljic, le calcul du TCO, la rédaction d'appels d'offres (RFP), la négociation et la sécurisation financière de vos fournisseurs face aux crises globales.",
+    iconName: "Briefcase",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("procurement_mastery", baseProcurementLessons, procurementExtraLessonsData, 20)
   }
 ];
 
