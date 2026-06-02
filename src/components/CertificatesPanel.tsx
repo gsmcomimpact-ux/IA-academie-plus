@@ -2,13 +2,14 @@ import React from "react";
 import { motion } from "motion/react";
 import { Course, UserProgress } from "../types";
 import { getLocalizedCourses } from "../utils/translations";
-import { Award, ShieldCheck, Lock, ArrowRight, Sparkles, BookOpen } from "lucide-react";
+import { Award, ShieldCheck, Lock, ArrowRight, Sparkles, BookOpen, FileText } from "lucide-react";
 
 interface CertificatesPanelProps {
   lang: "fr" | "en";
   progress: UserProgress;
   onSelectCourse: (courseId: string) => void;
   onViewCertificate: (course: Course) => void;
+  onViewCorrectedPrompts: (course: Course) => void;
 }
 
 const LOCAL_TRANS = {
@@ -38,7 +39,7 @@ const LOCAL_TRANS = {
   }
 };
 
-export default function CertificatesPanel({ lang, progress, onSelectCourse, onViewCertificate }: CertificatesPanelProps) {
+export default function CertificatesPanel({ lang, progress, onSelectCourse, onViewCertificate, onViewCorrectedPrompts }: CertificatesPanelProps) {
   const t = (key: keyof typeof LOCAL_TRANS["fr"]) => {
     return LOCAL_TRANS[lang][key] || LOCAL_TRANS["fr"][key] || String(key);
   };
@@ -144,24 +145,46 @@ export default function CertificatesPanel({ lang, progress, onSelectCourse, onVi
               </div>
 
               {/* Bottom Actions CTA */}
-              <div className="mt-3.5 pt-1">
+              <div className="mt-3.5 pt-1 space-y-2">
                 {isCompleted ? (
-                  <button
-                    onClick={() => onViewCertificate(course)}
-                    className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-405 hover:to-teal-405 text-slate-950 font-bold py-2 rounded-lg text-2xs uppercase tracking-widest font-mono flex items-center justify-center gap-1.5 cursor-pointer shadow-md select-none"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-slate-950 fill-slate-950 animate-pulse" />
-                    {t("viewBtn")}
-                  </button>
+                  <>
+                    <button
+                      onClick={() => onViewCertificate(course)}
+                      className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-405 hover:to-teal-405 text-slate-950 font-bold py-2 rounded-lg text-2xs uppercase tracking-widest font-mono flex items-center justify-center gap-1.5 cursor-pointer shadow-md select-none"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-slate-950 fill-slate-950 animate-pulse" />
+                      {t("viewBtn")}
+                    </button>
+                    
+                    <button
+                      onClick={() => onViewCorrectedPrompts(course)}
+                      className="w-full bg-slate-900 border border-slate-800 hover:bg-slate-800 text-indigo-400 hover:text-indigo-300 transition-colors py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-mono flex items-center justify-center gap-1.5 cursor-pointer select-none"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      {lang === "fr" ? "Prompts Corrigés (PDF)" : "Corrected Prompts (PDF)"}
+                    </button>
+                  </>
                 ) : (
-                  <button
-                    onClick={() => onSelectCourse(course.id)}
-                    className="w-full bg-slate-900/50 hover:bg-slate-900 text-slate-400 hover:text-white transition-all py-2 rounded-lg text-2xs uppercase tracking-wider font-mono flex items-center justify-center gap-1.5 border border-slate-900 hover:border-slate-800 cursor-pointer select-none"
-                  >
-                    <Lock className="w-3.5 h-3.5 text-slate-600" />
-                    {t("lockBtn")}
-                    <ArrowRight className="w-3 h-3 text-slate-600 group-hover:translate-x-0.5" />
-                  </button>
+                  <>
+                    <button
+                      onClick={() => onSelectCourse(course.id)}
+                      className="w-full bg-slate-900/50 hover:bg-slate-900 text-slate-400 hover:text-white transition-all py-2 rounded-lg text-2xs uppercase tracking-wider font-mono flex items-center justify-center gap-1.5 border border-slate-900 hover:border-slate-800 cursor-pointer select-none"
+                    >
+                      <Lock className="w-3.5 h-3.5 text-slate-600" />
+                      {t("lockBtn")}
+                      <ArrowRight className="w-3 h-3 text-slate-600 group-hover:translate-x-0.5" />
+                    </button>
+                    
+                    {completedCount > 0 && (
+                      <button
+                        onClick={() => onViewCorrectedPrompts(course)}
+                        className="w-full bg-slate-900/30 border border-slate-900 hover:bg-slate-900/60 text-slate-400 hover:text-white transition-colors py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-mono flex items-center justify-center gap-1.5 cursor-pointer select-none"
+                      >
+                        <FileText className="w-3.5 h-3.5 text-slate-500" />
+                        {lang === "fr" ? "Prompts rédigés (PDF)" : "My Prompts (PDF)"}
+                      </button>
+                    )}
+                  </>
                 )}
               </div>
             </div>

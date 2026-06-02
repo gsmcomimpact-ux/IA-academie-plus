@@ -18,6 +18,7 @@ interface DashboardProps {
   onClaimDailyStreak: () => void;
   onToggleCopilot: () => void;
   onViewCertificate: (course: Course) => void;
+  onViewCorrectedPrompts: (course: Course) => void;
 }
 
 const LOCAL_TRANS = {
@@ -96,7 +97,7 @@ const getIconComponent = (name: string, className = "w-5 h-5") => {
   }
 };
 
-export default function Dashboard({ lang, progress, onSelectLesson, onSelectCourse, onClaimDailyStreak, onToggleCopilot, onViewCertificate }: DashboardProps) {
+export default function Dashboard({ lang, progress, onSelectLesson, onSelectCourse, onClaimDailyStreak, onToggleCopilot, onViewCertificate, onViewCorrectedPrompts }: DashboardProps) {
   const t = (key: keyof typeof LOCAL_TRANS["fr"]) => {
     return LOCAL_TRANS[lang][key] || LOCAL_TRANS["fr"][key] || String(key);
   };
@@ -300,6 +301,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
               progress={progress}
               onSelectCourse={onSelectCourse}
               onViewCertificate={onViewCertificate}
+              onViewCorrectedPrompts={onViewCorrectedPrompts}
             />
 
             {/* Complete Curriculum Catalog Grid */}

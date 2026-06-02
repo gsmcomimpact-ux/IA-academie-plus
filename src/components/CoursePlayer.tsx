@@ -644,6 +644,55 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
     setQuizCorrect(false);
   };
 
+  const saveCorrectedPrompt = (pText: string, evalObj: any) => {
+    try {
+      const savedStr = localStorage.getItem("coursiv_corrected_prompts") || "{}";
+      const saved = JSON.parse(savedStr);
+      
+      saved[activeLesson.id] = {
+        courseId: course.id,
+        courseTitle: course.title,
+        lessonId: activeLesson.id,
+        lessonTitle: activeLesson.title,
+        submittedPrompt: pText,
+        score: evalObj?.evaluation?.score || evalObj?.score || 85,
+        clarity: evalObj?.evaluation?.clarity || evalObj?.clarity || "Bonne clarté d'instruction",
+        specificity: evalObj?.evaluation?.specificity || evalObj?.specificity || "Bonne spécificité des balises",
+        suggestions: evalObj?.evaluation?.suggestions || evalObj?.suggestions || [],
+        savedAt: new Date().toISOString()
+      };
+      
+      localStorage.setItem("coursiv_corrected_prompts", JSON.stringify(saved));
+    } catch (e) {
+      console.error("Error saving prompt evaluation:", e);
+    }
+  };
+
+  const saveCorrectedCopy = (cText: string, evalObj: any) => {
+    try {
+      const savedStr = localStorage.getItem("coursiv_corrected_prompts") || "{}";
+      const saved = JSON.parse(savedStr);
+      
+      saved[activeLesson.id] = {
+        courseId: course.id,
+        courseTitle: course.title,
+        lessonId: activeLesson.id,
+        lessonTitle: activeLesson.title,
+        submittedPrompt: cText,
+        score: evalObj?.score || 90,
+        clarity: evalObj?.readability || "Excellente lisibilité et fluidité",
+        specificity: evalObj?.engagement || "Fort taux d'engagement émotionnel",
+        suggestions: evalObj?.feedback || [],
+        savedAt: new Date().toISOString(),
+        isCopywriter: true
+      };
+      
+      localStorage.setItem("coursiv_corrected_prompts", JSON.stringify(saved));
+    } catch (e) {
+      console.error("Error saving copy evaluation:", e);
+    }
+  };
+
   // Evaluate prompt via real express API
   const handleEvaluatePrompt = async () => {
     if (!promptText.trim()) return;
@@ -663,13 +712,14 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
       if (!res.ok) throw new Error("Validation issue");
       const data = await res.json();
       setEvalResult(data);
+      saveCorrectedPrompt(promptText, data);
       if (data.evaluation?.score >= 60) {
         setLessonFinished(true);
       }
     } catch (e) {
       console.error(e);
       // fallback if offline or err
-      setEvalResult({
+      const fallbackResult = {
         output: t("fallbackOutput"),
         evaluation: {
           score: 85,
@@ -677,7 +727,9 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
           specificity: t("fallbackSpecificity"),
           suggestions: [t("fallbackSuggestion")]
         }
-      });
+      };
+      setEvalResult(fallbackResult);
+      saveCorrectedPrompt(promptText, fallbackResult);
       setLessonFinished(true);
     } finally {
       setEvalLoading(false);
@@ -704,19 +756,22 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
       if (!res.ok) throw new Error("Copy validation issue");
       const data = await res.json();
       setCopyResult(data.evaluation);
+      saveCorrectedCopy(copyText, data.evaluation);
       if (data.evaluation?.score >= 65) {
         setLessonFinished(true);
       }
     } catch (e) {
       console.error(e);
       // Fallback
-      setCopyResult({
+      const fallbackCopy = {
         score: 90,
         engagement: t("fallbackCopyEngagement"),
         readability: t("fallbackCopyReadability"),
         revisedVersion: copyText + t("fallbackCopyRevised"),
         feedback: [t("fallbackCopyFeed1"), t("fallbackCopyFeed2")]
-      });
+      };
+      setCopyResult(fallbackCopy);
+      saveCorrectedCopy(copyText, fallbackCopy);
       setLessonFinished(true);
     } finally {
       setCopyLoading(false);

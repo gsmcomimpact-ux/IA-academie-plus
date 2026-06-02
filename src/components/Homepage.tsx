@@ -23,14 +23,14 @@ interface HomepageProps {
 
 const LOCAL_TRANS = {
   fr: {
-    heroBadge: "★ DÉBRIDEZ VOTRE CARRIÈRE DIGITALE À 100% ★",
+    heroBadge: "★ ACADÉMIE FRANCOPHONE D'EXCELLENCE EN IA ★",
     heroTitlePart1: "Formez-vous aux ",
     heroTitleHighlight: "Outils IA d'Élite",
     heroTitlePart2: " et Obtenez votre Diplôme.",
     heroSub: "Maîtrisez les secrets d'application réels de ChatGPT, Claude, DeepSeek et Lovable. Pratiquez dans une sandbox interactive de formulation de prompts, et obtenez un certificat officiel de fin de formation nominatif au format PDF haute qualité téléchargeable immédiatement.",
     certPDF: "Certifications Officielles PDF",
     certPDFDesc: "Avec identification unique vérifiable",
-    activationFee: "Accès Cursus Complet : 15$ unique",
+    activationFee: "Accès Cursus Complet : 20$ unique",
     activationFeeDesc: "Pas d'abonnement. Clé d'étudiant à vie.",
     startJourney: "Exécuter mon Guide d'Onboarding",
     exploreCourses: "Découvrir les cours",
@@ -81,11 +81,11 @@ const LOCAL_TRANS = {
     bullet3Desc: "Pour être 100% conforme à l'identité légale requise dans le cadre d'un audit de compétences.",
     
     pricingBadge: "ACCÈS PREMIUM SANS ABONNEMENT",
-    pricingHeader: "Un Tarif Unique de 15$ Complètement Fixe",
-    pricingDesc: "Pas d'inscription mensuelle douteuse. Pas de surcoût pour générer vos certificats. Réglez simplement 15 dollars une fois et accédez aux cours et examens à vie.",
-    savingsBadge: "ÉCONOMIES IMMÉDIATES",
+    pricingHeader: "Un Tarif Unique de 20$ Complètement Fixe",
+    pricingDesc: "Aucun abonnement récurrent. Aucun surcoût pour générer vos certificats. Réglez simplement 20 dollars une fois et accédez aux cours et examens d'élite à vie.",
+    savingsBadge: "VALEUR PROFESSIONNELLE",
     pricingCardTitle: "DIPLÔME PRESTIGE UNIQUE",
-    pricingCardPrice: "15,00 $",
+    pricingCardPrice: "20,00 $",
     pricingCardPriceLabel: "unique",
     pricingCardDesc: "Aucun renouvellement d'abonnement. Accès illimité à vie.",
     pricingBullet1: "Cursus total ChatGPT / Gemini inclus",
@@ -105,7 +105,7 @@ const LOCAL_TRANS = {
       },
       {
         q: "Combien coûte la formation et comment fonctionne le paiement ?",
-        a: "L'accès à l'intégralité du cursus coûte $15 (frais d'activation uniques pour une licence à vie). Il n'y a aucun abonnement récurrent, aucun engagement caché ni frais supplémentaires. Ce montant unique comprend l'accès aux cours, l'évaluation et la génération de vos certificats officiels au format PDF."
+        a: "L'accès à l'intégralité du cursus coûte $20 (frais d'activation uniques pour une licence à vie). Il n'y a aucun abonnement récurrent, aucun engagement caché ni frais supplémentaires. Ce montant unique comprend l'accès aux cours, l'évaluation et la génération de vos certificats officiels au format PDF."
       },
       {
         q: "Comment puis-je générer et télécharger mon certificat en PDF ?",
@@ -118,14 +118,14 @@ const LOCAL_TRANS = {
     ]
   },
   en: {
-    heroBadge: "★ UNLEASH YOUR DIGITAL CAREER 100% ★",
+    heroBadge: "★ INTERNATIONAL ACADEMY FOR GENERAL INTELLIGENCE & AI ENGINEERING ★",
     heroTitlePart1: "Train on ",
     heroTitleHighlight: "Elite AI Tools",
     heroTitlePart2: " and Earn Your Diploma.",
     heroSub: "Master the real application secrets of ChatGPT, Claude, DeepSeek, and Lovable. Practice in an interactive prompt engineering sandbox, and obtain an official personalized completion certificate in high-quality printable PDF format instantly.",
     certPDF: "Official PDF Certifications",
     certPDFDesc: "With unique verifiable safety key",
-    activationFee: "Full Course Access: $15 one-time",
+    activationFee: "Full Course Access: $20 one-time",
     activationFeeDesc: "No subscription. Lifetime student access key.",
     startJourney: "Run My Onboarding Guide",
     exploreCourses: "Discover courses",
@@ -176,11 +176,11 @@ const LOCAL_TRANS = {
     bullet3Desc: "Ensures 100% compliance with verified legal credentials required during professional audits and reviews.",
     
     pricingBadge: "PREMIUM ACCESS WITHOUT SUBSCRIPTIONS",
-    pricingHeader: "One-Time $15 Completely Fixed Price",
-    pricingDesc: "Zero monthly bills. Zero upgrade costs to compile your certificates. Make a single $15 payment and unlock modules, testing benches, and diplomas forever.",
-    savingsBadge: "IMMEDIATE VALUE",
+    pricingHeader: "One-Time $20 Access For Lifetime Membership",
+    pricingDesc: "No monthly bills. No upgrade fees. Make a single $20 payment and unlock modules, testing benches, and diplomas forever.",
+    savingsBadge: "MAXIMUM RETURN",
     pricingCardTitle: "PRESTIGE LIFETIME CREDENTIALS",
-    pricingCardPrice: "15.00 $",
+    pricingCardPrice: "20.00 $",
     pricingCardPriceLabel: "one-time",
     pricingCardDesc: "No monthly bills. Unrestricted, perpetual lifetime membership.",
     pricingBullet1: "Total ChatGPT & Gemini Masterclass tracks",
@@ -200,7 +200,7 @@ const LOCAL_TRANS = {
       },
       {
         q: "How much does the program cost and how is payment structured?",
-        a: "Full lifetime access to our syllabus requires a single one-time activation fee of $15. There are no recurring monthly billing cycles, hidden upsells, or extra credentials fees. This single enrollment key includes all lessons, evaluations, updates, and custom A4 certificate generation exports."
+        a: "Full lifetime access to our syllabus requires a single one-time activation fee of $20. There are no recurring monthly billing cycles, hidden upsells, or extra credentials fees. This single enrollment key includes all lessons, evaluations, updates, and custom A4 certificate generation exports."
       },
       {
         q: "How can I build and download my certificate as a PDF?",
@@ -487,8 +487,11 @@ export default function Homepage({
   });
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-300 antialiased overflow-x-hidden pb-16">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500/30 selection:text-emerald-300 antialiased overflow-x-hidden pb-16 relative">
       
+      {/* GRID BACKGROUND OVERLAY */}
+      <div className="absolute inset-x-0 top-0 h-[800px] bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+
       {/* BACKGROUND DECORATIVE ELEMENTS */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-[800px] right-10 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -846,8 +849,8 @@ export default function Homepage({
             <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Licence Unique à Vie" : "No Reoccurring Fees"}</h3>
             <p className="text-xs text-slate-400 leading-relaxed font-sans">
               {lang === "fr" 
-                ? "Payez une seule fois un forfait de 15$. Aucune facture mensuelle surprise. Les 23 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
-                : "Pay a simple one-time activation fee of $15. No monthly surprises. Access all current and future 23 executive courses, updates, and templates forever."}
+                ? "Payez une seule fois un forfait de 20$. Aucune facture mensuelle surprise. Les 23 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
+                : "Pay a simple one-time activation fee of $20. No monthly surprises. Access all current and future 23 executive courses, updates, and templates forever."}
             </p>
           </div>
 
@@ -1253,8 +1256,8 @@ export default function Homepage({
               </div>
               <p className="text-xs italic text-slate-300 leading-relaxed">
                 {lang === "fr" 
-                  ? "« Grâce au cours complet Lovable.dev, j'ai livré un MVP SaaS complet en 3 jours pour un client immobilier et facturé 2 400 €. L'académie m'a remboursé ses 15 dollars dès la première heure ! »"
-                  : "« Thanks to the Lovable.dev track, I compiled and shipped a functional SaaS MVP in 3 days for a real-estate client and invoiced $2,400. This $15 academy paid itself back on my very first project hour! »"}
+                  ? "« Grâce au cours complet Lovable.dev, j'ai livré un MVP SaaS complet en 3 jours pour un client immobilier et facturé 2 400 €. L'académie m'a remboursé ses 20 dollars dès la première heure ! »"
+                  : "« Thanks to the Lovable.dev track, I compiled and shipped a functional SaaS MVP in 3 days for a real-estate client and invoiced $2,400. This $20 academy paid itself back on my very first project hour! »"}
               </p>
             </div>
             <div className="flex items-center gap-3 border-t border-slate-950 pt-3">

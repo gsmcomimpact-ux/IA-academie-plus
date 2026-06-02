@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import CoursePlayer from "./components/CoursePlayer";
 import AICopilot from "./components/AICopilot";
 import CertificateModal from "./components/CertificateModal";
+import PromptsReportModal from "./components/PromptsReportModal";
 import SubscriptionBarrier from "./components/SubscriptionBarrier";
 import Homepage from "./components/Homepage";
 import { UserProgress, Course } from "./types";
@@ -91,6 +92,7 @@ export default function App() {
   const [badgeBanner, setBadgeBanner] = useState<{ title: string; desc: string } | null>(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [selectedCertCourse, setSelectedCertCourse] = useState<Course | null>(null);
+  const [selectedPromptsCourse, setSelectedPromptsCourse] = useState<Course | null>(null);
   const [showHomepage, setShowHomepage] = useState(true);
 
   const handleToggleLang = () => {
@@ -692,6 +694,7 @@ export default function App() {
                 onClaimDailyStreak={handleClaimDailyStreak}
                 onToggleCopilot={() => setCopilotOpen(!copilotOpen)}
                 onViewCertificate={(course) => setSelectedCertCourse(course)}
+                onViewCorrectedPrompts={(course) => setSelectedPromptsCourse(course)}
               />
             </div>
 
@@ -726,6 +729,17 @@ export default function App() {
           course={selectedCertCourse}
           progress={progress}
           onClose={() => setSelectedCertCourse(null)}
+          onUpdateFullName={handleUpdateFullName}
+        />
+      )}
+
+      {/* Prompts Report Viewer Overlay Modal */}
+      {selectedPromptsCourse && (
+        <PromptsReportModal
+          lang={lang}
+          course={selectedPromptsCourse}
+          progress={progress}
+          onClose={() => setSelectedPromptsCourse(null)}
           onUpdateFullName={handleUpdateFullName}
         />
       )}

@@ -26,19 +26,19 @@ const LOCAL_TRANS = {
     billingNamePlaceholder: "Nom complet du Payeur",
     email: "Adresse E-mail :",
     emailPlaceholder: "Ex: clara.martin@gmail.com",
-    title2: "2. PASSERELLE DE PAIEMENT SÉCURISÉE (15,00 $)",
+    title2: "2. PASSERELLE DE PAIEMENT SÉCURISÉE (20,00 $)",
     sub2: "Réglez l'inscription unique sans aucun frais caché.",
     cardTab: "Carte Bancaire",
     paypalTab: "PayPal / CB",
     cardNumber: "Numéro de Carte de Crédit :",
     expExpiry: "Expiration :",
     expCvc: "CVC (Cryptogramme) :",
-    paypalRedirect: "Vous allez être redirigé vers la passerelle cryptée de validation PayPal pour autoriser votre débit unique de 15,00 USD.",
+    paypalRedirect: "Vous allez être redirigé vers la passerelle cryptée de validation PayPal pour autoriser votre débit unique de 20,00 USD.",
     paypalTip: "Frais de service & taxes compris. Accès élève immédiat dès confirmation.",
-    submitBtn: "S'INSCRIRE ET PAYER PAIEMENT UNIQUE DE 15,00 $",
+    submitBtn: "S'INSCRIRE ET PAYER PAIEMENT UNIQUE DE 20,00 $",
     fillBttn: "⚡ CLIQUEZ ICI POUR REMPLIR LES CRÉDENTIELS DE FACTURATION DE TEST",
     bypassBtn: "🚀 BYPASSER LE PAIEMENT ET ACCÉDER AU CURSUS DIRECTEMENT (DÉMO RAPIDE)",
-    footnotePayment: "En procédant au règlement de $15, vous reconnaissez vous inscrire à l'IA Académie Plus et bénéficier d'une licence d'apprenant à vie. Cryptage AES-256 bits conforme PCI-DSS.",
+    footnotePayment: "En procédant au règlement de $20, vous reconnaissez vous inscrire à l'IA Académie Plus et bénéficier d'une licence d'apprenant à vie. Cryptage AES-256 bits conforme PCI-DSS.",
     errName: "Veuillez saisir votre nom complet.",
     errEmail: "Veuillez saisir une adresse e-mail valide.",
     errCard: "Numéro de carte invalide (16 chiffres requis).",
@@ -47,7 +47,7 @@ const LOCAL_TRANS = {
     loaderTitle: "Traitement de votre demande de paiement sécurisé...",
     loaderStep1: "🔑 Chiffrement SSL de la passerelle bancaire...",
     loaderStep2: "🔄 Transmission au réseau d'acquisition (Visa/Mastercard)...",
-    loaderStep3: "💳 Autorisation du débit unique de 15,00 $...",
+    loaderStep3: "💳 Autorisation du débit unique de 20,00 $...",
     loaderStep4: "✅ Transaction acceptée ! Préparation de vos cours scolaires...",
     
     // Account creation
@@ -85,19 +85,19 @@ const LOCAL_TRANS = {
     billingNamePlaceholder: "Payer's full name",
     email: "Email Address:",
     emailPlaceholder: "e.g. clara.martin@gmail.com",
-    title2: "2. SECURE PAYMENT GATEWAY ($15.00)",
+    title2: "2. SECURE PAYMENT GATEWAY ($20.00)",
     sub2: "Pay the single lifetime fee. Zero hidden costs.",
     cardTab: "Credit / Debit Card",
     paypalTab: "PayPal / Credit",
     cardNumber: "Credit Card Number:",
     expExpiry: "Expiration:",
     expCvc: "CVC (Security Code):",
-    paypalRedirect: "You will be redirected to PayPal's secure gateway to authorize your one-time payment of 15.00 USD.",
+    paypalRedirect: "You will be redirected to PayPal's secure gateway to authorize your one-time payment of 20.00 USD.",
     paypalTip: "Taxes and service fees included. Immediate student credentials upon confirmation.",
-    submitBtn: "ENROLL AND PAY ONE-TIME $15.00 FEE",
+    submitBtn: "ENROLL AND PAY ONE-TIME $20.00 FEE",
     fillBttn: "⚡ CLICK HERE TO FILL TEST BILLING DETAILS INSTANTLY",
     bypassBtn: "🚀 BYPASS PAYMENT AND ACCESS CURRICULUM (FAST DEMO)",
-    footnotePayment: "By proceeding with the $15 checkout, you enroll at AI Academy Plus and obtain a lifetime student license. AES-256 bits PCI-DSS compliant encryption.",
+    footnotePayment: "By proceeding with the $20 checkout, you enroll at AI Academy Plus and obtain a lifetime student license. AES-256 bits PCI-DSS compliant encryption.",
     errName: "Please enter your full name.",
     errEmail: "Please enter a valid email address.",
     errCard: "Invalid card number (16 digits required).",
@@ -106,7 +106,7 @@ const LOCAL_TRANS = {
     loaderTitle: "Processing secure transaction approval...",
     loaderStep1: "🔑 SSL Gateway cryptographic handshake...",
     loaderStep2: "🔄 Negotiating terminal acquisition network (Visa/MC)...",
-    loaderStep3: "💳 Single authorization request of $15.00...",
+    loaderStep3: "💳 Single authorization request of $20.00...",
     loaderStep4: "✅ Transaction accepted! Syncing syllabus modules...",
     
     // Account creation
@@ -337,7 +337,7 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
           <div className="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl relative overflow-hidden flex items-center justify-between">
             <div>
               <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{t("feeUnique")}</div>
-              <div className="text-3xl font-black text-emerald-400 font-mono tracking-tight mt-1">15,00 $</div>
+              <div className="text-3xl font-black text-emerald-400 font-mono tracking-tight mt-1">20,00 $</div>
               <div className="text-[10.5px] text-slate-400 mt-1">{t("noSub")}</div>
             </div>
             <div className="bg-emerald-500/10 text-emerald-400 py-1.5 px-3 rounded-xl border border-emerald-500/20 text-center font-mono text-xs font-bold leading-none select-none">
