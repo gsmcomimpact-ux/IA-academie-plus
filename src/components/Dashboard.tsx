@@ -6,7 +6,8 @@ import CertificatesPanel from "./CertificatesPanel";
 import { getLocalizedCourses, ACHIEVEMENTS_EN } from "../utils/translations";
 import { 
   Sparkles, Award, Flame, Briefcase, Cpu, PenTool, CheckCircle, 
-  ChevronRight, Calendar, Bookmark, GraduationCap, Compass, BookOpen, Clock, Heart, MessageSquare
+  ChevronRight, Calendar, Bookmark, GraduationCap, Compass, BookOpen, Clock, Heart, MessageSquare,
+  Video, Music, Leaf
 } from "lucide-react";
 
 interface DashboardProps {
@@ -88,6 +89,9 @@ const getIconComponent = (name: string, className = "w-5 h-5") => {
     case "Compass": return <Compass className={`${className} text-blue-400`} />;
     case "Terminal": return <Cpu className={`${className} text-teal-400`} />;
     case "Flame": return <Flame className={`${className} text-orange-500`} />;
+    case "Video": return <Video className={`${className} text-amber-400`} />;
+    case "Music": return <Music className={`${className} text-fuchsia-400`} />;
+    case "Leaf": return <Leaf className={`${className} text-emerald-500`} />;
     default: return <Sparkles className={`${className} text-yellow-400`} />;
   }
 };

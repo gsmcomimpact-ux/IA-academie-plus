@@ -5,7 +5,7 @@ import {
   BookOpen, Star, Zap, Flame, Terminal, PlayCircle, HelpCircle, 
   Lock, Bookmark, CheckCircle2, ChevronDown, Check, GraduationCap,
   LogIn, LogOut, CheckSquare, Layers, Globe, Calendar, DollarSign,
-  Code, FileText, Video, Smartphone, Send, Brain, Users, RefreshCw
+  Code, FileText, Video, Smartphone, Send, Brain, Users, RefreshCw, Music, Leaf
 } from "lucide-react";
 import { COURSES } from "../data";
 import { UI_TRANSLATIONS, getLocalizedCourses } from "../utils/translations";
@@ -53,7 +53,7 @@ const LOCAL_TRANS = {
     
     ourCurriculum: "PROGRAMME DE L'ACADÉMIE",
     masterAITools: "Maîtrisez les Outils Réels de l'IA",
-    masterAIToolsSub: "Explorez nos 19 formations d'élite. Chaque cursus contient entre 20 et 30 modules progressifs, une sandbox pratique autonome et un examen de validation de fin d'étude.",
+    masterAIToolsSub: "Explorez nos 23 formations d'élite. Chaque cursus contient entre 20 et 30 modules progressifs, une sandbox pratique autonome et un examen de validation de fin d'étude.",
     curriculumLessons: "LEÇONS AU PROGRAMME :",
     hoursOfTraining: "heures d'entraînement",
     
@@ -148,7 +148,7 @@ const LOCAL_TRANS = {
     
     ourCurriculum: "OUR ACADEMY PROGRAM",
     masterAITools: "Master Real AI Tools",
-    masterAIToolsSub: "Explore our 19 elite learning courses. Each syllabus contains 20 to 30 progressive lessons, autonomous practice benches, and final validation certifications.",
+    masterAIToolsSub: "Explore our 23 elite learning courses. Each syllabus contains 20 to 30 progressive lessons, autonomous practice benches, and final validation certifications.",
     curriculumLessons: "CURRICULUM LESSONS:",
     hoursOfTraining: "hours of training",
     
@@ -327,14 +327,14 @@ export default function Homepage({
   };
 
   const activeCategoryLabelFr = () => {
-    if (courseFilter === "all") return "Toutes les 19 Formations Disponibles";
+    if (courseFilter === "all") return "Toutes les 23 Formations Disponibles";
     if (courseFilter === "prompts") return "🧠 Ingénierie de Prompt & LLMs d'Élite";
     if (courseFilter === "content") return "🎨 Création de Médias, Vidéos & Copywriting";
     return "💻 No-Code, Automatisation & Business";
   };
 
   const activeCategoryLabelEn = () => {
-    if (courseFilter === "all") return "All 19 Available Executive Courses";
+    if (courseFilter === "all") return "All 23 Available Executive Courses";
     if (courseFilter === "prompts") return "🧠 Advanced Prompting & Large Language Models";
     if (courseFilter === "content") return "🎨 Generative Video, Cinematic Media & Copywriting";
     return "💻 No-Code Architecture, Automation & Freelancing";
@@ -477,11 +477,11 @@ export default function Homepage({
     }
     if (courseFilter === "content") {
       // copywriting, voice & motion graphics
-      return ["copywriting", "viral_video_audio", "veo_mastery", "leonardo_mastery"].includes(course.id);
+      return ["copywriting", "viral_video_audio", "veo_mastery", "leonardo_mastery", "nanobanana_mastery", "suno_mastery", "video_editing_mastery"].includes(course.id);
     }
     if (courseFilter === "nocode") {
-      // lovable, social, freelancing
-      return ["lovable_mastery", "ai_social_selling", "freelance_career", "procurement_mastery"].includes(course.id);
+      // lovable, social, freelancing, smart farming
+      return ["lovable_mastery", "ai_social_selling", "freelance_career", "procurement_mastery", "ai_agriculture_mastery"].includes(course.id);
     }
     return true;
   });
@@ -632,7 +632,7 @@ export default function Homepage({
               className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-850 text-slate-300 font-bold py-4 px-6 rounded-2xl text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Layers className="w-4 h-4 text-emerald-400" />
-              <span>{homeText.exploreCourses} (19 Cursus)</span>
+              <span>{homeText.exploreCourses} (23 Cursus)</span>
             </button>
           </div>
 
@@ -846,8 +846,8 @@ export default function Homepage({
             <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Licence Unique à Vie" : "No Reoccurring Fees"}</h3>
             <p className="text-xs text-slate-400 leading-relaxed font-sans">
               {lang === "fr" 
-                ? "Payez une seule fois un forfait de 15$. Aucune facture mensuelle surprise. Les 19 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
-                : "Pay a simple one-time activation fee of $15. No monthly surprises. Access all current and future 19 executive courses, updates, and templates forever."}
+                ? "Payez une seule fois un forfait de 15$. Aucune facture mensuelle surprise. Les 23 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
+                : "Pay a simple one-time activation fee of $15. No monthly surprises. Access all current and future 23 executive courses, updates, and templates forever."}
             </p>
           </div>
 
@@ -968,7 +968,7 @@ export default function Homepage({
         )}
       </section>
 
-      {/* CORE SKILL ACADEMY CURRICULUM GRID WITH 19 COMPREHENSIVE COURSES */}
+      {/* CORE SKILL ACADEMY CURRICULUM GRID WITH 22 COMPREHENSIVE COURSES */}
       <section id="courses-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 space-y-10">
         
         {/* Header Title */}
@@ -994,7 +994,7 @@ export default function Homepage({
                 : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400"
             }`}
           >
-            📂 {lang === "fr" ? "Tous les Cursus (19)" : "All Courses (19)"}
+            📂 {lang === "fr" ? "Tous les Cursus (23)" : "All Courses (23)"}
           </button>
           
           <button
@@ -1055,12 +1055,16 @@ export default function Homepage({
                         <Star className="w-5 h-5 text-pink-400" />
                       ) : course.id === "ai_social_selling" || course.id.includes("selling") ? (
                         <Sparkles className="w-5 h-5 text-amber-400" />
-                      ) : course.id === "viral_video_audio" || course.id === "veo_mastery" ? (
+                      ) : course.id === "viral_video_audio" || course.id === "veo_mastery" || course.id === "nanobanana_mastery" || course.id === "video_editing_mastery" ? (
                         <Video className="w-5 h-5 text-indigo-400" />
+                      ) : course.id === "suno_mastery" ? (
+                        <Music className="w-5 h-5 text-fuchsia-400" />
                       ) : course.id === "lovable_mastery" ? (
                         <Globe className="w-5 h-5 text-teal-400" />
                       ) : course.id === "procurement_mastery" ? (
                         <ShieldCheck className="w-5 h-5 text-cyan-400" />
+                      ) : course.id === "ai_agriculture_mastery" ? (
+                        <Leaf className="w-5 h-5 text-emerald-450 animate-pulse" />
                       ) : (
                         <Terminal className="w-5 h-5 text-slate-350" />
                       )}
@@ -1334,7 +1338,7 @@ export default function Homepage({
           <div className="space-y-3 pt-3 text-left max-w-sm mx-auto text-xs text-slate-300">
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{lang === "fr" ? "L'accès intégral et illimité aux 19 formations" : "Full premium lifetime enrollment to all 19 tracks"}</span>
+              <span>{lang === "fr" ? "L'accès intégral et illimité aux 23 formations" : "Full premium lifetime enrollment to all 23 tracks"}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />

@@ -1719,6 +1719,347 @@ const procurementExtraLessonsData = [
   { title: "L'Évaluation Finale : Certification d'Expert en Approvisionnement et Gestion des Risques", desc: "Prouvez vos aptitudes à identifier des gisements de productivité, à négocier des contrats et à protéger la chaîne de livraison globale." }
 ];
 
+
+const baseNanoBananaLessons: Lesson[] = [
+  {
+    id: "nb_l1",
+    title: "Introduction à Nano Banana IA & la Révolution de l'Animation Vidéo Faciale",
+    description: "Saisissez les principes fondamentaux de Nano Banana IA pour animer des visages distants, configurer des mouvements de caméra cinématiques et initier vos premières conceptions vidéo de haute fidélité.",
+    durationMin: 12,
+    steps: [
+      "Nano Banana IA est l'une des plateformes d'IA générative vidéo les plus en vogue pour le face-swap, la transformation de styles de visages et l'animation faciale.",
+      "L'algorithme de Nano Banana se distingue par sa capacité à préserver les micro-expressions du regard (clignotements, reflets oculaires) lors de la réévaluation de portraits.",
+      "Pour animer une image statique, vous y associez soit des commandes textuelles directionnelles, soit une piste vocale de référence pour déclencher un lipsync (synchronisation labiale) parfait.",
+      "Le contrôle du ratio d'image (9:16 pour les réseaux, 16:9 pour le cinéma) et le réglage de la force du mouvement (Motion Strength) définissent le dynamisme de votre production."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt décrivant une scène d'animation faciale cinématique sur Nano Banana. Spécifiez l'expression de départ, le style graphique (ex: Pixar, Cyberpunk ou Photoréaliste) et l'intensité du mouvement.",
+      systemTemplate: "Directives d'animation de visages et d'expressions faciales sous Nano Banana IA.",
+      placeholderText: "Saisissez votre prompt d'animation de visage pour Nano Banana...",
+      exampleSolution: "Portrait d'un astronaute âgé aux traits burinés par le temps, style photoréaliste, éclairage néon bleu et ambre de cockpit. L'astronaute tourne lentement la tête vers la caméra, esquisse un léger sourire confiant, cligne des yeux naturellement. Mouvement cinématique ultra-doux, 4k."
+    }
+  },
+  {
+    id: "nb_l2",
+    title: "Clonage Facial Avancé (Face Swap) & Préservation de la Cohérence Identitaire",
+    description: "Apprenez à effectuer des remplacements de visages impeccables sur des vidéos existantes sans effet de flou ou de décalage, idéal pour les avatars de marque.",
+    durationMin: 15,
+    steps: [
+      "Le Face Swap (clonage facial) par IA exige une source de haute résolution lumineuse, prise de face et sans lunettes ou ombres portées pour une fusion parfaite des masques.",
+      "Sous Nano Banana IA, l'indexation sémantique des visages permet de s'adapter automatiquement aux torsions de cou et aux changements d'inclinaison de la tête du figurant d'origine.",
+      "Pour garantir un rendu professionnel, l'ajustement du fondu de texture de peau (Blend Ratio) et la conservation des éclairages de la vidéo d'arrière-plan sont capitaux.",
+      "L'intégration d'un personnage récurrent sur plusieurs scènes distinctes s'effectue en enregistrant l'identité faciale générée dans votre bibliothèque d'actifs réutilisables."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "nb_q2",
+      question: "Quelle est la condition clé pour réussir un Face Swap cinématique sans artefact visuel sur une vidéo d'action ?",
+      options: [
+        { text: "Fournir une image source nette, de face, bien éclairée, et ajuster le Blend Ratio pour calquer l'exposition lumineuse de la scène d'accueil.", isCorrect: true },
+        { text: "Prendre une photo de profil floue, de nuit, avec des lunettes de soleil opaques et une casquette.", isCorrect: false },
+        { text: "Changer d'image source de visage à chaque centième de seconde de la vidéo.", isCorrect: false },
+        { text: "Réduire la résolution de la vidéo principale à son niveau le plus pixellisé possible.", isCorrect: false }
+      ],
+      explanation: "Parfait ! Une source haute définition de face couplée à un mélange d'exposition dynamique garantit une intégration imperceptible et professionnelle."
+    }
+  },
+  {
+    id: "nb_l3",
+    title: "Génération d'Avatars Animés Multi-Scénarios & Production de Contenu Social Viral",
+    description: "Créez de véritables présentateurs virtuels animés par IA et automatisez la création de vidéos narratives hautement engageantes pour TikTok et YouTube.",
+    durationMin: 15,
+    steps: [
+      "La production virale par IA combine l'écriture d'un script accrocheur, la génération d'une voix humaine d'élite et l'animation sur Nano Banana IA.",
+      "Le secret des millions de vues réside dans le 'Visual Hook' : animez votre avatar avec un changement d'expression intense (surprise, rire) dès les 2 premières secondes.",
+      "En combinant Nano Banana IA avec un logiciel de montage comme CapCut ou Premiere, vous pouvez synchroniser les respirations naturelles à l'image.",
+      "Conservez une esthétique épurée : cadrez votre présentateur au niveau de la poitrine (Plan Moyen) pour optimiser l'impact des expressions faciales et de la gestuelle."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Formulez un prompt de production complet décrivant une transition faciale animée de type 'Before/After' (Avant/Après) pour un personnage 3D fantastique sous Nano Banana IA.",
+      systemTemplate: "Scénarisation de clips viraux et de transitions d'avatars animés Nano Banana IA.",
+      placeholderText: "Saisissez les instructions de transition et l'esthétique finale attendue...",
+      exampleSolution: "Plan rapproché d'un jeune alchimiste souriant en peinture digitale médiévale. En un fondu de caméra avant rapide, son visage s'illumine de runes magiques bleues brillantes et ses yeux passent de l'ambre au bleu électrique avec une expression d'étonnement épique."
+    }
+  }
+];
+
+const nanobananaExtraLessonsData = [
+  { title: "Paramétrage de la force d'animation Motion Strength sous Nano Banana IA", desc: "Ajustez les valeurs d'intensité dynamique pour éviter les distorsions physiques sur de grands mouvements de visages." },
+  { title: "Maîtriser la synchronisation labiale (Lipsync) multilingue avec fichiers audio", desc: "Associez des pistes vocales haute définition à vos modèles 3D pour faire parler vos personnages dans n'importe quelle langue." },
+  { title: "Générer des expressions émotionnelles complexes et micro-mouvements", desc: "Programmez des émotions nuancées comme la nostalgie ou la suspicion par un dosage sémantique précis des invites de regard." },
+  { title: "Création de caricatures et avatars cartoon à partir de photos réelles", desc: "Découvrez l'algorithme d'art stylisé pour transformer un simple portrait corporatif en personnage d'animation dynamique." },
+  { title: "Consistance des personnages sur des plans séquentiels multiples", desc: "Utilisez les clés d'ancrage sémantique pour conserver la structure osseuse du visage identique d'une capsule à l'autre." },
+  { title: "Intégration d'avatars stylisés dans des environnements réels filmés", desc: "Apprenez à fusionner vos présentateurs virtuels animés sur un fond vert avec des décors vidéo réels à l'aide de masques de couches." },
+  { title: "Optimiser le Face Swap pour des vidéos à mouvements rapides", desc: "Mettez en œuvre des corrections de trajectoires sur les calques faciaux pour éliminer les dérives lors de rotations brutales." },
+  { title: "Production automatisée en masse de capsules de faits insolites pour YouTube Shorts", desc: "Combinez scripts d'accroches persuasifs, voix-off et animations Nano Banana pour saturer les algorithmes sociaux." },
+  { title: "Paramétrer des transitions caméras immersives intégrées à l'animation", desc: "Projetez des mouvements de travelling avant et de zooms compensés (Vertigo effect) directement sur vos rendus d'avatars." },
+  { title: "Techniques d'éclairage réactif sur les visages incrustés (Relighting IA)", desc: "Simulez l'interaction de lumières stroboscopiques, de gyrophares ou de brasiers flamboyants sur un visage importé." },
+  { title: "Créer des présentateurs corporatifs d'élite pour le e-learning de marque", desc: "Concevez des formateurs virtuels professionnels au ton posé et articulé pour uniformiser vos modules de vente d'entreprise." },
+  { title: "Inpainting facial : corriger des imperfections de dentition et de chevelure", desc: "Utilisez les brosses de retouche locales assistées par IA pour supprimer des reflets indésirables ou corriger des mèches de cheveux rebelles." },
+  { title: "Créer des vidéos musicales animées avec synchronisation de rythme (Beat-match)", desc: "Calquez l'oscillation des mouvements corporels et faciaux du sujet sur le tempo d'un fichier audio rythmé." },
+  { title: "Maximiser la rétention par le montage rythmé d'expressions clés", desc: "Découvrez comment de découper vos rendus pour ne conserver que les transitions physiques de visages les plus magnétiques." },
+  { title: "Gérer l'exportation en très haute résolution (Deep Upscaling cinématique)", desc: "Appliquez des filtres de super-résolution vectorielle pour rendre vos animations Nano Banana exploitables sur téléviseurs 4K." },
+  { title: "Rapprochement stylistique : infuser l'esthétique Cyberpunk 2077 à vos portraits", desc: "Fusionnez des visages réels avec des éléments technologiques : implants sous-cutanés fluorescents et câbles cybernétiques animés." },
+  { title: "L'évaluation finale de Certification de Maître de l'Animation Vidéo Nano Banana IA", desc: "Prouvez vos acquis sur le contrôle graphique, l'ajustement du blend ratio et la synchronisation sonore pour valider votre certification." }
+];
+
+const baseSunoLessons: Lesson[] = [
+  {
+    id: "su_l1",
+    title: "Introduction à Suno IA v3/v4 & Génération de Chansons de Haute Fidélité",
+    description: "Plongez dans l'écosystème de Suno IA. Apprenez à concevoir des morceaux originaux de tous styles musicaux de manière instantanée à partir de descriptions textuelles.",
+    durationMin: 12,
+    steps: [
+      "Suno IA est la référence absolue pour créer des pistes musicales riches incluant paroles chantées, mélodies et arrangements instrumentaux complexes.",
+      "Le mode Simple requiert uniquement une description du sujet et du style, tandis que le mode Custom sépare l'écriture des paroles du choix des genres musicaux.",
+      "La qualité audio a connu un bond de géant avec les versions v3 et v4, offrant un mastering d'une clarté de studio supérieure, digne des plus grands labels.",
+      "Ajuster la description du style (ex: 'melodic synthwave with warm analog synths and airy female vocals') oriente l'IA vers les bonnes tonalités."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt de style de musique ultra-précis pour Suno IA. Spécifiez le genre, l'instrumentation principale, le tempo (BPM), le type de voix et l'ambiance émotionnelle globale.",
+      systemTemplate: "Ingénierie de prompts de genres musicaux haut de gamme pour Suno IA.",
+      placeholderText: "Saisissez les instruments, le tempo, les voix de votre morceau de style de rêve...",
+      exampleSolution: "Genre: 80s synthwave. Instrumentation: analog Jupiter-8 synths, acoustic rhythm guitars, deep bassline. Tempo: 110 BPM. Vocals: airy, slow-tempo, emotional female vocals, clean singing. Vibe: nostalgia, sunset cruise."
+    }
+  },
+  {
+    id: "su_l2",
+    title: "Structure Avancée de Chansons, Métadonnées de Contraintes & Paroles Sur-Mesure",
+    description: "Maîtrisez les structures de paroles et les balises pour forcer des couplets, refrains, solos d'instruments et une montée en puissance rythmique.",
+    durationMin: 15,
+    steps: [
+      "Suno IA réagit magnifiquement aux crochets de structure couramment utilisés en composition tels que [Verse], [Chorus], [Bridge], [Guitar Solo] ou [Outro].",
+      "Pour orienter le flux de la voix, séparez vos strophes de paroles en ligne aérées de 4 à 8 vers rimés, ce qui permet à l'IA d'installer un tempo stable.",
+      "Les balises de style de chant transitoire comme [Vocal Rise] ou [Whisper Verse] imposent des variations dynamiques spectaculaires au sein du même morceau.",
+      "Évitez les textes trop longs par section : l'IA fonctionne par blocs d'environ une à deux minutes de contenu optimal pour préserver la consistance mélodique."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "su_q2",
+      question: "Comment structurez-vous vos paroles dans Suno IA pour contraindre l'algorithme à lancer un refrain marquant après un couplet ?",
+      options: [
+        { text: "En intercalant formellement des lignes d'annotations structurelles entre crochets comme [Verse] et [Chorus] pour baliser les strophes rimées.", isCorrect: true },
+        { text: "En écrivant tout le texte en un immense bloc continu sans aucun saut de ligne ni consigne.", isCorrect: false },
+        { text: "En demandant oralement au micro du PC de chanter plus fort à la fin du morceau.", isCorrect: false },
+        { text: "En doublant le nombre de points d'exclation à la fin de chaque mot.", isCorrect: false }
+      ],
+      explanation: "Superbe ! Les balises entre crochets comme [Verse], [Chorus] ou [Guitar Solo] sont interprétées par l'algorithme sémantique comme des repères structurels pour modeler la dynamique d'arrangement."
+    }
+  },
+  {
+    id: "su_l3",
+    title: "Téléversement d'Audio (Audio Input), Extension de Chanson & Post-Production",
+    description: "Apprenez à utiliser une boucle audio réelle (vocalise, riff de guitare, battement de tambour) pour guider Suno et étendre vos chansons préférées à l'infini.",
+    durationMin: 18,
+    steps: [
+      "La fonctionnalité 'Extend' vous permet de repartir de la seconde exacte de votre piste préférée pour greffer un nouveau couplet ou une fin mémorable.",
+      "L'option 'Upload Audio' prend un fichier de 10 à 60 secondes pour s'imprégner de sa structure mélodique globale et l'harmoniser de manière moderne par IA.",
+      "Une fois satisfaits, vous fusionnez les différentes sections consécutives grâce au bouton 'Get Whole Song' (Obtenir la chanson entière).",
+      "Le mastering final requiert l'isolation des pistes (stems de voix et instruments) via des outils tiers comme Lalal.ai avant d'égaliser pour les plateformes."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'écriture de structure de chanson pour Suno IA incorporant des balises de couplet, de refrain et d'outro s'appliquant à une thématique d'épopée technologique.",
+      systemTemplate: "Conception de structures textuelles et de balises de chansons pour Suno IA.",
+      placeholderText: "[Verse], [Chorus]... Écrivez vos couplets avec balises structurelles...",
+      exampleSolution: "[Verse]\nDans le code de la nuit l'étincelle s'allume\nUn raccord de silicone et la machine s'éveille\nLes lumières de la ville se perdent dans la brume\n[Chorus]\nLibère l'onde, fais monter le signal !\nLe courant nous emporte vers un monde idéal\n[Outro]\nLe signal s'efface...\nSilence dans l'espace...\n[Fade Out]"
+    }
+  }
+];
+
+const sunoExtraLessonsData = [
+  { title: "Paramétrer des ambiances sonores Lo-Fi et chill-out relaxantes", desc: "Découvrez les adjectifs sémantiques appropriés pour créer des nappes de fond discrètes adaptées aux séances de travail." },
+  { title: "Construire un hymne rock-orchestral dynamique et puissant", desc: "Associez guitares saturées, violons épiques et choeurs masculins profonds grâce à des associations de styles complémentaires." },
+  { title: "Clonage de structures de rimes poétiques de grands succès mondiaux", desc: "Utilisez l'IA d'écriture pour adapter l'architecture rythmique d'une chanson célèbre sur vos propres paroles Suno." },
+  { title: "Importation de sifflements ou mélodies fredonnées au micro du smartphone", desc: "Nettoyez une ébauche vocale rapide pour en faire le fil conducteur mélodique d'une symphonie de jazz complète." },
+  { title: "Maîtriser le bouton de coupure temporelle 'Extend From'", desc: "Ciblez précisément la fraction de seconde idéale pour éviter les bégaiements ou les ruptures d'accords lors des transitions de morceaux." },
+  { title: "Concevoir des jingles commerciaux de 30 secondes d'un impact maximal", desc: "Structurez vos jingles d'entreprises : hook immédiat, présentation rimée et conclusion instrumentale rythmée sur un fondu sonore." },
+  { title: "Utiliser la fonction 'Get Whole Song' pour fusionner vos chapitres musicaux", desc: "Assemblez vos différents modules de un à deux minutes sans aucun décalage d'égalisation ou de volume." },
+  { title: "Isoler les stems d'instruments et les voix avec les bons outils (Lalal.ai)", desc: "Séparez de manière chirurgicale le chant a cappella de la piste instrumentale pour effectuer vos propres remixes." },
+  { title: "Créer des dialogues théâtraux avec fond musical de soutien", desc: "Découvrez les astuces de prompts sémantiques pour forcer Suno à déclencher une narration parlée plutôt que chantée." },
+  { title: "Dompter la montée dramatique d'intensité : le [Build-up] et [Drop]", desc: "Créez de puissantes dynamiques d'élévations de fréquences suivies d'une déferlante de basses adaptée aux musiques électroniques." },
+  { title: "Concevoir des choeurs d'opéras classiques d'un réalisme immersif", desc: "Découvrez le style d'invites sémantiques en latin et les annotations instrumentales de timbales pour simuler des orchestres baroques." },
+  { title: "Éviter la répétition infinie de strophes instables", desc: "Apprenez à rédiger des invites de styles restrictives pour stabiliser la structure de l'algorithme face aux répétitions en boucle." },
+  { title: "Utiliser Suno IA pour automatiser des musiques de jeux vidéo adaptatives", desc: "Concevez des boucles sans fin (seamless loops) au tempo maîtrisé pour rythmer des parcours de plateformes interactifs." },
+  { title: "Faire rimer des concepts ultra-techniques de manière fluide", desc: "Rédigez des paroles amusantes narrant des aventures de codage de base de données ou de déploiement cloud d'une musicalité absolue." },
+  { title: "Mastering d'élite pour Spotify et Apple Music", desc: "Utilisez des compresseurs et limiteurs logiciels gratuits en post-production pour amener votre volume sonore aux exigences professionnelles." },
+  { title: "Générer des morceaux collaboratifs en équipe et diviser les tâches", desc: "Organisez les flux de travail : affectez l'écriture du script des paroles, le choix du style instrumental et le montage à différents membres." },
+  { title: "L'évaluation finale de Certification d'Expert de la Production Musicale Suno IA", desc: "Validez vos compétences sur les balises structurelles, l'extension dynamique et le mastering final pour décrocher votre diplôme." }
+];
+
+const baseVideoEditingLessons: Lesson[] = [
+  {
+    id: "vd_l1",
+    title: "Introduction au Montage Vidéo avec l'IA : Scénarisation, Cuttings & Dérushage",
+    description: "Découvrez comment l'IA révolutionne le pré-montage. Apprenez à dérusher des heures de tournage en quelques secondes, à générer des scripts structurés et à organiser vos séquences de manière optimale.",
+    durationMin: 12,
+    steps: [
+      "Le montage moderne assisté par IA s'appuie sur la décomposition sémantique des rushs pour identifier automatiquement les meilleurs moments.",
+      "Des outils d'analyse basés sur la vision par ordinateur classent instantanément vos plans par type de cadrage (gros plan, plan moyen, panoramique).",
+      "L'écriture du script sémantique permet de monter une vidéo directement en modifiant son texte transcrit, une révolution pour les interviews et podcasts.",
+      "Le choix du rythme initial dépend de la cible de diffusion : dynamique et saccadé pour les formats verticaux (9:16), fluide et respirant pour le cinéma (16:9)."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt décrivant une structure de dérushage et d'assemblage automatique pour une interview d'expert sous un éditeur vidéo IA (comme Runway, CapCut ou Premiere Pro). Spécifiez le ton, les coupes de silences et l'incrustation de b-rolls.",
+      systemTemplate: "Directives de dérushage logique et d'insertion d'éléments de coupe (B-Rolls) assistées par IA.",
+      placeholderText: "Saisissez votre prompt décrivant le plan de montage et d'agencement automatique...",
+      exampleSolution: "Analyse cette vidéo d'interview de 10 minutes. Coupe automatiquement tous les silences et hésitations supérieures à 0.5 seconde. Génère des sous-titres stylisés en français et insère des plans de coupe (B-roll) d'illustrations technologiques à chaque évocation de l'intelligence artificielle."
+    }
+  },
+  {
+    id: "vd_l2",
+    title: "Optimisation de l'Audio, Synchronisation Musicale Rythmique & Sound Design",
+    description: "Domptez la synchronisation automatique beat-to-beat et créez des environnements sonores immersifs grâce aux générateurs d'effets sonores sémantiques.",
+    durationMin: 15,
+    steps: [
+      "La synchronisation labiale automatique (Lipsync) ajuste le mouvement des lèvres de n'importe quel figurant à un nouveau fichier audio importé.",
+      "La détection de rythme par IA (Beat-match) place automatiquement les coupures et transitions visuelles exactement sur les vagues de basse ou de tempo.",
+      "Le nettoyage de la piste voix élimine les bruits de fond, la réverbération et uniformise les niveaux pour obtenir une qualité digne d'un microphone de studio d'élite.",
+      "L'ingénierie sémantique sonore permet d'ajouter des bruitages réalistes et uniques en décrivant de simples effets par écrit (ex: vent d'orage sibérien)."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "vd_q2",
+      question: "Quelle méthode permet d'obtenir un rendu audio de niveau broadcast à partir d'un enregistrement au smartphone bruyant ?",
+      options: [
+        { text: "Utiliser un algorithme de rehaussement vocal IA pour isoler et synthétiser les harmoniques vocales tout en annulant le bruit ambiant.", isCorrect: true },
+        { text: "Augmenter le volume général de la piste de 200% pour couvrir la réverbération.", isCorrect: false },
+        { text: "Superposer une musique de fond très forte pour rendre le bruit de fond inaudible.", isCorrect: false },
+        { text: "Ralentir la vitesse de lecture vocale de moitié afin d'espacer les bruits aériens.", isCorrect: false }
+      ],
+      explanation: "Magnifique ! Les algorithmes de restauration audio analysent les bruits constants et la réverbération de pièce afin de reconstruire proprement la voix d'origine, simulant un traitement acoustique professionnel."
+    }
+  },
+  {
+    id: "vd_l3",
+    title: "Inpainting Vidéo, Suppression d'Éléments & Motion Tracking Avancé",
+    description: "Maîtrisez les effets spéciaux automatisés : effacez des objets encombrants en mouvement, incrustez des décors virtuels et suivez des éléments physiques avec précision.",
+    durationMin: 18,
+    steps: [
+      "L'Inpainting vidéo remplace de manière invisible des pixels sur une zone mouvante du plan (suppression de micro, fils, ou personnes).",
+      "Le suivi de mouvement assisté par IA (Smart Tracking) accroche un masque ou un texte à n'importe quel objet mobile avec une stabilité absolue.",
+      "Le détourage d'arrière-plan sans fond vert (Green Screen IA) isole un sujet humain d'une seule commande pour l'installer dans un espace virtuel.",
+      "Les techniques de transition morphing marient des scènes distinctes via une interpolation de pixels fluide et extrêmement artistique."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'effet visuel complexe décrivant l'effacement et la substitution d'un objet en mouvement au sein d'une séquence vidéo cinématographique active sous Runway Gen-3.",
+      systemTemplate: "Scénarisation de retouche et de masquage dynamique d'objets mobiles par IA.",
+      placeholderText: "Saisissez les instructions d'Inpainting et le nouveau décor inséré...",
+      exampleSolution: "Applique un masque rotoscopique précis sur la voiture rouge roulant au centre du plan. Supprime entièrement le véhicule et remplace-le par un hoverbike futuriste noir brillant lévitant à 1 mètre du sol, tout en conservant l'ombre portée et les reflets de l'asphalte humide."
+    }
+  }
+];
+
+const videoEditingExtraLessonsData = [
+  { title: "Génération automatique d'accroches visuelles (Hooks) à haute rétention", desc: "Configurez l'IA pour découper vos introductions vidéo de manière à capturer l'attention dans les 3 premières secondes." },
+  { title: "Maîtriser le sous-titrage dynamique stylisé avec emojis automatiques (Submagic)", desc: "Automatisez la création de sous-titres vibrants, rythmés et colorés qui augmentent drastiquement la rétention des spectateurs." },
+  { title: "Détourage parfait sans fond vert de personnages en mouvement", desc: "Découvrez l'algorithme de Roto Brush assisté par IA pour séparer un sujet complexe de son décor d'une seule invite." },
+  { title: "Doublage de voix international avec clonage d'intonation d'élite (ElevenLabs)", desc: "Traduisez vos vidéos face caméra dans 29 langues tout en préservant la voix, l'émotion et le timbre exacts de l'orateur d'origine." },
+  { title: "Incrustation de décors virtuels 3D photoréalistes sous Unreal Engine et IA", desc: "Combinez vos captures réelles avec des paysages fantastiques ou corporatifs ajustés dynamiquement selon l'angle de caméra." },
+  { title: "Interpolation d'images pour des ralentis fluides à 120 images par seconde", desc: "Utilisez des modèles de génération d'images intermédiaires pour transformer une vidéo standard 24fps en ralenti d'une fluidité parfaite." },
+  { title: "Restauration automatique de vieilles bandes vidéo dégradées par Deep Learning", desc: "Éliminez le grain excessif, corrigez les dérives colorimétriques et convertissez des archives SD en résolution 4K étincelante." },
+  { title: "Automatiser la création de b-rolls illustratifs avec ChatGPT et Runway", desc: "Établissez un pipeline automatisé qui lit votre script vocal et génère des images ou vidéos correspondantes à insérer." },
+  { title: "Techniques d'exposition intelligente et de colorimétrie harmonieuse (Relighting)", desc: "Simulez l'éclat de néons colorés ou d'un soleil couchant sur les visages de vos acteurs après le tournage." },
+  { title: "Créer un avatar virtuel 3D de marque pour le commerce en ligne", desc: "Apprenez à concevoir un modèle récurrent capable de présenter vos fiches produits de manière fluide et autonome." },
+  { title: "L'art du montage divisé (Split screen) et des bento grids dynamiques", desc: "Configurez l'IA pour agencer plusieurs flux d'informations complémentaires au sein d'un même écran optimisé." },
+  { title: "Suppression automatique des parasites sonores et bruits ambiants (Adobe Podcast)", desc: "Transformez vos enregistrements réalisés dans des cafés bruyants en pistes vocales d'une clarté de studio irréprochable." },
+  { title: "Générer des effets de caméra impossibles par zoom compensé algorithmique", desc: "Utilisez des modèles génératifs de profondeur pour simuler l'effet Vertigo ou des travellings complexes sur des plans statiques." },
+  { title: "Montage de vidéos de formation (E-learning) à grande échelle", desc: "Standardisez vos gabarits, insérez automatiquement des résumés clés en marge gauche et montez vos chapitres de manière industrielle." },
+  { title: "Intégration transparente d'animations graphiques (Motion Graphics) de données", desc: "Animez vos schémas financiers et courbes de manière dynamique à partir de données textuelles tabulaires brute." },
+  { title: "Automatiser la déclinaison d'un fichier long en 15 Shorts verticaux", desc: "Apprenez à configurer des outils intelligents comme OpusClip pour recadrer, titrer et découper des podcasts longs." },
+  { title: "L'évaluation finale de Certification d'Expert en Montage Vidéo Professionnel IA", desc: "Validez vos compétences sur les techniques d'inpainting, de sous-titrage rythmique et de lipsync pour obtenir votre diplôme." }
+];
+
+export const baseAgricultureLessons: Lesson[] = [
+  {
+    id: "ag_l1",
+    title: "Capteurs IoT, Vol d'Analyse Drone & Détection de Maladies par Vision par Ordinateur",
+    description: "Comprenez comment l'IA et la vision par ordinateur analysent le niveau de stress des cultures, détectent les attaques de bio-agresseurs et prédisent la santé du feuillage à partir d'imageries multispectrales de drones.",
+    durationMin: 12,
+    steps: [
+      "Les caméras multispectrales embarquées sur les drones capturent des rayons invisibles à l'œil nu (comme le proche infrarouge) indiquant l'activité de photosynthèse.",
+      "Les modèles de Deep Learning (de type YOLO ou ResNet) classent et repèrent sur les feuilles la rouille, le mildiou ou les carences en azote avec une précision supérieure à 95%.",
+      "Le calcul de l'indice de végétation NDVI (Normalized Difference Vegetation Index) cartographie instantanément les zones de vigueur et de faiblesse d'une parcelle.",
+      "L'intégration d'algorithmes de vision par ordinateur permet de cibler individuellement les plants malades plutôt que d'asperger l'intégralité d'un champ arable."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez une consigne de prompt d'instructions destinée à un modèle de traitement d'images satellite ou drone (comme Earth Engine ou un modèle multimodal de type Gemini 1.5 Pro). Spécifiez le type de cultures (ex: vigne), l'index recherché (ex: NDVI) et le format de rapport attendu.",
+      systemTemplate: "Directives d'identification phénotypique et de calcul thermique de surfaces agricoles par IA.",
+      placeholderText: "Saisissez votre prompt d'analyse d'images de cultures...",
+      exampleSolution: "Agis en tant que spécialiste Agri-Tech IA. Analyse cette série temporelle d'imagerie satellite en proche infrarouge de mes parcelles de vignes. Calcule l'indice NDVI, identifie spécifiquement les zones montrant une décoloration anormale ou une baisse de densité foliaire, et génère un rapport de coordonnées GPS pour guider nos drones d'épandage ciblé."
+    }
+  },
+  {
+    id: "ag_l2",
+    title: "Prédiction de Rendements et Optimisation des Intrants par Algorithmes d'Apprentissage",
+    description: "Maîtrisez la gestion des ressources en eau et nutriments. Découvrez comment l'IA calcule la dose exacte d'engrais et d'irrigation à appliquer en temps réel d'après les données météo et l'humidité du sol.",
+    durationMin: 15,
+    steps: [
+      "Les prédictions de rendements s'appuient sur des modèles de régression multivariée analysant l'historique météo, la composition du sol et les relevés thermiques.",
+      "La technologie Smart Irrigation connecte des capteurs d'humidité de sol IoT à des vannes automatisées gérées par une logique prédictive d'IA.",
+      "La modulation de dose (VRA - Variable Rate Application) génère des cartes d'application d'engrais variables pour maximiser l'efficacité du sol.",
+      "Les réseaux de neurones récurrents (LSTM) prédisent l'apparition de gelées ou de sécheresses à 7 jours pour déclencher des systèmes de protection passifs."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "ag_q2",
+      question: "Quel est le bénéfice principal de l'irrigation connectée pilotée par un agent de décision IA par rapport à une minuterie programmée classique ?",
+      options: [
+        { text: "L'IA analyse en temps réel l'évapotranspiration, l'humidité réelle des sols et les prévisions météorologiques locales pour n'irriguer que lorsque c'est biologiquement critique, éliminant le gaspillage d'eau.", isCorrect: true },
+        { text: "L'IA modifie la composition moléculaire de l'eau pour accélérer de 300% le mûrissement de la plante.", isCorrect: false },
+        { text: "L'IA supprime intégralement la nécessité d'apporter de l'azote ou du potassium à la terre arable.", isCorrect: false },
+        { text: "L'IA remplace physiquement les tuyaux et conduits par une téléportation magnétique d'humidité.", isCorrect: false }
+      ],
+      explanation: "Superbe réponse ! L'irrigation intelligente basée sur des modèles bioclimatiques permet d'économiser jusqu'à 40% de la ressource en eau tout en prévenant le stress hydrique ou l'asphyxie racinaire des plantes."
+    }
+  },
+  {
+    id: "ag_l3",
+    title: "Robotique Agricole, Guidage de Tracteurs Autonomes & Tri Robotique de Récoltes",
+    description: "Étudiez le fonctionnement des robots désherbeurs autonomes guidés par caméra laser et le tri sélectif robotisé de fruits par trieuses optiques intelligentes.",
+    durationMin: 18,
+    steps: [
+      "Les tracteurs modernes et désherbeurs robotisés s'orientent avec des systèmes GPS de précision centimétrique RTK combinés à de la vision en direct.",
+      "Les robots de désherbage mécanique utilisent de minuscules lasers ou griffes agiles pour détruire les mauvaises herbes sans produit chimique.",
+      "Les trieuses optiques de récoltes utilisent la vision multispectrale ultrarapide pour expulser les fruits abîmés, Calibration, ou de calibre non conforme.",
+      "Les algorithmes d'apprentissage par renforcement enseignent aux bras robotisés de cueillette la force exacte de pincement pour ramasser des fruits fragiles sans les écraser."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'instructions destiné à un agent autonome configurant les paramètres de tri optique et de calibrage par taille, couleur et taux de sucre (calculé par réflectance infrarouge) d'une récolte de pommes.",
+      systemTemplate: "Orchestration robotique de calibrage et tri optique post-récolte par réseaux de neurones.",
+      placeholderText: "Saisissez les règles logiques de catégorisation et de tri par vision artificielle...",
+      exampleSolution: "Définis le profil d'instructions pour la trieuse optique laser de pommes Royal Gala. Règle la détection de défauts physiques pour rejeter toute pièce présentant plus de 5% de surface tachée. Classe les pommes conformes en trois catégories : Catégorie 1 (diamètre > 75mm, couleur rouge uniforme > 70%), Catégorie 2 (diamètre 65-75mm) et Catégorie 3 pour la transformation industrielle de jus (diamètre < 65mm ou légères bosses)."
+    }
+  }
+];
+
+export const agricultureExtraLessonsData = [
+  { title: "Prévision prédictive d'infestation de ravageurs par modélisation microclimatique", desc: "Analysez comment les données de capteurs d'humidité foliaire prédisent l'éclosion de pontes pour anticiper les traitements physiques." },
+  { title: "Calcul automatique de l'empreinte carbone et bilans GES des parcelles par satellite", desc: "Suivez et certifiez le stockage de carbone dans les sols à l'aide d'algorithmes de télédétection et d'index de biomasse." },
+  { title: "Optimisation de l'alimentation animale et détection précoce du stress bovin par colliers IA", desc: "Interprétez les données d'accéléromètres et de rumination des animaux pour identifier de manière proactive les maladies naissantes." },
+  { title: "Systèmes de séchage de grains automatisés par logique floue et prédictions thermo-hygrométriques", desc: "Ajustez la ventilation des silos industriels en temps réel pour conserver les récoltes avec une efficacité énergétique maximale." },
+  { title: "Classification et cartographie des types de sols par spectrométrie proche infrarouge portative", desc: "Établissez des cartes géologiques de textures de terre (argile, limon, sable) et d'acidité instantanées grâce au Deep Learning." },
+  { title: "Planification d'itinéraires de labour optimisés pour réduire de 20% la consommation de carburant", desc: "Calculez des chemins de circulation de tracteurs qui évitent les tassements de sol et minimisent les demi-tours énergivores." },
+  { title: "Intelligence artificielle conversationnelle au service du conseil agronomique de terrain", desc: "Concevez un assistant local hors-ligne alimenté par un LLM léger pour guider le diagnostic des maladies végétales au champ." },
+  { title: "Système de détection de fuites dans les réseaux d'irrigation par surveillance acoustique IA", desc: "Appliquez l'analyse spectrale des bruits de canalisations pour géolocaliser précisément les ruptures de tuyauteries enterrées." },
+  { title: "Création automatique de prévisions de trésorerie matière basées sur les rendements estimés par IA", desc: "Liez vos estimations de volumes de blé ou de maïs aux marchés à terme agricoles mondiaux pour verrouiller vos prix de vente." },
+  { title: "Gestion intelligente de la pollinisation sous serre par mini-drones autonomes guidés", desc: "Suivez le déploiement et le taux de visite des fleurs par des robots pollinisateurs de substitution dans les cultures sous abris." },
+  { title: "Détection précoce des zones de compaction de sol par pénétrométrie couplée aux modèles de relief 3D", desc: "Visualisez les barrières de compaction souterraines freinant le développement racinaire grâce aux interpolations de krigeage." },
+  { title: "Automatisation de la cueillette des fraises en culture verticale suspendue par vision 3D continue", desc: "Configurez l'asservissement visuel de manipulateurs articulés pour détacher les fruits mûrs par reconnaissance de teinte." },
+  { title: "Prise de décision agronomique en fonction des modèles phénologiques prévisionnels d'espèces vivaces", desc: "Modélisez l'accumulation de somme de températures quotidiennes pour estimer le jour exact de début de floraison des arbres." },
+  { title: "Valorisation de la biodiversité par identification acoustique automatique des chants de pollinisateurs", desc: "Utilisez des moniteurs sonores de terrain pour compter les espèces d'abeilles et syrphes fréquentant vos bandes enherbées." },
+  { title: "Optimisation de la logistique d'approvisionnement des coopératives agricoles par algorithmes génétiques", desc: "Calculez les trajets de camions de collecte pour minimiser les temps d'attente à la pesée et optimiser le stockage des grains." },
+  { title: "Surveillance de la fraîcheur et tri post-récolte assisté par nez électroniques à réseaux de capteurs de gaz", desc: "Détectez les infimes rejets d'éthylène ou de composés volatils révélant un début de pourriture au cœur des palettes de stockage." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA & Agriculture de Précision", desc: "Validez vos connaissances théoriques et pratiques sur le pilotage IoT, l'analyse d'images satellitaires et la robotique agricole d'élite pour obtenir votre diplôme." }
+];
+
 const veoExtraLessonsData = [
   { title: "Paramétrage précis du grain de pellicule et des émulsions de caméras mythiques", desc: "Commandez l'esthétique organique des pellicules Kodak 35mm ou Lomography pour donner une âme vintage à vos rendus." },
   { title: "Contrôle physique des dynamiques de fluides et collisions de particules", desc: "Découvrez les architectures de prompts spécifiques pour animer de l'eau, du feu, ou du sable de manière hyper-réaliste." },
@@ -1777,6 +2118,91 @@ const viralVideoAudioExtraLessonsData = [
   { title: "Éviter les flags de détection de contenu synthétique et optimiser le trafic organique", desc: "Apprenez les subtilités pour retoucher ou modifier la signature numérique des vidéos afin d'apparaître naturellement sur les algorithmes." },
   { title: "Automatiser la déclinaison d'une vidéo longue YouTube en 10 capsules virales avec OpusClip", desc: "Laissez l'algorithme analyser les moments forts d'un podcast long, ajouter des titres percutants et recadrer intelligemment les visages en 9:16." },
   { title: "L'évaluation finale de Certification d'Expert en Création Vidéo Virale & Audio IA", desc: "Examen académique complet en conditions réelles pour décrocher votre titre certifié en ingénierie de contenus viraux multicanaux." }
+];
+
+export const baseBusinessWritingLessons: Lesson[] = [
+  {
+    id: "bw_l1",
+    title: "Prompt-Engineering Appliqué aux E-mails Professionnels et Négociations",
+    description: "Apprenez à guider l'IA pour rédiger des e-mails d'affaires d'une redoutable efficacité : gestion de conflits clients, relances de prospects et négociation de termes contractuels.",
+    durationMin: 15,
+    steps: [
+      "L'écrit des affaires requiert une clarté absolue, un alignement sur les intérêts mutuels (gagnant-gagnant) et un ton d'une diplomatie impeccable.",
+      "Pour formuler une relance commerciale efficace, évitez les formules passives ('Je me permets de vous recontacter') au profit de valeurs tangibles débloquées.",
+      "L'IA vous permet de retirer tout affect ou stress émotionnel d'un brouillon écrit à la va-vite pour le reformuler en un message professionnel équilibré.",
+      "Précisez toujours la relation hiérarchique, le contexte de la négociation et l'action précise que vous attendez du destinataire (Call-To-Action unique)."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt ordonnant à l'IA d'adoucir un courriel de mise en demeure pour retard de paiement d'un client stratégique, tout en maintenant une exigence de règlement ferme sous 48 heures.",
+      systemTemplate: "Garantir un ton d'affaires ferme mais diplomatique sous haute tension commerciale.",
+      placeholderText: "Saisissez votre consigne de recadrage financier...",
+      exampleSolution: "Agis en tant que Directeur Administratif et Financier. Reformule ce courriel d'agacement pour retard de facture de la part de notre client historique. Conserve une exigence de versement ferme sous 48 heures mais adopte un ton coopératif, axé sur la collaboration de long terme et l'intégrité de nos engagements mutuels."
+    }
+  },
+  {
+    id: "bw_l2",
+    title: "Rapports d'Activité, Mémos Stratégiques et Analyses SWOT Assistées par IA",
+    description: "Structurez des mémos à destination de conseils d'administration ou de comités exécutifs. Apprenez à synthétiser des données brutes en analyses décisionnelles claires.",
+    durationMin: 15,
+    steps: [
+      "Une communication executive de haut niveau doit aller droit au but géographique et d'affaires. Utilisez la structure Pyramide de Minto (la conclusion d'abord).",
+      "Demandez à l'IA de bâtir des structures analytiques éprouvées : SWOT (Forces, Faiblesse, Opportunités, Menaces) ou PESTEL, étayées de vos chiffres d'affaires.",
+      "L'IA est un excellent sparring-partner pour contredire vos propres hypothèses (Red Teaming intellectuel) et enrichir vos arguments commerciaux.",
+      "Pour simplifier des données lourdes, donnez de l'espace à vos rapports en configurant l'IA pour structurer l'information sous forme de synthèses managériales (Executive Summary)."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "bw_q2",
+      question: "Quelle méthode est la plus performante pour obtenir une analyse SWOT de haut niveau par l'IA ?",
+      options: [
+        { text: "Lui fournir vos données chiffrées brutes et vos objectifs de marché, puis lui demander de contrecarrer vos biais de sur-optimisme en jouant le rôle d'un auditeur externe sceptique.", isCorrect: true },
+        { text: "Lui demander un SWOT générique pour n'importe quelle entreprise fictive sans fournir aucun détail réel.", isCorrect: false },
+        { text: "Lui ordonner d'inventer des menaces magiques et de fausses statistiques de ventes.", isCorrect: false },
+        { text: "Ne pas faire de relecture et copier-coller tel quel l'avis le plus poétique de l'IA.", isCorrect: false }
+      ],
+      explanation: "Superbe ! Fournir des données internes d'affaires réelles et orienter l'IA pour qu'elle adopte une posture d'avocat du diable garantit une solidité de rapport exempte de biais de confirmation."
+    }
+  },
+  {
+    id: "bw_l3",
+    title: "Propagations Médias : Communiqués de Presse, Newsletters d'Entreprise et Pitchs",
+    description: "Apprenez à rédiger des récits d'entreprise mémorables (Storytelling) et des communiqués de presse calibrés pour attirer instantanément l'intérêt des rédacteurs en chef.",
+    durationMin: 20,
+    steps: [
+      "Le communiqué de presse obéit à la règle stricte du 'Qui, Quoi, Quand, Où, Pourquoi, Comment' dès le premier paragraphe.",
+      "Pour rédiger une newsletter d'entreprise engageante, alternez entre partage d'expertises concrètes et narration de coulisses pour humaniser la marque.",
+      "Le prompting ciblé sur le ton de voix (ex: confiant, innovant, transparent) permet d'injecter la personnalité de votre marque dans chaque courriel automatisé.",
+      "Utilisez l'IA pour concevoir des objets ou titres d'e-mails sous forme d'A/B testing afin de trouver la formulation qui maximisera le taux d'ouverture."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour concevoir un pitch de partenariat percutant destiné à un influenceur ou partenaire B2B de premier plan, axé sur les bénéfices mutuels.",
+      systemTemplate: "Orchestration de pitch de démarchage de partenariats stratégiques B2B.",
+      placeholderText: "Saisissez les bases de votre pitch de partenariat...",
+      exampleSolution: "Rédige une proposition de collaboration au style direct, amical mais raffiné pour co-créer un livre blanc. Présente en une phrase qui nous sommes, les données exclusives que nous possédons à partager, et souligne le bénéfice immédiat de notoriété et d'apport de leads qualifiés pour leur marque."
+    }
+  }
+];
+
+export const businessWritingExtraLessonsData = [
+  { title: "Optimisation de pitch decks de levée de fonds et pitchs investisseurs", desc: "Ajustez le rythme et l'impact de vos diapositives stratégiques à l'aide de résumés d'accroches percutants." },
+  { title: "Rédaction automatique de procès-verbaux de comités d'administration", desc: "Traduisez les décisions financières, juridiques et humaines complexes en rapports de gouvernance irréprochables." },
+  { title: "Création de foires aux questions (FAQ) interactives d'aide client", desc: "Anticipez et répondez à toutes les objections réelles de vos utilisateurs dans un langage clair et structuré." },
+  { title: "Formulation d'offres commerciales de services B2B haut de gamme", desc: "Rédigez des propositions commerciales de services sur-mesure structurées par bénéfices clairs et valeur ajoutée d'élite." },
+  { title: "Synthèse automatisée d'études de marché d'envergure", desc: "Rassemblez et regroupez des analyses sectorielles complexes et concurrentielles sous forme de mémos stratégiques." },
+  { title: "Préparation de scripts d'appels à froid d'une efficacité sémantique maximale", desc: "Élaborez des guides d'entretien commercial qui brisent la glace en 10 secondes et déploient une écoute active agile." },
+  { title: "Conception d'argumentaires de gestion de crise d'image de marque publique", desc: "Structurez des prises de parole institutionnelles d'une intégrité sémantique irréprochable face à un imprévu majeur." },
+  { title: "Orchestration de réponses structurées à des appels d'offres complexes d'affaires", desc: "Organisez vos réponses aux critères administratifs et techniques pour vous démarquer de vos concurrents directs." },
+  { title: "Rédiger des fiches produits e-commerce hautement convertissantes par lots", desc: "Saisissez l'IA pour générer une multitude de textes descriptifs séduisants, optimisés pour les moteurs de recherche." },
+  { title: "Création de guides d'onboarding de nouveaux collaborateurs clairs et motivants", desc: "Rédigez des parcours d'intégration et manuels de culture d'entreprise motivants favorisant l'indépendance du nouveau venu." },
+  { title: "Écriture de scripts de webinaires de vente engageants orientés conversions", desc: "Programmez la chronologie de votre conférence en ligne pour susciter le désir et présenter votre offre avec fluidité." },
+  { title: "Reformulation professionnelle de notes manuscrites et comptes-rendus d'ateliers", desc: "Transformez vos synthèses griffonnées à la va-vite lors d'ateliers en feuilles de route concrètes exploitables à 100%." },
+  { title: "Conception de politiques de conformité internes et chartes d'éthique professionnelles", desc: "Rédigez des consignes comportementales claires, respectant les normes de travail et les responsabilités éco-responsables." },
+  { title: "Critique constructive de courriels d'affaires à fort enjeu avant envoi automatique", desc: "Analysez le niveau de politesse, la clarté et l'impact émotionnel de vos brouillons stratégiques pour corriger tout faux-pas." },
+  { title: "Élaboration de contrats types d'affaires simples et rigoureux juridiquement", desc: "Formulez les clauses phares de vos conventions d'affaires d'une manière limpide, saine et évitant les ambiguïtés juridiques." },
+  { title: "Générer des réponses diplomatiques à des réclamations clients outrancières", desc: "Maîtrisez la réplique s'appuyant sur les faits pour reconduire la discussion dans le cadre contractuel avec un parfait sang-froid." },
+  { title: "L'évaluation finale de Certification d'Expert en IA & Rédaction d'Affaires", desc: "Validez vos compétences sur les subtilités stylistiques et l'efficacité persuasive de l'écrit professionnel pour obtenir votre diplôme." }
 ];
 
 // DETAILED HIGH-FIDELITY COGNITIVE ANALYZER FOR ELITE AI EDUCATION
@@ -2113,22 +2539,22 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
     const types: ("quiz" | "prompt_sandbox" | "copy_sandbox")[] = ["quiz", "prompt_sandbox", "copy_sandbox"];
     const activityType = types[lessonNum % types.length];
-
+ 
     // Custom content generation per category
     let steps: string[] = [];
     let customQuiz = null;
     let customPromptObjective = null;
     let customCopyObjective = null;
-
+ 
     const lowerTitle = data.title.toLowerCase();
     const lowerDesc = data.desc.toLowerCase();
-
+ 
     // 1. NO-CODE & WEB DEV (Lovable, Supabase, APIs, etc.)
     if (lowerTitle.includes("supabase") || lowerTitle.includes("api") || lowerTitle.includes("lovable") || lowerTitle.includes("stripe") || lowerTitle.includes("react") || lowerTitle.includes("sql") || lowerTitle.includes("base de données") || lowerTitle.includes("code") || lowerTitle.includes("déploiement") || lowerTitle.includes("bouton") || lowerTitle.includes("page")) {
       steps = [
@@ -2137,7 +2563,7 @@ function generateCourseLessons(
         `Pour mettre cela en œuvre : 1. Modélisez vos relations de tables (un-à-plusieurs, plusieurs-à-plusieurs) ; 2. Connectez l’authentification de manière fiable ; 3. Stockez les clés sensibles (comme les secrets d'API) dans des variables d'environnement distantes sécurisées ; 4. Utilisez des hooks réactifs légers comme React Context ou Zustand pour faire transiter vos variables proprement.`,
         `Conseil d'expert : Lors de l'écriture d'API ou de requêtes complexes, assurez-vous de toujours gérer les états de chargement (loading) et les cas d'erreur d'une manière rassurante pour l'utilisateur final. Validez l'exercice pratique ci-contre pour décrocher vos points et progresser vers l'obtention de votre diplôme de fin de formation sous format A4 Paysage.`
       ];
-
+ 
       customQuiz = {
         id: `${prefix}_q${lessonNum}`,
         question: `Quelle est la règle absolue pour sécuriser vos données ou connexions de bases de données dans "${data.title}" ?`,
@@ -2149,14 +2575,14 @@ function generateCourseLessons(
         ],
         explanation: `Excellent ! La sécurité est critique : l'authentification et les accès aux tables de la base de données SQL s'appuient toujours sur des politiques de Row Level Security (RLS) de Supabase et des secrets cachés côté serveur.`
       };
-
+ 
       customPromptObjective = {
         taskDescription: `Rédigez un prompt parfait pour Lovable.dev décrivant la configuration d'un module de base de données relationnelle sécurisé appliqué à : ${data.title}.`,
         systemTemplate: `Simulate high-fidelity validation of database relations: ${data.title}`,
         placeholderText: `Saisissez votre configuration de table et politique RLS pour ${data.title}...`,
         exampleSolution: `Crée une table "profiles" sur Supabase reliée aux utilisateurs de Supabase Auth avec les colonnes id (uuid, clé primaire), full_name (text), et website (text). Active la sécurité Row Level Security (RLS) et crée une politique permettant aux utilisateurs de ne modifier que leur propre profil.`
       };
-
+ 
       customCopyObjective = {
         scenario: `Présentation d'une architecture No-code / Base de données sécurisée : ${data.title}`,
         audience: "Porteurs de projets SaaS sceptiques sur la sécurité du No-Code.",
@@ -2166,7 +2592,7 @@ function generateCourseLessons(
       };
     }
     // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, etc.)
-    else if (lowerTitle.includes("video") || lowerTitle.includes("vidéo") || lowerTitle.includes("cinématique") || lowerTitle.includes("audio") || lowerTitle.includes("elevenlabs") || lowerTitle.includes("suno") || lowerTitle.includes("voix") || lowerTitle.includes("capcut") || lowerTitle.includes("runway") || lowerTitle.includes("heygen") || lowerTitle.includes("avatar") || lowerTitle.includes("bruitage")) {
+    else if (courseId === "nanobanana_mastery" || courseId === "suno_mastery" || courseId === "video_editing_mastery" || lowerTitle.includes("video") || lowerTitle.includes("vidéo") || lowerTitle.includes("cinématique") || lowerTitle.includes("audio") || lowerTitle.includes("elevenlabs") || lowerTitle.includes("suno") || lowerTitle.includes("voix") || lowerTitle.includes("capcut") || lowerTitle.includes("runway") || lowerTitle.includes("heygen") || lowerTitle.includes("avatar") || lowerTitle.includes("bruitage") || lowerTitle.includes("banana")) {
       steps = [
         `Le module "${data.title}" explore la pointe de la création vidéo et de l'ingénierie sonore par intelligence artificielle. Avec des outils comme Google Veo 3, Runway, ElevenLabs ou Suno, de simples lignes d'instructions sémantiques se transforment en clips publicitaires cinématiques et doublages d'un réalisme stupéfiant.`,
         `Pour la vidéo, la grammaire cinématographique est reine : précisez toujours la focale de l'objectif (ex: 35mm anamorphique), les mouvements de caméra (travelling, grue, dolly zoom) et les conditions météorologiques ou d'éclairage. Pour l'audio, structurez vos voix d'élite en spécifiant l'âge, l'accent, le ton (chaleureux, confessionnel) et contrôlez le rythme en injectant des balises de pauses dramatiques.`,
@@ -2199,6 +2625,78 @@ function generateCourseLessons(
         goal: "Les persuader de souscrire à un forfait d'accompagnement vidéo mensuel stratégique.",
         placeholderText: `Rédigez votre newsletter promotionnelle pour ${data.title}...`,
         exampleSolution: `Le saviez-vous ? 84% des acheteurs sur internet valident leur panier après avoir visionné une courte vidéo. Grâce à notre moteur de production vidéo cinématique multilingue assisté par IA, nous concevons des capsules publicitaires de qualité digne de Netflix en moins de 48 heures pour un dixième des coûts de tournage habituels. Réservez votre audit de marque offert !`
+      };
+    }
+    // 2.5. SMART FARMING & PRECISION AGRICULTURE
+    else if (courseId === "ai_agriculture_mastery" || lowerTitle.includes("agric") || lowerTitle.includes("farming") || lowerTitle.includes("récolte") || lowerTitle.includes("irrigation") || lowerTitle.includes("sols") || lowerTitle.includes("parcelle") || lowerTitle.includes("rendement") || lowerTitle.includes("drone") || lowerTitle.includes("bétail") || lowerTitle.includes("robotique")) {
+      steps = [
+        `Le module "${data.title}" aborde l'application concrète des innovations d'intelligence artificielle, des capteurs connectés (IoT) et de l'imagerie aérienne de précision dans le monde agricole moderne. Le Smart Farming utilise l'apprentissage automatique pour optimiser les rendements et préserver nos ressources vitales de façon rationnelle.`,
+        `Pour structurer vos algorithmes de décision : 1. Récupérez les données brutes (capteurs météo, caméras multispectrales, et analyses de sols) ; 2. Nettoyez et modélisez les entrées temporelles ; 3. Configurez des modèles prédictifs d'aide à la décision (OAD) ; 4. Intégrez des commandes de modulation réelles (VRA) sur vos consoles de guidage GPS de tracteurs ou de robots terrestres.`,
+        `Les axes de progrès d'une agriculture de précision moderne comprennent : 1. L’économie drastique des intrants chimiques par pulvérisation ultraciblée ; 2. Le pilotage de précision de l'eau basé sur le stress hydrique réel de la plante ; 3. L'automatisation du désherbage physique mécanique par détection autonome d'adventices en temps réel par vision intelligente.`,
+        `Conseil d'expert : La robustesse des données de terrain et le calage des capteurs physiques sont indispensables pour éviter les biais de calcul d'index bio-thermiques. Relever les défis interactifs ci-contre vous débloquera +50 XP et vous amènera un pas de plus vers l'accréditation professionnelle de l'Académie.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'agriculture de précision connectée liée à : "${data.title}", quelle approche garantit le meilleur équilibre entre rentabilité et préservation de l'environnement ?`,
+        options: [
+          { text: "La modulation intra-parcellaire en combinant l'analyse spectrale aérienne et des outils d'épandage à taux variable (VRA) pour n'apporter que la juste dose au plant cible.", isCorrect: true },
+          { text: "L'aspersion systématique uniforme de produits chimiques sur 100% de la surface pour éliminer d'un coup tout risque phytosanitaire.", isCorrect: false },
+          { text: "La désactivation complète de tous les capteurs connectés pour économiser l'électricité des batteries physiques.", isCorrect: false },
+          { text: "Attendre le flétrissement foliaire complet avant de commencer l'analyse visuelle ou thermométrique.", isCorrect: false }
+        ],
+        explanation: `Félicitations, bonne réponse ! Apporter le bon produit, au bon endroit, au bon moment, et à la dose exacte requise est la définition même de l'agronomie moderne assistée par intelligence artificielle.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt d'analyse ou de planification d'irrigation intelligente pour : ${data.title}.`,
+        systemTemplate: `Analyse bioclimatique et ordonnancement de modulation d'intrants : ${data.title}`,
+        placeholderText: `Saisissez vos instructions d'OAD d'agriculture de précision pour ${data.title}...`,
+        exampleSolution: `Agis en tant qu'Ingénieur Agronome IA. Rédige un modèle de consigne sémantique pour générer un plan de modulation d'azote. Prends en compte l'historique NDVI de la parcelle, la variété de blé tendre semée, et les prévisions de pluie du week-end pour minimiser le lessivage dans les nappes phréatiques.`
+      };
+
+      customCopyObjective = {
+        scenario: `Argumentaire de transition technologique agricole : ${data.title}`,
+        audience: "Un syndicat de viticulteurs ou d'agriculteurs traditionnels frileux vis-à-vis des outils connectés.",
+        goal: "Démontrer que l'IA n'est pas un gadget de bureau, mais un allié de terrain pour sauver leurs récoltes de la sécheresse.",
+        placeholderText: `Rédigez votre argumentaire de vulgarisation technique pour ${data.title}...`,
+        exampleSolution: `La gestion moderne de "${data.title}" ne se fait plus au jugé. En associant des capteurs d'humidité de sol connectés au niveau racinaire avec des relevés thermiques satellites, nos modèles bioclimatiques décident de l'arrosage au litre près. C'est l'assurance pour vous de réduire vos factures d'eau de 35% tout en augmentant la teneur en sucre et la qualité gustative de vos vendanges face au réchauffement.`
+      };
+    }
+    // 2.7. BUSINESS WRITING & Rédaction d'Affaires
+    else if (courseId === "business_writing_mastery" || lowerTitle.includes("affaires") || lowerTitle.includes("écrit des affaires") || lowerTitle.includes("business writing") || lowerTitle.includes("rédig") || lowerTitle.includes("rédaction d'affaires") || lowerTitle.includes("professionnel") || lowerTitle.includes("e-mail pro")) {
+      steps = [
+        `Le module "${data.title}" explore la synergie parfaite entre l'intelligence artificielle et la rédaction d'affaires. Une communication professionnelle d'élite doit être limpide, concise et aligner parfaitement les intérêts des parties prenantes.`,
+        `Pour orchestrer de grands écrits d'affaires (rapports d'activité, études de marché, mémos de synthèse), appliquez toujours le principe de la structure en pyramide ou l'indexation de points clés s'alignant sur des indicateurs de performance commerciale (KPIs). L'IA est parfaite pour dégager les arguments centraux à partir de masses de données confuses.`,
+        `Dans le cadre relationnel (négociations de contrats, gestion de crises, relances d'impayés), configurez l'IA pour qu'elle retire d'abord les aspérités d'affect ou les impuretés sémantiques. Un ton d'une diplomatie impeccable associé à une fermeté de position est le secret des plus grands négociateurs.`,
+        `Conseil d'expert : Relever les défis d'écriture interactive ci-contre vous rapportera +50 XP et complétera votre parcours pour obtenir le diplôme certifié de l'Académie en IA et Rédaction Professionnelle.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'écrit professionnel et de la gestion de : "${data.title}", quelle stratégie de prompting produit l'écrit le plus convaincant ?`,
+        options: [
+          { text: "Fournir le contexte précis de la négociation, les contraintes juridiques du contrat, et instruire l'IA de concevoir des phrases diplomatiques orientées solutions gagnantes.", isCorrect: true },
+          { text: "Laisser l'IA improviser de fausses clauses confidentielles sans lui spécifier les contraintes réelles de votre entreprise.", isCorrect: false },
+          { text: "Utiliser un ton agressif et condescendant pour intimider le partenaire commercial.", isCorrect: false },
+          { text: "Ne pas intégrer d'appel à l'action ou d'échéance claire pour éviter de bousculer le client.", isCorrect: false }
+        ],
+        explanation: "Parfait, excellente réponse ! Une communication d'affaires d'excellence repose sur la diplomatie, la fermeté factuelle et la clarté constructive de propositions gagnant-gagnant."
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt ordonnant à l'IA d'analyser ou de formuler une note d'opportunité commerciale pour : ${data.title}.`,
+        systemTemplate: `Modélisation d'arguments d'affaires et de notes stratégiques : ${data.title}`,
+        placeholderText: `Saisissez vos contraintes stratégiques professionnelles pour ${data.title}...`,
+        exampleSolution: `Agis en tant que Consultant Senior. Reformule cette note d'opportunité en un executive summary de moins de 150 mots destiné au comité exécutif. Structure le mémo en trois sections : 1. L'opportunité de marché ; 2. Les ressources et investissements requis ; 3. Le retour sur investissement attendu.`
+      };
+
+      customCopyObjective = {
+        scenario: `Formulation d'un e-mail d'alliance stratégique commerciale : ${data.title}`,
+        audience: `Un PDG ou Directeur de marque d'un partenaire commercial majeur potentiel.`,
+        goal: `Les inciter à accepter un rendez-vous d'échange exploratoire de 15 minutes.`,
+        placeholderText: `Saisissez votre e-mail de proposition pour ${data.title}...`,
+        exampleSolution: `Bonjour, nos analyses croisées sur "${data.title}" indiquent un potentiel de synergie d'affaires formidable entre nos structures. Nous avons modélisé une opportunité d'optimisation de vos parcours clients permettant d'accroître votre panier moyen de 18% à coûts constants. Seriez-vous disponible ce jeudi à 14h pour un rapide échange d'exploration ? Très cordialement.`
       };
     }
     // 3. COPYWRITING, PSYCHOLOGY & MARKETING
@@ -2621,6 +3119,61 @@ export const COURSES: Course[] = [
     estimatedHours: 15,
     totalLessons: 20,
     lessons: generateCourseLessons("procurement_mastery", baseProcurementLessons, procurementExtraLessonsData, 20)
+  },
+  {
+    id: "nanobanana_mastery",
+    title: "Animation & Clone de Visage avec Nano Banana IA",
+    category: "ai",
+    description: "Devenez un expert de Nano Banana IA : maîtrisez la création d'avatars animés ultra-fidèles, le Lipsync hyper-réaliste, le Face Swapping sans distorsion dynamique et l'automatisation de capsules vidéo sociales captivantes.",
+    iconName: "Video",
+    difficulty: "Advanced",
+    estimatedHours: 12,
+    totalLessons: 20,
+    lessons: generateCourseLessons("nanobanana_mastery", baseNanoBananaLessons, nanobananaExtraLessonsData, 20)
+  },
+  {
+    id: "suno_mastery",
+    title: "Production Musicale avec Suno IA",
+    category: "ai",
+    description: "Maîtrisez la création musicale de pointe avec Suno IA : domptez les styles v3/v4 de qualité studio, structurez vos morceaux avec des balises d'arrangements précis (refrains, solos, outros), intégrez vos propres riffs sonores par téléversement d'audio et produisez des morceaux professionnels de tous genres.",
+    iconName: "Music",
+    difficulty: "Advanced",
+    estimatedHours: 14,
+    totalLessons: 20,
+    lessons: generateCourseLessons("suno_mastery", baseSunoLessons, sunoExtraLessonsData, 20)
+  },
+  {
+    id: "video_editing_mastery",
+    title: "Montage Vidéo Professionnel avec l'IA",
+    category: "ai",
+    description: "Maîtrisez le montage vidéo professionnel avec les derniers outils d'intelligence artificielle : déshabillez vos rushs par transcription, synchronisez le son sur le beat, appliquez des effets d'Inpainting en mouvement et automatisez vos pipelines de production.",
+    iconName: "Video",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("video_editing_mastery", baseVideoEditingLessons, videoEditingExtraLessonsData, 20)
+  },
+  {
+    id: "ai_agriculture_mastery",
+    title: "IA & Agriculture de Précision : Dominer le Smart Farming",
+    category: "ai",
+    description: "Devenez un expert du Smart Farming : maîtrisez les capteurs IoT, le traitement d'images drone, l'optimisation des rendements de récoltes et la robotique agricole d'élite.",
+    iconName: "Leaf",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_agriculture_mastery", baseAgricultureLessons, agricultureExtraLessonsData, 20)
+  },
+  {
+    id: "business_writing_mastery",
+    title: "IA & Écrit des Affaires : Maîtrisez la Rédaction d'Affaires & Professionnelle",
+    category: "ai",
+    description: "Dominez la rédaction d'affaires assistée par IA : e-mails formels de négociation, mémos de synthèse décisionnels, notes executives et rapports de stratégie financière.",
+    iconName: "FileText",
+    difficulty: "Advanced",
+    estimatedHours: 12,
+    totalLessons: 20,
+    lessons: generateCourseLessons("business_writing_mastery", baseBusinessWritingLessons, businessWritingExtraLessonsData, 20)
   }
 ];
 

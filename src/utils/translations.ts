@@ -1091,6 +1091,174 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
       }
     ]
   },
+  nanobanana_mastery: {
+    title: "Complete Nano Banana AI Course: Master Face Animation and Cloning",
+    description: "Devenez un expert de Nano Banana IA. Master high-fidelity avatar generation, real-time lip syncing, distortion-free face swapping, and viral social content workflows with ease.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "nb_l1",
+        title: "Introduction to Nano Banana AI & Face Animation Basics",
+        description: "Grasp core generative animation concepts on Nano Banana to anchor portraits, edit facial muscles, and set first camera rotations.",
+        steps: [
+          "Nano Banana AI specializes in synthesizing organic animations, micro-expressions, and lipsyncs from a single static image.",
+          "The engine preserves delicate eye elements (glance focus, lid blinks, lens light) better than generic video simulators.",
+          "To animate a face, you can combine text prompts (directing action) or sound tracks (directing speech beats) seamlessly.",
+          "Setting exact video aspect ratios and motion strength parameters defines the speed and realism of your final clip."
+        ],
+        activityInstructions: "Compose a beautiful animation prompt detailing an emotional shift (e.g. vintage style, cyberpunk lights) on Nano Banana.",
+        scenario: "Designing high-fidelity avatar introductions.",
+        audience: "Visual designers, content authors, and video developers.",
+        goal: "A majestic rendering instruction showcasing fluid micro-expressions."
+      },
+      {
+        id: "nb_l2",
+        title: "Advanced Face Swapping & Anchoring Face Identifiers",
+        description: "Achieve smooth, smudge-free face swaps on raw video files and maintain uniform characters across scenes.",
+        steps: [
+          "Pristine face swapping requires structured, face-forward high-res photos without shadows or specs.",
+          "Nano Banana's neural tracker shifts facial coordinates in real-time to match twists and rolls in the source track.",
+          "Achieving professional consistency demands careful tuning of skin-tissue blend ratios and canvas light sources.",
+          "You can lock and reference your generated avatar inside your personal library for multi-scene use."
+        ],
+        quizQuestion: "What is a core technical safeguard to secure a convincing, artifact-free face swap under Nano Banana?",
+        quizOptions: [
+          "Feeding a sharp, well-lit frontal headshot and tuning skin blend ratios to adapt to environment lights.",
+          "Uploading a dark, pixelated, side-angle picture with sunglasses and thick hats.",
+          "Changing the base character reference file every split second of the video run.",
+          "Degrading the master video resolution to its lowest, most blurred format."
+        ],
+        explanation: "Correct! High-definition frontal imagery paired with ambient skin-matching handles environment transitions smoothly."
+      },
+      {
+        id: "nb_l3",
+        title: "Generating Animated Avatars & Launching Viral Channels",
+        description: "Assemble responsive virtual announcers, clone voice tracks, and automate YouTube/TikTok social capsules.",
+        steps: [
+          "Social success marries a brilliant hook story, flawless voice tracks, and responsive face action from Nano Banana.",
+          "Maximize viewer retention by starting with a prominent facial reaction (e.g., laughter, sudden wonder) within 2 seconds.",
+          "Link your animated files inside editor systems like CapCut to synchronize natural breathing cues.",
+          "Stick to chest-level camera crops to highlight expressions, hand movements, and personal charisma."
+        ],
+        activityInstructions: "Formulate a social media intro script with detailed 'Before/After' visual transition triggers.",
+        scenario: "Automating highly engaging e-learning and social presentation loops.",
+        audience: "Course creators, influencers, and digital builders.",
+        goal: "An integrated avatar storyboard script detailing high-retention cues."
+      }
+    ]
+  },
+  suno_mastery: {
+    title: "Complete Suno AI Course: Master High-End Music Production",
+    description: "Produce professional, studio-grade hits on Suno AI v3/v4. Learn to structure your tracks with bracket tags, upload custom rhythmic stems, and mix audio tracks.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "su_l1",
+        title: "Introduction to Suno AI v3/v4 & Studio-Grade Tracks",
+        description: "Discover Suno's music playground. Draft unique tracks across any musical genre from text descriptions.",
+        steps: [
+          "Suno AI stands as the premier music synthesizer generating arrangements, instrumental tracks, and realistic vocals.",
+          "Simple Mode accepts broad style lines, whereas Custom Mode lets you separate your lyric lines from musical genre strings.",
+          "Versions v3 and v4 boast high-fidelity masterings, giving your sound clear frequencies comparable to elite records.",
+          "Setting detailed style prompts guides the algorithmic synthesis (e.g. 'acoustic guitars on moody ambient beats')."
+        ],
+        activityInstructions: "Write an optimized style prompt specifying genres, instruments, tempo, and vocal mood on Suno AI.",
+        scenario: "Directing high-fidelity studio music commissions.",
+        audience: "Sound designers, producers, and game programmers.",
+        goal: "A beautiful sound styling recipe setting tempo, instruments, and vocal vibe."
+      },
+      {
+        id: "su_l2",
+        title: "Arranging with Bracket Tags & Writing Custom Lyrics",
+        description: "Guide Suno to arrange verses, transitions, guitar solos, and soaring chorus sections.",
+        steps: [
+          "Suno honors classic composition tags like [Verse], [Chorus], [Bridge], [Guitar Solo], and [Outro] with high accuracy.",
+          "Write clean, rhymed stanzas of 4 to 8 lines to help the synthesizer build a predictable, pleasant cadence.",
+          "Experimental annotations such as [Vocal Rise] or [Whisper Verse] prompt sudden vocal shifts in intensity.",
+          "Keep lyric sections brief: the AI arranges tracks in stable 1 to 2 minute chunks to maintain cohesive melodies."
+        ],
+        quizQuestion: "Which technique is recommended to prompt Suno to trigger a striking, high-energy Chorus following a Verse?",
+        quizOptions: [
+          "Inserting structured structure annotations inside brackets like [Verse] and [Chorus] between rhymed stanzas.",
+          "Pasting all lyrics in a massive block without punctuation, paragraph breaks, or tags.",
+          "Screaming into the PC microphone to increase the system output volume.",
+          "Repeating the same word seven times in uppercase letters at the end of every line."
+        ],
+        explanation: "Correct! Placing arrangement keys inside brackets (e.g. [Verse], [Chorus]) instructs Suno to balance track dynamics."
+      },
+      {
+        id: "su_l3",
+        title: "Audio Ingestion (Extend Option) & Multi-Track Polishing",
+        description: "Ingest actual audio loops (vocals, beats, riffs) to instruct Suno, and extend your favorite tracks.",
+        steps: [
+          "The 'Extend' feature lets you pick a precise timeframe to attach a fresh verse or outro to your current sound.",
+          "The 'Upload Audio' options feed Suno an audio clip (10 to 60 sec) to replicate and expand upon.",
+          "Consolidate your different segments into a single track easily using the 'Get Whole Song' button.",
+          "Apply post-processing (isolating acapella or instrument tracks) with stems splitters for spotless streaming quality."
+        ],
+        activityInstructions: "Draft a tech ballad lyrics structure utilizing [Verse], [Chorus], and [Outro] blocks.",
+        scenario: "Synthesizing an anthemic corporate technological ballad.",
+        audience: "Marketers, sound hobbyists, and digital marketers.",
+        goal: "An actionable text melody template designed to highlight dynamic transitions."
+      }
+    ]
+  },
+  video_editing_mastery: {
+    title: "Complete AI Video Editing Course: Master Professional Montage Workflows",
+    description: "Master professional high-end video editing using state-of-the-art AI tooling. Edit visual footage by text-transcription, apply frame-accurate auto cutting/dérushage, synchronize sound, and automate your production pipelines.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "vd_l1",
+        title: "Introduction to AI Video Editing: Scripting, Cuts & Auto-Dérushage",
+        description: "Discover how AI reshapes modern editing pipelines. Classify b-rolls, transcribe and edit clips via text, and structure dynamic storyboards in seconds.",
+        steps: [
+          "AI-driven video editing leverages semantic metadata to auto-tag and index hours of raw footage instantly.",
+          "Computer vision modules group clips by scene, facial expression, and framing type automatically.",
+          "Text-based editing lets you assemble complete videos purely by cutting and pasting segments from a transcribed voice track.",
+          "The ideal editing pacing depends on your distribution destination, ranging from dense vertical hooks to fluid landscape cinema."
+        ],
+        activityInstructions: "Draft a detailed prompt outlining an automated editing sequence for an interview with cuts, captions, and b-roll placements.",
+        scenario: "Directing automated professional video editing sequences.",
+        audience: "Video editors, content managers, and visual marketers.",
+        goal: "An executable instructions file directing exact cuts, slide animations, and b-roll inserts."
+      },
+      {
+        id: "vd_l2",
+        title: "Sound Polish, Rhythm Matching & Audio Sync Masterclass",
+        description: "Learn to automate vocal enhancements, match video cuts directly to music tracks, and synthesize sound effects from text.",
+        steps: [
+          "Auto-Lipsync algorithms modify character mouth patterns to match newly imported dialogue soundtracks flawlessly.",
+          "Slick video transitions can be synchronized automatically to audio transients and bass beats using beat-detection modules.",
+          "Generative deep filters eliminate room echoes and high wind distortions to output clean studio-quality audio logs.",
+          "Sourcing tailored spatial sound elements is simple by writing precise sémantic sound descriptions."
+        ],
+        quizQuestion: "What is the primary method used by AI to salvage professional audio quality from noisy vertical smartphone raw logs?",
+        quizOptions: [
+          "Running state-of-the-art voice processors that evaluate, isolate, and synthesize natural harmonics while silencing noises.",
+          "Amplifying the master audio amplitude scale by 200% to shadow out baseline noise.",
+          "Mixing a highly loud synth track to blur or hide the hum of room reflections.",
+          "Slowing audio playbacks by 50% to space out audio packet artifacts."
+        ],
+        explanation: "Correct! Semantic voice filters isolate environmental noises and room reflections, leaving clean, centered broadcast quality tracks."
+      },
+      {
+        id: "vd_l3",
+        title: "Advanced Inpainting, Object Erasure & Smart Camera Tracking",
+        description: "Harness next-generation visual effects: scrub unwanted items in video timelines with smart canvas fills and track dynamic graphics.",
+        steps: [
+          "Video Inpainting blends pixels over changing timelines to vanish boom microphones, tourists, or static obstacles with zero traces.",
+          "Smart tracking algorithms anchor 3D texts or branding vectors to mobile elements with total geometric precision.",
+          "AI green-screen and masking filters remove backgrounds under a single key to host subjects in new high-quality virtual sets.",
+          "Morphing interpolator modules frame-blend differing segments gracefully to assemble beautiful transition tracks."
+        ],
+        activityInstructions: "Compose a beautiful inpainting instructions script for Runway Gen-3 to swipe a mobile background element.",
+        scenario: "Automating professional high-end cinematic visual touch-ups.",
+        audience: "GFX artists, social content developers, and video directors.",
+        goal: "A dynamic visual storyboard text mapping complex target masking and background swap."
+      }
+    ]
+  },
   perplexity_mastery: {
     title: "Complete Perplexity.ai Course: Master Cognitive Search in 20 Modules",
     description: "Deepen your factual investigation, semantic analysis, and market research skills on Perplexity.ai. Master the intricacies of Pro Search multi-step paths, custom Focus categories, private data ingestion, and building professional Web Pages.",
@@ -1543,6 +1711,58 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
         explanation: "Perfect! By pricing outputs, your speed and automation leverage (from AI tools) boost your real hourly earnings dramatically, aligning client results directly with your profits."
       }
     ]
+  },
+  business_writing_mastery: {
+    title: "Complete AI Business Writing Course: Master Professional Correspondence & Reports",
+    description: "Master applying generative artificial intelligence to high-stakes business communication. Design persuasive negotiation emails, executive summary notes, decision-ready briefs, and strategic business reports.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "bw_l1",
+        title: "Prompt Engineering for Business Emails & Commercial Negotiations",
+        description: "Learn to command your AI to write crisp, high-impact business emails that defuse customer conflicts, follow up on cold prospects, and secure hard commercial wins.",
+        steps: [
+          "Business writing requires extreme clarity, a focus on win-win situations, and elegant diplomacy.",
+          "For follow-ups, avoid passive framing ('Just checking in') and highlight immediate business value instead.",
+          "Use the AI as an emotional buffer: copy-paste an angry initial draft and instruct it to restyle it into a flawless, balanced response.",
+          "Always specify the relationship with the recipient, the negotiation boundaries, and a single, clear Call-to-Action."
+        ],
+        activityInstructions: "Compose a prompt instructing the AI to soften an urgent collection email for a key client while firmly demanding payment within 48 hours.",
+        scenario: "Balancing diplomacy and commercial firmness in crucial emails.",
+        audience: "Account managers, executives, and financial controllers.",
+        goal: "A polite but firm payment reminder email that maintains client relationships."
+      },
+      {
+        id: "bw_l2",
+        title: "Executive Outlines, Strategic Reports & SWOT Analyses by AI",
+        description: "Structure mémos for company boards and executives. Learn to distill complex, unstructured documents into clean decision matrices.",
+        steps: [
+          "Executive communication must go straight to the point. Apply the Minto Pyramid Principle: state the conclusion first, then elaborate.",
+          "Command the AI to apply proven commercial frameworks like SWOT (Strengths, Weaknesses, Opportunities, Threats) or PESTEL.",
+          "Use the AI as a challenger (Red Teaming) to pressure-test your strategic hypotheses before board meetings.",
+          "Create executive summaries by prompting the AI to extract only critical decisions and required investments."
+        ],
+        activityInstructions: "Draft a system instruction to analyze general company metrics and output a SWOT overview focused on cost leakage.",
+        scenario: "Automating strategic corporate audits around market factors.",
+        audience: "Business consultants, analysts, and project managers.",
+        goal: "Distill raw tables and notes into an executive-grade SWOT report."
+      },
+      {
+        id: "bw_l3",
+        title: "Media Outreach: Press Releases, Corporate Newsletters & Partner Pitches",
+        description: "Draft persuasive corporate newsletters and professional press releases crafted to capture immediate media attention.",
+        steps: [
+          "Press releases must answer the core 'Who, What, Where, When, Why, How' within the very first paragraph.",
+          "For corporate newsletters, balance educational value with raw company updates to build deep customer trust.",
+          "Prompt the AI using specific tone guides (e.g. bold, trustworthy, visionary) to seamlessly inject your brand persona.",
+          "Perform A/B split-testing on email subject lines by generating variations targeted at specific user pain points."
+        ],
+        activityInstructions: "Draft a prompt to build a personalized co-authoring outreach email for a major B2B publisher.",
+        scenario: "Crafting professional partnerships emails that convert.",
+        audience: "PR managers, marketers, and startup founders.",
+        goal: "An outreach email that outlines mutual branding benefits and has an open rate potential."
+      }
+    ]
   }
 };
 
@@ -1775,6 +1995,63 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Circular Economy Sourcing and Lifecycle Traceability", desc: "Enforce closed-loop flows utilizing parts recall, material recycling, and secure rare minerals tracking." },
     { title: "Final Sourcing & Supplier Risk Certification Exam", desc: "Validate your abilities to secure savings, negotiate contracts, and protect the end-to-end supply chain." }
   ],
+  nanobanana_mastery: [
+    { title: "Calibrating Motion Strength under Nano Banana AI", desc: "Formulate dynamic motion curves to keep structural details aligned across face-swaps." },
+    { title: "Mastering Multi-Lingual Sync with Audio Overrides", desc: "Attach high-fidelity vocal tracks to your avatars to execute perfect multi-language lip syncing." },
+    { title: "Simulating Subtle Human Emotions and Mood Curves", desc: "Capture nuanced emotions like sorrow, surprise, or concern by tweaking semantic descriptors." },
+    { title: "Transforming Real Portraits into Cartoon Keyframes", desc: "Employ artistic stylization routines to turn static office headshots into cartoon presentations." },
+    { title: "Enforcing Persona Consistency Across Reels and Sequences", desc: "Anchor key face structural nodes to preserve facial shape and identity throughout long video campaigns." },
+    { title: "Composing Avatars with Green Screen Backdrops", desc: "Learn to composite virtual announcers cleanly over dynamic custom footage using luma key layers." },
+    { title: "Securing Fast Action Motions Against Face Slipping", desc: "Apply physical tracking fixes to prevent rendering glitches on fast rotation movements." },
+    { title: "Saturating Channels with Automated Trivia Video Runs", desc: "Batch out viral trivia packages by combining high-hook copy, vocal clones, and Nano Banana facial tracks." },
+    { title: "Coordinating Dolly Zooms and Camera Vertigo Hooks", desc: "Program dramatic camera rotations and depth zooms directly inside your avatar generations." },
+    { title: "Dynamic Reacting Lights on Rendered Face Crops", desc: "Simulate atmospheric lights, warm campfires, or emergency sirens interacting on imported layers." },
+    { title: "Building Enterprise Trainers for High-End E-Learning", desc: "Structure stable e-learning avatars to deliver standard employee onboarding courses." },
+    { title: "Retouching Facial Artifacts with Localized Inpainting", desc: "Sweep away dental shadows, skin glares, or errant hair strands with selective digital brosses." },
+    { title: "Matching Character Expressions to Music Beats", desc: "Link the facial twitch speed and eye blinks to the frequency bars of high-bpm tracks." },
+    { title: "Trimming High Value Clips for Optimized CTR Hooks", desc: "Slice long dynamic sequences to only output the top action clips that maximize click-throughs." },
+    { title: "Cinematic High Resolution Upscaling Workflows", desc: "Apply pristine multi-pass super-resolution filters to make your avatars TV and movie ready." },
+    { title: "Injecting Cyberpunk and Mechanical Cyberware Plates", desc: "Blend real human headshots with futuristic metallic lines, wires, and neon light lines." },
+    { title: "Final Sourcing & Nano Banana Animation Master Exam", desc: "Test your complete skills on blend ratio, lipsync quality, and speed outputs to earn your diploma." }
+  ],
+  suno_mastery: [
+    { title: "Designing Lo-Fi Ambient Focus Playlists", desc: "Detail warm analog textures, muted beats, and distant hums to shape focus office scores." },
+    { title: "Building Powerful Symphonic Rock Anthems", desc: "Mix distorted electric guitars with epic orchestral strings and deep male hums using genre tags." },
+    { title: "Reverse Engineering Pop Song Rime structures", desc: "Rebuild hit rhythm patterns and line lengths to fit Suno's lyric meters perfectly." },
+    { title: "Importing Whistled Hooks via Mobile Voice Logs", desc: "Clean up raw microphone inputs and let Suno convert simple humming into complete jazz tracks." },
+    { title: "Surgical Cuts with the Extend-From Time Marker", desc: "Target precise fractions of a second to prevent chord skips and vocal hiccups on continuation tracks." },
+    { title: "Structuring High Impact 30-Second Commercial Jingles", desc: "Synthesize immediate hooks, product taglines, and fading instrumentals for local brands." },
+    { title: "Stitching Track Segments with Get-Whole-Song", desc: "Unify separate 2-minute sections into cohesive arrangements without volume dips or EQ gaps." },
+    { title: "Splitting Stems and Isolating Clean Vocal Acapellas", desc: "Separate master stems cleanly using helper platforms to build high-grade personal remixes." },
+    { title: "Directing Narrative Spoken-Word Audioscapes", desc: "Force Suno to prioritize spoken dialogue over sung melodies for dramatic podcast openers." },
+    { title: "Mastering the Build-Up Tension and Bass Drops", desc: "Shape massive frequencies risers followed by heavy synth-bass dips suitable for electronic tracks." },
+    { title: "Conposing Immersive Latin Opera Choirs", desc: "Formulate classical orchestration tags with Latin stanzas to emulate heavy barocco styles." },
+    { title: "Hacking and Halting Endless Lyric Loops", desc: "Introduce strict style rules to stop the analyzer from looping the same stanza endlessly." },
+    { title: "Generating Seamless Loop Tracks for Board Games", desc: "Shape endless sound loops of stable tempo to accompany video game playbooks." },
+    { title: "Making Technical Database Systems Sound Musical", desc: "Compose funny blues or hard rock tracks singing about PostgreSQL schematics and servers." },
+    { title: "Mastering Loudness and EQ for Spotify & Apple Music", desc: "Polish Suno outputs using online limiters to meet mainstream streaming loudness specifications." },
+    { title: "Setting Multi-User Roles for Joint Music Tracks", desc: "Coordinate workflow tasks: assign writing, tags matching, and post-track assembly to separate team members." },
+    { title: "Final Sourcing & Suno Music Production Certification", desc: "Validate your mastery of bracket tags, extension markers, and mastering to secure your certificate." }
+  ],
+  video_editing_mastery: [
+    { title: "Automated Visual Hook Generation for High Audience Retention", desc: "Train AI systems to split video intros to capture eyes within the first 3 critical seconds." },
+    { title: "Mastering Stylized Animated Subtitles with Auto Emojis (Submagic)", desc: "Build dynamic, fast-paced subtitles in multiple colors to increase overall reader retention." },
+    { title: "Pristine Green-Screen Separation of Complex Subjects", desc: "Leverage advanced rotoscoping models to carve active figures out of intricate background layers." },
+    { title: "Multilingual Voice Dubbing with Emotional Tone Matching (ElevenLabs)", desc: "Translate facecam tracks into 29 distinct languages while matching the speaker's emotional delivery." },
+    { title: "Fusing Unreal Engine 3D Environments with AI Video Footage", desc: "Blend captured human scenes with rich virtual plates tracking the camera's kinetic paths." },
+    { title: "Frame-Rate Interpolation for Buttery Smooth 120 FPS Slow Motion", desc: "Use generative frame synthesis to scale ordinary 24 FPS clips into pristine high-frame actions." },
+    { title: "Automated Video Restoration for Low-Quality Wear and Grain", desc: "Eradicate noise artifacts, resolve color drifts, and upscale legacy SD media into high-definition 4K." },
+    { title: "Orchestrating AI B-Roll Generators with Script Triggers", desc: "Develop systemic scripts to analyze voice transcript timelines and automatically overlay contextual b-roll scenes." },
+    { title: "Smart Exposure Profiling and Post-Shoot Light Adjustments", desc: "Reprofile the lighting conditions on actor visages post-production like casting neon glows or fire warmth." },
+    { title: "Establishing Persistent Virtual 3D Brand Spokespersons", desc: "Model high-fidelity recurrent virtual announcers to deliver e-commerce and marketing messages." },
+    { title: "Interactive Split-Screen and Bento-Grid Layouts with AI", desc: "Direct multi-panel arrangements displaying complementary content boards simultaneously." },
+    { title: "Isolating Audio Voice Logs in High-Reverb Rooms (Adobe Podcast)", desc: "Restore poor audio records from wind-swept streets or echoey cafes into deep studio acoustics." },
+    { title: "Simulating Dramatic Vertigo and Kinetic Camera Movements", desc: "Inject artificial optical focal expansions and dramatic drone pans purely over static input frames." },
+    { title: "Structuring Large Scale Onboarding Video Classes", desc: "Apply layout frames, index chapters, and generate automatic progress indicators across entire lecture sets." },
+    { title: "Dynamic Vector Data Graphic Animations from CSV Logs", desc: "Generate polished animated business infographics and charts directly from raw spreadsheets." },
+    { title: "Trimming YouTube Masterpieces into 15 Reels / TikTok Capsules", desc: "Program systems like OpusClip to search for prime discussion spikes, crop faces, and caption files." },
+    { title: "Final Assessment & Certified AI Professional Video Editor Exam", desc: "Verify your execution of inpainting, subtitles calibration, and audio sync tools to claim your credential." }
+  ],
   perplexity_mastery: [
     { title: "Expert Setup of Custom Profiles and Search Personas", desc: "Define your precise corporate preferences to ensure all results align with your field, bias-free." },
     { title: "Deep Content Audit of Giant PDF and Annual Reports", desc: "Ingest multiple heavy files and let Perplexity execute precise cross-comparisons instantly." },
@@ -1934,6 +2211,25 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Mastering Imposter Syndrome", desc: "Trust the massive value and hours of work that your AI mastery saves clients." },
     { title: "Niche Specialize Mapping for High Rates", desc: "Understand why specializing in one narrow industry elevates your authority and prices." },
     { title: "Final Assessment & Certified Freelance Master Examination", desc: "Demonstrate commercial readiness inside the ultimate freelancing test." }
+  ],
+  business_writing_mastery: [
+    { title: "Refining high-ticket pitch decks and executive presentations", desc: "Polish slide layouts and verbal anchors using deep-structured persuasion psychology." },
+    { title: "Automated board assembly reporting and regulatory write-ups", desc: "Distill complex committee findings into impeccable executive governance records." },
+    { title: "Interactive client Help Center FAQ systems design", desc: "Answer real consumer friction points using clearly structured and empathetic helpful files." },
+    { title: "Premium B2B consulting services dynamic quotes formulation", desc: "Model elite pricing propositions structured entirely around outcome-driven value metrics." },
+    { title: "Synthesizing heavy sectoral market intelligence directories", desc: "Structure high-end summaries of competitor tracks and global economic changes using AI summaries." },
+    { title: "High-impact cold calling conversational frameworks scripting", desc: "Draft phone guidelines that lock in target director calls within the first 15 seconds." },
+    { title: "Brand crisis response counseling and media brief setups", desc: "Protect absolute institutional brand integrity during sudden public risk factors." },
+    { title: "Preparing winning answers to comprehensive administrative RFPs", desc: "Align complex contract briefs and score sheets to guarantee compliance." },
+    { title: "Bulk e-commerce SEO description pipelines design", desc: "Automate large catalog writeups highlighting sensory experiences and emotional hooks." },
+    { title: "Inspiring new hire onboarding playbooks and cultural guides", desc: "Convey mission-driven onboarding notes that spark immediate professional performance." },
+    { title: "Highly persuasive webinar conversion slides scripting", desc: "Map strategic webinar scripts that guide audiences towards purchasing decisions." },
+    { title: "Converting handwritten ideas and raw workshop scribbles", desc: "Translate messy whiteboards into highly actionable task assignments in real-time." },
+    { title: "Internal ethical charters and brand compliance standards mapping", desc: "Build objective behavioral guidelines respecting environmental and labor regulations." },
+    { title: "Criticizing and scoring business emails before final send", desc: "Score drafts using emotional tone matrices and structural clarity indices to avoid failures." },
+    { title: "Drafting solid basic contract agreements with absolute clarity", desc: "Ensure bulletproof operational deliverables under mutually beneficial business clauses." },
+    { title: "Defusing extremely aggressive customer emails calmly", desc: "Establish facts with total conversational composure and drive the issue to a fast close." },
+    { title: "Final Assessment & Certified AI Business Writing Specialist Exam", desc: "Validate your mastery of high-impact professional correspondence and reports." }
   ]
 };
 
@@ -1983,7 +2279,7 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
     };
   }
   // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, Runway, Sora, voice, HeyGen, etc.)
-  else if (lowerTitle.includes("video") || lowerTitle.includes("vidéo") || lowerTitle.includes("cinématique") || lowerTitle.includes("audio") || lowerTitle.includes("elevenlabs") || lowerTitle.includes("suno") || lowerTitle.includes("voice") || lowerTitle.includes("voix") || lowerTitle.includes("capcut") || lowerTitle.includes("runway") || lowerTitle.includes("heygen") || lowerTitle.includes("avatar") || lowerTitle.includes("sora")) {
+  else if (courseId === "nanobanana_mastery" || courseId === "suno_mastery" || lowerTitle.includes("video") || lowerTitle.includes("vidéo") || lowerTitle.includes("cinématique") || lowerTitle.includes("audio") || lowerTitle.includes("elevenlabs") || lowerTitle.includes("suno") || lowerTitle.includes("voice") || lowerTitle.includes("voix") || lowerTitle.includes("capcut") || lowerTitle.includes("runway") || lowerTitle.includes("heygen") || lowerTitle.includes("avatar") || lowerTitle.includes("sora") || lowerTitle.includes("banana")) {
     steps = [
       `This module on "${title}" explores the cutting edge of AI-driven cinematic video generation and high-precision audio engineering. With next-generation models like Google Veo 3, Sora, Runway Gen-3, ElevenLabs, and Suno, written prompts translate into hyper-realistic video advertisements and voice clone voice-overs of breathtaking realism.`,
       `For elite video generation, cinematic grammar is king: always specify camera lenses (e.g., 35mm anamorphic), kinetic movements (dolly zoom, lateral panning, crane shots), and dramatic lighting conditions (volumetric light, golden hour, moody chiaroscuro). For sound design, specify the age, accent, behavioral tone (warm, whisper) and pace (insert custom pause scripts).`,
@@ -2016,6 +2312,42 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
       goal: `Persuade them to subscribe to a monthly AI cinematic content package.`,
       placeholderText: `Draft your promotional email pitching ${title}...`,
       exampleSolution: `Did you know? 84% of online shoppers purchase a product after watching a short video. Thanks to our state-of-the-art AI-powered cinematic production pipeline, we engineer Netflix-quality video ads in under 48 hours for 10% of traditional film crew costs. Reply now to book your free brand media audit!`
+    };
+  }
+  // 2.7. BUSINESS WRITING & Rédaction d'Affaires
+  else if (courseId === "business_writing_mastery" || lowerTitle.includes("affaires") || lowerTitle.includes("business writing") || lowerTitle.includes("professional writing") || lowerTitle.includes("formal correspondence") || lowerTitle.includes("executive memo") || lowerTitle.includes("redig")) {
+    steps = [
+      `The module "${title}" explores the perfect synergy between generative artificial intelligence and high-stakes business writing. Elite corporate communication must be crystal clear, concise, and perfectly align stakeholder incentives.`,
+      `When drafting major business documents (annual reports, market summaries, strategic briefs), always structure key details around the Minto Pyramid Principle—conclusions first—and map core points to active business performance indicators (KPIs).`,
+      `In relationship management (contract negotiations, conflict resolution, payment follow-ups), use the AI as a filter to strip emotional reactivity or passive language, ensuring an impeccable professional tone combined with firm business demands.`,
+      `Expert advice: Completing these interactive writing and modeling challenges earns you 50 XP, pulling you closer to official Academy certification as an AI Business Writing Specialist.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: `When drafting high-stakes business correspondence or briefs under: "${title}", which prompting strategy ensures the best results?`,
+      options: [
+        { text: "Provide the precise commercial context, list legal and operational boundaries, and direct the AI to use a supportive but firm win-win tone.", isCorrect: true },
+        { text: "Allow the AI to speculate on company metrics without guiding its tone or stating key priorities.", isCorrect: false },
+        { text: "Deploy overly apologetic language to make sure you do not offend partners or default clients.", isCorrect: false },
+        { text: "Use highly aggressive, demanding sentences to force immediate responses.", isCorrect: false }
+      ],
+      explanation: `Perfect! Professional correspondence wins on clarity, diplomatic phrasing, and objective logic that highlights common ground while upholding strict business standards.`
+    };
+
+    customPromptObjective = {
+      taskDescription: `Draft a high-fidelity prompt to command the AI to analyze or compose a corporate dispatch for: ${title}.`,
+      systemTemplate: `Structuring formal corporate materials and reports: ${title}`,
+      placeholderText: `Specify your corporate goals and communication constraints for ${title}...`,
+      exampleSolution: `Act as a Senior Business Consultant. Re-structure this raw business update into a three-point executive summary under 150 words: 1. Core performance highlights; 2. Financial/resource bottlenecks; 3. Urgent recommendation for next quarter.`
+    };
+
+    customCopyObjective = {
+      scenario: `Formulating a high-stakes business proposal under: ${title}`,
+      audience: `CEOs, managing partners, and strategic corporate decision-makers.`,
+      goal: `Secure an exploratory 15-minute alignment call with a prospective client.`,
+      placeholderText: `Draft your elegant strategic outreach proposal for ${title}...`,
+      exampleSolution: `Dear Director, our analysis of recent sector milestones under "${title}" indicates a significant opportunity to optimize your customer acquisition loop. We have mapped out a lean workflow that could boost processing speeds by 22% with no additional overhead. Would you be open to a brief 15-minute call this Thursday at 2 PM to explore the pilot outline? Best regards.`
     };
   }
   // 3. COPYWRITING, PSYCHOLOGY & MARKETING
@@ -2380,7 +2712,7 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
             translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
           }
 
-          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : "fr";
+          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : "fr";
 
           // Delegate to the elite English analyzer just like in French!
           const elite = getDetailedAIStepsAndQuizEN(translatedTitle, course.id, prefix, lessonNum);
