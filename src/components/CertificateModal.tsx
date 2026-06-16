@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "motion/react";
+import html2canvas from "html2canvas";
 import { Course, UserProgress } from "../types";
-import { X, Printer, Share2, Award, Calendar, ShieldCheck, Edit3, Check, Sparkles } from "lucide-react";
+import { X, Printer, Share2, Award, Calendar, ShieldCheck, Edit3, Check, Sparkles, Download } from "lucide-react";
 
 interface CertificateModalProps {
   lang: "fr" | "en";
@@ -21,6 +22,8 @@ const LOCAL_TRANS = {
     sealVerified: "DIPLÔME VERIFIED DE L'ACADÉMIE",
     certIdDesc: "Ce code certifie de manière unique que vous avez validé toutes les leçons et requis académiques.",
     printBtn: "IMPRIMER / SAUVER PDF",
+    downloadPngBtn: "TÉLÉCHARGER EN IMAGE PNG",
+    downloadingPng: "GÉNÉRATION DU PNG...",
     shareSuccess: "PARTAGEZ VOTRE RÉUSSITE",
     copiedLabel: "Texte Copié (Presse-Papier) !",
     copyBtn: "Copier le Texte & Matricule",
@@ -144,6 +147,8 @@ const LOCAL_TRANS = {
     sealVerified: "VERIFIED ACADEMY GRADUATION TITLE",
     certIdDesc: "This unique cryptographic token certifies comprehensive verification of all interactive syllabus steps.",
     printBtn: "PRINT / SAVE AS PDF",
+    downloadPngBtn: "DOWNLOAD AS PNG IMAGE",
+    downloadingPng: "GENERATING PNG...",
     shareSuccess: "SHARE YOUR ACCOMPLISHMENT",
     copiedLabel: "Copied successfully to Clipboard!",
     copyBtn: "Copy Credentials text",
@@ -270,6 +275,8 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   const [isEditingName, setIsEditingName] = useState(!progress.fullName);
   const [certStyle, setCertStyle] = useState<"dark" | "classic">("dark");
   const [copiedLink, setCopiedLink] = useState(false);
+  const certRef = useRef<HTMLDivElement>(null);
+  const [downloadingImg, setDownloadingImg] = useState(false);
 
   // Generate a mock unique verifiable ID
   const certId = `CRSV-${course.category.toUpperCase()}-${Math.abs(course.id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) * 12345).toString(16).toUpperCase()}`;
@@ -344,6 +351,32 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleDownloadPNG = async () => {
+    if (!certRef.current) return;
+    setDownloadingImg(true);
+    try {
+      const canvas = await html2canvas(certRef.current, {
+        scale: 3, // Premium high-def scale
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: certStyle === "classic" ? "#faf9f5" : "#020617",
+        logging: false,
+      });
+
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      const sanitizedName = userName.trim().replace(/[^a-zA-Z0-9]/g, "_");
+      const sanitizedCourse = course.title.trim().replace(/[^a-zA-Z0-9]/g, "_");
+      link.download = `Certificat_IA_Academie_Plus_${sanitizedCourse}_${sanitizedName}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("Error generating certificate PNG image with html2canvas:", error);
+    } finally {
+      setDownloadingImg(false);
+    }
   };
 
   const handleShare = (platform: "link" | "linkedin" | "twitter") => {
@@ -695,6 +728,24 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
               {t("printBtn")}
             </button>
 
+            <button
+              onClick={handleDownloadPNG}
+              disabled={downloadingImg}
+              className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-705 text-slate-200 hover:text-white font-bold py-3.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 font-mono transition-all cursor-pointer shadow-lg disabled:opacity-50 disabled:cursor-not-allowed select-none"
+            >
+              {downloadingImg ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-slate-300 border-t-transparent rounded-full animate-spin" />
+                  {t("downloadingPng")}
+                </>
+              ) : (
+                <>
+                  <Download className="w-4.5 h-4.5 text-emerald-400" />
+                  {t("downloadPngBtn")}
+                </>
+              )}
+            </button>
+
             <div className="text-[10px] font-mono text-slate-500 uppercase text-center mt-3">{t("shareSuccess")}</div>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -738,6 +789,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
           )}
 
           <div 
+            ref={certRef}
             className={`printable-cert-area relative w-full h-auto min-h-[520px] aspect-[1.414/1] rounded-2xl border-[10px] p-8 lg:p-14 flex flex-col justify-between items-center text-center shadow-xl transition-colors duration-300 ${
               certStyle === "classic"
                 ? "bg-[#faf9f5] border-[#d4af37] text-slate-800 shadow-[#000000]/5"
@@ -833,6 +885,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=090d16&data=${encodeURIComponent(window.location.origin + "?verify=" + certId + "&name=" + encodeURIComponent(userName))}`} 
                     alt="Verification QR Code" 
                     className="qr-image w-14 h-14 lg:w-16 lg:h-16"
+                    crossOrigin="anonymous"
                     referrerPolicy="no-referrer"
                   />
                 </div>
