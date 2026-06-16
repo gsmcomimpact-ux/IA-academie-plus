@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import html2canvas from "html2canvas";
+import QRCode from "qrcode";
 import { Course, UserProgress } from "../types";
 import { X, Printer, Share2, Award, Calendar, ShieldCheck, Edit3, Check, Sparkles, Download } from "lucide-react";
 
@@ -277,9 +278,36 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   const [copiedLink, setCopiedLink] = useState(false);
   const certRef = useRef<HTMLDivElement>(null);
   const [downloadingImg, setDownloadingImg] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState<string>("");
 
   // Generate a mock unique verifiable ID
   const certId = `CRSV-${course.category.toUpperCase()}-${Math.abs(course.id.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0) * 12345).toString(16).toUpperCase()}`;
+
+  useEffect(() => {
+    let active = true;
+    const generateQR = async () => {
+      try {
+        const verifyUrl = `${window.location.origin}?verify=${certId}&name=${encodeURIComponent(userName)}`;
+        const dataUrl = await QRCode.toDataURL(verifyUrl, {
+          width: 200,
+          margin: 1,
+          color: {
+            dark: "#090d16",
+            light: "#ffffff",
+          },
+        });
+        if (active) {
+          setQrDataUrl(dataUrl);
+        }
+      } catch (err) {
+        console.error("Failed to generate offline QR Code:", err);
+      }
+    };
+    generateQR();
+    return () => {
+      active = false;
+    };
+  }, [certId, userName]);
 
   // Get current date formatted
   const today = new Date();
@@ -361,8 +389,8 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
         scale: 3, // Premium high-def scale
         useCORS: true,
         allowTaint: false,
-        backgroundColor: certStyle === "classic" ? "#faf9f5" : "#020617",
-        logging: false,
+        backgroundColor: null,
+        logging: true,
       });
 
       const dataUrl = canvas.toDataURL("image/png");
@@ -880,14 +908,18 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
               {/* QR Code Column */}
               <div className="flex flex-col items-center justify-center">
-                <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-md shrink-0 flex items-center justify-center transition-all hover:scale-105">
-                  <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=090d16&data=${encodeURIComponent(window.location.origin + "?verify=" + certId + "&name=" + encodeURIComponent(userName))}`} 
-                    alt="Verification QR Code" 
-                    className="qr-image w-14 h-14 lg:w-16 lg:h-16"
-                    crossOrigin="anonymous"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-md shrink-0 flex items-center justify-center transition-all hover:scale-105 min-w-[56px] min-h-[56px]">
+                  {qrDataUrl ? (
+                    <img 
+                      src={qrDataUrl} 
+                      alt="Verification QR Code" 
+                      className="qr-image w-14 h-14 lg:w-16 lg:h-16"
+                    />
+                  ) : (
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 flex items-center justify-center">
+                      <div className="w-5 h-5 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                  )}
                 </div>
                 <span className={`qr-label text-[8px] lg:text-[9px] font-mono tracking-wider mt-2 uppercase font-bold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/95"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
               </div>
