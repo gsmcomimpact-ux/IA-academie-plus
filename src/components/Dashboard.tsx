@@ -237,11 +237,20 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                   return (
                     <div 
                       key={lesson.id}
+                      onClick={() => {
+                        if (isCompleted || isActive) {
+                          onSelectLesson(activeCourse.id, lesson.id);
+                        }
+                      }}
                       className={`p-4 rounded-xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                        isCompleted || isActive 
+                          ? "cursor-pointer hover:border-emerald-500/20" 
+                          : ""
+                      } ${
                         isCompleted 
-                          ? "bg-slate-900/20 border-slate-900 opacity-80" 
+                          ? "bg-slate-900/20 border-slate-900 opacity-80 hover:bg-slate-900/40" 
                           : isActive
-                          ? "bg-gradient-to-tr from-slate-900 to-slate-950 border-emerald-500/30 hover:shadow-lg shadow-emerald-500/5"
+                          ? "bg-gradient-to-tr from-slate-900 to-slate-950 border-emerald-500/30 hover:shadow-lg shadow-emerald-500/5 hover:border-emerald-500/55"
                           : "bg-slate-950/40 border-slate-900 opacity-50"
                       }`}
                     >
@@ -271,7 +280,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                       </div>
 
                       {isCompleted ? (
-                        <div className="flex items-center gap-2 shrink-0">
+                        <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
                           <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 select-none">
                             <CheckCircle className="w-4 h-4" />
                             {lang === "fr" ? "Complété" : "Completed"}
@@ -287,7 +296,10 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                       ) : isActive ? (
                         <button
                           id={`start-lesson-${lesson.id}`}
-                          onClick={() => onSelectLesson(activeCourse.id, lesson.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSelectLesson(activeCourse.id, lesson.id);
+                          }}
                           className="bg-emerald-500 hover:bg-emerald-405 text-slate-950 font-bold py-2 px-4 rounded-lg text-xs flex items-center gap-1 font-mono transition-all cursor-pointer shadow shadow-emerald-500/5 shrink-0"
                         >
                           {t("startBtn")}

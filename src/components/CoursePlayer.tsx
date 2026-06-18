@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Course, Lesson, QuizOption } from "../types";
 import { 
@@ -201,6 +201,50 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
   };
 
   const stepsCount = activeLesson.steps.length;
+
+  useEffect(() => {
+    // Reset sandbox and evaluation states first
+    setPromptText("");
+    setEvalResult(null);
+    setCopyText("");
+    setCopyResult(null);
+    setLessonFinished(isAlreadyCompleted);
+
+    try {
+      const savedStr = localStorage.getItem("coursiv_corrected_prompts");
+      if (savedStr) {
+        const saved = JSON.parse(savedStr);
+        const entry = saved[activeLesson.id];
+        if (entry) {
+          if (activeLesson.activityType === "prompt_sandbox") {
+            setPromptText(entry.submittedPrompt || "");
+            setEvalResult({
+              output: entry.output || (lang === "fr" ? "Analyse sauvegardée de votre prompt d'exercice." : "Saved evaluation of your practice prompt."),
+              evaluation: {
+                score: entry.score || 85,
+                clarity: entry.clarity || (lang === "fr" ? "Bonne clarté d'instruction" : "Good instruction clarity"),
+                specificity: entry.specificity || (lang === "fr" ? "Spécificité optimale des balises" : "Optimal specific tag usage"),
+                suggestions: entry.suggestions || []
+              }
+            });
+            setLessonFinished(true);
+          } else if (activeLesson.activityType === "copy_sandbox") {
+            setCopyText(entry.submittedPrompt || "");
+            setCopyResult({
+              score: entry.score || 90,
+              engagement: entry.specificity || (lang === "fr" ? "Fort taux d'engagement émotionnel" : "High emotional engagement pattern"),
+              readability: entry.clarity || (lang === "fr" ? "Excellente lisibilité et fluidité" : "Excellent flow and readability"),
+              revisedVersion: entry.revisedVersion || (entry.submittedPrompt + "\n\n" + (lang === "fr" ? "[Optimisation validée]" : "[Validated optimization]")),
+              feedback: entry.suggestions || []
+            });
+            setLessonFinished(true);
+          }
+        }
+      }
+    } catch (e) {
+      console.error("Error loading saved prompt draft:", e);
+    }
+  }, [activeLesson.id, isAlreadyCompleted, lang]);
 
   const getDetailedCourseContent = () => {
     const title = (activeLesson.title || "").toLowerCase();
@@ -706,6 +750,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
         clarity: evalObj?.evaluation?.clarity || evalObj?.clarity || "Bonne clarté d'instruction",
         specificity: evalObj?.evaluation?.specificity || evalObj?.specificity || "Bonne spécificité des balises",
         suggestions: evalObj?.evaluation?.suggestions || evalObj?.suggestions || [],
+        output: evalObj?.output || evalObj?.evaluation?.output || "Analyse live validée par l'IA.",
         savedAt: new Date().toISOString()
       };
       
@@ -730,6 +775,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
         clarity: evalObj?.readability || "Excellente lisibilité et fluidité",
         specificity: evalObj?.engagement || "Fort taux d'engagement émotionnel",
         suggestions: evalObj?.feedback || [],
+        revisedVersion: evalObj?.revisedVersion || (cText + "\n\n[Optimisation sauvegardée]"),
         savedAt: new Date().toISOString(),
         isCopywriter: true
       };
