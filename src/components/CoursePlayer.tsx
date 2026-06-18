@@ -683,6 +683,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
   };
 
   const handleValidatePoint = (idx: number, e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     // Generate some gorgeous floating XP feedback sparks
     const newParticles = Array.from({ length: 6 }).map((_, pI) => ({
       id: Date.now() + pI + Math.random(),
@@ -1059,6 +1060,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={(e) => {
+                            e.stopPropagation();
                             if (isAlreadyCompleted) {
                               if (activeStepIdx < stepsCount - 1) {
                                 setActiveStepIdx(activeStepIdx + 1);
