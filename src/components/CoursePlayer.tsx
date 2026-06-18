@@ -702,6 +702,14 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
 
     if (activeStepIdx < stepsCount - 1) {
       setActiveStepIdx(activeStepIdx + 1);
+    } else {
+      // Auto-scroll to practice content when starting/unlocking practice
+      setTimeout(() => {
+        const pane = document.querySelector(".practice-pane");
+        if (pane) {
+          pane.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
     }
   };
 
@@ -982,12 +990,12 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: Math.max(0, (idx - activeStepIdx) * 0.05) }}
                     onClick={() => {
-                      if (isAlreadyCompleted || idx <= activeStepIdx) {
+                      if (isAlreadyCompleted || idx < activeStepIdx) {
                         setActiveStepIdx(idx);
                       }
                     }}
                     className={`relative p-5 rounded-2xl border transition-all duration-300 ${
-                      isAlreadyCompleted || idx <= activeStepIdx ? "cursor-pointer hover:border-emerald-500/20" : ""
+                      isAlreadyCompleted || idx < activeStepIdx ? "cursor-pointer hover:border-emerald-500/20" : ""
                     } ${
                       isActive
                         ? "bg-slate-900/30 border-emerald-500/40 shadow-[0_4px_20px_rgba(16,185,129,0.03)]"
@@ -1064,6 +1072,11 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                             if (isAlreadyCompleted) {
                               if (activeStepIdx < stepsCount - 1) {
                                 setActiveStepIdx(activeStepIdx + 1);
+                              } else {
+                                const pane = document.querySelector(".practice-pane");
+                                if (pane) {
+                                  pane.scrollIntoView({ behavior: "smooth" });
+                                }
                               }
                             } else {
                               handleValidatePoint(idx, e);
@@ -1072,9 +1085,11 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                           className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/20 active:scale-95"
                         >
                           {isAlreadyCompleted ? <ChevronRight className="w-4 h-4 text-slate-950" /> : <CheckCircle2 className="w-4 h-4 text-slate-950" />}
-                          {isAlreadyCompleted 
-                            ? (idx === stepsCount - 1 ? (lang === "fr" ? "Atelier Débloqué ✓" : "Sandbox Unlocked ✓") : (lang === "fr" ? "Continuer ➜" : "Continue ➜"))
-                            : t("nextPointBtn")
+                          {idx === stepsCount - 1
+                            ? (lang === "fr" ? "Lancer l'atelier pratique ➜" : "Start Practical Exercise ➜")
+                            : (isAlreadyCompleted 
+                              ? (lang === "fr" ? "Continuer ➜" : "Continue ➜") 
+                              : t("nextPointBtn"))
                           }
                         </motion.button>
                       </div>
