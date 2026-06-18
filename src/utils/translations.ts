@@ -1763,6 +1763,58 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
         goal: "An outreach email that outlines mutual branding benefits and has an open rate potential."
       }
     ]
+  },
+  ai_finance: {
+    title: "AI & Financial Analysis: Master Dashboards & Elite Modeling",
+    description: "Learn to use next-generation AI to decipher balance sheets, estimate project profitability, build automated dashboard tools on Excel, and secure investments for accountants, financiers, and venture capitalists.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "fn_l1",
+        title: "AI-Powered Financial Statements & Balance Sheet Auditing",
+        description: "Learn to command your AI to decipher balance sheets and P&L directories, calculate key financial indicators, and spot hidden audit risks.",
+        steps: [
+          "Analyzing balance sheets and income statements requires ultimate precision. AI serves as a tireless virtuoso ready to isolate crucial accounting segments.",
+          "To audit the general financial health of an entity, instruct the AI to calculate core indicators: EBITDA margin, current ratio, debt-to-equity, and the Altman Z-Score.",
+          "Never provide low-resolution, truncated screenshots. Feed clean trial balance datasets in tabular format (CSV, Excel) to avoid conversion approximations.",
+          "Write strict system instructions to present findings under a cohesive Executive Summary structured with bullets and standard tabular outputs."
+        ],
+        activityInstructions: "Compose a prompt instructing the AI to audit a tabular trial balance and extract EBITDA, current liability ratios, and working capital in Markdown tables.",
+        scenario: "Ensuring absolute mathematical accuracy in ledger and balance audits.",
+        audience: "Accountants, CFOs, and financial controllers.",
+        goal: "Extract clean financial metrics paired with actionable warning markers."
+      },
+      {
+        id: "fn_l2",
+        title: "Generating Dynamic Budget Models & Financial Dashboards with AI",
+        description: "Discover how to leverage AI to design automated, formula-perfect budget notebooks on Excel and Google Sheets.",
+        steps: [
+          "A professional financial dashboard must remain perfectly dynamic and free of formula circularity. AI can build nested, complex formulas like INDEX/MATCH or SUMIFS.",
+          "For advanced pipeline automation, command your AI to write stable, fully documented VBA subroutines or Google Apps Scripts to merge ledger sheets in seconds.",
+          "Using Python-backed execution in Advanced Data Analysis, the AI can filter thousands of accounting logs, prune duplicates, and draw gorgeous performance charts.",
+          "Always specify the exact schema representation of your business columns (headers, formats, currencies) to integrate scripts with existing templates."
+        ],
+        activityInstructions: "Select the most robust method to generate automatic bank reconciliation VBA scripts on Excel using AI.",
+        scenario: "Automating repetitive banking or bookkeeping reconciliations.",
+        audience: "Bookkeepers, corporate treasurers, and accountants.",
+        goal: "VBA subroutines with proper error handling and target columns mapped perfectly."
+      },
+      {
+        id: "fn_l3",
+        title: "Investment Briefs & Strategic Due Diligence with AI",
+        description: "Master structuring professional, risk-adjusted VC-style investment memos and analyzing corporate acquisition targets.",
+        steps: [
+          "Due diligence in mergers, acquisitions, or venture backing commands crossing massive legal, operational, and financial directories.",
+          "AI excels at distilling heavy investor pitch decks of 80 slides, calculating MoM cash burns, and projecting month-on-month runways.",
+          "To write a compelling investment memo for allocation partners, maintain a highly detached, objective tone backed by unit metrics.",
+          "Force the AI to act as a skeptic or challenger and simulate stressful operational shifts (e.g., doubling customer acquisition costs or margin degradation)."
+        ],
+        activityInstructions: "Write a detailed prompt to generate a 2-page investment memo template synthesizing SaaS unit metrics (CAC, LTV, churn, runway).",
+        scenario: "Automating initial target company reviews for investment committees.",
+        audience: "Venture Capital analysts, angel investors, and executives.",
+        goal: "A strict metrics-focused Investment Memo outlining core risks."
+      }
+    ]
   }
 };
 
@@ -2230,6 +2282,25 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Drafting solid basic contract agreements with absolute clarity", desc: "Ensure bulletproof operational deliverables under mutually beneficial business clauses." },
     { title: "Defusing extremely aggressive customer emails calmly", desc: "Establish facts with total conversational composure and drive the issue to a fast close." },
     { title: "Final Assessment & Certified AI Business Writing Specialist Exam", desc: "Validate your mastery of high-impact professional correspondence and reports." }
+  ],
+  ai_finance: [
+    { title: "Automated Treasury Previsions & Cash Flow Forecasting", desc: "Command the AI to model cash flow previsions based on historical ledger entries and seasonal metrics." },
+    { title: "Computing Working Capital & Treasury Indicators", desc: "Scan trial files to estimate working capital requirements, DSO, and cash balances in a single prompt." },
+    { title: "Anomaly Detection in General Ledger Operations", desc: "Let AI audit thousands of ledger writing lines to flag unusual activity, circular payments, or double billing." },
+    { title: "Vetting Discounted Cash Flow (DCF) Models", desc: "Instruct the AI to verify valuation assumptions, project terminal values, and compute WACC indexes with precision." },
+    { title: "Monthly Executive Performance Reports for Boards", desc: "Translate raw monthly trail balance spreadsheets into highly concise and clean PowerPoint/memo talking points." },
+    { title: "Stress-Testing and Financial Sensitivity Modeling", desc: "Instantly run scenarios modeling heavy price reductions, supply chain issues, or general sectoral inflation." },
+    { title: "Optimizing Days Sales Outstanding (DSO) Collections", desc: "Build graduated, diplomatic collection email trees with proper follow-up timing rules." },
+    { title: "Analyzing Competitor Annual Reports & 10-K Filings", desc: "Audit 150-page public filings from market leaders to map their capital expenditure priorities and EBITDA gaps." },
+    { title: "Break-Even Analytics on Multi-Product Catalogs", desc: "Model fixed and variable costs across catalog items to calculate operational break-even limits." },
+    { title: "Automated ESG and CSRD Disclosure Reports", desc: "Synthesize carbon outputs and labor safety records into structured disclosures compliant with global reporting acts." },
+    { title: "Comparable Transaction Multiples Valuation", desc: "Scan recent public and leverage acquisition multiples (EBITDA, Revenue, PER) to value target entities." },
+    { title: "Building Solid Zero-Based Budgets in Startups", desc: "Start budgets from absolute zero, requiring the AI to build explicit verbal business justifications for every single expenditure." },
+    { title: "Calculating Startups Runway & Burning Velocity", desc: "Estimate precise monthly burn rate indices and forecast month-on-month survival limits with total math clarity." },
+    { title: "Handling Multi-Currency Consolidation Tasks", desc: "Write Google Apps Scripts to pull relative currency valuation indices and map multi-subsidiary balances." },
+    { title: "Drafting Asset Allocation and Advisory Reports", desc: "Synthesize macro-sectoral trends and yield curves to guide cash allocation decisions safely." },
+    { title: "Building Interactive Google Sheets Dynamic Calculators", desc: "Command the AI to write high-fidelity spreadsheet calculations with complex nested conditions." },
+    { title: "Final Assessment & Certified AI Financial Analyst Exam", desc: "Validate your technical mastery in financial modeling, dashboard automation, and ledger auditing." }
   ]
 };
 
@@ -2276,6 +2347,42 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
       goal: `Convince them that Lovable combined with Supabase provides enterprise-grade data security and compliance.`,
       placeholderText: `Draft your persuasive explanation of database security for ${title}...`,
       exampleSolution: `Tired of rigid, insecure backend structures? Our architectural blueprint leverages Supabase's PostgreSQL engine coupled with Row Level Security (RLS) verified directly on the database level. Every query is filtered at the cloud core, granting you bank-grade compliance at the blazing-fast execution speed of generative No-Code.`
+    };
+  }
+  // 1.5. AI FINANCE
+  else if (courseId === "ai_finance" || lowerTitle.includes("finance") || lowerTitle.includes("accounting") || lowerTitle.includes("comptab") || lowerTitle.includes("financier") || lowerTitle.includes("investor") || lowerTitle.includes("budget") || lowerTitle.includes("treasury") || lowerTitle.includes("dashboard") || lowerTitle.includes("ratio") || lowerTitle.includes("valuation") || lowerTitle.includes("ledger") || lowerTitle.includes("balance sheet")) {
+    steps = [
+      `Modern foundation models (LLMs) connected to calculation sandboxes or advanced analytics wrappers are transforming corporate finance, bookkeeping, and venture backing. For an accountant or financial analyst, AI serves as an elite analytical assistant that automates 90% of file decoding and reports synthesis.`,
+      `For analyzing balance sheets and income statements (P&L), feed raw data (CSV/Excel) and request precise financial ratios: liquidity indexes, debt levels, EBITDA margins, and Altman Z-Score flags to audit company solvency.`,
+      `To generate interactive, error-free financial dashboards, instruct the AI to construct complex nested spreadsheet formulas (e.g., INDEX/MATCH, IFERROR, SUMIFS columns) or write fully commented VBA/App Scripts to merge ledger documents in a single click.`,
+      `For venture capital (VC) and private equity (PE) investors, AI excels at drafting objective Investment Memos, running Discounted Cash Flow (DCF) simulations under stress-tests, and vetting complex acquisition term sheets.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: "Which methodological protocol guarantees the highest safety and numeric precision when auditing complex corporate ledgers using AI?",
+      options: [
+        { text: "Segmenting files by chapter, uploading raw CSV/Excel files into Advanced Data Analysis to execute Python-based operations, and balancing Asset/Liability sums first.", isCorrect: true },
+        { text: "Asking the AI to estimate ledger values off the top of its head from text screenshots without running code.", isCorrect: false },
+        { text: "Letting the model invent random commercial graphs and dream up fictitious accounting targets.", isCorrect: false },
+        { text: "Copying all text tables into a single unstructured prompt run unverified without error handlers.", isCorrect: false }
+      ],
+      explanation: "Excellent! Providing structured files and instructing the AI to perform math operations using Python execution (Advanced Data Analysis) ensures that all outputs are mathematically validated and completely hallucination-free."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write a prompt commanding the AI to act as an elite Chief Financial Officer (CFO) to calculate Working Capital and Month-over-Month Cash Burn Rate based on raw trial balance data.`,
+      systemTemplate: `Financial auditing and Working Capital computation for: ${title}`,
+      placeholderText: `Detail instructions to calculate DSO, DPO, and runway recommendations for ${title}...`,
+      exampleSolution: `Act as a Senior CFO. Analyze the attached trial balance. Compute Working Capital, Day Sales Outstanding (DSO), Days Payable Outstanding (DPO), and the average cash burn rate. Present the outputs in clean tables followed by 3 actionable treasury recommendations.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching financial opportunities and investment mémos to a demanding investment committee.`,
+      audience: `Venture Capital or Private Equity partners seeking objective, data-backed insights.`,
+      goal: `Present a highly professional, balanced, and risk-adjusted investment opportunity report.`,
+      placeholderText: `Present your objective deal recommendation here for ${title}...`,
+      exampleSolution: `Cold analysis of unit economics—specifically the LTV/CAC ratio of 4.5x, 92% net revenue retention, and a 24-month runway—demonstrates exceptional growth efficiency. Our AI-driven stress tests suggest the venture achieves profitability even under a 15% increase in customer acquisition cost.`
     };
   }
   // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, Runway, Sora, voice, HeyGen, etc.)
@@ -2712,7 +2819,7 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
             translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
           }
 
-          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : "fr";
+          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : course.id === "ai_finance" ? "fn" : "fr";
 
           // Delegate to the elite English analyzer just like in French!
           const elite = getDetailedAIStepsAndQuizEN(translatedTitle, course.id, prefix, lessonNum);

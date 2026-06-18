@@ -667,6 +667,7 @@ export default function App() {
                 lessonId={activeLessonId}
                 onBackToDashboard={() => setActiveLessonId(null)}
                 onCompleteLesson={handleCompleteLesson}
+                isAlreadyCompleted={!!progress.completedLessonIds[activeLessonId]}
               />
             </div>
             {/* Inline persistent or floating Copilot if open during lessons */}

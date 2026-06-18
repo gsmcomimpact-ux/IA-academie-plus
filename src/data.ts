@@ -2205,6 +2205,91 @@ export const businessWritingExtraLessonsData = [
   { title: "L'évaluation finale de Certification d'Expert en IA & Rédaction d'Affaires", desc: "Validez vos compétences sur les subtilités stylistiques et l'efficacité persuasive de l'écrit professionnel pour obtenir votre diplôme." }
 ];
 
+export const baseFinanceLessons: Lesson[] = [
+  {
+    id: "fn_l1",
+    title: "Analyse des États Financiers & Bilans Assistée par IA",
+    description: "Apprenez à guider l'IA pour décortiquer les bilans et comptes de résultats, calculer les indicateurs financiers clés et déceler les anomalies.",
+    durationMin: 15,
+    steps: [
+      "L'analyse de bilans (Balance Sheets) et de comptes de résultats (P&L) exige une rigueur absolue. L'IA se positionne comme un analyste virtuel capable d'isoler instantanément les masses budgétaires clés.",
+      "Afin d'auditer la santé financière d'une entité, apprenez à lui faire calculer les indicateurs indispensables : la marge d'EBITDA, le ratio de liquidité générale, le ratio d'endettement net, et l'Altman Z-Score pour évaluer le risque de faillite.",
+      "Ne fournissez jamais de simples captures d'écran floues. Privilégiez l'injection de balances comptables ou d'extraits de GR (Grand Livre) sous forme tabulaire propre (CSV, Excel) pour éviter les approximations.",
+      "Utilisez des instructions système claires pour que l'IA présente les résultats sous forme d'une synthèse de conclusions (Executive Summary) structurée par bullet points et d'un tableau comparatif standard."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt ordonnant à l'IA d'auditer une balance comptable tabulaire pour en extraire l'EBITDA, le ratio de liquidité et le fonds de roulement net global (FRNG) avec un format de tableau Markdown précis.",
+      systemTemplate: "S'assurer de la rigueur mathématique des calculs comptables et isoler les forces/faiblesses.",
+      placeholderText: "Saisissez votre consigne d'analyse financière et d'audit de ratio...",
+      exampleSolution: "Agis en tant que Directeur Financier (CFO) chevronné. Analyse les données comptables brutes fournies dans le tableau ci-dessous. Calcule précisément la marge d'EBITDA, le ratio de liquidité générale et le Fonds de Roulement Net Global (FRNG). Structure ta réponse sous forme de tableau Markdown suivi d'une analyse critique de 3 points forts et 3 points de vigilance de trésorerie."
+    }
+  },
+  {
+    id: "fn_l2",
+    title: "Génération de Tableaux de Bord Financiers & Modèles de Budget avec l'IA",
+    description: "Découvrez comment utiliser l'IA pour automatiser la création de modèles de budgets prévisionnels performants sur Excel et Google Sheets.",
+    durationMin: 15,
+    steps: [
+      "Un bon de tableau de bord doit être dynamique et sans erreur de formule. L'IA peut générer des formules complexes de raccordement financier (INDEX/MATCH, SUMIFS croisés, formules matricielles).",
+      "Pour des besoins d'automatisation poussés, demandez à l'IA de concevoir des macros VBA (Excel) ou des scripts Google Apps Script stables pour consolider vos balances mensuelles en un clic.",
+      "En utilisant les fonctions d'Advanced Data Analysis alimentées par Python, l'IA peut lire des registres comptables, nettoyer les écritures doublonnées et tracer des représentations de performance budgétaire impeccables.",
+      "Précisez toujours la charte sémantique de vos variables (noms de colonnes, types de cellules, devises) pour obtenir un code ou des formules s'insérant parfaitement dans vos templates d'entreprise."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "fn_q2",
+      question: "Quelle méthode est la plus performante pour générer une macro d'automatisation de rapprochement bancaire fiable sur Excel grâce à l'IA ?",
+      options: [
+        { text: "Fournir à l'IA la structure exacte des deux colonnes à comparer, lui demander d'écrire un script VBA structuré, commenté, avec gestion intégrée des erreurs (On Error GoTo), et le tester en premier sur des données de test.", isCorrect: true },
+        { text: "Lui demander une macro générique sans préciser les colonnes de rapprochement et l'exécuter directement sur le fichier de production.", isCorrect: false },
+        { text: "Lui ordonner de dessiner de faux graphiques de rapprochement comptable sans analyser les flux.", isCorrect: false },
+        { text: "Lui faire générer une formule Excel de 1000 caractères non documentée.", isCorrect: false }
+      ],
+      explanation: "Parfait ! Une description minutieuse des structures sémantiques des colonnes de données à rapprocher alliée à des instructions VBA structurées (incluant des mécanismes robustes de gestion des erreurs) garantit un fonctionnement optimal sans plantage de l'application."
+    }
+  },
+  {
+    id: "fn_l3",
+    title: "Mémos d'Investisseurs & Due Diligence Stratégique par l'IA",
+    description: "Apprenez à structurer vos notes de synthèse de capital-risque (VC) et vos rapports d'audit de cibles d'acquisitions de manière professionnelle.",
+    durationMin: 20,
+    steps: [
+      "Dans le cadre d'un investissement ou d'une acquisition, l'analyse des risques (Due Diligence) réclame de croiser de volumineuses masses contractuelles, sociales et financières.",
+      "L'IA excelle à résumer de longs documents de présentation d'affaires (Pitch Decks), à calculer la vitesse de consommation de trésorerie (Cash Burn Rate) et à estimer la viabilité (Runway) en mois.",
+      "Pour structurer un mémo d'investissement convaincant destiné à un comité d'engagement, adoptez un ton hautement factuel, analytique et détaché de toute émotion commerciale.",
+      "Demandez à l'IA de contredire de manière méthodique le business plan proposé en simulant des scénarios pessimistes (inflation des coûts d'acquisition client CAC, baisse du panier moyen, etc.)."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt exigeant à l'IA de concevoir un rapport synthétique d'opportunité d'investissement (Investment Memo) d'une startup SaaS en s'appuyant sur ses indicateurs unitaires clés (CAC, LTV, Churn, Runway).",
+      systemTemplate: "Orchestration d'analyses d'investissement et valorisation financière factuelle pour comités de capital-risque.",
+      placeholderText: "Saisissez votre consigne de Due Diligence et rédaction de mémo...",
+      exampleSolution: "Agis en tant qu'Analyste Capital-Risque (Venture Capital). Rédige un mémo d'investissement synthétique de 2 pages pour évaluer le potentiel d'investissement de la cible. Calcule le ratio LTV/CAC, estime le mois d'atteinte du point d'équilibre (Break-even) et dresse une liste des 3 risques opérationnels majeurs que nous devrons lever lors des audits physiques."
+    }
+  }
+];
+
+export const financeExtraLessonsData = [
+  { title: "Prévision de trésorerie & Cash Flow Forecasting automatisé", desc: "Instruisez l'IA pour bâtir des modèles de prévision de flux de trésorerie basés sur des séries chronologiques comptables." },
+  { title: "Calcul automatisé du besoin en fonds de roulement (BFR)", desc: "Analysez vos écritures de bilan pour évaluer le fonds de roulement net global, le BFR et la trésorerie nette en quelques minutes." },
+  { title: "Détection d'anomalies dans les écritures du Grand Livre", desc: "Faites relire à l'IA des milliers de lignes comptables pour débusquer les écritures inhabituelles ou doublonnées." },
+  { title: "Validation financière de modèles DCF (Discounted Cash Flow)", desc: "Demandez à l'IA d'élaborer ou de vérifier les formules de taux d'actualisation (WACC) et d'actualisation de flux futurs." },
+  { title: "Synthèses de performance pour comités de direction (CFO reports)", desc: "Traduisez vos balances comptables mensuelles en présentations exécutives concises, claires et décisionnelles." },
+  { title: "Construction de modèles de sensibilité budgétaire (Stress-Testing)", desc: "Simulez instantanément l'impact financier d'une hausse de 15% des coûts matières premières ou d'un recul des ventes de 10%." },
+  { title: "Optimisation de la gestion du poste clients (DSO & Relances)", desc: "Structurez des flux de courriels d'affaires diplomatiques et gradués pour accélérer le recouvrement de vos créances." },
+  { title: "Analyse des bilans financiers annuels de concurrents (SEC 10-K)", desc: "Condensez les rapports financiers publics de 200 pages de vos rivaux pour en ressortir leurs marges de manœuvre et failles." },
+  { title: "Calcul de seuil de rentabilité sur des gammes multi-produits", desc: "Mettez en perspective vos coûts fixes et variables par produit pour évaluer les points morts opérationnels de production." },
+  { title: "Automatisation de reportings ESG et conformité extra-financière", desc: "Traduisez vos indicateurs de durabilité et d'empreinte carbone en rapports structurés alignés sur les directives CSRD." },
+  { title: "Valorisation financière par multiples de transactions comparables", desc: "Utilisez l'IA pour scanner les multiples financiers (EBITDA, PER, CA) d'acquisitions récentes de votre secteur." },
+  { title: "Élaboration de budgets prévisionnels à base zéro (Zero-Based Budgeting)", desc: "Reconstruisez un budget rigoureux à partir de zéro, en forçant la justification sémantique de chaque ligne de dépenses d'affaires." },
+  { title: "Audit de viabilité et calcul de Runway pour jeunes startups", desc: "Déterminez avec précision le rythme de combustion de cash mensuel et le nombre de mois restants de survie financière." },
+  { title: "Automatisation de la consolidation comptable multi-devises", desc: "Élaborez des formules et processus d'ajustements de gains ou pertes de change pour vos filiales internationales." },
+  { title: "Rédaction de mémos d'allocations d'actifs et stratégies de placements", desc: "Concevez des rapports d'analyses macroéconomiques structurés pour valider des choix d'arbitrages de trésorerie d'entreprise." },
+  { title: "Création de macros et scripts Google Sheets budgétaires interactifs", desc: "Consolidez vos processus financiers en dictant à l'IA le script précis d'automatisation de vos feuilles de calcul." },
+  { title: "L'évaluation finale de Certification d'Expert en IA & Analyses Financières", desc: "Validez l'intégralité de vos acquis comptables et financiers lors de notre examen terminal officiel pour acquérir votre titre." }
+];
+
 // DETAILED HIGH-FIDELITY COGNITIVE ANALYZER FOR ELITE AI EDUCATION
 function getDetailedAIStepsAndQuiz(title: string, courseId: string, prefix: string, lessonNum: number) {
   const lowerTitle = title.toLowerCase();
@@ -2247,6 +2332,40 @@ function getDetailedAIStepsAndQuiz(title: string, courseId: string, prefix: stri
       goal: "Les persuader de souscrire à votre pack de conception d'agents personnalisés.",
       placeholderText: `Rédigez votre argumentaire de vente d'agents IA...`,
       exampleSolution: `Arrêtez de gaspiller 15 heures par semaine sur des tâches administratives répétitives. Nous concevons vos Custom GPTs sur-mesure, connectés de manière sécurisée à vos API internes et armés d'un RAG infalsifiable. Vos collaborateurs obtiennent des réponses expertes instantanées, conformes à vos politiques d'entreprise.`
+    };
+  } else if (courseId === "ai_finance" || lowerTitle.includes("finance") || lowerTitle.includes("comptab") || lowerTitle.includes("financier") || lowerTitle.includes("investiss") || lowerTitle.includes("budget") || lowerTitle.includes("trésor") || lowerTitle.includes("tableau de bord") || lowerTitle.includes("ratio") || lowerTitle.includes("valoris") || lowerTitle.includes("bilan") || lowerTitle.includes("résultat")) {
+    steps = [
+      `Les modèles de fond (LLMs) connectés à des interpréteurs de code ou des extensions avancées de calcul transforment la finance d'entreprise. Pour un comptable ou un analyste financier, l'IA ne remplace pas l'esprit critique, mais elle élimine 90% du travail d'extraction et de structuration de rapports.`,
+      `Pour l'analyse de bilans (Balance Sheets) et comptes de résultats (P&L), fournissez vos balances comptables brutes et demandez des analyses de ratios : ratio de liquidité générale, levier financier, niveau d'endettement, et Altman Z-Score pour auditer les risques de faillite.`,
+      `Pour la réalisation de tableaux de bord financiers automatisés, instruisez l'IA pour qu'elle génère des formules complexes Excel/Google Sheets (ex: SIERREUR, INDEX/MATCH, SUMIFS imbriqués) ou des scripts de macros VBA/Apps Script stables et commentés.`,
+      `Pour les investisseurs (VC/PE), l'IA excelle à rédiger des mémos d'investissement structurés (Investment Memos), simuler des modèles de valorisation DCF (Discounted Cash Flow) ou capital-risque, et résumer les clauses sensibles d'audits juridiques complexes.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: "Quelle est la meilleure approche méthodologique pour amener l'IA à auditer à 100% un bilan comptable lourd et complexe sans halluciner ?",
+      options: [
+        { text: "Séparer le fichier en chapitres, alimenter l'Advanced Data Analysis avec les états financiers bruts au format Excel/CSV réclamant d'utiliser Python pour croiser les lignes comptables, puis lui faire valider les totaux actifs/passifs d'abord.", isCorrect: true },
+        { text: "Donner un résumé à l'IA et lui demander de deviner les ratios de tête sans calcul.", isCorrect: false },
+        { text: "Lui demander d'inventer des chiffres de ventes poétiques et de dessiner des graphiques imaginaires.", isCorrect: false },
+        { text: "Copier tout le rapport de 200 pages d'un seul coup en format texte brut non balisé.", isCorrect: false }
+      ],
+      explanation: "Superbe ! Fournir des données internes d'affaires réelles et orienter l'IA pour qu'elle utilise un interpréteur Python (Advanced Data Analysis) garantit une solidité de calcul exempte de biais de confirmation."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Rédigez un prompt exigeant à l'IA d'agir en tant que Directeur Financier (CFO) d'élite pour calculer le besoin en fonds de roulement (BFR) et le cash burn rate mensuel à partir d'un ensemble de balances comptables fournies.`,
+      systemTemplate: `Financial analysis & balance sheet cash flow modeling prompt.`,
+      placeholderText: `Saisissez les instructions pour calculer le BFR et les ratios clés de trésorerie...`,
+      exampleSolution: `Agis en tant que Directeur Financier (CFO) Senior. Analyse la balance comptable jointe. Calcule précisément le besoin en fonds de roulement (BFR), les délais moyens de paiement clients (DSO) et fournisseurs (DPO), puis le cash burn rate mensuel moyen. Pense étape par étape et présente le résultat dans un tableau standardisé avec des recommandations de trésorerie.`
+    };
+
+    customCopyObjective = {
+      scenario: `Présentation d'opportunités d'investissement automatisées à votre comité d'allocation`,
+      audience: "Partenaires de fonds de capital-risque (Venture Capital) très exigeants.",
+      goal: "Présenter une synthèse analytique claire, objective et étayée d'un projet de startup.",
+      placeholderText: `Rédigez l'argumentaire financier d'investissement pour le projet...`,
+      exampleSolution: `L'analyse froide des métriques unitaires (LTV/CAC ratio, taux de rétention, marge brute et runway réel) démontre une efficacité de croissance exceptionnelle pour ce projet. Nos simulations de stress-tests d'IA confirment que le projet est profitable dès lors qu'il acquiert une échelle critique de 15K abonnés récurrents actifs.`
     };
   } else if (lowerTitle.includes("data analysis") || lowerTitle.includes("csv") || lowerTitle.includes("excel") || lowerTitle.includes("analyse") || lowerTitle.includes("python") || lowerTitle.includes("statist")) {
     steps = [
@@ -2539,7 +2658,7 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : courseId === "ai_finance" ? "fn" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
@@ -2698,6 +2817,14 @@ function generateCourseLessons(
         placeholderText: `Saisissez votre e-mail de proposition pour ${data.title}...`,
         exampleSolution: `Bonjour, nos analyses croisées sur "${data.title}" indiquent un potentiel de synergie d'affaires formidable entre nos structures. Nous avons modélisé une opportunité d'optimisation de vos parcours clients permettant d'accroître votre panier moyen de 18% à coûts constants. Seriez-vous disponible ce jeudi à 14h pour un rapide échange d'exploration ? Très cordialement.`
       };
+    }
+    // 2.75. AI FINANCE
+    else if (courseId === "ai_finance" || lowerTitle.includes("finance") || lowerTitle.includes("comptab") || lowerTitle.includes("financier") || lowerTitle.includes("investiss") || lowerTitle.includes("budget") || lowerTitle.includes("trésor") || lowerTitle.includes("tableau de bord") || lowerTitle.includes("ratio") || lowerTitle.includes("valoris") || lowerTitle.includes("bilan") || lowerTitle.includes("résultat")) {
+      const eliteContent = getDetailedAIStepsAndQuiz(data.title, courseId, prefix, lessonNum);
+      steps = eliteContent.steps;
+      customQuiz = eliteContent.customQuiz;
+      customPromptObjective = eliteContent.customPromptObjective;
+      customCopyObjective = eliteContent.customCopyObjective;
     }
     // 3. COPYWRITING, PSYCHOLOGY & MARKETING
     else if (lowerTitle.includes("copywriting") || lowerTitle.includes("aida") || lowerTitle.includes("pas") || lowerTitle.includes("fab") || lowerTitle.includes("vente") || lowerTitle.includes("newsletter") || lowerTitle.includes("e-mail") || lowerTitle.includes("social selling") || lowerTitle.includes("titre") || lowerTitle.includes("client") || lowerTitle.includes("storytelling") || lowerTitle.includes("newsletter") || lowerTitle.includes("accroche") || lowerTitle.includes("objection") || lowerTitle.includes("garantie") || lowerTitle.includes("publicité")) {
@@ -3174,6 +3301,17 @@ export const COURSES: Course[] = [
     estimatedHours: 12,
     totalLessons: 20,
     lessons: generateCourseLessons("business_writing_mastery", baseBusinessWritingLessons, businessWritingExtraLessonsData, 20)
+  },
+  {
+    id: "ai_finance",
+    title: "IA & Analyses Financières : Tableaux et Modèles d'Élite",
+    category: "ai",
+    description: "Apprenez à utiliser l'IA de pointe pour déchiffrer des bilans comptables, estimer la rentabilité de projets, concevoir des tableaux de bord dynamiques Excel et automatiser vos analyses pour comptables, financiers et investisseurs.",
+    iconName: "Briefcase",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_finance", baseFinanceLessons, financeExtraLessonsData, 20)
   }
 ];
 

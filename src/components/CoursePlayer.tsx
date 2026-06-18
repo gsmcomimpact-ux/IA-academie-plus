@@ -13,6 +13,7 @@ interface CoursePlayerProps {
   lessonId: string;
   onBackToDashboard: () => void;
   onCompleteLesson: (lessonId: string, earnedXp: number) => void;
+  isAlreadyCompleted?: boolean;
 }
 
 const LOCAL_TRANS = {
@@ -144,7 +145,7 @@ const LOCAL_TRANS = {
   }
 };
 
-export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard, onCompleteLesson }: CoursePlayerProps) {
+export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard, onCompleteLesson, isAlreadyCompleted = false }: CoursePlayerProps) {
   const lessonIndex = course.lessons.findIndex(l => l.id === lessonId);
   const activeLesson = course.lessons[lessonIndex] || course.lessons[0];
 
@@ -925,7 +926,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
               {activeLesson.steps.map((stepText, idx) => {
                 const isCompleted = idx < activeStepIdx;
                 const isActive = idx === activeStepIdx;
-                const isLocked = idx > activeStepIdx;
+                const isLocked = isAlreadyCompleted ? false : idx > activeStepIdx;
 
                 return (
                   <motion.div
@@ -933,9 +934,18 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: Math.max(0, (idx - activeStepIdx) * 0.05) }}
+                    onClick={() => {
+                      if (isAlreadyCompleted || idx <= activeStepIdx) {
+                        setActiveStepIdx(idx);
+                      }
+                    }}
                     className={`relative p-5 rounded-2xl border transition-all duration-300 ${
+                      isAlreadyCompleted || idx <= activeStepIdx ? "cursor-pointer hover:border-emerald-500/20" : ""
+                    } ${
                       isActive
                         ? "bg-slate-900/30 border-emerald-500/40 shadow-[0_4px_20px_rgba(16,185,129,0.03)]"
+                        : isAlreadyCompleted
+                        ? "bg-slate-900/20 border-slate-900/40 opacity-85"
                         : isCompleted
                         ? "bg-slate-900/10 border-slate-900/50 opacity-75"
                         : "bg-slate-950/20 border-slate-900/10 opacity-30 select-none"
@@ -947,9 +957,11 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                         ? "bg-emerald-500 border-emerald-500 scale-110" 
                         : isActive 
                         ? "bg-slate-950 border-emerald-400 animate-pulse" 
+                        : isAlreadyCompleted
+                        ? "bg-slate-950 border-emerald-500/40"
                         : "bg-slate-950 border-slate-900"
                     }`}>
-                      {isCompleted && (
+                      {(isCompleted || (isAlreadyCompleted && idx < activeStepIdx)) && (
                         <Check className="w-2 h-2 text-slate-950 stroke-[5]" />
                       )}
                     </div>
@@ -958,13 +970,13 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                       <span className={`text-[10px] font-mono tracking-wider uppercase font-bold px-2 py-0.5 rounded ${
                         isActive
                           ? "bg-emerald-400/10 text-emerald-400 border border-emerald-500/10"
-                          : isCompleted
+                          : isCompleted || isAlreadyCompleted
                           ? "bg-slate-900 text-slate-400"
                           : "bg-slate-950 text-slate-650"
                       }`}>
                         {t("currentCoursePoint")} {idx + 1}
                       </span>
-                      {isCompleted && (
+                      {isCompleted && !isAlreadyCompleted && (
                         <span className="text-[10px] font-mono text-emerald-400/80 flex items-center gap-1 font-bold">
                           {t("pointValidated")}
                         </span>
@@ -1000,11 +1012,22 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                           type="button"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          onClick={(e) => handleValidatePoint(idx, e)}
+                          onClick={(e) => {
+                            if (isAlreadyCompleted) {
+                              if (activeStepIdx < stepsCount - 1) {
+                                setActiveStepIdx(activeStepIdx + 1);
+                              }
+                            } else {
+                              handleValidatePoint(idx, e);
+                            }
+                          }}
                           className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/20 active:scale-95"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-slate-950" />
-                          {t("nextPointBtn")}
+                          {isAlreadyCompleted ? <ChevronRight className="w-4 h-4 text-slate-950" /> : <CheckCircle2 className="w-4 h-4 text-slate-950" />}
+                          {isAlreadyCompleted 
+                            ? (idx === stepsCount - 1 ? (lang === "fr" ? "Atelier Débloqué ✓" : "Sandbox Unlocked ✓") : (lang === "fr" ? "Continuer ➜" : "Continue ➜"))
+                            : t("nextPointBtn")
+                          }
                         </motion.button>
                       </div>
                     )}
@@ -1216,6 +1239,14 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                 <p className="text-xs text-slate-400 leading-relaxed font-sans">
                   {t("rightPanelLockedDesc")}
                 </p>
+                {isAlreadyCompleted && (
+                  <button 
+                    onClick={() => setActiveStepIdx(stepsCount - 1)}
+                    className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs font-mono rounded-lg transition-all cursor-pointer font-bold"
+                  >
+                    {lang === "fr" ? "Accéder directement à l'exercice" : "Jump directly to the exercise"} ➜
+                  </button>
+                )}
               </div>
 
               {/* Progress dots indicator */}
@@ -1542,8 +1573,21 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                 className="w-full py-4.5 bg-gradient-to-r from-emerald-400 to-indigo-500 text-slate-950 font-bold text-base rounded-xl hover:shadow-xl hover:shadow-emerald-500/10 flex items-center justify-center gap-2.5 transition-all text-center cursor-pointer active:scale-98"
               >
                 <Award className="w-5 h-5" />
-                {t("claimBtn")}
+                {isAlreadyCompleted ? (lang === "fr" ? "Retourner au Tableau de bord ✓" : "Go Back to Dashboard ✓") : t("claimBtn")}
               </motion.button>
+            ) : isAlreadyCompleted ? (
+              <div className="w-full flex flex-col gap-2">
+                <button
+                  onClick={handleClaimLesson}
+                  className="w-full py-3.5 bg-slate-900 border border-slate-800 hover:bg-slate-850 hover:border-emerald-500/20 text-emerald-400 font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition-all text-center cursor-pointer active:scale-98"
+                >
+                  <CheckCircle2 className="w-4.5 h-4.5" />
+                  {lang === "fr" ? "Fermer la Revue & Retourner" : "Exit Review & Return to Hub"}
+                </button>
+                <div className="text-[10px] font-mono text-slate-500 text-center">
+                  {lang === "fr" ? "Vous avez déjà validé cette leçon et reçu vos XP." : "You have already completed this lesson and collected your XP."}
+                </div>
+              </div>
             ) : (
               <div className="text-xs font-mono text-slate-500 flex items-center gap-2 bg-slate-900/30 px-4 py-2.5 rounded-full border border-slate-900">
                 <Info className="w-4 h-4 text-slate-400" />

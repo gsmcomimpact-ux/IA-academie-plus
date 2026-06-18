@@ -271,9 +271,18 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                       </div>
 
                       {isCompleted ? (
-                        <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 shrink-0 select-none">
-                          <CheckCircle className="w-4.5 h-4.5" />
-                          {t("completedStatus")}
+                        <div className="flex items-center gap-2 shrink-0">
+                          <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 select-none">
+                            <CheckCircle className="w-4 h-4" />
+                            {lang === "fr" ? "Complété" : "Completed"}
+                          </div>
+                          <button
+                            onClick={() => onSelectLesson(activeCourse.id, lesson.id)}
+                            className="bg-slate-900 hover:bg-slate-850 text-emerald-400 font-bold py-2 px-3.5 rounded-lg text-xs flex items-center gap-1.5 font-mono border border-emerald-500/20 transition-all cursor-pointer shadow-sm hover:shadow"
+                          >
+                            {lang === "fr" ? "Revoir" : "Review"}
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
                         </div>
                       ) : isActive ? (
                         <button
