@@ -4,7 +4,7 @@ import { Course, Lesson, QuizOption } from "../types";
 import { 
   ArrowLeft, ChevronRight, ChevronLeft, CheckCircle2, AlertCircle, 
   Sparkles, Terminal, FileText, Check, Award, Flame, Play, Info, Loader2,
-  BookOpen, ListTodo, Wrench, Copy, ExternalLink, FileCode
+  BookOpen, ListTodo, Wrench, Copy, ExternalLink, FileCode, Lock, Unlock
 } from "lucide-react";
 
 interface CoursePlayerProps {
@@ -66,7 +66,18 @@ const LOCAL_TRANS = {
     fallbackCopyReadability: "Texte aéré et mémorable.",
     fallbackCopyRevised: " - Modifié pour maximiser vos conversions !",
     fallbackCopyFeed1: "Phrase d'ouverture d'impact.",
-    fallbackCopyFeed2: "Appel à l'action idéal."
+    fallbackCopyFeed2: "Appel à l'action idéal.",
+    pointValidated: "Point validé ! (+15 XP) 🎉",
+    nextPointBtn: "Compris ! Continuer 👍 +15 XP",
+    lockPointLabel: "Étape verrouillée",
+    lockPointDesc: "Terminez le point précédent pour débloquer la suite",
+    allPointsReadTitle: "Parcours de cours validé ! 🏆",
+    allPointsReadDesc: "Tous les points clés ont été assimilés. L'évaluation pratique sur le panneau de droite est maintenant déverrouillée !",
+    accessExerciseBtn: "Relever le Défi Pratique ➜",
+    lessonXpTracker: "Points gagnés dans ce cours",
+    rightPanelLockedTitle: "Activité Pratique Verrouillée",
+    rightPanelLockedDesc: "Pour débloquer cet atelier interactif et valider le chapitre, lisez et validez pas-à-pas les points du cours à gauche ! 🎯",
+    currentCoursePoint: "Point de cours"
   },
   en: {
     backBtn: "BACK TO HUB",
@@ -118,7 +129,18 @@ const LOCAL_TRANS = {
     fallbackCopyReadability: "Excellent readability and scanning potential.",
     fallbackCopyRevised: " - Optimized to secure maximum audience conversions!",
     fallbackCopyFeed1: "High impact introductory hook.",
-    fallbackCopyFeed2: "Strong immediate call-to-action line."
+    fallbackCopyFeed2: "Strong immediate call-to-action line.",
+    pointValidated: "Step Complete! (+15 XP) 🎉",
+    nextPointBtn: "Got it! Continue 👍 +15 XP",
+    lockPointLabel: "Locked Step",
+    lockPointDesc: "Complete previous point to unlock this content",
+    allPointsReadTitle: "Core logic checked! 🏆",
+    allPointsReadDesc: "All structural course points have been read. The hands-on practice block on the right is now fully unlocked!",
+    accessExerciseBtn: "Start Practical Challenge ➜",
+    lessonXpTracker: "Earned Lesson XP",
+    rightPanelLockedTitle: "Practice Activity Locked",
+    rightPanelLockedDesc: "Read and validate all lesson elements point-by-point on the left to unlock this interactive workspace folder! 🎯",
+    currentCoursePoint: "Course point"
   }
 };
 
@@ -127,6 +149,8 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
   const activeLesson = course.lessons[lessonIndex] || course.lessons[0];
 
   const [activeStepIdx, setActiveStepIdx] = useState(0);
+  const [sessionXp, setSessionXp] = useState(0);
+  const [particles, setParticles] = useState<{ id: number; x: number; y: number; text: string }[]>([]);
   
   // Quiz Status
   const [selectedQuizIndex, setSelectedQuizIndex] = useState<number | null>(null);
@@ -613,6 +637,28 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
     return LOCAL_TRANS[lang][key] || LOCAL_TRANS["fr"][key] || String(key);
   };
 
+  const handleValidatePoint = (idx: number, e: React.MouseEvent<HTMLButtonElement>) => {
+    // Generate some gorgeous floating XP feedback sparks
+    const newParticles = Array.from({ length: 6 }).map((_, pI) => ({
+      id: Date.now() + pI + Math.random(),
+      x: (Math.random() - 0.5) * 120, // Spread nicely horizontally
+      y: -20 - Math.random() * 60,   // Rise up nicely vertically
+      text: "+15 XP"
+    }));
+
+    setParticles(prev => [...prev, ...newParticles]);
+    setSessionXp(prev => prev + 15);
+
+    // Clean up particles automatically to keep the DOM minimal
+    setTimeout(() => {
+      setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
+    }, 1200);
+
+    if (activeStepIdx < stepsCount - 1) {
+      setActiveStepIdx(activeStepIdx + 1);
+    }
+  };
+
   const handleNextStep = () => {
     if (activeStepIdx < stepsCount - 1) {
       setActiveStepIdx(activeStepIdx + 1);
@@ -821,43 +867,174 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
       {/* Main Container: Slider on left, Practice area on right */}
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         
-        {/* Left pane: Learning Steps (Flashcards) */}
-        <div className="flex-1 p-6 border-b lg:border-b-0 lg:border-r border-slate-900 flex flex-col justify-between bg-slate-950/40 overflow-y-auto">
+        {/* Left pane: Learning Steps (Streaming points in a vertical trail) */}
+        <div className="flex-1 p-6 border-b lg:border-b-0 lg:border-r border-slate-900 flex flex-col justify-between bg-slate-950/40 overflow-y-auto relative">
+          
+          {/* Absolute floating particle canvas for visual feedback */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+            <AnimatePresence>
+              {particles.map(p => (
+                <motion.div
+                  key={p.id}
+                  initial={{ opacity: 1, y: "60%", x: "50%", scale: 0.8 }}
+                  animate={{ 
+                    opacity: 0, 
+                    y: "15%", 
+                    x: `calc(50% + ${p.x}px)`, 
+                    scale: 1.4 
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                  style={{ position: "absolute" }}
+                  className="text-yellow-400 font-mono font-black text-sm flex items-center gap-1 drop-shadow-[0_2px_12px_rgba(234,179,8,0.5)] z-30"
+                >
+                  <Sparkles className="w-4 h-4 fill-yellow-400" />
+                  {p.text}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
           <div className="max-w-xl mx-auto w-full space-y-6 py-4">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500 bg-slate-900 px-2 py-0.5 rounded">
-                {t("flashcardTitle")} {activeStepIdx + 1} {t("flashcardOf")} {stepsCount}
-              </span>
-              <div className="flex gap-1">
-                {activeLesson.steps.map((_, i) => (
+            
+            {/* Gamified progress header bar */}
+            <div className="bg-slate-900/60 rounded-xl border border-slate-800 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono uppercase text-slate-400 block tracking-wider">{t("lessonXpTracker")}</span>
+                <div className="flex items-center gap-1.5">
+                  <Flame className="w-5 h-5 text-amber-500 animate-pulse" />
+                  <span className="text-xl font-mono font-black text-slate-100">{sessionXp} XP</span>
+                </div>
+              </div>
+              <div className="w-full sm:w-1/2">
+                <div className="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+                  <span>Progression</span>
+                  <span className="font-bold text-emerald-400">{Math.round((activeStepIdx / (stepsCount - 1 || 1)) * 100)}%</span>
+                </div>
+                <div className="h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
                   <div 
-                    key={i} 
-                    className={`h-1 w-6 rounded-full transition-all duration-300 ${i === activeStepIdx ? 'bg-emerald-400' : 'bg-slate-800'}`} 
+                    className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
+                    style={{ width: `${(activeStepIdx / (stepsCount - 1 || 1)) * 100}%` }}
                   />
-                ))}
+                </div>
               </div>
             </div>
 
-            {/* Steps Reader Screen */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeStepIdx}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.25 }}
-                className="p-6 sm:p-8 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-950 border border-slate-800 shadow-xl relative min-h-[220px] flex flex-col justify-center"
-              >
-                {/* Visual accent quotes */}
-                <div className="absolute top-4 left-4 text-emerald-500/20 text-5xl font-serif select-none">“</div>
-                <p className="text-slate-200 text-lg leading-relaxed relative z-10 antialiased font-sans">
-                  {activeLesson.steps[activeStepIdx]}
-                </p>
-                <div className="absolute bottom-4 right-4 text-emerald-500/10 text-5xl font-serif select-none">”</div>
-              </motion.div>
-            </AnimatePresence>
+            {/* Vertically Scrolling Step Trailer of Course points */}
+            <div className="space-y-6 relative pl-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-900 before:border-dashed">
+              {activeLesson.steps.map((stepText, idx) => {
+                const isCompleted = idx < activeStepIdx;
+                const isActive = idx === activeStepIdx;
+                const isLocked = idx > activeStepIdx;
 
-            <div className="p-3.5 bg-slate-900/60 rounded-xl border border-slate-800/80 flex items-start gap-3">
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: Math.max(0, (idx - activeStepIdx) * 0.05) }}
+                    className={`relative p-5 rounded-2xl border transition-all duration-300 ${
+                      isActive
+                        ? "bg-slate-900/30 border-emerald-500/40 shadow-[0_4px_20px_rgba(16,185,129,0.03)]"
+                        : isCompleted
+                        ? "bg-slate-900/10 border-slate-900/50 opacity-75"
+                        : "bg-slate-950/20 border-slate-900/10 opacity-30 select-none"
+                    }`}
+                  >
+                    {/* Visual node on timeline */}
+                    <div className={`absolute -left-[23.5px] top-6 w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                      isCompleted 
+                        ? "bg-emerald-500 border-emerald-500 scale-110" 
+                        : isActive 
+                        ? "bg-slate-950 border-emerald-400 animate-pulse" 
+                        : "bg-slate-950 border-slate-900"
+                    }`}>
+                      {isCompleted && (
+                        <Check className="w-2 h-2 text-slate-950 stroke-[5]" />
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between mb-2">
+                      <span className={`text-[10px] font-mono tracking-wider uppercase font-bold px-2 py-0.5 rounded ${
+                        isActive
+                          ? "bg-emerald-400/10 text-emerald-400 border border-emerald-500/10"
+                          : isCompleted
+                          ? "bg-slate-900 text-slate-400"
+                          : "bg-slate-950 text-slate-650"
+                      }`}>
+                        {t("currentCoursePoint")} {idx + 1}
+                      </span>
+                      {isCompleted && (
+                        <span className="text-[10px] font-mono text-emerald-400/80 flex items-center gap-1 font-bold">
+                          {t("pointValidated")}
+                        </span>
+                      )}
+                      {isActive && (
+                        <div className="relative">
+                          <span className="flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                          </span>
+                        </div>
+                      )}
+                      {isLocked && <Lock className="w-3.5 h-3.5 text-slate-700" />}
+                    </div>
+
+                    <div className={isLocked ? "blur-[2.5px] select-none text-slate-650" : ""}>
+                      <p className={`text-xs sm:text-sm leading-relaxed font-sans ${isCompleted ? "text-slate-400" : "text-slate-200"}`}>
+                        {stepText}
+                      </p>
+                    </div>
+
+                    {isLocked && (
+                      <div className="mt-2 text-[10px] font-mono text-slate-600 flex items-center gap-1">
+                        <Lock className="w-3 h-3 text-slate-600" />
+                        {t("lockPointDesc")}
+                      </div>
+                    )}
+
+                    {/* Validate Point Button inside the element itself */}
+                    {isActive && (
+                      <div className="mt-4 flex flex-col items-start select-none font-sans">
+                        <motion.button
+                          type="button"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={(e) => handleValidatePoint(idx, e)}
+                          className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-emerald-500/10 hover:shadow-emerald-500/20 active:scale-95"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-slate-950" />
+                          {t("nextPointBtn")}
+                        </motion.button>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Highlighted Celebration Panel when Reading is 100% finished */}
+            {activeStepIdx === stepsCount - 1 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="p-5 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 shadow-lg text-center space-y-3"
+              >
+                <div className="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto">
+                  <Award className="w-5 h-5 text-emerald-400 animate-bounce" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-xs font-bold text-emerald-400 font-mono tracking-wide uppercase">
+                    {t("allPointsReadTitle")}
+                  </h4>
+                  <p className="text-[11px] text-slate-300 leading-relaxed max-w-sm mx-auto">
+                    {t("allPointsReadDesc")}
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            <div className="p-3.5 bg-slate-900/40 rounded-xl border border-slate-850/80 flex items-start gap-3 animate-fadeIn">
               <Info className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               <p className="text-xs text-slate-400 leading-relaxed font-sans">
                 {t("helperText")}
@@ -1021,8 +1198,45 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
         </div>
 
         {/* Right pane: Hands-on Sandbox Exercises */}
-        <div className="flex-1 p-6 flex flex-col justify-between overflow-y-auto bg-slate-950">
-          <div className="max-w-xl mx-auto w-full space-y-6 py-2">
+        <div className="flex-1 p-6 flex flex-col justify-between overflow-y-auto bg-slate-950 practice-pane border-t lg:border-t-0 lg:border-l border-slate-900">
+          {activeStepIdx < stepsCount - 1 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center justify-center text-center py-20 px-4 h-full my-auto space-y-6"
+            >
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl relative overflow-hidden group shadow-xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 opacity-100" />
+                <Lock className="w-10 h-10 text-slate-400 select-none animate-pulse relative z-10" />
+              </div>
+              <div className="space-y-2 max-w-sm">
+                <h3 className="text-sm font-bold text-slate-100 font-mono uppercase tracking-wide">
+                  {t("rightPanelLockedTitle")}
+                </h3>
+                <p className="text-xs text-slate-400 leading-relaxed font-sans">
+                  {t("rightPanelLockedDesc")}
+                </p>
+              </div>
+
+              {/* Progress dots indicator */}
+              <div className="flex items-center gap-1.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                {activeLesson.steps.map((_, sI) => (
+                  <div 
+                    key={sI} 
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      sI === activeStepIdx 
+                        ? 'w-6 bg-emerald-400' 
+                        : sI < activeStepIdx 
+                        ? 'w-4 bg-emerald-500/40' 
+                        : 'w-2 bg-slate-800'
+                    }`} 
+                  />
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <>
+              <div className="max-w-xl mx-auto w-full space-y-6 py-2">
             
             {/* 1. QUIZ SPACE */}
             {activeLesson.activityType === "quiz" && activeLesson.quiz && (
@@ -1337,7 +1551,8 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
               </div>
             )}
           </div>
-
+          </>
+          )}
         </div>
 
       </div>
