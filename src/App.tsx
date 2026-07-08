@@ -413,6 +413,9 @@ export default function App() {
               : `Congratulations! You successfully completed all modules of "${relatedCourse.title}". Your official certificate is now ready!`
           );
         }, 1200);
+        setTimeout(() => {
+          setSelectedCertCourse(relatedCourse);
+        }, 2200);
       }
     }
 
@@ -627,7 +630,11 @@ export default function App() {
       )}
 
       {/* Primary body screen section switcher */}
-      <main className="flex-1 w-full bg-slate-952 overflow-hidden flex flex-col">
+      <main className={`flex-1 w-full bg-slate-952 flex flex-col ${
+        (showHomepage || !progress.onboarded || !progress.hasPaid) 
+          ? "overflow-y-auto min-h-0" 
+          : "overflow-hidden"
+      }`}>
         {showHomepage ? (
           <Homepage 
             lang={lang}

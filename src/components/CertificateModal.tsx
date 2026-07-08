@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import html2canvas from "html2canvas";
 import QRCode from "qrcode";
 import { Course, UserProgress } from "../types";
-import { X, Printer, Share2, Award, Calendar, ShieldCheck, Edit3, Check, Sparkles, Download } from "lucide-react";
+import { X, Printer, Share2, Award, Calendar, ShieldCheck, Edit3, Check, Sparkles, Download, ArrowLeft } from "lucide-react";
 
 interface CertificateModalProps {
   lang: "fr" | "en";
@@ -25,7 +25,7 @@ const LOCAL_TRANS = {
     printBtn: "IMPRIMER / SAUVER PDF",
     downloadPngBtn: "TÉLÉCHARGER EN IMAGE PNG",
     downloadingPng: "GÉNÉRATION DU PNG...",
-    shareSuccess: "PARTAGEZ VOTRE RÉUSSITE",
+    shareSuccess: "PARTAGEZ YOUR RÉUSSITE",
     copiedLabel: "Texte Copié (Presse-Papier) !",
     copyBtn: "Copier le Texte & Matricule",
     defaultName: "Élite de l'IA",
@@ -42,9 +42,11 @@ const LOCAL_TRANS = {
     issuedOn: "DÉLIVRÉ LE",
     matricule: "MATRICULE DE SÉCURITÉ",
     sealLabel: "SCEAU OFFICIEL",
-    directorTitle: "🤖 Tuteur IA Académique",
-    directorPos: "DIRECTEUR TECHNIQUE",
-    printTip: "Astuce d'impression : Cliquez sur le bouton d'impression ci-dessus pour lancer le module de sauvegarde de votre navigateur. Configurez le format en Paysage (Landscape) et décochez les options de marges/en-têtes système pour un rendu parfait.",
+    directorTitle: "Prof. Élise Laurent",
+    directorPos: "Rectrice de l'Académie",
+    director2Title: "Dr. Alexandre Vance",
+    director2Pos: "Directeur de l'Innovation",
+    printTip: "Astuce d'impression : Configurez le format en Paysage (Landscape) et décochez les options de marges/en-têtes système pour un rendu parfait.",
     accomplishments: {
       chatgpt_mastery: [
         "Exploitation experte des Custom Instructions d'OpenAI",
@@ -77,49 +79,49 @@ const LOCAL_TRANS = {
         "Génération de décors, animations Motion et entraînement de modèles LoRA"
       ],
       ai_social_selling: [
-        "Automatisation de masse de contenu de vente (méthode de la Cascade d'IA)",
-        "Configuration de tunnels de messagerie connectés ManyChat x ChatGPT",
-        "Modélisation et qualification autonome d'ICP via webhooks Make / Zapier"
+        "Automatisation de masse de contenu de vente (Cascade d'IA)",
+        "Configuration de tunnels de messagerie ChatGPT & ManyChat",
+        "Modélisation et qualification autonome d'ICP via webhooks Make"
       ],
       viral_video_audio: [
-        "Génération Text-to-Video cinématique hautes performances (Runway & Sora)",
-        "Clonage vocal hyper-réaliste et expressif via onze curseurs ElevenLabs",
+        "Génération Text-to-Video cinématique (Runway & Sora)",
+        "Clonage vocal hyper-réaliste via onze curseurs ElevenLabs",
         "Composition orchestrale, sound design et mixage natif par l'IA"
       ],
       grok_mastery: [
         "Recherche de données d'opinion chaude en temps réel via le flux X",
-        "Maîtrise du mode de pensée profonde intermédiaire de Grok-3 (Reasoning)",
-        "Création visuelle d'illustrations d'exception Flux.1 dotées de texte lisible"
+        "Maîtrise du mode de pensée profonde de Grok-3 (Reasoning)",
+        "Création visuelle d'illustrations d'exception Flux.1 dotées de texte"
       ],
       copilot_mastery: [
-        "Intégration et automatisation profonde avec Microsoft Word, Excel et PowerPoint",
-        "Conception de Copilot GPTs personnalisés avec des bases de connaissances (RAG)",
-        "Pilotage système et orchestration des flux de productivité via Windows 11 Copilot"
+        "Intégration et automatisation profonde avec Word, Excel et PowerPoint",
+        "Conception de Copilot GPTs personnalisés avec RAG",
+        "Pilotage système et orchestration des flux via Windows 11 Copilot"
       ],
       manus_mastery: [
-        "Maîtrise complète de l'agent autonome d'action Manus.ai et du Computer Use",
-        "Délégation autonome de l'extraction de leads stratégiques et extraction de données web",
-        "Conception, test et débogage d'applications frontend en environnement sécurisé Sandbox"
+        "Maîtrise de l'agent autonome d'action Manus.ai et du Computer Use",
+        "Délégation autonome de l'extraction de leads stratégiques",
+        "Conception de solutions d'automatisation d'activité en sandbox"
       ],
       perplexity_mastery: [
-        "Formulation experte de requêtes de ciblage complexes avec le mode Pro Search",
-        "Filtres avancés et isolation thématique via les modes Focus (Academic, Code, Discussions)",
-        "Création d'articles structurés Pages et administration de Collections de veille privées"
+        "Formulation de requêtes complexes avec le mode Pro Search",
+        "Filtres avancés et isolation thématique via les modes Focus",
+        "Création d'articles Pages et administration de Collections privées"
       ],
       admin_redaction: [
-        "Maîtrise du style administratif (neutralité, précision, formulation impersonnelle)",
-        "Conception de notes de synthèse et de comptes-rendus officiels irréprochables",
-        "Orchestration de réponses formelles sécurisées aux réclamations et recours légaux"
+        "Maîtrise du style administratif (neutralité, précision sémantique)",
+        "Conception de notes de synthèse et de rapports d'audience d'impact",
+        "Orchestration de réponses formelles sécurisées aux réclamations"
       ],
       veo_mastery: [
-        "Ingénierie de prompts cinématiques avancés et contrôle de cadrage sémantique",
-        "Maîtrise de l'inpainting, de l'outpainting et de l'animation d'assets fixes",
-        "Simulation hyper-réaliste de physiques environnementales complexes et éclairages"
+        "Ingénierie de prompts cinématiques avancés et cadrage de caméras",
+        "Maîtrise de l'inpainting, de l'outpainting et de l'animation d'assets",
+        "Simulation de physiques environnementales complexes et éclairages"
       ],
       lovable_mastery: [
-        "Génération d'applications full-stack performantes et esthétiques en langage naturel",
-        "Intégration d'architectures relationnelles Postgres et politiques RLS Supabase",
-        "Connexion sécurisée d'API tierces, Stripe Checkout et déploiement en production"
+        "Génération d'applications full-stack en langage naturel",
+        "Intégration d'architectures Postgres et politiques RLS Supabase",
+        "Connexion sécurisée d'API tierces, Stripe Checkout et déploiement"
       ],
       prompt_eng: [
         "Formulation de prompt d'élite (Rôle, Tâche, Contexte, Contraintes)",
@@ -133,8 +135,8 @@ const LOCAL_TRANS = {
       ],
       freelance: [
         "Création de services IA packagés à fort livrable",
-        "Rédaction d'offres de candidature hyper-personnalisées et persuasives",
-        "Établissement de la grille tarifaire au forfait et de la psychologie des prix"
+        "Rédaction d'offres de candidature hyper-personnalisées",
+        "Établissement de la grille tarifaire au forfait"
       ]
     },
     shareText: (title: string, certId: string) => `🎓 Je viens d'obtenir mon Diplôme Certifié en "${title}" de l'IA Académie Plus ! \nMatricule de sécurité : ${certId}\nDécouvrez le programme d'excellence : https://ia-academie-plus.fr`
@@ -167,9 +169,11 @@ const LOCAL_TRANS = {
     issuedOn: "ISSUED ON",
     matricule: "SECURITY SERIAL CODE",
     sealLabel: "OFFICIAL SEAL",
-    directorTitle: "🤖 Academic AI Copilot",
-    directorPos: "CHIEF TECHNICAL OFFICER",
-    printTip: "Print optimization: Select the print option above to launch the system dialog. Set print scale to Landscape format and uncheck system margins/footer options for maximum detail.",
+    directorTitle: "Prof. Elise Laurent",
+    directorPos: "Dean of the Academy",
+    director2Title: "Dr. Alexandre Vance",
+    director2Pos: "Director of AI Systems",
+    printTip: "Print optimization: Set print scale to Landscape format and uncheck system margins/footer options for maximum detail.",
     accomplishments: {
       chatgpt_mastery: [
         "Expert leveraging of OpenAI Custom Instructions profiles",
@@ -202,9 +206,9 @@ const LOCAL_TRANS = {
         "Rendering Motion video assets and compiling fine-tuned LoRA models"
       ],
       ai_social_selling: [
-        "Mass automation of conversion-focused social copy (Content Cascade framework)",
-        "Orchestrating ManyChat x ChatGPT direct message (DM) sales funnels",
-        "Autonomous semantic profiling & qualification via Make/Zapier Webhooks"
+        "Mass automation of conversion-focused social copy (Cascade)",
+        "Orchestrating ManyChat x ChatGPT direct message sales funnels",
+        "Autonomous semantic profiling & qualification via Make Webhooks"
       ],
       viral_video_audio: [
         "Cinematic high-performance Text-to-Video synthesis (Runway & Sora)",
@@ -222,14 +226,14 @@ const LOCAL_TRANS = {
         "Direct Windows 11 machine automation and efficient M365 email management"
       ],
       manus_mastery: [
-        "Complete mastery of the Manus.ai autonomous action agent and Computer Use capabilities",
-        "Autonomous delegation of strategic lead sourcing and cognitive web data scraping",
-        "Engineering, verifying, and debugging sandbox web applications directly through natural speech"
+        "Complete mastery of the Manus.ai autonomous action agent and Computer Use",
+        "Autonomous delegation of strategic lead sourcing and web data scraping",
+        "Engineering, verifying, and debugging sandbox web applications"
       ],
       perplexity_mastery: [
         "Expert prompting across Pro Search guided execution pathways",
-        "Advanced isolation filtering through Academic, Code, and Discussion Focus streams",
-        "Transforming raw answers into Page layouts and organizing private Research Collections"
+        "Advanced isolation filtering through Academic, Code, and Discussion Focus",
+        "Transforming raw answers into Page layouts and organizing Research Collections"
       ],
       admin_redaction: [
         "Executive style framing adhering to absolute neutrality, protocol, and clarity",
@@ -237,14 +241,14 @@ const LOCAL_TRANS = {
         "Resolving public or corporate grievances with legally sound responsive templates"
       ],
       veo_mastery: [
-        "High-fidelity cinematic prompt engineering and semantic camera movement control",
+        "High-fidelity cinematic prompt engineering and sémantic camera movement",
         "Mastering inpainting, outpainting, image-to-video editing, and clips expansion",
-        "Realistic physical simulation of environmental fluids, lightning, and atmospheric conditions"
+        "Realistic physical simulation of environmental fluids and atmospheric conditions"
       ],
       lovable_mastery: [
-        "Generating beautiful and performant full-stack apps using natural language prompting",
+        "Generating beautiful and performant full-stack apps using natural language",
         "Integrating relational Postgres databases and Row Level Security on Supabase",
-        "Connecting Stripe payments gateways, external APIs, and seamless production deployments"
+        "Connecting Stripe payments gateways, external APIs, and production deployments"
       ],
       prompt_eng: [
         "Elite Prompt Framing (Role, Mission, Context, Constraints)",
@@ -274,7 +278,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   const defaultName = t("defaultName") as string;
   const [userName, setUserName] = useState(progress.fullName || defaultName);
   const [isEditingName, setIsEditingName] = useState(!progress.fullName);
-  const [certStyle, setCertStyle] = useState<"dark" | "classic">("dark");
+  const [certStyle, setCertStyle] = useState<"dark" | "classic">("classic");
   const [copiedLink, setCopiedLink] = useState(false);
   const certRef = useRef<HTMLDivElement>(null);
   const [downloadingImg, setDownloadingImg] = useState(false);
@@ -317,57 +321,23 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
   // Custom key accomplishments based on the completed course
   const getAccomplishments = () => {
     const records = LOCAL_TRANS[lang].accomplishments || LOCAL_TRANS["fr"].accomplishments;
-    if (course.id === "chatgpt_mastery") {
-      return records.chatgpt_mastery;
-    }
-    if (course.id === "claude_mastery") {
-      return records.claude_mastery;
-    }
-    if (course.id === "gemini_mastery") {
-      return records.gemini_mastery;
-    }
-    if (course.id === "deepseek_mastery") {
-      return records.deepseek_mastery;
-    }
-    if (course.id === "kimi_mastery") {
-      return records.kimi_mastery;
-    }
-    if (course.id === "leonardo_mastery") {
-      return records.leonardo_mastery;
-    }
-    if (course.id === "ai_social_selling") {
-      return records.ai_social_selling;
-    }
-    if (course.id === "viral_video_audio") {
-      return records.viral_video_audio;
-    }
-    if (course.id === "grok_mastery") {
-      return records.grok_mastery;
-    }
-    if (course.id === "copilot_mastery") {
-      return records.copilot_mastery;
-    }
-    if (course.id === "manus_mastery") {
-      return records.manus_mastery;
-    }
-    if (course.id === "perplexity_mastery") {
-      return records.perplexity_mastery;
-    }
-    if (course.id === "admin_redaction") {
-      return records.admin_redaction;
-    }
-    if (course.id === "veo_mastery") {
-      return records.veo_mastery;
-    }
-    if (course.id === "lovable_mastery") {
-      return records.lovable_mastery;
-    }
-    if (course.id === "prompt_eng") {
-      return records.prompt_eng;
-    }
-    if (course.id === "copywriting") {
-      return records.copywriting;
-    }
+    if (course.id === "chatgpt_mastery") return records.chatgpt_mastery;
+    if (course.id === "claude_mastery") return records.claude_mastery;
+    if (course.id === "gemini_mastery") return records.gemini_mastery;
+    if (course.id === "deepseek_mastery") return records.deepseek_mastery;
+    if (course.id === "kimi_mastery") return records.kimi_mastery;
+    if (course.id === "leonardo_mastery") return records.leonardo_mastery;
+    if (course.id === "ai_social_selling") return records.ai_social_selling;
+    if (course.id === "viral_video_audio") return records.viral_video_audio;
+    if (course.id === "grok_mastery") return records.grok_mastery;
+    if (course.id === "copilot_mastery") return records.copilot_mastery;
+    if (course.id === "manus_mastery") return records.manus_mastery;
+    if (course.id === "perplexity_mastery") return records.perplexity_mastery;
+    if (course.id === "admin_redaction") return records.admin_redaction;
+    if (course.id === "veo_mastery") return records.veo_mastery;
+    if (course.id === "lovable_mastery") return records.lovable_mastery;
+    if (course.id === "prompt_eng") return records.prompt_eng;
+    if (course.id === "copywriting") return records.copywriting;
     return records.freelance;
   };
 
@@ -386,11 +356,11 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
     setDownloadingImg(true);
     try {
       const canvas = await html2canvas(certRef.current, {
-        scale: 3, // Premium high-def scale
+        scale: 2.5, // Premium high-def scale
         useCORS: true,
         allowTaint: false,
         backgroundColor: null,
-        logging: true,
+        logging: false,
       });
 
       const dataUrl = canvas.toDataURL("image/png");
@@ -434,7 +404,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             size: A4 landscape;
             margin: 0 !important;
           }
-          /* Completely collapse other elements on the site from layout to make SURE it occupies exactly ONE COPY of target A4 page list */
           body > :not(#root) {
             display: none !important;
             visibility: hidden !important;
@@ -453,7 +422,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             height: 0 !important;
             overflow: hidden !important;
           }
-          /* Standard html and body definitions */
           html, body {
             margin: 0 !important;
             padding: 0 !important;
@@ -466,7 +434,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-          /* Outer structural layout of App must match A4 landscape format */
           div.min-h-screen {
             padding: 0 !important;
             margin: 0 !important;
@@ -476,7 +443,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             background: none !important;
             display: block !important;
           }
-          /* Hide all other elements but the modal and certificate */
           body * {
             visibility: hidden !important;
           }
@@ -484,13 +450,11 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
           #certificate-modal-overlay * {
             visibility: visible !important;
           }
-          /* Force hide elements with no-print */
           .no-print, .no-print * {
             visibility: hidden !important;
             display: none !important;
             height: 0 !important;
           }
-          /* Adjust overlay layout for printing */
           #certificate-modal-overlay {
             position: absolute !important;
             left: 0 !important;
@@ -503,7 +467,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             backdrop-filter: none !important;
             display: block !important;
           }
-          /* Adjust wrapper popup */
           #certificate-modal-overlay > div {
             border: none !important;
             box-shadow: none !important;
@@ -514,7 +477,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             height: 210mm !important;
             display: block !important;
           }
-          /* Adjust the right container (the canvas wrapper parent) */
           #certificate-modal-overlay > div > div:last-child {
             padding: 0 !important;
             margin: 0 !important;
@@ -531,15 +493,15 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             height: 210mm !important;
             box-sizing: border-box !important;
             margin: 0 !important;
-            padding: 18mm 25mm !important;
-            border-width: 12px !important;
-            border-style: solid !important;
-            border-color: ${certStyle === "classic" ? "#d4af37" : "#059669"} !important;
+            padding: 14mm 18mm !important;
+            border-width: 8px !important;
+            border-style: double !important;
+            border-color: ${certStyle === "classic" ? "#b8860b" : "#10b981"} !important;
             border-radius: 0 !important;
             box-shadow: none !important;
-            background: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
-            background-color: ${certStyle === "classic" ? "#faf9f5" : "#020617"} !important;
-            color: ${certStyle === "classic" ? "#0f172a" : "#ffffff"} !important;
+            background: ${certStyle === "classic" ? "#faf6eb" : "#020617"} !important;
+            background-color: ${certStyle === "classic" ? "#faf6eb" : "#020617"} !important;
+            color: ${certStyle === "classic" ? "#1e293b" : "#ffffff"} !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: space-between !important;
@@ -548,98 +510,46 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             page-break-inside: avoid !important;
             page-break-after: avoid !important;
           }
-          /* INCREASED TYPOGRAPHY / FONT SIZES CHOSEN SURGICALLY */
           .printable-cert-area .cert-title {
-            font-size: 42pt !important;
-            margin-bottom: 4mm !important;
-            line-height: 1.15 !important;
+            font-size: 34pt !important;
+            margin-bottom: 2mm !important;
+            line-height: 1.1 !important;
           }
           .printable-cert-area .awarded-to {
-            font-size: 14pt !important;
-            margin-top: 3mm !important;
+            font-size: 11pt !important;
           }
           .printable-cert-area .recipient-name {
-            font-size: 48pt !important;
-            line-height: 1.25 !important;
-            font-weight: 900 !important;
-            display: inline-block !important;
-            margin-top: 4mm !important;
-            margin-bottom: 4mm !important;
+            font-size: 38pt !important;
+            line-height: 1.2 !important;
+            font-weight: 800 !important;
+            margin-top: 2mm !important;
+            margin-bottom: 2mm !important;
           }
           .printable-cert-area .awarded-sub {
-            font-size: 14pt !important;
-            line-height: 1.45 !important;
+            font-size: 11pt !important;
+            line-height: 1.35 !important;
           }
           .printable-cert-area .course-title {
-            font-size: 22pt !important;
+            font-size: 17pt !important;
             font-weight: 800 !important;
-            margin-top: 2.5mm !important;
           }
           .printable-cert-area .skills-container {
-            padding: 6mm 10mm !important;
-            margin-top: 4mm !important;
-            border-width: 1px !important;
-            border-style: solid !important;
-            border-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.2)"} !important;
-            border-radius: 8px !important;
+            padding: 3mm 6mm !important;
+            margin-top: 2mm !important;
           }
           .printable-cert-area .skills-title {
-            font-size: 11.5pt !important;
-            margin-bottom: 2.5mm !important;
+            font-size: 9pt !important;
+            margin-bottom: 1.5mm !important;
           }
           .printable-cert-area .skill-badge-text {
-            font-size: 13pt !important;
-            font-weight: bold !important;
-          }
-          .printable-cert-area .skill-check {
-            font-size: 13.5pt !important;
-          }
-          .printable-cert-area .cert-footer {
-            margin-top: 8mm !important;
-            padding-top: 4mm !important;
-            border-top-width: 1px !important;
-            border-top-style: solid !important;
-            border-top-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.15)" : "rgba(255, 255, 255, 0.15)"} !important;
-          }
-          .printable-cert-area .footer-label {
             font-size: 10pt !important;
           }
-          .printable-cert-area .footer-val-date {
-            font-size: 13pt !important;
+          .printable-cert-area .skill-check {
+            font-size: 11pt !important;
           }
-          .printable-cert-area .footer-val-id {
-            font-size: 12pt !important;
-          }
-          .printable-cert-area .qr-image {
-            width: 22mm !important;
-            height: 22mm !important;
-          }
-          .printable-cert-area .qr-label {
-            font-size: 9.5pt !important;
-          }
-          .printable-cert-area .seal-badge {
-            width: 22mm !important;
-            height: 22mm !important;
-          }
-          .printable-cert-area .seal-icon {
-            width: 12mm !important;
-            height: 12mm !important;
-          }
-          .printable-cert-area .seal-label {
-            font-size: 9.5pt !important;
-          }
-          .printable-cert-area .sig-title {
-            font-size: 14pt !important;
-          }
-          .printable-cert-area .sig-line {
-            height: 1.5px !important;
-            background-color: ${certStyle === "classic" ? "rgba(15, 23, 42, 0.25)" : "rgba(255, 255, 255, 0.25)"} !important;
-          }
-          .printable-cert-area .sig-pos {
-            font-size: 9.5pt !important;
-          }
-          .printable-cert-area .sig-org {
-            font-size: 11.5pt !important;
+          .printable-cert-area .cert-footer {
+            margin-top: 4mm !important;
+            padding-top: 3mm !important;
           }
         }
       `}</style>
@@ -653,8 +563,8 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
       >
         
         {/* LEFT SIDE: CUSTOMIZER PANEL (HIDDEN ON PRINT) */}
-        <div className="lg:w-80 p-6 border-b lg:border-b-0 lg:border-r border-slate-800 flex flex-col justify-between bg-slate-950/60 no-print">
-          <div className="space-y-6">
+        <div className="lg:w-80 p-6 border-b lg:border-b-0 lg:border-r border-slate-800 flex flex-col justify-between bg-slate-950/60 no-print shrink-0">
+          <div className="space-y-5">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-emerald-400" />
@@ -706,9 +616,19 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             </div>
 
             {/* Template selector */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <label className="text-xs text-slate-400 font-mono uppercase block">{t("styleLabel")}</label>
               <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={() => setCertStyle("classic")}
+                  className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
+                    certStyle === "classic" 
+                      ? "bg-amber-500/10 border-amber-500/50 text-amber-500" 
+                      : "bg-slate-950/40 border-slate-850 text-slate-400 hover:border-slate-800 hover:text-slate-200"
+                  }`}
+                >
+                  Classic Parchemin
+                </button>
                 <button
                   onClick={() => setCertStyle("dark")}
                   className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
@@ -718,16 +638,6 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
                   }`}
                 >
                   Obsidian Luxe
-                </button>
-                <button
-                  onClick={() => setCertStyle("classic")}
-                  className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
-                    certStyle === "classic" 
-                      ? "bg-amber-500/10 border-amber-500/50 text-amber-500" 
-                      : "bg-slate-950/40 border-slate-850 text-slate-400 hover:border-slate-805 hover:text-slate-200"
-                  }`}
-                >
-                  Classic Parchemin
                 </button>
               </div>
             </div>
@@ -750,7 +660,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
           <div className="mt-8 space-y-2.5">
             <button
               onClick={handlePrint}
-              className="w-full bg-emerald-500 hover:bg-emerald-405 text-slate-950 font-bold py-3.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 font-mono transition-all cursor-pointer shadow-lg shadow-emerald-500/5 select-none"
+              className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 font-mono transition-all cursor-pointer shadow-lg shadow-emerald-500/5 select-none"
             >
               <Printer className="w-4.5 h-4.5" />
               {t("printBtn")}
@@ -759,7 +669,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             <button
               onClick={handleDownloadPNG}
               disabled={downloadingImg}
-              className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-705 text-slate-200 hover:text-white font-bold py-3.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 font-mono transition-all cursor-pointer shadow-lg disabled:opacity-50 disabled:cursor-not-allowed select-none"
+              className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 hover:text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 font-mono transition-all cursor-pointer shadow-lg disabled:opacity-50 disabled:cursor-not-allowed select-none"
             >
               {downloadingImg ? (
                 <>
@@ -778,13 +688,13 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => handleShare("linkedin")}
-                className="bg-[#0077b5] hover:bg-[#0077b5]/90 text-white font-bold py-2.5 px-3 rounded-lg text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1.5 select-none"
+                className="bg-[#0077b5] hover:bg-[#0077b5]/90 text-white font-bold py-2 px-3 rounded-lg text-[11px] transition-all cursor-pointer flex items-center justify-center gap-1.5 select-none"
               >
                 LinkedIn
               </button>
               <button
                 onClick={() => handleShare("twitter")}
-                className="bg-slate-900 hover:bg-slate-805 text-white font-bold py-2.5 px-3 rounded-lg text-[11px] border border-slate-800 transition-all cursor-pointer flex items-center justify-center gap-1.5 select-none"
+                className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2 px-3 rounded-lg text-[11px] border border-slate-800 transition-all cursor-pointer flex items-center justify-center gap-1.5 select-none"
               >
                 Twitter / X
               </button>
@@ -801,7 +711,7 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
         </div>
 
         {/* RIGHT SIDE: THE DYNAMIC CERTIFICATE CANVAS */}
-        <div className="flex-1 p-6 lg:p-10 flex flex-col justify-between items-center bg-slate-950 overflow-hidden relative min-h-[500px] lg:min-h-[595px]">
+        <div className="flex-1 p-4 lg:p-8 flex flex-col justify-between items-center bg-slate-950 overflow-hidden relative min-h-[500px] lg:min-h-[595px]">
           
           {/* Close button on top-right for desktop no-print */}
           <button 
@@ -813,143 +723,194 @@ export default function CertificateModal({ lang, course, progress, onClose, onUp
 
           {/* Golden Sparkles for dark mode */}
           {certStyle === "dark" && (
-            <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.05)_0%,transparent_70%)]" />
+            <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.04)_0%,transparent_70%)]" />
           )}
 
-          <div 
-            ref={certRef}
-            className={`printable-cert-area relative w-full h-auto min-h-[520px] aspect-[1.414/1] rounded-2xl border-[10px] p-8 lg:p-14 flex flex-col justify-between items-center text-center shadow-xl transition-colors duration-300 ${
-              certStyle === "classic"
-                ? "bg-[#faf9f5] border-[#d4af37] text-slate-800 shadow-[#000000]/5"
-                : "bg-gradient-to-tr from-slate-950 to-slate-900 border-amber-500/20 text-slate-100 shadow-[#000000]/40"
-            }`}
-          >
-            {/* Corner Decorative Ornaments (Classic has nice golden borders, Dark has modern neat corners) */}
-            <div className={`absolute top-3.5 left-3.5 w-8 h-8 border-t-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute top-3.5 right-3.5 w-8 h-8 border-t-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute bottom-3.5 left-3.5 w-8 h-8 border-b-2 border-l-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
-            <div className={`absolute bottom-3.5 right-3.5 w-8 h-8 border-b-2 border-r-2 ${certStyle === "classic" ? "border-amber-600/60" : "border-emerald-400/30"}`} />
+          <div className="w-full overflow-x-auto p-1 flex justify-start lg:justify-center scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
+            <div className="w-full min-w-[740px] lg:min-w-0 shrink-0">
+              <div 
+                ref={certRef}
+                className={`printable-cert-area relative w-full h-auto min-h-[520px] aspect-[1.414/1] rounded-lg p-6 lg:p-11 flex flex-col justify-between items-center text-center shadow-xl transition-colors duration-300 overflow-hidden ${
+                  certStyle === "classic"
+                    ? "bg-[#faf6eb] border-[8px] border-double border-[#b8860b] text-slate-800 shadow-[#000000]/5"
+                    : "bg-slate-950 border-[8px] border-double border-emerald-500/40 text-slate-100 shadow-[#000000]/40"
+                }`}
+              >
+            {/* Elegant Fine Double Border Frame (Watermark style) */}
+            <div className={`absolute inset-2 border-2 border-double pointer-events-none rounded-sm ${
+              certStyle === "classic" ? "border-[#c5a847]/40" : "border-emerald-500/10"
+            }`} />
 
-            {/* Header branding */}
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-center gap-2 font-sans">
-                <div className={`w-11 h-7 rounded flex items-center justify-center font-black text-xs md:text-[13px] ${certStyle === "classic" ? "bg-amber-800 text-white" : "bg-emerald-500 text-slate-950"}`}>
+            {/* Classical Corner Decorative Ornaments */}
+            <div className={`absolute top-4 left-4 w-9 h-9 border-t-2 border-l-2 pointer-events-none ${certStyle === "classic" ? "border-[#c5a847]" : "border-emerald-500/30"}`}>
+              <div className={`absolute top-0.5 left-0.5 w-1.5 h-1.5 rounded-full ${certStyle === "classic" ? "bg-[#c5a847]" : "bg-emerald-500/30"}`} />
+            </div>
+            <div className={`absolute top-4 right-4 w-9 h-9 border-t-2 border-r-2 pointer-events-none ${certStyle === "classic" ? "border-[#c5a847]" : "border-emerald-500/30"}`}>
+              <div className={`absolute top-0.5 right-0.5 w-1.5 h-1.5 rounded-full ${certStyle === "classic" ? "bg-[#c5a847]" : "bg-emerald-500/30"}`} />
+            </div>
+            <div className={`absolute bottom-4 left-4 w-9 h-9 border-b-2 border-l-2 pointer-events-none ${certStyle === "classic" ? "border-[#c5a847]" : "border-emerald-500/30"}`}>
+              <div className={`absolute bottom-0.5 left-0.5 w-1.5 h-1.5 rounded-full ${certStyle === "classic" ? "bg-[#c5a847]" : "bg-emerald-500/30"}`} />
+            </div>
+            <div className={`absolute bottom-4 right-4 w-9 h-9 border-b-2 border-r-2 pointer-events-none ${certStyle === "classic" ? "border-[#c5a847]" : "border-emerald-500/30"}`}>
+              <div className={`absolute bottom-0.5 right-0.5 w-1.5 h-1.5 rounded-full ${certStyle === "classic" ? "bg-[#c5a847]" : "bg-emerald-500/30"}`} />
+            </div>
+
+            {/* Header Branding */}
+            <div className="space-y-1 relative z-10">
+              <div className="flex items-center justify-center gap-2">
+                <div className={`w-8 h-5 rounded flex items-center justify-center font-black text-[10px] ${certStyle === "classic" ? "bg-[#8b6508] text-white" : "bg-emerald-500 text-slate-950"}`}>
                   IA+
                 </div>
-                <span className={`font-sans font-black text-base lg:text-xl tracking-tight capitalize ${certStyle === "classic" ? "text-amber-900" : "bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent"}`}>
+                <span className={`font-display-academic text-sm lg:text-lg font-black tracking-[0.12em] uppercase ${certStyle === "classic" ? "text-[#5c4308]" : "text-white"}`}>
                   IA Académie Plus
                 </span>
-                <span className="text-[10px] lg:text-xs uppercase font-mono tracking-widest opacity-65 font-bold">
-                  STUDIO
-                </span>
               </div>
-              <div className={`text-[10px] md:text-xs font-mono uppercase tracking-widest font-bold ${certStyle === "classic" ? "text-amber-800/80" : "text-emerald-400"}`}>
+              <div className={`text-[8px] lg:text-[9.5px] font-mono uppercase tracking-[0.18em] font-extrabold ${certStyle === "classic" ? "text-amber-800/80" : "text-emerald-400"}`}>
                 {t("officielBadge")}
               </div>
             </div>
 
             {/* Certificate Title */}
-            <div className="my-2.5 space-y-2.5">
-              <h1 className={`cert-title font-serif tracking-normal text-3xl sm:text-4xl lg:text-5xl font-black italic select-none ${certStyle === "classic" ? "text-amber-900" : "text-white"}`}>
+            <div className="my-2 space-y-2 relative z-10">
+              <h1 className={`cert-title font-display-academic tracking-wide text-2xl sm:text-3xl lg:text-[40px] font-black uppercase ${certStyle === "classic" ? "text-[#8b6508]" : "text-white"}`}>
                 {t("certTitle")}
               </h1>
-              <div className={`w-28 h-1 mx-auto rounded-full ${certStyle === "classic" ? "bg-amber-850" : "bg-emerald-500"}`} />
-              <p className="awarded-to text-[11px] lg:text-xs uppercase tracking-widest font-mono text-slate-400/85 font-bold px-4">
+              <div className={`w-20 h-[1.5px] mx-auto ${certStyle === "classic" ? "bg-[#c5a847]" : "bg-emerald-500/60"}`} />
+              <p className={`awarded-to text-[9.5px] lg:text-[11px] uppercase tracking-[0.14em] font-semibold ${certStyle === "classic" ? "text-slate-500" : "text-slate-400"}`}>
                 {t("awardedTo")}
               </p>
             </div>
 
-            {/* Participant Name */}
-            <div className="my-2">
-              <span className={`recipient-name text-2xl sm:text-3xl lg:text-5xl font-extrabold font-serif underline decoration-dashed decoration-amber-500/60 underline-offset-10 ${
-                certStyle === "classic" ? "text-slate-900" : "text-white"
+            {/* Participant Name (Surgically Redesigned using premium Cormorant Garamond font style) */}
+            <div className="my-1.5 relative z-10">
+              <span className={`recipient-name font-serif-academic italic text-3xl sm:text-4xl lg:text-[46px] font-bold tracking-wide select-text px-4 ${
+                certStyle === "classic" ? "text-slate-900 border-b-2 border-double border-[#c5a847]/40 pb-1" : "text-white border-b-2 border-double border-emerald-500/20 pb-1"
               }`}>
                 {userName}
               </span>
             </div>
 
             {/* Achievement Text */}
-            <div className="max-w-xl my-2 space-y-1.5">
-              <p className="awarded-sub text-xs sm:text-sm lg:text-base text-slate-400 leading-relaxed font-sans mt-1">
+            <div className="max-w-xl my-2 space-y-1 relative z-10">
+              <p className={`awarded-sub text-[11px] lg:text-[12.5px] font-serif-academic italic leading-normal ${certStyle === "classic" ? "text-slate-600" : "text-slate-350"}`}>
                 {t("awardedSub")}
               </p>
-              <h3 className={`course-title text-sm sm:text-base lg:text-xl font-bold tracking-tight font-sans ${certStyle === "classic" ? "text-amber-900" : "text-emerald-400"}`}>
-                {course.title} ({course.category === "ai" 
-                  ? (lang === "fr" ? "Spécialisation Intelligence Artificielle" : "Specialist Certification in Artificial Intelligence")
-                  : (lang === "fr" ? "Compétences Digitales d'Élite" : "Elite Professional Digital Skill Upgrade")})
+              <h3 className={`course-title text-sm sm:text-base lg:text-xl font-bold tracking-tight font-display-academic uppercase mt-2 ${certStyle === "classic" ? "text-[#8b6508]" : "text-emerald-400"}`}>
+                {course.title}
               </h3>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mt-0.5">
+                {course.category === "ai" ? (t("specialization") as any).ai : (t("specialization") as any).else}
+              </p>
             </div>
 
-            {/* Skills validation row */}
-            <div className={`skills-container max-w-xl mt-1.5 p-3 md:p-4 rounded-xl border flex flex-col items-center justify-center ${
+            {/* Skills validation container */}
+            <div className={`skills-container max-w-xl mt-1 w-full p-2.5 md:p-3.5 rounded-lg border flex flex-col items-center justify-center relative z-10 ${
               certStyle === "classic" ? "bg-slate-900/5 border-slate-900/10" : "bg-slate-950/40 border-slate-800"
             }`}>
-              <div className="skills-title text-[9.5px] lg:text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2 font-bold">{t("skillsRequired")}</div>
-              <div className="flex flex-wrap gap-x-4 gap-y-1.5 justify-center text-xs font-medium text-slate-300 font-sans">
+              <div className="skills-title text-[8px] lg:text-[9px] font-mono uppercase tracking-[0.12em] text-slate-500 mb-1.5 font-bold">{t("skillsRequired")}</div>
+              <div className="flex flex-wrap gap-x-4 gap-y-1 justify-center text-[11px] font-medium text-slate-300">
                 {getAccomplishments().map((val, idx) => (
-                  <span key={idx} className="flex items-center gap-1.5">
-                    <span className={`skill-check text-[13px] ${certStyle === "classic" ? "text-amber-700 font-black" : "text-emerald-400"}`}>✓</span>
-                    <span className={`skill-badge-text text-xs lg:text-[13px] font-semibold ${certStyle === "classic" ? "text-slate-700" : "text-slate-300"}`}>{val}</span>
+                  <span key={idx} className="flex items-center gap-1">
+                    <span className={`skill-check text-[11px] font-extrabold ${certStyle === "classic" ? "text-amber-700" : "text-emerald-400"}`}>✓</span>
+                    <span className={`skill-badge-text text-[11.5px] lg:text-[12.5px] font-serif-academic ${certStyle === "classic" ? "text-slate-700 font-medium" : "text-slate-300 font-light"}`}>{val}</span>
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Bottom Row - Signatures and Certificate Verification Seal */}
-            {/* Bottom Row - Signatures, QR Code and Certificate Verification Seal */}
-            <div className="cert-footer w-full grid grid-cols-4 items-end gap-3 mt-4 pt-4 border-t border-slate-800/20">
-              {/* Date & verification ID */}
-              <div className="text-left font-mono">
-                <div className="footer-label text-[9px] text-slate-500 uppercase tracking-widest font-bold">{t("issuedOn")}</div>
-                <div className={`footer-val-date text-xs lg:text-sm font-black ${certStyle === "classic" ? "text-slate-700" : "text-slate-100"}`}>{formattedDate}</div>
-                <div className="footer-label text-[8.5px] text-slate-500 uppercase tracking-widest mt-2 font-bold">{t("matricule")}</div>
-                <div className={`footer-val-id text-[10px] lg:text-xs font-bold tracking-tight opacity-90 ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</div>
-              </div>
-
-              {/* QR Code Column */}
-              <div className="flex flex-col items-center justify-center">
-                <div className="bg-white p-1 rounded-lg border border-slate-200 shadow-md shrink-0 flex items-center justify-center transition-all hover:scale-105 min-w-[56px] min-h-[56px]">
-                  {qrDataUrl ? (
-                    <img 
-                      src={qrDataUrl} 
-                      alt="Verification QR Code" 
-                      className="qr-image w-14 h-14 lg:w-16 lg:h-16"
-                    />
-                  ) : (
-                    <div className="w-14 h-14 lg:w-16 lg:h-16 flex items-center justify-center">
-                      <div className="w-5 h-5 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
-                    </div>
-                  )}
+            {/* Academic Row - Dean and Director Signatures, Gold Stamp Seal */}
+            <div className="w-full grid grid-cols-3 items-center gap-4 mt-4 pt-3 border-t border-slate-300/10 relative z-10">
+              {/* Left Dean Signature Column */}
+              <div className="flex flex-col items-center justify-center text-center">
+                <div className="relative w-full h-10 flex items-center justify-center">
+                  {/* Cursive Blue Ink Path for Real Signature Effect */}
+                  <svg className={`absolute top-0 w-24 h-10 pointer-events-none opacity-90 ${certStyle === "classic" ? "text-blue-700/80" : "text-teal-400/85"}`} viewBox="0 0 100 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M10,25 C25,12 35,35 45,15 C52,5 62,28 85,18 C70,18 55,20 40,22" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div className={`font-serif-academic italic font-bold text-xs lg:text-sm tracking-wide ${certStyle === "classic" ? "text-slate-800" : "text-white"}`}>
+                    {t("directorTitle")}
+                  </div>
                 </div>
-                <span className={`qr-label text-[8px] lg:text-[9px] font-mono tracking-wider mt-2 uppercase font-bold ${certStyle === "classic" ? "text-slate-500" : "text-emerald-400/95"}`}>{lang === "fr" ? "Scanner pour Vérifier" : "Scan to Verify"}</span>
+                <div className={`w-28 h-[0.5px] ${certStyle === "classic" ? "bg-slate-300" : "bg-slate-800"}`} />
+                <span className="text-[7.5px] lg:text-[8px] font-mono uppercase tracking-wider text-slate-500 mt-1 block">{t("directorPos")}</span>
               </div>
 
-              {/* Gold Verification Badge / Seal */}
+              {/* Center Embossed Gold Foil Academic Seal */}
               <div className="flex flex-col items-center justify-center relative">
-                <div className={`seal-badge w-14 h-14 lg:w-18 lg:h-18 rounded-full flex items-center justify-center p-2.5 relative shadow-lg ${
-                  certStyle === "classic" 
-                    ? "bg-amber-600 text-amber-50 outline-double outline-2 outline-offset-2 outline-amber-600" 
-                    : "bg-emerald-500 text-slate-950 outline-dashed outline-2 outline-offset-2 outline-emerald-500"
-                }`}>
-                  <Award className="seal-icon w-8 h-8 lg:w-10 lg:h-10 animate-pulse" />
-                  {/* Decorative golden ribbon underlay (CSS visual only) */}
-                  <div className="absolute top-12 lg:top-15 left-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 -rotate-12 rounded-b-sm pointer-events-none" />
-                  <div className="absolute top-12 lg:top-15 right-2 w-2 lg:w-2.5 h-5 lg:h-7 bg-amber-700/80 rotate-12 rounded-b-sm pointer-events-none" />
-                </div>
-                <span className={`seal-label text-[8.5px] lg:text-[9.5px] font-mono tracking-widest font-bold mt-2.5 uppercase ${certStyle === "classic" ? "text-amber-850" : "text-slate-300"}`}>{t("sealLabel")}</span>
+                {certStyle === "classic" ? (
+                  <div className="relative w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-tr from-[#8b6508] via-[#e5c158] to-[#9a7b1c] flex items-center justify-center p-0.5 shadow-lg border border-[#8b6508]">
+                    <div className="w-full h-full rounded-full border border-dashed border-[#5c4308] flex flex-col items-center justify-center p-0.5">
+                      <Award className="w-6 h-6 text-[#5c4308] animate-pulse" />
+                      <span className="text-[4px] font-bold uppercase tracking-wider text-[#5c4308]">EXCELLENCE</span>
+                    </div>
+                    {/* Hanging red velvet ribbons */}
+                    <div className="absolute top-11 left-1.5 w-2.5 h-6 bg-[#991b1b] -rotate-12 rounded-b shadow border-r border-[#7f1d1d] pointer-events-none" />
+                    <div className="absolute top-11 right-1.5 w-2.5 h-6 bg-[#991b1b] rotate-12 rounded-b shadow border-l border-[#7f1d1d] pointer-events-none" />
+                  </div>
+                ) : (
+                  <div className="relative w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-slate-900 border border-emerald-500/40 flex items-center justify-center p-0.5 shadow-md shadow-emerald-500/5">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500/5 to-teal-500/10 border border-dashed border-emerald-500/30 flex flex-col items-center justify-center p-0.5">
+                      <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                      <span className="text-[4px] font-mono font-black text-emerald-300 tracking-wider">VERIFIED</span>
+                    </div>
+                    <div className="absolute top-11 left-2 w-2 h-5 bg-gradient-to-b from-emerald-500/30 to-transparent -rotate-12 rounded-b-sm pointer-events-none" />
+                    <div className="absolute top-11 right-2 w-2 h-5 bg-gradient-to-b from-emerald-500/30 to-transparent rotate-12 rounded-b-sm pointer-events-none" />
+                  </div>
+                )}
+                <span className={`text-[7px] lg:text-[8px] font-mono tracking-widest font-bold mt-1.5 uppercase ${certStyle === "classic" ? "text-amber-850" : "text-slate-400"}`}>{t("sealLabel")}</span>
               </div>
 
-              {/* Signature lines */}
-              <div className="text-right font-sans">
-                <div className="sig-title italic font-serif text-xs lg:text-[14px] font-extrabold text-slate-500 tracking-tight">
-                  {t("directorTitle")}
+              {/* Right Chief Director Signature Column */}
+              <div className="flex flex-col items-center justify-center text-center">
+                <div className="relative w-full h-10 flex items-center justify-center">
+                  {/* Cursive Blue Ink Path for Real Signature Effect */}
+                  <svg className={`absolute top-0 w-24 h-10 pointer-events-none opacity-90 ${certStyle === "classic" ? "text-blue-700/80" : "text-teal-400/85"}`} viewBox="0 0 100 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M15,18 C25,32 40,5 50,22 C60,35 70,10 82,25 C65,22 50,20 35,21" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <div className={`font-serif-academic italic font-bold text-xs lg:text-sm tracking-wide ${certStyle === "classic" ? "text-slate-800" : "text-white"}`}>
+                    {t("director2Title")}
+                  </div>
                 </div>
-                <div className="sig-line mt-1 w-full h-[1px]" />
-                <div className="sig-pos text-[8.5px] lg:text-[9.5px] font-mono text-slate-500 uppercase tracking-widest mt-1.5 font-bold">{t("directorPos")}</div>
-                <div className="sig-org font-mono text-xs lg:text-[13px] font-bold mt-1.5">IA Académie Plus AI</div>
+                <div className={`w-28 h-[0.5px] ${certStyle === "classic" ? "bg-slate-300" : "bg-slate-800"}`} />
+                <span className="text-[7.5px] lg:text-[8px] font-mono uppercase tracking-wider text-slate-500 mt-1 block">{t("director2Pos")}</span>
               </div>
             </div>
 
+            {/* Bottom Row - Digital Cryptographic Verification Panel */}
+            <div className="w-full border-t border-slate-300/10 pt-2 flex flex-row items-center justify-between gap-4 mt-2">
+              <div className="text-left font-mono">
+                <span className="text-[7px] tracking-wider text-slate-500 block uppercase font-bold">{t("issuedOn")}</span>
+                <span className={`text-[10px] font-bold ${certStyle === "classic" ? "text-slate-700" : "text-slate-200"}`}>{formattedDate}</span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <div className="bg-white p-0.5 rounded border border-slate-200 shadow shrink-0 flex items-center justify-center">
+                  {qrDataUrl ? (
+                    <img 
+                      src={qrDataUrl} 
+                      alt="QR Code" 
+                      className="w-8 h-8 lg:w-9 lg:h-9"
+                    />
+                  ) : (
+                    <div className="w-8 h-8 lg:w-9 lg:h-9 flex items-center justify-center">
+                      <div className="w-3 h-3 border border-slate-900 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                  )}
+                </div>
+                <div className="text-left font-mono leading-none">
+                  <span className={`text-[8px] font-bold block uppercase tracking-wider ${certStyle === "classic" ? "text-amber-850" : "text-emerald-400"}`}>{lang === "fr" ? "VÉRIFICATION SECURE" : "ONLINE VERIFICATION"}</span>
+                  <span className="text-[7px] text-slate-500 block">{lang === "fr" ? "Scannez pour authentifier" : "Scan to authenticate"}</span>
+                </div>
+              </div>
+
+              <div className="text-right font-mono">
+                <span className="text-[7px] tracking-wider text-slate-500 block uppercase font-bold">{t("matricule")}</span>
+                <span className={`text-[10px] font-black tracking-tight ${certStyle === "classic" ? "text-slate-800" : "text-emerald-400"}`}>{certId}</span>
+              </div>
+            </div>
+
+          </div>
+          </div>
           </div>
 
           {/* Prompt warning for print mode info */}

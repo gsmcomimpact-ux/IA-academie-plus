@@ -97,7 +97,7 @@ export default function Onboarding({ lang, onComplete, onLoginClick }: Onboardin
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-6 relative overflow-hidden">
+    <div className="min-h-full bg-slate-950 text-slate-100 flex flex-col justify-between p-4 sm:p-6 relative overflow-x-hidden">
       {/* Decorative glowing background mesh */}
       <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
