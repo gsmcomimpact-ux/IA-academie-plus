@@ -189,6 +189,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
   const [infoTab, setInfoTab] = useState<"theory" | "checklist" | "templates">("theory");
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [mobileActiveTab, setMobileActiveTab] = useState<"lesson" | "practice">("lesson");
 
   const toggleCheckItem = (id: string) => {
     setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
@@ -209,6 +210,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
     setCopyText("");
     setCopyResult(null);
     setLessonFinished(isAlreadyCompleted);
+    setMobileActiveTab("lesson");
 
     try {
       const savedStr = localStorage.getItem("coursiv_corrected_prompts");
@@ -704,6 +706,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
       setActiveStepIdx(activeStepIdx + 1);
     } else {
       // Auto-scroll to practice content when starting/unlocking practice
+      setMobileActiveTab("practice");
       setTimeout(() => {
         const pane = document.querySelector(".practice-pane");
         if (pane) {
@@ -923,8 +926,45 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
       {/* Main Container: Slider on left, Practice area on right */}
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
         
+        {/* Mobile Tab Switcher */}
+        <div className="lg:hidden flex bg-slate-950 border-b border-slate-900 shrink-0 select-none p-1.5 gap-1.5">
+          <button
+            type="button"
+            onClick={() => setMobileActiveTab("lesson")}
+            className={`flex-1 py-2.5 rounded-xl text-xs font-sans font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+              mobileActiveTab === "lesson"
+                ? "bg-emerald-500 text-slate-950 font-black shadow-lg shadow-emerald-500/10"
+                : "text-slate-400 hover:text-white hover:bg-slate-900/40"
+            }`}
+          >
+            📚 {lang === "fr" ? "Cours" : "Course"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileActiveTab("practice")}
+            className={`flex-1 py-2.5 rounded-xl text-xs font-sans font-bold transition-all flex items-center justify-center gap-1.5 relative cursor-pointer ${
+              mobileActiveTab === "practice"
+                ? "bg-emerald-500 text-slate-950 font-black shadow-lg shadow-emerald-500/10"
+                : "text-slate-400 hover:text-white hover:bg-slate-900/40"
+            }`}
+          >
+            🎯 {lang === "fr" ? "Exercice" : "Practice"}
+            {activeStepIdx < stepsCount - 1 && (
+              <span className="w-1.5 h-1.5 bg-slate-600 rounded-full" />
+            )}
+            {activeStepIdx === stepsCount - 1 && !lessonFinished && (
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+            )}
+          </button>
+        </div>
+        
         {/* Left pane: Learning Steps (Streaming points in a vertical trail) */}
-        <div className="flex-1 p-6 border-b lg:border-b-0 lg:border-r border-slate-900 flex flex-col justify-between bg-slate-950/40 overflow-y-auto relative">
+        <div className={`flex-1 p-6 border-b lg:border-b-0 lg:border-r border-slate-900 flex flex-col justify-between bg-slate-950/40 overflow-y-auto relative ${
+          mobileActiveTab === "lesson" ? "flex" : "hidden lg:flex"
+        }`}>
           
           {/* Absolute floating particle canvas for visual feedback */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
@@ -992,6 +1032,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                     onClick={() => {
                       if (isAlreadyCompleted || idx < activeStepIdx) {
                         setActiveStepIdx(idx);
+                        setMobileActiveTab("lesson");
                       }
                     }}
                     className={`relative p-5 rounded-2xl border transition-all duration-300 ${
@@ -1073,6 +1114,7 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
                               if (activeStepIdx < stepsCount - 1) {
                                 setActiveStepIdx(activeStepIdx + 1);
                               } else {
+                                setMobileActiveTab("practice");
                                 const pane = document.querySelector(".practice-pane");
                                 if (pane) {
                                   pane.scrollIntoView({ behavior: "smooth" });
@@ -1284,7 +1326,9 @@ export default function CoursePlayer({ lang, course, lessonId, onBackToDashboard
         </div>
 
         {/* Right pane: Hands-on Sandbox Exercises */}
-        <div className="flex-1 p-6 flex flex-col justify-between overflow-y-auto bg-slate-950 practice-pane border-t lg:border-t-0 lg:border-l border-slate-900">
+        <div className={`flex-1 p-6 flex flex-col justify-between overflow-y-auto bg-slate-950 practice-pane border-t lg:border-t-0 lg:border-l border-slate-900 ${
+          mobileActiveTab === "practice" ? "flex" : "hidden lg:flex"
+        }`}>
           {activeStepIdx < stepsCount - 1 ? (
             <motion.div
               initial={{ opacity: 0, y: 15 }}

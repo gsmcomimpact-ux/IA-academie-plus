@@ -599,7 +599,7 @@ export default function App() {
                     playSound("click");
                   }
                 }}
-                className={`p-2 rounded-xl border transition-colors cursor-pointer select-none ${
+                className={`hidden sm:block p-2 rounded-xl border transition-colors cursor-pointer select-none ${
                   soundEnabled ? "bg-slate-900 border-slate-800 text-slate-300 hover:text-white" : "bg-slate-950 border-slate-900 text-slate-600"
                 }`}
                 title={soundEnabled ? t("soundOff") : t("soundOn")}
@@ -618,7 +618,7 @@ export default function App() {
                 title={lang === "fr" ? "Se déconnecter de l'Académie" : "Log out from the Academy"}
               >
                 <LogOut className="w-4 h-4 shrink-0" />
-                <span>{t("deconnexion")}</span>
+                <span className="hidden sm:inline">{t("deconnexion")}</span>
               </button>
 
             </div>
