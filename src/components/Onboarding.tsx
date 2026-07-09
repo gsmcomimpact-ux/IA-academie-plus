@@ -109,7 +109,7 @@ export default function Onboarding({ lang, onComplete, onLoginClick }: Onboardin
             IA
           </div>
           <span className="font-sans font-bold text-xl tracking-tight bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent">
-            IA Académie
+            {lang === "fr" ? "IA Académie" : "AI Academy"}
           </span>
           <span className="text-[10px] uppercase font-mono tracking-wider bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded ml-2">
             Plus

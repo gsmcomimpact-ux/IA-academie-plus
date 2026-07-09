@@ -2545,6 +2545,91 @@ export const ngoExtraLessonsData = [
   { title: "Examen Final de Validation de Certification d'Expert en IA & Gestion d'ONG", desc: "Validez vos compétences sur le fundraising augmenté, la mesure d'impact NLP et la logistique de crise pour obtenir votre diplôme d'ONG." }
 ];
 
+export const baseTradeLessons: Lesson[] = [
+  {
+    id: "tr_l1",
+    title: "IA & Optimisation de la Supply Chain Internationale et Logistique Douanière",
+    description: "Découvrez comment l'IA prédictive et la computer vision optimisent le transport de marchandises, réduisent les délais portuaires et automatisent la conformité douanière.",
+    durationMin: 15,
+    steps: [
+      "Le commerce international repose sur des chaînes logistiques complexes, impliquant de multiples acteurs, modes de transport et réglementations.",
+      "L'IA prédictive analyse les données météo, le trafic maritime et les temps d'attente portuaires pour optimiser les itinéraires de fret multimodal et anticiper les retards.",
+      "La vision par ordinateur et le traitement de documents par IA (IDP) automatisent la lecture des manifestes de cargaison, des connaissements (Bill of Lading) et la classification douanière (codes SH/HS).",
+      "Règle clé : L'automatisation des déclarations d'import-export par IA doit toujours intégrer une boucle de validation humaine (Human-in-the-Loop) pour éviter des amendes douanières coûteuses."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour configurer un assistant IA de conformité douanière chargé de classifier des produits selon le système harmonisé (codes HS) et de vérifier la liasse documentaire d'importation.",
+      systemTemplate: "Vérification documentaire, conformité douanière internationale et classification SH.",
+      placeholderText: "Saisissez les caractéristiques du produit et les documents de transport...",
+      exampleSolution: "Agis en tant que transitaire et expert douanier international. Rédige des instructions de classification automatique pour un catalogue de 10 composants électroniques et textiles. Le tuteur IA doit analyser chaque description de produit, proposer le code SH (HS code) à 6 chiffres le plus probable, et lister les documents obligatoires requis à l'importation en Union Européenne pour ces marchandises."
+    }
+  },
+  {
+    id: "tr_l2",
+    title: "Market Intelligence : Analyse Prédictive des Prix et de la Demande Globale",
+    description: "Apprenez à croiser des données macroéconomiques, des signaux géopolitiques et des cours de matières premières pour identifier de nouveaux marchés d'export.",
+    durationMin: 17,
+    steps: [
+      "Le market intelligence international permet de détecter de nouvelles opportunités d'exportation et de négocier les meilleurs contrats d'approvisionnement.",
+      "L'IA analyse en temps réel les fluctuations des cours des matières premières, les indices de fret (comme le Baltic Dry Index) et les tendances de consommation locales.",
+      "Des modèles d'apprentissage automatique permettent de simuler l'élasticité de la demande face à des hausses de tarifs douaniers ou des barrières non tarifaires.",
+      "L'analyse de sentiment sémantique sur les actualités géopolitiques permet d'évaluer le risque-pays et d'ajuster les stratégies de couverture de change."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "tr_q2",
+      question: "Comment un importateur-exportateur peut-il utiliser au mieux l'IA prédictive pour réduire le risque lié à la volatilité des cours du fret maritime ?",
+      options: [
+        { text: "En entraînant des modèles prédictifs sur l'historique des indices de fret (ex. Shanghai Containerized Freight Index) croisés avec la saisonnalité et les prévisions de capacité des navires pour optimiser les moments d'achat de contrats à terme.", isCorrect: true },
+        { text: "En demandant à l'IA de deviner l'avenir par tirage de cartes de tarot virtuel.", isCorrect: false },
+        { text: "En attendant le dernier moment pour réserver des conteneurs au tarif spot sans aucune analyse de marché.", isCorrect: false },
+        { text: "En supprimant tous les abonnements aux revues maritimes internationales pour faire des économies d'échelle.", isCorrect: false }
+      ],
+      explanation: "Superbe ! Le croisement de l'historique des indices de fret avec des données de capacité (offres/demandes) et des modèles prédictifs permet de sécuriser des tarifs optimaux et de planifier les approvisionnements à l'export avec un coup d'avance."
+    }
+  },
+  {
+    id: "tr_l3",
+    title: "Négociation Interculturelle & Traduction Commerciale Souveraine",
+    description: "Déployez l'IA pour adapter vos contrats de distribution, localiser vos offres commerciales et négocier avec des partenaires mondiaux dans le respect des cultures d'affaires.",
+    durationMin: 16,
+    steps: [
+      "La réussite à l'export repose sur la capacité à communiquer de manière fluide et respectueuse avec des partenaires de cultures d'affaires radicalement différentes.",
+      "Les grands modèles de langage ne traduisent pas seulement les mots : ils adaptent le niveau de formalité (ex. Keigo au Japon), les tournures stylistiques et l'argumentaire commercial.",
+      "Pour des raisons de confidentialité stratégique, privilégiez le traitement de vos accords de distribution ou de vos réponses à appels d'offres internationaux via des modèles d'IA souverains ou sécurisés localement.",
+      "Conseil de négociation : Utilisez l'IA pour simuler des jeux de rôles de négociation afin d'anticiper les contre-arguments de vos acheteurs étrangers."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour un simulateur de négociation commerciale internationale croisant les coutumes d'affaires de deux pays.",
+      systemTemplate: "Simulation de négociation commerciale internationale et alignement culturel.",
+      placeholderText: "Saisissez les termes clés de votre contrat et les cultures d'affaires concernées...",
+      exampleSolution: "Agis en tant qu'acheteur de grande distribution au Japon. Simule une négociation de contrat d'approvisionnement de vin français. Adopte un ton très formel, respectueux mais ferme sur les critères de régularité d'approvisionnement et de contrôle de qualité. Réponds à mes propositions de prix en mettant en avant les risques logistiques d'expédition maritime longue distance."
+    }
+  }
+];
+
+export const tradeExtraLessonsData = [
+  { title: "Détection automatique des fraudes documentaires sur les lettres de crédit", desc: "Utilisez des modèles de vision et de NLP pour analyser les écarts critiques dans les connaissements maritimes et prévenir les risques bancaires internationaux." },
+  { title: "Optimisation de la tarification d'exportation dynamique par IA", desc: "Déterminez le prix optimal de vente (Incoterms FOB/CIF) d'un produit sur 15 marchés cibles en analysant les droits de douane locaux et le pouvoir d'achat." },
+  { title: "Classification automatique SH des marchandises à grande échelle", desc: "Déployez des pipelines d'enrichissement de données pour attribuer des codes douaniers harmonisés à des dizaines de milliers de références d'import-export." },
+  { title: "Analyse prédictive des risques de congestion portuaire", desc: "Optimisez la date de chargement de vos conteneurs en prévoyant les goulots d'étranglement logistiques sur les hubs maritimes majeurs (Singapour, Rotterdam, Shanghai)." },
+  { title: "IA & Rédaction de contrats de distribution internationaux sécurisés", desc: "Générez des ébauches d'accords d'exclusivité ou de contrats d'agent commercial international conformes aux règles de la Chambre de Commerce Internationale (CCI)." },
+  { title: "Suivi géospatial en temps réel des flottes de cargos et prévision d'ETA", desc: "Exploitez les données des balises AIS combinées à l'IA pour obtenir des heures d'arrivée prévisionnelles fiables face aux perturbations climatiques." },
+  { title: "Audit de conformité éthique et environnementale de la chaîne d'approvisionnement", desc: "Analysez automatiquement les rapports de responsabilité sociale des entreprises (RSE) de vos sous-traitants d'importation directs pour éviter le travail forcé." },
+  { title: "Génération automatique de documentations de conformité d'exportation", desc: "Rédigez à grande vitesse vos certificats d'origine, factures consulaires et fiches de données de sécurité multilingues grâce aux modèles génératifs." },
+  { title: "Analyse de sentiment des marchés émergents par écoute des signaux locaux", desc: "Scrapez et analysez sémantiquement les forums et médias régionaux d'Amérique latine ou d'Asie du Sud-Est pour capter l'intérêt d'un nouveau segment de consommation." },
+  { title: "Simulation de l'impact des barrières tarifaires et guerres commerciales", desc: "Créez des modèles de simulation économique pour mesurer l'élasticité de vos marges nettes face à l'instauration soudaine de taxes à l'import." },
+  { title: "Automatisation du rapprochement de factures d'importation multidevises", desc: "Utilisez l'IA pour valider les factures de fret, de stockage et d'assurance en devises étrangères en éliminant les erreurs de conversion de taux de change." },
+  { title: "Modélisation prédictive de la demande d'importation agroalimentaire", desc: "Prévoyez les besoins d'import de matières premières agricoles en corrélant l'indice NDVI des cultures locales et les prévisions météo à moyen terme." },
+  { title: "Optimisation des opérations de couverture de change assistée par IA", desc: "Analysez les signaux des marchés des devises pour déterminer les moments clés de signature de vos contrats de change à terme (options, swaps)." },
+  { title: "IA-Augmentée pour le sourcing de fournisseurs alternatifs en zone franche", desc: "Trouvez et évaluez instantanément la solidité financière et la réputation de fournisseurs de substitution en cas de blocage d'une route d'approvisionnement." },
+  { title: "Analyse prédictive des retards douaniers aux frontières terrestres", desc: "Estimez le temps de passage de vos camions aux douanes de corridors terrestres majeurs pour adapter l'ordonnancement de vos usines." },
+  { title: "Optimisation des flux de retours et logistique inverse internationale", desc: "Utilisez l'IA pour décider s'il est plus rentable de rapatrier, réparer localement ou liquider des marchandises défectueuses expédiées à l'étranger." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA & Commerce International", desc: "Validez vos compétences sur l'optimisation douanière, le market intelligence et la logistique de fret internationale pour obtenir votre diplôme d'élite." }
+];
+
 export const baseFinanceLessons: Lesson[] = [
   {
     id: "fn_l1",
@@ -2998,7 +3083,7 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : courseId === "ai_finance" ? "fn" : courseId === "ai_engineering_mastery" ? "eg" : courseId === "ai_construction_mastery" ? "cn" : courseId === "ai_medicine_mastery" ? "md" : courseId === "ai_ngo_mastery" ? "ng" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : courseId === "ai_finance" ? "fn" : courseId === "ai_engineering_mastery" ? "eg" : courseId === "ai_construction_mastery" ? "cn" : courseId === "ai_medicine_mastery" ? "md" : courseId === "ai_ngo_mastery" ? "ng" : courseId === "ai_international_trade_mastery" ? "it" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
@@ -3459,6 +3544,42 @@ function generateCourseLessons(
         goal: "Démontrer que l'IA permet de maximiser l'impact direct par dollar investi tout en respectant une déontologie irréprochable.",
         placeholderText: `Rédigez votre argumentaire d'impact et de déontologie pour ${data.title}...`,
         exampleSolution: `Notre démarche sur "${data.title}" utilise l'IA pour optimiser les tâches administratives complexes de suivi, libérant ainsi plus de temps humain pour l'action directe sur le terrain. Loin de déshumaniser notre mission, cela garantit une transparence absolue auprès de nos bailleurs de fonds et un acheminement plus rapide de l'aide là où les besoins sont les plus urgents, le tout sous le contrôle permanent de nos équipes et dans le respect total de l'éthique.`
+      };
+    }
+    // 6.9. AI IN INTERNATIONAL TRADE
+    else if (courseId === "ai_international_trade_mastery" || lowerTitle.includes("trade") || lowerTitle.includes("commerce") || lowerTitle.includes("export") || lowerTitle.includes("import") || lowerTitle.includes("douane") || lowerTitle.includes("logistique") || lowerTitle.includes("fret") || lowerTitle.includes("maritime") || lowerTitle.includes("transit") || lowerTitle.includes("incoterms") || lowerTitle.includes("port") || lowerTitle.includes("sh code")) {
+      steps = [
+        `Ce module spécialisé sur "${data.title}" explore la révolution de l'intelligence artificielle appliquée au commerce international, à la gestion douanière et aux chaînes logistiques transfrontalières (Supply Chain).`,
+        `Pour fluidifier et sécuriser vos flux d'import-export : 1. Déployez des modèles prédictifs pour optimiser les trajets de fret multimodal et anticiper les embouteillages portuaires ; 2. Utilisez le traitement automatique de documents (IDP) pour automatiser la classification des codes douaniers SH (Système Harmonisé) ; 3. Utilisez des modèles d'analyse de données globales pour simuler l'élasticité de la demande face aux variations de tarifs douaniers et optimiser vos prix de vente selon les Incoterms (FOB, CIF).`,
+        `Les autres applications majeures incluent : 1. L'aide à la négociation commerciale interculturelle via des simulateurs de jeux de rôles IA ; 2. La détection automatique des fraudes documentaires sur les connaissements (Bills of Lading) ; 3. La couverture dynamique des risques de change et de fluctuations monétaires.`,
+        `Règle d'or absolue : L'automatisation des déclarations d'importation avec l'IA doit toujours comporter une boucle de validation humaine (Human-in-the-Loop) afin de parer aux risques de pénalités douanières sévères. Validez l'évaluation ci-contre pour obtenir +50 XP.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'intégration de l'IA pour la gestion douanière liée à : "${data.title}", pourquoi la présence d'un expert en conformité humaine (Human-in-the-Loop) reste-t-elle obligatoire ?`,
+        options: [
+          { text: "Parce que toute erreur de classification de code SH ou d'évaluation douanière expose l'entreprise à des pénalités financières et judiciaires lourdes ainsi qu'au blocage de la marchandise ; l'IA accélère la proposition, mais l'humain valide la conformité légale.", isCorrect: true },
+          { text: "Parce que les modèles d'IA ne savent pas convertir les euros en dollars ou autres monnaies.", isCorrect: false },
+          { text: "Parce que les douaniers refusent d'utiliser des ordinateurs et n'acceptent que le papier à lettres manuscrit.", isCorrect: false },
+          { text: "Parce que la valeur des marchandises doit être mesurée en comptant le nombre d'images de conteneurs analysées.", isCorrect: false }
+        ],
+        explanation: `Excellent ! La conformité douanière internationale est une matière hautement réglementaire. L'IA apporte une aide colossale pour classer automatiquement des milliers d'articles du catalogue, mais la signature et la certification finale incombent à un expert humain certifié pour écarter tout risque légal.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt structuré de classification de produit (code SH) ou de négociation d'Incoterms pour : ${data.title}.`,
+        systemTemplate: `Classification douanière SH, conformité d'import-export et logistique internationale pour : ${data.title}`,
+        placeholderText: `Saisissez vos catégories de produits, pays d'origine et de destination, Incoterms ou nœuds logistiques pour ${data.title}...`,
+        exampleSolution: `Act as a senior customs broker. Write an AI prompt to analyze the physical specifications of an electric vehicle component, determine its most probable 6-digit Harmonized System (HS) code, list the required customs documents for importing it from South Korea into the European Union, and draft a compliance summary.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch d'intégration de l'intelligence logistique prédictive et de l'automatisation douanière devant le comité de direction d'un distributeur mondial : ${data.title}`,
+        audience: "Des directeurs de la chaîne d'approvisionnement (Supply Chain), des directeurs juridiques internationaux et des directeurs financiers.",
+        goal: "Démontrer que l'IA réduit drastiquement les frais de surestaries (demurrage) portuaires et sécurise la conformité fiscale des opérations transfrontalières.",
+        placeholderText: `Rédigez votre pitch d'optimisation de l'import-export pour ${data.title}...`,
+        exampleSolution: `Notre déploiement de l'IA sur "${data.title}" transforme notre logistique internationale en centre de décision prédictif. En automatisant l'audit préliminaire des codes SH et des connaissements, nous divisons par 10 les erreurs administratives douanières, tandis que le reroutage dynamique de nos cargaisons nous protège des retards d'escales, préservant nos marges et assurant une disponibilité parfaite de nos produits en rayon.`
       };
     }
     // 7. GENERIC FALLBACK (STILL HIGHLY INTENSE & DETAIL-RICH)

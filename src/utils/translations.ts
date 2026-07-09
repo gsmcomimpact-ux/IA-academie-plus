@@ -2039,6 +2039,62 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
         goal: "A resilient logistics dispatch prompt prioritizing critical medical cargo and flood-safe routes."
       }
     ]
+  },
+  ai_international_trade_mastery: {
+    title: "AI & International Trade: Supply Chain & Cross-Border Logistics",
+    description: "Become an expert in AI-driven international commerce: optimize multimodal shipping routes, automate customs classification (HS codes), conduct global market intelligence, and master cross-border negotiation.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "tr_l1",
+        title: "AI & International Supply Chain Optimization & Customs Compliance",
+        description: "Discover how predictive AI and computer vision optimize goods transportation, reduce port delays, and automate customs compliance.",
+        steps: [
+          "International trade depends on highly complex logistics chains, involving multiple actors, transport modes, and local regulations.",
+          "Predictive AI analyzes weather data, marine traffic, and port congestion to optimize multimodal freight routes and preemptively mitigate delays.",
+          "Computer vision and Intelligent Document Processing (IDP) automate reading manifests, bills of lading, and classifying Harmonized System (HS) codes.",
+          "Key Rule: Automating import-export declarations with AI must always include a human verification loop (Human-in-the-Loop) to prevent costly customs penalties."
+        ],
+        activityInstructions: "Write a prompt to configure an AI customs compliance assistant tasked with classifying electronic components into Harmonized System (HS) codes and checking document lists.",
+        scenario: "Automating international customs paperwork and compliance verification.",
+        audience: "Freight forwarders, logistics managers, and import-export compliance specialists.",
+        goal: "An automated classification assistant proposal with 6-digit HS codes and standard EU import requirements lists."
+      },
+      {
+        id: "tr_l2",
+        title: "Market Intelligence: Predictive Modeling of Global Prices & Demand",
+        description: "Learn to cross-reference macroeconomic metrics, geopolitical signals, and commodity prices to spot lucrative new export markets.",
+        steps: [
+          "Global market intelligence allows exporters to detect emerging demand and negotiate optimal purchasing agreements.",
+          "AI models analyze real-time commodity fluctuations, ocean freight indexes (e.g., Baltic Dry Index), and localized consumer demand signals.",
+          "Machine learning models simulate demand elasticity under fluctuating customs tariffs or non-tariff barriers.",
+          "Geopolitical sentiment analysis on global news feeds helps assess sovereign risk and refine foreign exchange hedging."
+        ],
+        quizQuestion: "How can an import-export professional best use predictive AI to reduce risks from volatile ocean freight shipping rates?",
+        quizOptions: [
+          "By training predictive models on historical freight indexes (e.g., Shanghai Containerized Freight Index) crossed with capacity forecasts to optimize shipping futures contract timing.",
+          "By asking AI to divine future spot rates using virtual tarot card readings.",
+          "By waiting until the last second to book containers at high spot prices without any market analysis.",
+          "By cancelling all maritime industry intelligence subscriptions to save minor overhead."
+        ],
+        explanation: "Excellent! Correlating historical freight indexes with ocean carrier capacity and predictive AI models lets logistics teams lock in optimal contracts and plan exports ahead of market spikes."
+      },
+      {
+        id: "tr_l3",
+        title: "Intercultural Negotiation & Sovereign Commercial Translation",
+        description: "Deploy AI to adapt distribution agreements, localize sales proposals, and negotiate with global partners while respecting local business customs.",
+        steps: [
+          "Succeeding in export markets requires communicating smoothly and respectfully with partners who hold highly diverse business norms.",
+          "Large language models do not just translate words: they adapt levels of formality (e.g., Japanese Keigo), stylistic nuances, and business rhetoric.",
+          "For strategic confidentiality reasons, prioritize processing distribution contracts and international RFP responses via sovereign or secure offline local AI models.",
+          "Negotiation Tip: Use AI as an interactive roleplay simulator to anticipate counterarguments from foreign buyers."
+        ],
+        activityInstructions: "Write a prompt for an international commercial negotiation simulator crossing business customs between two countries.",
+        scenario: "Preparing for high-stakes trade negotiations with overseas distributors.",
+        audience: "Export sales managers, international business developers, and legal advisors.",
+        goal: "A negotiation simulator prompt adopting appropriate business etiquette, formal language, and regional constraints."
+      }
+    ]
   }
 };
 
@@ -2601,6 +2657,25 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Predictive Food Vulnerability Modeling for Rural Households", desc: "Forecast lean periods by analyzing local agricultural market price indices and NDVI crop states." },
     { title: "Optimizing Volunteer Schedules via Semantic Affinity Matching", desc: "Match international volunteer skill sets with high-priority needs flagged by local NGO branches." },
     { title: "Final Exam & NGO Management and Humanitarian Action Certification", desc: "Validate your skills in augmented fundraising, NLP-based impact evaluation, and disaster-response logistics." }
+  ],
+  ai_international_trade_mastery: [
+    { title: "Automating Document Fraud Detection on Bills of Lading", desc: "Use computer vision and NLP to scan shipping bills and letters of credit for discrepancies." },
+    { title: "Dynamic Export Pricing Optimization using AI", desc: "Set optimal IncoTerms pricing (FOB/CIF) across dozens of target markets under local tariff forecasts." },
+    { title: "Large-Scale Automated Harmonized System (HS) Product Classification", desc: "Implement AI classification workflows to map tens of thousands of catalog items for import/export." },
+    { title: "Predicting Global Port Congestion Patterns using AI", desc: "Optimize your ocean container dispatch timing by modeling cargo throughput and delays at major global hubs." },
+    { title: "AI-Generated International Distribution Agreements", desc: "Draft secure, localized exclusivity agreements aligning with ICC Incoterms standards." },
+    { title: "Spatio-Temporal Tracking of Ocean Liners and Live ETA Modeling", desc: "Correlate maritime AIS beacons with weather models to predict arrival times precisely." },
+    { title: "Ethical & Environmental ESG Supply Chain Auditing via NLP", desc: "Audit supplier disclosures and factory records automatically to ensure human rights compliance." },
+    { title: "Automated Multilingual Export Compliance Documentation", desc: "Compile certificates of origin and customs dossiers instantly across multiple target-market languages." },
+    { title: "Social Media Listening & Sentiment Analysis for Emerging Markets", desc: "Scan regional forums and local news to detect organic demand for export segments." },
+    { title: "Simulating Geopolitical Trade Wars & Tariff Shocks via AI", desc: "Run macroeconomic simulations to measure how sudden tariff changes impact global trade margins." },
+    { title: "Automating Multi-Currency Freight Invoice Reconciliation", desc: "Reconcile discrepancies between carrier freight bills and forwarder quotes across various currencies." },
+    { title: "Predictive Import Demand Modeling for Agrifood Commodities", desc: "Forecast import needs by training neural networks on satellite crop indexes and climate projections." },
+    { title: "FX Hedging and Currency Risk Mitigation Advisory", desc: "Analyze currency trends to recommend structural times for forward contract hedging." },
+    { title: "AI-Augmented Sourcing for Alternative Zone-Franche Suppliers", desc: "Locate and score replacement suppliers instantly when regular channels face trade route blockages." },
+    { title: "Predictive Customs Delays at Terrestrial Border Corridors", desc: "Model border crossing durations to coordinate factory inventory and warehouse scheduling." },
+    { title: "Optimizing Return Flows & Cross-Border Reverse Logistics", desc: "Compute optimal decisions to ship back, destroy, or repair defective items overseas." },
+    { title: "Final Exam & International Trade and Cross-Border Logistics Master", desc: "Validate your skills in customs optimization, global logistics, and market intelligence to obtain your certification." }
   ]
 };
 
@@ -2827,6 +2902,42 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
       goal: `Demonstrate how AI maximizes direct aid per dollar spent while maintaining immaculate data security and human empathy.`,
       placeholderText: `Draft your ethical social impact pitch for ${title}...`,
       exampleSolution: `Our integration of AI for "${title}" is designed to automate complex tracking tasks, shifting hours back to active, direct care on the ground. Instead of replacing the human touch, we use advanced analytics to ensure complete transparency for our backers and rapid assistance for those who need it most, all within a strictly secure, ethics-first framework.`
+    };
+  }
+  // 1.10. AI IN INTERNATIONAL TRADE
+  else if (courseId === "ai_international_trade_mastery" || lowerTitle.includes("trade") || lowerTitle.includes("commerce") || lowerTitle.includes("export") || lowerTitle.includes("import") || lowerTitle.includes("customs") || lowerTitle.includes("logistics") || lowerTitle.includes("freight") || lowerTitle.includes("shipping") || lowerTitle.includes("transit") || lowerTitle.includes("cargo") || lowerTitle.includes("incoterms") || lowerTitle.includes("port") || lowerTitle.includes("hs code")) {
+    steps = [
+      `Artificial intelligence, computer vision, and predictive logistics models are reshaping the field of international trade and global cross-border transactions.`,
+      `In logistics and route planning, predictive AI monitors maritime traffic, weather indexes, and port congestion in real-time to adjust multimodal freight routes and optimize delivery times dynamically.`,
+      `In regulatory compliance, Intelligent Document Processing (IDP) and computer vision automate the classification of Harmonized System (HS) codes and parse complex bills of lading, drastically speeding up customs declarations.`,
+      `In market intelligence and price negotiations, machine learning models analyze global commodities indexes, ocean freight spot rates, and localized demand trends to help import-export teams make data-driven decisions and hedge currency risks.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: `In international trade operations related to: "${title}", why is a "Human-in-the-Loop" validation model absolutely essential for customs compliance?`,
+      options: [
+        { text: "Because customs errors carry severe administrative and financial penalties; AI speeds up classification, but human compliance officers must certify HS codes to prevent cargo seizures.", isCorrect: true },
+        { text: "Because AI models are physically incapable of reading barcode numbers on cardboard boxes.", isCorrect: false },
+        { text: "Because customs departments will only accept documentation printed on heavy physical cards using hand-signed calligraphy.", isCorrect: false },
+        { text: "Because import tariffs are calculated automatically by measuring the weight of local server racks in the harbor.", isCorrect: false }
+      ],
+      explanation: "Perfect! Customs departments demand absolute compliance. While AI can analyze and recommend 6-digit or 10-digit HS codes for thousands of items in seconds, final human review prevents expensive non-compliance, duties errors, and shipping holds."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write a prompt commanding the AI to act as an International Trade Advisor or Customs Compliance Officer for: ${title}.`,
+      systemTemplate: `Customs HS code classification, freight route analysis, and trade negotiation support for: ${title}`,
+      placeholderText: `Specify products, import-export parameters, Incoterms, or logistics hubs for ${title}...`,
+      exampleSolution: `Act as an Import-Export Compliance Specialist. Write a prompt to classify a shipment of lithium-ion batteries under the Harmonized System. Provide the correct HS code prefix, check the list of certificates of origin required for entry into France, and draft a compliance cover letter for the customs agent.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching predictive supply-chain intelligence and automated HS-code auditing to a global distributor's board.`,
+      audience: `Chief Supply Chain Officers, logistics directors, and international legal counsels.`,
+      goal: `Demonstrate how real-time route optimization and automated compliance audits minimize port demurrage fees and reduce operational risk.`,
+      placeholderText: `Draft your import-export and logistics optimization pitch for ${title}...`,
+      exampleSolution: `By deploying predictive AI models for "${title}", we transition from a reactive posture to a proactive command of our global supply chain. Automatically auditing HS codes reduces compliance errors by 90% while real-time routing bypasses congested ports, preserving our gross margins and eliminating costly demurrage fees.`
     };
   }
   // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, Runway, Sora, voice, HeyGen, etc.)
@@ -3263,7 +3374,7 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
             translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
           }
 
-          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : course.id === "ai_finance" ? "fn" : course.id === "ai_engineering_mastery" ? "eg" : course.id === "ai_construction_mastery" ? "cn" : course.id === "ai_medicine_mastery" ? "md" : course.id === "ai_ngo_mastery" ? "ng" : "fr";
+          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : course.id === "ai_finance" ? "fn" : course.id === "ai_engineering_mastery" ? "eg" : course.id === "ai_construction_mastery" ? "cn" : course.id === "ai_medicine_mastery" ? "md" : course.id === "ai_ngo_mastery" ? "ng" : course.id === "ai_international_trade_mastery" ? "it" : "fr";
 
           // Delegate to the elite English analyzer just like in French!
           const elite = getDetailedAIStepsAndQuizEN(translatedTitle, course.id, prefix, lessonNum);

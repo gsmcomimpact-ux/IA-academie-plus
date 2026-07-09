@@ -293,7 +293,7 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
             IA
           </div>
           <span className="font-sans font-black text-xl tracking-tight bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent">
-            IA Académie
+            {lang === "fr" ? "IA Académie" : "AI Academy"}
           </span>
           <span className="text-[9px] uppercase font-mono tracking-widest bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-850">
             Plus
