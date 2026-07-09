@@ -1815,6 +1815,230 @@ export const ENGLISH_COURSES_TRANSLATIONS: Record<string, TranslatedCourseConten
         goal: "A strict metrics-focused Investment Memo outlining core risks."
       }
     ]
+  },
+  ai_engineering_mastery: {
+    title: "AI & Modern Engineering: CAD, Simulation & Predictive Maintenance",
+    description: "Master the real-world applications of AI in engineering and industry: CAD generative design, digital twins, physics-informed neural networks (PINNs), sensor signal processing, and predictive maintenance.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "eg_l1",
+        title: "Introduction to AI in Engineering & Parametric Design",
+        description: "Understand how AI is revolutionizing industrial design, computer-aided design (CAD), and automatic geometric optimization.",
+        steps: [
+          "Modern engineering integrates AI to push the boundaries of generative design and topological optimization of physical parts.",
+          "Instead of manually drawing every component, engineers specify load, material, and weight constraints, letting neural networks generate ultra-lightweight organic structures.",
+          "Integrating pre-trained models into CAD software (such as Fusion 360 or SolidWorks) allows instant mechanical strength estimation without launching heavy finite element analysis (FEA) simulations.",
+          "Tip: AI does not replace the engineer, but multiplies their creative exploration capability by suggesting hundreds of standard-compliant variations in minutes."
+        ],
+        activityInstructions: "Draft a prompt describing the generative design criteria for a mechanical part subjected to high loads (e.g., an aluminum suspension arm).",
+        scenario: "Automating topological optimization specs for aerospace and automotive parts.",
+        audience: "Mechanical engineers, R&D designers, and product developers.",
+        goal: "A semantic CAD specification sheet with load limits and weight reduction targets."
+      },
+      {
+        id: "eg_l2",
+        title: "Physics-Informed Neural Networks (PINNs) & Fluid Simulation",
+        description: "Discover how embedding the laws of physics directly into machine learning architectures accelerates CFD simulations by 1000x.",
+        steps: [
+          "Classical numerical simulations (CFD, FEA) rely on solving complex partial differential equations that require hours of computation on supercomputers.",
+          "Physics-Informed Neural Networks (PINNs) integrate physical equations (such as Navier-Stokes or heat transfer equations) directly into their loss function.",
+          "This enables real-time fluid flow or temperature gradient predictions, ideal for aerodynamics, engine thermal optimization, or turbines.",
+          "These hybrid models guarantee that AI outputs strictly respect the fundamental principles of conservation of mass, energy, and momentum, preventing physical hallucinations."
+        ],
+        quizQuestion: "What is the defining characteristic of a Physics-Informed Neural Network (PINN)?",
+        quizOptions: [
+          "It integrates classical physics equations (like Navier-Stokes or elasticity laws) into its loss function to force learning to respect universal laws.",
+          "It simulates weightlessness directly within the computer's graphics card memory.",
+          "It replaces computing electricity with thermal or hydraulic energy flow.",
+          "It strictly prohibits the use of Python programming language, allowing only paper equations."
+        ],
+        explanation: "Exactly! By incorporating physical equations into the Loss Function, PINNs guarantee mathematically and physically consistent results with reality, while reducing computation time from hours to milliseconds."
+      },
+      {
+        id: "eg_l3",
+        title: "Predictive Maintenance & Industrial Sensor Signal Processing",
+        description: "Learn to design early failure detection models for industrial machinery by analyzing vibration and anomaly data of rotating equipment.",
+        steps: [
+          "Predictive maintenance aims to anticipate machine failures (e.g., compressors, motors, wind turbines) before they occur, reducing production downtime to zero.",
+          "Vibration sensors (accelerometers), temperature sensors, and electric current meters transmit continuous time-series data streams to predictive analysis models.",
+          "AI algorithms (such as autoencoders or unsupervised learning models) learn the nominal behavior of a machine and detect tiny anomalies invisible to the human eye.",
+          "Spectral analysis (Fast Fourier Transform or FFT) decomposes vibration frequencies to identify if a defect stems from a worn ball bearing or shaft misalignment."
+        ],
+        activityInstructions: "Write a detailed prompt for an autonomous industrial maintenance agent to diagnose a defect on a hydraulic pump based on abnormal 120 Hz vibrations.",
+        scenario: "Synthesizing real-time sensor logs to schedule preventive maintenance.",
+        audience: "Industrial maintenance leads, electrical engineers, and factory operators.",
+        goal: "A step-by-step diagnostic report diagnosing shaft or bearing defects with emergency procedures."
+      }
+    ]
+  },
+  ai_construction_mastery: {
+    title: "AI & Building and Public Works: BIM Design, Planning & Safety",
+    description: "Master the applications of AI in construction and civil engineering: smart BIM modeling, automatic clash detection, predictive Gantt scheduling, drone tracking, and computer vision safety.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "cn_l1",
+        title: "AI & BIM Design: Smart 3D Modeling & Clash Detection",
+        description: "Learn how AI optimizes BIM (Building Information Modeling) pipelines, automates coordination, and detects geometric conflicts between building systems.",
+        steps: [
+          "BIM (Building Information Modeling) centralizes all geometric and technical data of a construction project into a shared 3D digital mock-up.",
+          "AI algorithms analyze mock-ups to automatically identify physical 'clashes' or conflicts, such as a ventilation duct traversing a structural concrete beam.",
+          "Generative AI also automates the layout of complex utility systems (electricity, plumbing, HVAC) while strictly adhering to safety and space standards.",
+          "Tip: Integrating AI with BIM CAD pipelines reduces design errors by 80% before physical site groundbreaking, averting extremely costly delays."
+        ],
+        activityInstructions: "Compose a prompt instructing a BIM audit agent to analyze a 5-story building IFC model to detect plumbing vs. concrete structure conflicts.",
+        scenario: "Ensuring zero mechanical-electrical-plumbing (MEP) conflicts before groundbreaking.",
+        audience: "BIM coordinators, architects, structural engineers, and contractors.",
+        goal: "A structured BIM clash audit report with coordinates and rerouting proposals."
+      },
+      {
+        id: "cn_l2",
+        title: "AI-Powered Construction Planning & Critical Path Management",
+        description: "Discover how AI optimizes construction Gantt schedules, coordinates site logistics, and dynamically adjusts to weather hazards.",
+        steps: [
+          "Scheduling a large-scale construction project requires coordinating hundreds of interdependent tasks, heavy equipment, work crews, and material deliveries.",
+          "AI-assisted planning tools simulate thousands of scheduling scenarios (Monte Carlo method) to assess delay probabilities and safeguard the critical path.",
+          "AI dynamically reschedules concrete pouring tasks by analyzing hyper-local weather forecasts (extreme temperatures, continuous rainfall) in real-time.",
+          "This dynamic scheduling evens out labor workloads, minimizes concrete mixer idling times, and reduces the site's overall carbon footprint."
+        ],
+        quizQuestion: "What is the primary advantage of using AI for dynamic construction site planning?",
+        quizOptions: [
+          "It instantly recalculates the schedule of all building tasks and deliveries based on real-world delivery delays and weather to avoid stopping work.",
+          "It allows concrete walls to be poured entirely virtually without any actual workers on site.",
+          "It replaces physical cement concrete with a virtual social media semantic glue.",
+          "It eliminates the legal requirement to apply for local building permits."
+        ],
+        explanation: "Perfect! The strength of AI lies in its ability to adapt in real-time to unforeseen site events (supply chain delays, weather anomalies, equipment breakdowns), instantly recalculating the critical path to minimize financial penalties."
+      },
+      {
+        id: "cn_l3",
+        title: "Computer Vision Site Tracking & Worker Safety",
+        description: "Master the use of site cameras and drones to track physical progress and guarantee PPE compliance.",
+        steps: [
+          "Traditional progress tracking relies on manual superintendent reports, which are often subjective and slow to consolidate.",
+          "Fixed site cameras and regular drone flights capture high-definition photographs and 3D point clouds of the construction site in real-time.",
+          "Computer vision models compare these captures to the reference BIM model to automatically validate the percentage of concrete walls or facades completed.",
+          "Furthermore, object detection neural networks analyze live feeds to detect safety gear compliance, such as hard hats or high-visibility vests."
+        ],
+        activityInstructions: "Write a detailed prompt to instruct a computer vision model to analyze a bridge construction live video feed for PPE harness compliance.",
+        scenario: "Enforcing zero-accident safety compliance and automated progress tracking.",
+        audience: "Site superintendents, safety officers, and construction project managers.",
+        goal: "Real-time safety alerts for missing harnesses alongside automated progress metrics."
+      }
+    ]
+  },
+  ai_medicine_mastery: {
+    title: "AI & Medicine and Research: Clinical Diagnostics & Bioinformatics",
+    description: "Become an expert in AI-assisted healthcare and scientific research: analyze clinical signals, master medical imaging, protein folding (AlphaFold), rational drug discovery, and sovereign medical NLP.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "md_l1",
+        title: "Introduction to AI in Medicine & Clinical Diagnostics",
+        description: "Understand how AI and medical imaging revolutionize clinical diagnostics, early disease detection, and clinical decision support.",
+        steps: [
+          "Modern medicine integrates AI to analyze medical images (MRIs, X-rays) with precision matching or sometimes exceeding human experts.",
+          "Instead of a simple binary diagnosis, AI segments anomalies, quantifies lesion volumes, and generates heatmaps highlighting areas of clinical interest.",
+          "Integrating Deep Learning algorithms into radiology workflows helps sort scans by urgency, prioritizing critical cases for rapid review by radiologists.",
+          "Tip: AI does not replace physicians but acts as an incredibly vigilant second-look assistant, significantly reducing fatigue-related diagnostic errors."
+        ],
+        activityInstructions: "Write a prompt describing a semantic specification to configure an AI second-look assistant in radiological lung nodule detection.",
+        scenario: "Configuring computer-vision diagnostic aids in clinical radiology departments.",
+        audience: "Radiologists, clinical AI coordinators, and hospital department heads.",
+        goal: "A high-performance prompt specifying sensitivity thresholds and standardized reporting outputs."
+      },
+      {
+        id: "md_l2",
+        title: "AI & Scientific Research: Protein Folding and Drug Discovery",
+        description: "Discover how AI solves the protein folding challenge and designs novel virtual therapeutic molecules in record time.",
+        steps: [
+          "Historically, drug discovery took over 10 years and billions of dollars, mainly due to slow, empirical in-vitro experiments.",
+          "With advanced predictive AI models, researchers can now simulate molecular docking interactions for millions of virtual compounds in a few hours.",
+          "AI also solved the 50-year-old protein folding problem, predicting 3D amino acid structures at atomic scale to identify new therapeutic targets.",
+          "De Novo Drug Design generative tools create entirely new molecules optimized to block pathogenic proteins while minimizing cellular toxicity."
+        ],
+        quizQuestion: "Which landmark AI system revolutionized structural biology by predicting 3D protein structures with high accuracy?",
+        quizOptions: [
+          "AlphaFold by Google DeepMind, which predicts the 3D structure of proteins from their amino acid sequence.",
+          "A spreadsheet making sales charts for pharmaceutical boxes.",
+          "A simple image generator designed to paint creative medicine packaging.",
+          "A software option to disable all chemical hydrogen bonds in a sample."
+        ],
+        explanation: "Perfect! AlphaFold resolved one of the greatest challenges of modern biology: predicting 3D protein structures in minutes, opening the door to rapid rational design of targeted therapies."
+      },
+      {
+        id: "md_l3",
+        title: "Clinical NLP & Electronic Health Records (EHR) Structuring",
+        description: "Learn to use Natural Language Processing (NLP) to transcribe, structure, and summarize clinical consultation reports.",
+        steps: [
+          "On average, doctors spend one-third of their working time typing into electronic health records instead of interacting with patients.",
+          "Medical NLP converts spoken dictations into structured clinical notes, automatically indexing medical history, symptoms, and prescriptions.",
+          "AI extracts standardized clinical concepts (ICD-10, SNOMED-CT codes) from free text, simplifying hospital administration and epidemiological studies.",
+          "Security Rule: Medical data is subject to strict privacy regulations (GDPR / HIPAA). Using clinical AI demands secure, sovereign, and anonymized computing environments."
+        ],
+        activityInstructions: "Write a prompt to structure rough, abbreviated clinical consultation notes into a highly professional hospital-grade consultation report.",
+        scenario: "Automating clinical scribe systems to reduce administrative burdens.",
+        audience: "Medical scribes, general practitioners, and clinical informatics specialists.",
+        goal: "A clinical NLP prompt that structures raw notes and extracts standardized medical sections."
+      }
+    ]
+  },
+  ai_ngo_mastery: {
+    title: "AI & NGO Management and Humanitarian Action",
+    description: "Become an expert in augmented social impact: optimize fundraising campaigns, analyze qualitative field reports (M&E) via NLP, plan disaster-response logistics, and map local vulnerabilities.",
+    difficulty: "Advanced",
+    lessons: [
+      {
+        id: "ng_l1",
+        title: "AI & Donor Relations: Optimizing Fundraising Campaigns",
+        description: "Discover how predictive and generative AI revolutionize fundraising: write compelling appeals, segment donor bases, and forecast giving churn.",
+        steps: [
+          "Modern fundraising relies on personalized outreach at scale, a highly time-consuming task for small-staffed NGO teams.",
+          "AI models analyze historical giving patterns to flag recurring donors ready for upgrade and detect subtle signals of donor attrition (churn).",
+          "Large language models customize appeal tones and emotional angles instantly, whether targeting institutional backers, corporate sponsors, or small individual donors.",
+          "Golden Rule: AI helps optimize channels and drafts, but the raw authenticity of field-proven impact remains the soul of humanitarian engagement."
+        ],
+        activityInstructions: "Write a prompt to configure an AI donor relations coordinator that drafts a personalized appreciation and donation upgrade letter.",
+        scenario: "Optimizing recurring donor acquisition and retention campaigns.",
+        audience: "Fundraising directors, NGO communication leads, and donor relationship coordinators.",
+        goal: "An elegant, impact-focused letter draft that warmly proposes a recurring monthly pledge upgrade."
+      },
+      {
+        id: "ng_l2",
+        title: "Monitoring & Evaluation (M&E): Qualitative Field Insights via NLP",
+        description: "Learn to use Natural Language Processing to synthesize hundreds of field journals and extract structured indicators.",
+        steps: [
+          "Monitoring & Evaluation is vital to justify public or private grant allocations to international aid institutions.",
+          "Field reports contain invaluable qualitative stories (verbatims, successes, hurdles) which are often left unread due to sheer document volume.",
+          "NLP categorizes these unstructured text blocks to extract recurring themes, track program adherence, and measure beneficiary satisfaction.",
+          "Combining semantic analysis with local maps allows NGOs to visualize areas of project excellence vs logistical bottlenecks."
+        ],
+        quizQuestion: "Which NLP technique helps automatically identify major topics and key beneficiary quotes from 500 free-text field reports?",
+        quizOptions: [
+          "Unsupervised topic modeling paired with Named Entity Recognition (NER) to isolate themes and qualitative impact statements.",
+          "Simply increasing the font size in your PDF reader to scroll faster.",
+          "Forcing local field companions to translate all qualitative stories into mathematical equations.",
+          "Deleting the text columns entirely to save storage space."
+        ],
+        explanation: "Perfect! Topic modeling and Named Entity Recognition allow researchers to synthesize thousands of narrative records automatically, turning qualitative feedback into hard proof of social impact."
+      },
+      {
+        id: "ng_l3",
+        title: "AI & Humanitarian Logistics: Disaster-Response Emergency Routing",
+        description: "Explore predictive models and constraint optimizers to coordinate supply chains and secure disaster-struck zones.",
+        steps: [
+          "During sudden-onset crises, the speed of emergency supply chain responses (food, medicine, shelter) directly dictates lives saved.",
+          "Predictive AI integrates extreme weather projections, live satellite imagery, and cellular data to map blocked corridors and forecast displaced populations.",
+          "Route optimization algorithms dynamically adjust delivery paths to bypass flood zones or insecure regions while maximizing transport efficiency.",
+          "Survival Hint: Always maintain non-technical back-up plans (offline maps, paper ledgers) in case of prolonged local power grid or cellular grid failures."
+        ],
+        activityInstructions: "Write a disaster-response dispatch protocol commanding an AI logistics coordinator to coordinate truck shipments across a flooded region.",
+        scenario: "Coordinating multi-agency emergency responses under high uncertainty.",
+        audience: "Emergency coordinators, humanitarian logistics leads, and local healthcare coordinators.",
+        goal: "A resilient logistics dispatch prompt prioritizing critical medical cargo and flood-safe routes."
+      }
+    ]
   }
 };
 
@@ -2301,6 +2525,82 @@ export const ENGLISH_EXTRA_LESSONS: Record<string, { title: string; desc: string
     { title: "Drafting Asset Allocation and Advisory Reports", desc: "Synthesize macro-sectoral trends and yield curves to guide cash allocation decisions safely." },
     { title: "Building Interactive Google Sheets Dynamic Calculators", desc: "Command the AI to write high-fidelity spreadsheet calculations with complex nested conditions." },
     { title: "Final Assessment & Certified AI Financial Analyst Exam", desc: "Validate your technical mastery in financial modeling, dashboard automation, and ledger auditing." }
+  ],
+  ai_engineering_mastery: [
+    { title: "Optimizing Plastic Injection via AI and Thermal Networks", desc: "Analyze how AI predicts cooling times and prevents shrinkage or air bubbles in industrial molds." },
+    { title: "Designing Novel Materials with Generative Adversarial Networks (GANs)", desc: "Discover how AI invents metal alloys and lightweight polymers with tailored mechanical characteristics." },
+    { title: "Computing Fatigue Stress via Predictive Regression Models", desc: "Estimate the residual lifetime of a steel structure subjected to repeated cycle loads using machine learning." },
+    { title: "Route Optimization and Logistics Planning in Automated Factories", desc: "Coordinate automated guided vehicle (AGV) fleets to eliminate bottlenecks and maximize throughput." },
+    { title: "Modeling AI-Synchronized Digital Twins", desc: "Connect real-time factory sensor streams to a predictive 3D model to simulate risk-free operations." },
+    { title: "Visual Servoing of Robot Arms via Reinforcement Learning", desc: "Train industrial robots to sort and manipulate bulk parts with continuous millimeter precision." },
+    { title: "Automatic Electronic Board Thermal Diagnostics via AI Infrared Vision", desc: "Use computer vision to instantly identify overheating components or dry solder joints on circuits." },
+    { title: "Active Learning-Assisted Wind Tunnel Test Planning", desc: "Optimize your wind tunnel test matrices to reach the ideal drag coefficient (Cd) with minimal physical runs." },
+    { title: "Intelligent Chemical Reactor Control via Fuzzy Logic and Deep Learning", desc: "Maintain optimal chemical conversion rates while predicting and preventing thermal runaway." },
+    { title: "Denoising Vibrational Sensor Signals via Neural Kalman Filters", desc: "Eliminate industrial background noise to isolate pure acoustic signatures revealing machine defects." },
+    { title: "Sheet Metal Laser Cutting Optimization via Nesting Algorithms", desc: "Optimally arrange complex-shaped parts on sheet metal to reduce scrap rates to less than 3%." },
+    { title: "Optical Lens System Design via Generative AI and Ray-Tracing", desc: "Automate lens curvature calculations to correct chromatic aberrations in high-tech imagers." },
+    { title: "Acoustic Analysis of Electric Motors for Early Stator Diagnostics", desc: "Identify electromagnetic anomalies and internal short-circuits via motor acoustic signatures." },
+    { title: "AI-Powered Energy Optimization of Industrial Air Compressors", desc: "Schedule compression systems operation to capitalize on off-peak electricity hours." },
+    { title: "Automatic CAD Bill of Materials (BOM) Extraction via Visual Recognition", desc: "Simplify passage from 3D assemblies to procurement lists by extracting standard specs automatically." },
+    { title: "CNC Tool Wear Monitoring via Acoustic Emission Sensors", desc: "Prevent drill or cutting insert breakages by tracking tool micro-fracture patterns via Deep Learning." },
+    { title: "Final Exam & Modern AI Engineering Certification", desc: "Validate your skills in PINNs, generative CAD, predictive maintenance, and simulation to secure your diploma." }
+  ],
+  ai_construction_mastery: [
+    { title: "Smart Ventilation and Predictive HVAC Balancing in Smart Buildings", desc: "Learn how AI models predict carbon dioxide accumulation and optimize air flow in corporate headquarters." },
+    { title: "Optimizing Eco-Formulations of Ultra-High-Performance Low-Carbon Concrete", desc: "Command the AI to formulate concrete recipes maximizing compression strength while cutting carbon impact." },
+    { title: "Predicting Foundations Settlements via Neural Regressions", desc: "Audit geotechnical reports and soil files to predict future foundation settlements in real-time." },
+    { title: "Autonomous Site Drone Topographic Auditing Pipelines", desc: "Generate high-fidelity orthomosaics and digital elevation models from visual drone flights." },
+    { title: "Thermal Performance Diagnostics of Buildings via Aerial Infrared Vision", desc: "Detect thermal bridges and insulation leaks on large housing portfolios using infrared drone scans." },
+    { title: "Managing Materials Procurement Under High Supply Chain Risks", desc: "Anticipate market supply issues and compute optimal safety stock volumes for structural steel." },
+    { title: "Predicting structural wear and concrete carbonation in bridges", desc: "Track concrete degradation indexes and steel corrosion patterns in marine infrastructure." },
+    { title: "Smart City Infrastructure Planning & Traffic Simulation", desc: "Model how future highways and transit centers integrate into urban hubs under neural traffic simulations." },
+    { title: "Site Noise and Vibration Environmental Monitoring via AI", desc: "Ensure absolute compliance with urban noise laws by automatically classifying construction noise events." },
+    { title: "Predicting Construction Soil Compaction and Quality", desc: "Analyze compactor passes and vibration indices to certify optimal civil engineering soil stabilization." },
+    { title: "Optimizing Tower Crane Positions on Complex High-Rise Sites", desc: "Calculate the mathematical best positions for cranes to minimize blind lifting and overlap risks." },
+    { title: "AI-Powered Cost Estimating & Automated Quantity Takeoff (QTO)", desc: "Extract concrete, steel, and drywall quantities directly from BIM models to draft instant bids." },
+    { title: "Detecting Moisture Intrusion and Mold Risks via Infrared Data", desc: "Leverage machine learning to identify hidden water leaks inside drywall assemblies." },
+    { title: "Optimizing Site Safety Signage and Evacuation Paths", desc: "Simulate emergency crowd flow inside smart building mockups to clear safety routes." },
+    { title: "Predicting Life Cycle Cost (LCC) of Public Infrastructures", desc: "Model long-term operating costs and maintenance schedules of tunnels over 50 years." },
+    { title: "Acoustic Insulation Performance Forecasting for Multi-Family Housing", desc: "Evaluate partition walls compliance with acoustic codes before final execution." },
+    { title: "Final Exam & Certified AI Construction and BTP Master", desc: "Pass the ultimate test on BIM audit, computer vision, and dynamic site scheduling to obtain your certification." }
+  ],
+  ai_medicine_mastery: [
+    { title: "Generative AI for Personalized Therapeutic Dosage Optimization", desc: "Discover how AI dynamically adjusts anticoagulant or chemotherapy doses based on patient biological metrics." },
+    { title: "Predictive Analysis of Immune Response via Genomic Deep Learning", desc: "Explore antibody profiles prediction facing pathogens to accelerate personalized vaccine designs." },
+    { title: "Automatic Brain Tumor Segmentation on MRI via U-Net Neural Networks", desc: "Master three-dimensional millimeter delineation of cancer tissues to guide surgery and radiotherapy." },
+    { title: "Therapeutic Cancer Target Identification via Reinforcement Learning", desc: "See how AI virtually explores millions of biochemical combinations to disrupt tumor replication." },
+    { title: "Summarizing Multicenter Clinical Trial Data via Large Language Models (LLMs)", desc: "Automate medical literature review by extracting biases, cohorts, and statistical significances (p-value)." },
+    { title: "Early Diabetic Retinopathy Detection via Fundus Image Classification", desc: "Analyze how convolutional networks (CNNs) screen retinal micro-aneurysms before visual symptoms appear." },
+    { title: "In-Silico Molecular Simulation for Accelerated Antibiotic Discovery", desc: "Fight antibiotic resistance by screening novel chemical structures lethal to superbugs." },
+    { title: "Transcriptome Analysis via Single-Cell RNA Sequencing (scRNA-seq) and Clustering", desc: "Identify new cellular subpopulations involved in autoimmune diseases using unsupervised machine learning." },
+    { title: "Predicting Post-Operative Hospital Readmission Risk via Gradient Boosting", desc: "Evaluate early complication probabilities from patients' post-operative physiological parameters." },
+    { title: "Minimal Invasive Surgery Support via Real-Time Computer Vision Tracking", desc: "Assist surgeons by overlaying pre-operative 3D imaging references onto live endoscopic video streams." },
+    { title: "Synthetic Patient Data Generation for Privacy-Preserving Clinical Research", desc: "Create highly realistic but completely anonymized medical datasets to train models without data leaks." },
+    { title: "Social Media Pharmacovigilance Signal Detection via NLP", desc: "Identify emerging or undocumented adverse drug reactions by analyzing online patient feedback." },
+    { title: "Oncology Radiotherapy Beam Alignment Optimization via AI", desc: "Maximize destructive dose targeting on tumors while perfectly sparing adjacent healthy structures." },
+    { title: "Modeling Ligand-Receptor Liaison Kinetics via Graph Neural Networks (GNNs)", desc: "Represent molecules as 3D graphs to model docking affinity scores for drug candidates." },
+    { title: "Sperm Motility Analysis via Automated Video Tracking and Deep Learning", desc: "Accelerate male infertility diagnostics by precisely quantifying cell velocities and trajectories." },
+    { title: "Automating Patient Cohort Screening via Semantic Inclusion Criteria", desc: "Screen thousands of health records to instantly identify patients eligible for clinical trials." },
+    { title: "Final Exam & Clinical AI and Research Master Certification", desc: "Pass the ultimate test on clinical diagnostic models, AlphaFold structural biology, and medical ethics." }
+  ],
+  ai_ngo_mastery: [
+    { title: "Optimizing Grant Allocations via Predictive AI", desc: "Discover how AI helps simulate budget scenarios to maximize social impact per dollar spent." },
+    { title: "Analyzing Satellite Imagery via Vision Models for Deforestation Tracking", desc: "Master anomaly-detection pipelines on tree cover to trigger real-time alerts against illegal logging." },
+    { title: "Sovereign Offline Machine Translation for Field Humanitarians", desc: "Deploy lightweight, local AI translation models to break language barriers in refugee camps." },
+    { title: "Predicting Cholera Outbreaks by Correlating Pluviometric and Water Data", desc: "Learn to cross-reference rainfall forecasts with sanitization histories to pre-position rehydration kits." },
+    { title: "AI & High-Impact Grant Proposal Drafting for Global Backers (UN, EU)", desc: "Ensure bulletproof administrative compliance and logical framework alignment for complex funding calls." },
+    { title: "Assessing Micro-Regional Poverty via Satellite Nighttime Light Intensity", desc: "Use Deep Learning to estimate local economic activity in regions lacking formal statistical census data." },
+    { title: "Automating Misinformation and Fake News Detection in Conflict Zones", desc: "Protect your staff and beneficiaries by flagging coordinated destabilization campaigns on local channels." },
+    { title: "Generative Health and Public Safety Educational Material for Local Communities", desc: "Draft illustrated, culturally sensitive brochures translated into regional dialects to promote health guidelines." },
+    { title: "Semantic Analysis of Beneficiary Feedback for Real-Time Program Correction", desc: "Implement anonymous virtual suggestion boxes parsed by AI to detect operational friction or power abuses." },
+    { title: "Predictive Maintenance Planning for Water Wells in Rural Areas", desc: "Analyze telemetry sensor patterns from flow meters to repair water pumps before they fail." },
+    { title: "Optimizing Advocacy Campaigns via Automated Semantic A/B Testing", desc: "Mobilize public opinion more effectively by testing different messaging angles with AI assistance." },
+    { title: "Automatic Processing and Categorization of Decentralized Field Receipts", desc: "Simplify financial audits of regional offices by automatically OCRing and classifying crumpled receipts." },
+    { title: "AI & Ethical De-identification of Vulnerable Beneficiary Visuals", desc: "Apply automated face-blurring and metadata stripping on humanitarian storytelling photos." },
+    { title: "AI-Augmented Crowdsourced Mapping for Informal Settlements", desc: "Collaborate with OpenStreetMap and vision models to delineate informal shelter structures after an earthquake." },
+    { title: "Predictive Food Vulnerability Modeling for Rural Households", desc: "Forecast lean periods by analyzing local agricultural market price indices and NDVI crop states." },
+    { title: "Optimizing Volunteer Schedules via Semantic Affinity Matching", desc: "Match international volunteer skill sets with high-priority needs flagged by local NGO branches." },
+    { title: "Final Exam & NGO Management and Humanitarian Action Certification", desc: "Validate your skills in augmented fundraising, NLP-based impact evaluation, and disaster-response logistics." }
   ]
 };
 
@@ -2383,6 +2683,150 @@ function getDetailedAIStepsAndQuizEN(title: string, courseId: string, prefix: st
       goal: `Present a highly professional, balanced, and risk-adjusted investment opportunity report.`,
       placeholderText: `Present your objective deal recommendation here for ${title}...`,
       exampleSolution: `Cold analysis of unit economics—specifically the LTV/CAC ratio of 4.5x, 92% net revenue retention, and a 24-month runway—demonstrates exceptional growth efficiency. Our AI-driven stress tests suggest the venture achieves profitability even under a 15% increase in customer acquisition cost.`
+    };
+  }
+  // 1.6. AI ENGINEERING
+  else if (courseId === "ai_engineering_mastery" || lowerTitle.includes("engineering") || lowerTitle.includes("ingénierie") || lowerTitle.includes("piece") || lowerTitle.includes("material") || lowerTitle.includes("simulation") || lowerTitle.includes("motor") || lowerTitle.includes("vibration") || lowerTitle.includes("sensor") || lowerTitle.includes("robot") || lowerTitle.includes("fluid") || lowerTitle.includes("maintenance")) {
+    steps = [
+      `Generative AI, advanced mathematical modeling, and physics-informed learning networks are revolutionizing modern engineering, manufacturing, and R&D pipelines. For an engineer or technical designer, AI provides a 1000x boost in simulation speeds and topological optimization.`,
+      `In CAD design and topological optimization, instead of manually designing parts, define precise loads, materials, and weight reduction targets. AI models can generate extremely light and resistant organic shapes optimized for additive or subtractive manufacturing.`,
+      `For structural and fluid dynamics (CFD), Physics-Informed Neural Networks (PINNs) integrate classical equations (like Navier-Stokes or heat equations) into their neural network loss functions, enabling real-time physical simulations that respect conservation of mass and energy.`,
+      `For factories, predictive maintenance models process vibrational, acoustic, and thermal sensor time-series to spot micro-anomalies and prevent critical rotating machinery breakdowns before they occur.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: "Which technology bridges deep learning models with classic physical laws to ensure mathematically accurate real-time simulations?",
+      options: [
+        { text: "Physics-Informed Neural Networks (PINNs) that incorporate partial differential equations directly into the loss function.", isCorrect: true },
+        { text: "Drafting high-definition virtual CAD designs on offline desktop workstations.", isCorrect: false },
+        { text: "Adding random generative text prompt descriptions inside an empty coding file.", isCorrect: false },
+        { text: "Temporarily deactivating gravity inside the physical simulation model.", isCorrect: false }
+      ],
+      explanation: "Excellent! PINNs embed classical physics equations (like Navier-Stokes) directly into their neural training loss function, forcing the neural network outputs to strictly comply with real-world physical boundaries."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write an engineering prompt commanding the AI to act as a Senior R&D Engineer to optimize a structural component of: ${title}.`,
+      systemTemplate: `CAD generative design and topological optimization for: ${title}`,
+      placeholderText: `Detail material properties, load boundaries, and manufacturing constraints for ${title}...`,
+      exampleSolution: `Act as a Senior R&D Engineer. Rédige un prompt d'optimisation topologique pour un carter métallique. Matériau : Titane Ti-6Al-4V. Force appliquee : charge verticale statique de 10 000 N. Objectif : Réduire la masse de 30% tout en maintenant un coefficient de sécurité de 2.0. Contrainte : compatible usinage CNC 5 axes.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching neural-simulation workflows to a skeptical engineering division manager.`,
+      audience: `Engineering directors accustomed to classic finite element analysis (FEA) runs taking 8 hours.`,
+      goal: `Demonstrate the speed, accuracy, and competitive advantage of neural physical solvers.`,
+      placeholderText: `Saisissez votre argumentaire de simulation temps réel pour ${title}...`,
+      exampleSolution: `Transitioning our CFD models to Physics-Informed Neural Networks reduces our design iteration loops from 6 hours to under 10 milliseconds. This enables our engineers to explore 100x more aerodynamic shapes and heat transfer patterns in real-time right from their screens, drastically cutting physical wind tunnel costs.`
+    };
+  }
+  // 1.7. AI CONSTRUCTION
+  else if (courseId === "ai_construction_mastery" || lowerTitle.includes("construction") || lowerTitle.includes("building") || lowerTitle.includes("btp") || lowerTitle.includes("site") || lowerTitle.includes("mockup") || lowerTitle.includes("bim") || lowerTitle.includes("clash") || lowerTitle.includes("concrete") || lowerTitle.includes("structural") || lowerTitle.includes("planning")) {
+    steps = [
+      `Artificial intelligence, computer vision, and building information models (BIM) are driving massive efficiency and safety gains across the construction and civil engineering sectors.`,
+      `In digital design (BIM), AI models automatically perform clash detection, pointing out spatial conflicts between plumbing, electrical, and structural systems before concrete is poured on site.`,
+      `For site management, computer vision models analyze live site camera feeds or aerial drone photographs to track physical progress and verify that workers are wearing PPE (helmets, vests, safety harnesses).`,
+      `For project coordination, dynamic scheduling algorithms process weather forecasts, labor capacities, and delivery logs to optimize critical paths and minimize costly contractual delays.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: "How can computer vision models immediately improve risk management on a physical construction site?",
+      options: [
+        { text: "By analyzing live video streams in real-time to detect workers missing safety harnesses or crossing into active machinery swing zones.", isCorrect: true },
+        { text: "By sending emails to sub-contractors demanding they work faster.", isCorrect: false },
+        { text: "By generating 3D renders of finished buildings for sales brochures.", isCorrect: false },
+        { text: "By physically lifting heavy materials on site using software buttons.", isCorrect: false }
+      ],
+      explanation: "Perfect! Deep learning computer vision models excel at real-time object detection, identifying if workers are wearing PPE or if unauthorized personnel enter dangerous active machinery zones."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write a prompt commanding the AI to act as a BIM Coordinator to design a clash detection protocol for: ${title}.`,
+      systemTemplate: `BIM clash detection and construction coordination for: ${title}`,
+      placeholderText: `Specify structural elements, MEP files, and tolerance thresholds for ${title}...`,
+      exampleSolution: `Act as a BIM Coordinator. Write a prompt to analyze IFC files for MEP vs Structural clashes in an office tower. Define a tolerance threshold of 5mm and draft an automated notification template for the sub-contractors responsible.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching real-time vision-based site tracking to real estate promoters.`,
+      audience: `Property developers and promoters focused on limiting insurance liabilities and delays.`,
+      goal: `Demonstrate how automated tracking and safety compliance ensure on-time delivery.`,
+      placeholderText: `Present your construction site optimization pitch for ${title}...`,
+      exampleSolution: `Integrating AI-driven computer vision with our BIM mockups allows us to monitor structural progress millimetrically and audit worker safety in real-time. This eliminates 95% of execution disputes, protects site companions from fall hazards, and guarantees on-time delivery with completely documented quality compliance.`
+    };
+  }
+  // 1.8. AI MEDICINE & SCIENTIFIC RESEARCH
+  else if (courseId === "ai_medicine_mastery" || lowerTitle.includes("medicine") || lowerTitle.includes("medical") || lowerTitle.includes("clinical") || lowerTitle.includes("diagnos") || lowerTitle.includes("patient") || lowerTitle.includes("tumor") || lowerTitle.includes("cancer") || lowerTitle.includes("molecule") || lowerTitle.includes("bio") || lowerTitle.includes("dose") || lowerTitle.includes("sequencing")) {
+    steps = [
+      `Artificial intelligence, deep neural networks, and clinical Natural Language Processing (NLP) are driving major breakthroughs in diagnostic accuracy, structural biology, and patient care workflows.`,
+      `In diagnostic support, deep learning vision models analyze medical images (MRIs, CT scans, X-rays) to segment tumors, quantify lesion progress, and highlight regions of interest for radiologists.`,
+      `In scientific research, tools like AlphaFold predict 3D protein folding structures at atomic resolution, drastically accelerating rational drug discovery and ligand-receptor interaction (molecular docking) simulations.`,
+      `In clinical administration, secure medical NLP transcripts spoken doctor-patient consultations, structuring complex medical records and extracting standardized clinical codes (ICD-10, SNOMED-CT) while preserving strict confidentiality.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: `In clinical AI systems related to: "${title}", which data governance protocol is absolutely non-negotiable?`,
+      options: [
+        { text: "Enforcing absolute GDPR / HIPAA compliance, using sovereign data servers, and rigorously anonymizing identifiable patient records.", isCorrect: true },
+        { text: "Publishing full patient consultation transcripts on public web boards to train free open-source models.", isCorrect: false },
+        { text: "Keeping all patient folders as plain unencrypted text inside public HTML metadata fields.", isCorrect: false },
+        { text: "Disabling any computer systems and going back entirely to physical paper folders.", isCorrect: false }
+      ],
+      explanation: "Perfect! Health data is highly sensitive. Medical AI systems must strictly operate on secure, sovereign, and certified environments (like HDS in France or HIPAA in the US) to protect patient confidentiality and legal rights."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write a medical NLP or research query prompt commanding the AI to act as a Clinical Expert for: ${title}.`,
+      systemTemplate: `Clinical diagnostic support, NLP EHR translation, and biomolecular research for: ${title}`,
+      placeholderText: `Specify patient parameters, clinical goals, or scientific models for ${title}...`,
+      exampleSolution: `Act as a Lead Pharmacologist and AI Researcher. Write a prompt to analyze a phase II clinical trial summary for a new diabetes drug. Extract the cohort size, statistical p-values, and list declared adverse events along with their percentages in a structured markdown table.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching secure clinical AI support to an institutional ethics and medical hospital board.`,
+      audience: `Chief medical officers, ethics board members, and hospital directors concerned with safety and patient data privacy.`,
+      goal: `Reassure the board on security, accuracy, and the significant administrative time saved for direct patient care.`,
+      placeholderText: `Draft your ethical and administrative value pitch for ${title}...`,
+      exampleSolution: `Implementing our clinical assistant for "${title}" is not about replacing clinical judgment, but enhancing vigilance and freeing up human focus. By automating 80% of EHR administrative entry and detecting subtle clinical alerts, our doctors spend less time behind screens and more time at the bedside of patients, inside a fully sovereign, HIPAA-compliant secure container.`
+    };
+  }
+  // 1.9. AI IN NGOs & HUMANITARIAN ACTION
+  else if (courseId === "ai_ngo_mastery" || lowerTitle.includes("ngo") || lowerTitle.includes("ong") || lowerTitle.includes("humanitarian") || lowerTitle.includes("donation") || lowerTitle.includes("donor") || lowerTitle.includes("beneficiary") || lowerTitle.includes("poverty") || lowerTitle.includes("fundraising") || lowerTitle.includes("advocacy")) {
+    steps = [
+      `Artificial intelligence, machine learning, and advanced qualitative NLP models are empowering non-governmental organizations (NGOs) and humanitarian agencies to maximize their field impact and optimize resources.`,
+      `In fundraising and communications, AI analyzes donor engagement sequences to forecast churn, tailor email campaigns, and draft culturally customized appeals that resonate with diverse local or global audiences.`,
+      `In monitoring and evaluation (M&E), NLP automatically reviews unstructured qualitative field reports, extracting real beneficiary feedback, detecting project bottlenecks, and compiling standardized impact indicators for global institutional donors.`,
+      `In crisis coordination, predictive models combine satellite imagery with weather and demographic layers to forecast local disease outbreaks, optimize emergency routes, and deliver aid precisely where it is needed most.`
+    ];
+
+    customQuiz = {
+      id: `${prefix}_q${lessonNum}`,
+      question: `In humanitarian AI deployments related to: "${title}", what is the primary ethical guideline regarding beneficiary data?`,
+      options: [
+        { text: "Enforcing absolute anonymity, stripping metadata/faces from storytelling visuals, and strictly protecting the privacy and safety of vulnerable populations.", isCorrect: true },
+        { text: "Publishing detailed personal records and high-resolution location maps online to increase donor emotional appeal.", isCorrect: false },
+        { text: "Exposing beneficiary names in clear-text inside social media campaigns without consent.", isCorrect: false },
+        { text: "Storing precise shelter coordinates of endangered populations on unencrypted public clouds.", isCorrect: false }
+      ],
+      explanation: "Perfect! Vulnerable populations deserve maximum dignity and safety. Any use of AI by NGOs must adhere to a strict ethical protocol: absolute data protection, secure offline computing options, and active mitigation of algorithmic biases."
+    };
+
+    customPromptObjective = {
+      taskDescription: `Write a humanitarian program or logistical prompt commanding the AI to act as a Senior NGO Coordinator for: ${title}.`,
+      systemTemplate: `Social impact evaluation, humanitarian relief logistics, and community coordination for: ${title}`,
+      placeholderText: `Specify aid parameters, target communities, or monitoring goals for ${title}...`,
+      exampleSolution: `Act as a senior program coordinator. Write a prompt to evaluate text survey logs from aid beneficiaries. The AI must isolate friction points, list suggestions in a structured table, and flag any safety or protection alerts with high-priority warnings.`
+    };
+
+    customCopyObjective = {
+      scenario: `Pitching ethically governed AI integration to an international donor or humanitarian board.`,
+      audience: `Program directors, ethical compliance officers, and institutional grant providers.`,
+      goal: `Demonstrate how AI maximizes direct aid per dollar spent while maintaining immaculate data security and human empathy.`,
+      placeholderText: `Draft your ethical social impact pitch for ${title}...`,
+      exampleSolution: `Our integration of AI for "${title}" is designed to automate complex tracking tasks, shifting hours back to active, direct care on the ground. Instead of replacing the human touch, we use advanced analytics to ensure complete transparency for our backers and rapid assistance for those who need it most, all within a strictly secure, ethics-first framework.`
     };
   }
   // 2. VIDEO & AUDIO (Veo, Suno, ElevenLabs, Runway, Sora, voice, HeyGen, etc.)
@@ -2819,7 +3263,7 @@ export function getLocalizedCourses(lang: "fr" | "en", baseCourses: any[] = COUR
             translatedDesc = ENGLISH_EXTRA_LESSONS[course.id][extraIndex].desc;
           }
 
-          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : course.id === "ai_finance" ? "fn" : "fr";
+          const prefix = course.id === "prompt_eng" ? "pe" : course.id === "copywriting" ? "cp" : course.id === "chatgpt_mastery" ? "cg" : course.id === "claude_mastery" ? "cl" : course.id === "gemini_mastery" ? "gm" : course.id === "deepseek_mastery" ? "ds" : course.id === "kimi_mastery" ? "ki" : course.id === "leonardo_mastery" ? "le" : course.id === "ai_social_selling" ? "ss" : course.id === "viral_video_audio" ? "vv" : course.id === "grok_mastery" ? "gk" : course.id === "copilot_mastery" ? "co" : course.id === "manus_mastery" ? "mn" : course.id === "perplexity_mastery" ? "px" : course.id === "admin_redaction" ? "ad" : course.id === "veo_mastery" ? "ve" : course.id === "lovable_mastery" ? "lv" : course.id === "procurement_mastery" ? "pm" : course.id === "nanobanana_mastery" ? "nb" : course.id === "suno_mastery" ? "su" : course.id === "video_editing_mastery" ? "vd" : course.id === "ai_agriculture_mastery" ? "ag" : course.id === "business_writing_mastery" ? "bw" : course.id === "ai_finance" ? "fn" : course.id === "ai_engineering_mastery" ? "eg" : course.id === "ai_construction_mastery" ? "cn" : course.id === "ai_medicine_mastery" ? "md" : course.id === "ai_ngo_mastery" ? "ng" : "fr";
 
           // Delegate to the elite English analyzer just like in French!
           const elite = getDetailedAIStepsAndQuizEN(translatedTitle, course.id, prefix, lessonNum);

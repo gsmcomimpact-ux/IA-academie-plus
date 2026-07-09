@@ -5,7 +5,8 @@ import {
   BookOpen, Star, Zap, Flame, Terminal, PlayCircle, HelpCircle, 
   Lock, Bookmark, CheckCircle2, ChevronDown, Check, GraduationCap,
   LogIn, LogOut, CheckSquare, Layers, Globe, Calendar, DollarSign,
-  Code, FileText, Video, Smartphone, Send, Brain, Users, RefreshCw, Music, Leaf
+  Code, FileText, Video, Smartphone, Send, Brain, Users, RefreshCw, Music, Leaf,
+  Building, Wrench, Heart
 } from "lucide-react";
 import { COURSES } from "../data";
 import { UI_TRANSLATIONS, getLocalizedCourses } from "../utils/translations";
@@ -327,14 +328,14 @@ export default function Homepage({
   };
 
   const activeCategoryLabelFr = () => {
-    if (courseFilter === "all") return "Toutes les 23 Formations Disponibles";
+    if (courseFilter === "all") return `Toutes les ${COURSES.length} Formations Disponibles`;
     if (courseFilter === "prompts") return "🧠 Ingénierie de Prompt & LLMs d'Élite";
     if (courseFilter === "content") return "🎨 Création de Médias, Vidéos & Copywriting";
     return "💻 No-Code, Automatisation & Business";
   };
 
   const activeCategoryLabelEn = () => {
-    if (courseFilter === "all") return "All 23 Available Executive Courses";
+    if (courseFilter === "all") return `All ${COURSES.length} Available Executive Courses`;
     if (courseFilter === "prompts") return "🧠 Advanced Prompting & Large Language Models";
     if (courseFilter === "content") return "🎨 Generative Video, Cinematic Media & Copywriting";
     return "💻 No-Code Architecture, Automation & Freelancing";
@@ -635,7 +636,7 @@ export default function Homepage({
               className="bg-slate-900 hover:bg-slate-850 hover:text-white border border-slate-850 text-slate-300 font-bold py-4 px-6 rounded-2xl text-xs uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <Layers className="w-4 h-4 text-emerald-400" />
-              <span>{homeText.exploreCourses} (23 Cursus)</span>
+              <span>{homeText.exploreCourses} ({COURSES.length} Cursus)</span>
             </button>
           </div>
 
@@ -849,8 +850,8 @@ export default function Homepage({
             <h3 className="font-extrabold text-slate-100 text-sm">{lang === "fr" ? "Licence Unique à Vie" : "No Reoccurring Fees"}</h3>
             <p className="text-xs text-slate-400 leading-relaxed font-sans">
               {lang === "fr" 
-                ? "Payez une seule fois un forfait de 20$. Aucune facture mensuelle surprise. Les 23 cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie." 
-                : "Pay a simple one-time activation fee of $20. No monthly surprises. Access all current and future 23 executive courses, updates, and templates forever."}
+                ? `Payez une seule fois un forfait de 20$. Aucune facture mensuelle surprise. Les ${COURSES.length} cours d'hier, d'aujourd'hui et de demain sont débloqués entièrement et à vie.` 
+                : `Pay a simple one-time activation fee of $20. No monthly surprises. Access all current and future ${COURSES.length} executive courses, updates, and templates forever.`}
             </p>
           </div>
 
@@ -983,7 +984,7 @@ export default function Homepage({
             {homeText.masterAITools}
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-sans">
-            {homeText.masterAIToolsSub}
+            {homeText.masterAIToolsSub.replace("23", COURSES.length.toString())}
           </p>
         </div>
 
@@ -997,7 +998,7 @@ export default function Homepage({
                 : "bg-slate-900 border border-slate-850 hover:bg-slate-850 text-slate-400"
             }`}
           >
-            📂 {lang === "fr" ? "Tous les Cursus (23)" : "All Courses (23)"}
+            📂 {lang === "fr" ? `Tous les Cursus (${COURSES.length})` : `All Courses (${COURSES.length})`}
           </button>
           
           <button
@@ -1068,6 +1069,12 @@ export default function Homepage({
                         <ShieldCheck className="w-5 h-5 text-cyan-400" />
                       ) : course.id === "ai_agriculture_mastery" ? (
                         <Leaf className="w-5 h-5 text-emerald-450 animate-pulse" />
+                      ) : course.id === "ai_engineering_mastery" ? (
+                        <Wrench className="w-5 h-5 text-indigo-400" />
+                      ) : course.id === "ai_construction_mastery" ? (
+                        <Building className="w-5 h-5 text-amber-400" />
+                      ) : course.id === "ai_ngo_mastery" || course.id === "ai_medicine_mastery" ? (
+                        <Heart className="w-5 h-5 text-rose-500 animate-pulse" />
                       ) : (
                         <Terminal className="w-5 h-5 text-slate-350" />
                       )}
@@ -1341,7 +1348,7 @@ export default function Homepage({
           <div className="space-y-3 pt-3 text-left max-w-sm mx-auto text-xs text-slate-300">
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
-              <span>{lang === "fr" ? "L'accès intégral et illimité aux 23 formations" : "Full premium lifetime enrollment to all 23 tracks"}</span>
+              <span>{lang === "fr" ? `L'accès intégral et illimité aux ${COURSES.length} formations` : `Full premium lifetime enrollment to all ${COURSES.length} tracks`}</span>
             </div>
             <div className="flex items-center gap-2">
               <Check className="w-4.5 h-4.5 text-emerald-400 shrink-0" />

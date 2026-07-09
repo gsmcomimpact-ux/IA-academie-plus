@@ -2205,6 +2205,346 @@ export const businessWritingExtraLessonsData = [
   { title: "L'évaluation finale de Certification d'Expert en IA & Rédaction d'Affaires", desc: "Validez vos compétences sur les subtilités stylistiques et l'efficacité persuasive de l'écrit professionnel pour obtenir votre diplôme." }
 ];
 
+export const baseEngineeringLessons: Lesson[] = [
+  {
+    id: "eg_l1",
+    title: "Introduction à l'IA en Ingénierie & Modélisation Paramétrique",
+    description: "Comprenez comment l'IA révolutionne le design industriel, la conception assistée par ordinateur (CAO) et l'optimisation géométrique automatique.",
+    durationMin: 12,
+    steps: [
+      "L'ingénierie moderne intègre l'IA pour repousser les limites de la conception générative et de l'optimisation topologique des pièces physiques.",
+      "Au lieu de dessiner manuellement chaque composant, l'ingénieur spécifie des contraintes de charge, de matière et de poids. Les réseaux de neurones génèrent alors des structures organiques ultra-légères.",
+      "L'intégration de modèles pré-entraînés dans les logiciels de CAO (comme Fusion 360 ou SolidWorks) permet d'estimer instantanément la résistance mécanique d'une pièce sans lancer de simulation par éléments finis (FEA) lourde.",
+      "Conseil : L'IA ne remplace pas l'ingénieur mais démultiplie sa capacité d'exploration créative en proposant des centaines de variantes conformes aux normes industrielles en quelques minutes."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt décrivant les critères de conception générative d'une pièce mécanique soumise à de fortes charges (ex: un bras de suspension en aluminium) en spécifiant le rôle de l'IA, les charges à supporter, la réduction de poids ciblée et les contraintes de fabrication.",
+      systemTemplate: "Conception générative mécanique et optimisation topologique multi-critères par réseaux de neurones.",
+      placeholderText: "Rôle: Expert en ingénierie mécanique... \nTâche: Concevoir une pièce générative...",
+      exampleSolution: "Agis en tant qu'Expert en Conception Générative. Rédige un cahier des charges sémantique pour optimiser un bras de suspension automobile. Matériau : Aluminium 6061-T6. Contraintes : charge verticale de 15 000 N, réduction de poids minimale de 30% par rapport à la pièce pleine d'origine, compatibilité avec l'impression 3D métal (fabrication additive) sans angles de dépouille excessifs. Demande des options optimisant la rigidité structurelle."
+    }
+  },
+  {
+    id: "eg_l2",
+    title: "Réseaux de Neurones Physiques (PINNs) & Simulation de Fluides",
+    description: "Découvrez l'intégration des lois de la physique directement au cœur de l'apprentissage automatique pour accélérer les simulations CFD de 1000x.",
+    durationMin: 15,
+    steps: [
+      "Les simulations numériques classiques (CFD, FEA) reposent sur la résolution d'équations aux dérivées partielles complexes qui réclament des heures de calcul sur supercalculateur.",
+      "Les réseaux de neurones informés par la physique (PINNs - Physics-Informed Neural Networks) intègrent des équations physiques (comme Navier-Stokes ou de transfert thermique) dans leur fonction de perte.",
+      "Cela permet d'obtenir des prédictions de flux de fluides ou de gradients de température en temps réel, idéales pour l'aérodynamique, l'optimisation thermique de moteurs ou les turbines.",
+      "Ces modèles hybrides garantissent que les réponses de l'IA respectent les principes fondamentaux de conservation de la masse, de l'énergie et de la quantité de mouvement, évitant ainsi toute hallucination physique."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "eg_q2",
+      question: "Quelle est la particularité fondamentale d'un réseau de neurones informé par la physique (PINN) ?",
+      options: [
+        { text: "Il intègre les équations de la physique classique (comme Navier-Stokes ou les lois de l'élasticité) dans sa fonction de perte pour forcer l'apprentissage à respecter les lois de l'univers.", isCorrect: true },
+        { text: "Il simule l'apesanteur directement à l'intérieur des cartes graphiques de l'ordinateur.", isCorrect: false },
+        { text: "Il remplace l'électricité de calcul par de l'énergie thermique ou hydraulique.", isCorrect: false },
+        { text: "Il interdit l'usage du langage Python pour n'utiliser que des formules mathématiques sur papier.", isCorrect: false }
+      ],
+      explanation: "Exactement ! En incorporant les équations physiques dans la fonction de perte (Loss Function), les PINNs garantissent des résultats mathématiquement et physiquement cohérents avec la réalité, tout en réduisant le temps de calcul de plusieurs heures à quelques millisecondes."
+    }
+  },
+  {
+    id: "eg_l3",
+    title: "Maintenance Prédictive & Traitement de Signaux de Capteurs Industriels",
+    description: "Apprenez à concevoir des modèles de détection précoce de pannes industrielles en analysant les vibrations et anomalies de machines tournantes.",
+    durationMin: 18,
+    steps: [
+      "La maintenance prédictive vise à anticiper la défaillance d'une machine (ex: compresseur, moteur, éolienne) avant que la panne ne survienne, réduisant à zéro les arrêts de production.",
+      "Les capteurs de vibrations (accéléromètres), de température et d'intensité électrique transmettent des flux de données temporels continus vers des modèles d'analyse de séries chronologiques.",
+      "Les algorithmes d'IA (tels que les auto-encodeurs ou les modèles d'apprentissage non supervisé) apprennent le comportement nominal d'une machine et détectent d'infimes anomalies invisibles pour l'œil humain.",
+      "L'analyse spectrale (transformée de Fourier rapide ou FFT) permet de décomposer les fréquences vibratoires et d'identifier spécifiquement si le défaut provient d'un roulement à billes usé ou d'un désalignement d'arbre."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'instructions destiné à un agent autonome expert en maintenance industrielle pour diagnostiquer un défaut sur une pompe hydraulique à partir d'un relevé thermique et d'une hausse anormale de vibrations à 120 Hz.",
+      systemTemplate: "Diagnostic vibratoire sémantique et prescription d'actions correctives de maintenance prédictive.",
+      placeholderText: "Saisissez votre consigne de diagnostic prédictif de panne...",
+      exampleSolution: "Agis en tant qu'Ingénieur en Maintenance Prédictive Senior. Analyse ces relevés d'une pompe centrifuge : température de palier en hausse continue de 15°C sur 48h et pic vibratoire marqué à 120 Hz (alors que le régime nominal est à 50 Hz). Diagnostique la cause probable de la défaillance (ex: désalignement, usure de roulement, cavitation) et rédige la procédure d'intervention d'urgence pour le technicien de terrain."
+    }
+  }
+];
+
+export const engineeringExtraLessonsData = [
+  { title: "Optimisation de l'injection plastique par IA et réseaux thermiques", desc: "Analysez comment l'IA prédit les temps de refroidissement et prévient les retassures ou bulles d'air dans les moules industriels." },
+  { title: "Conception de nouveaux matériaux par réseaux génératifs adversaires (GANs)", desc: "Découvrez comment l'IA invente des alliages métalliques et des polymères légers aux caractéristiques mécaniques sur-mesure." },
+  { title: "Calcul de contraintes de fatigue mécanique par modèles de régression prédictifs", desc: "Estimez la durée de vie résiduelle d'une structure métallique soumise à des cycles de contraintes répétés grâce à l'IA." },
+  { title: "Optimisation d'itinéraires et planification logistique d'usines automatisées", desc: "Coordonnez les flottes de chariots autonomes (AGV) pour éliminer les goulots d'étranglement et maximiser le débit de production." },
+  { title: "Modélisation de jumeaux numériques (Digital Twins) synchronisés par IA", desc: "Associez les données en temps réel de votre usine à un modèle 3D prédictif pour simuler des scénarios d'exploitation sans risque." },
+  { title: "Asservissement visuel de bras robotisés par apprentissage par renforcement", desc: "Enseignez à des robots industriels le tri et la manipulation d'objets en vrac avec une précision millimétrique continue." },
+  { title: "Diagnostic thermique infrarouge automatique de cartes électroniques par IA", desc: "Utilisez la vision par ordinateur pour repérer instantanément les composants en surchauffe ou les soudures défectueuses sur vos circuits." },
+  { title: "Planification d'essais en soufflerie aérodynamique assistée par apprentissage actif", desc: "Optimisez vos plans d'expériences en soufflerie pour obtenir le coefficient de traînée (Cx) idéal avec un minimum d'essais physiques." },
+  { title: "Régulation intelligente de réacteurs chimiques par logique floue et Deep Learning", desc: "Maintenez les taux de conversion chimique à un niveau optimal en prédisant l'emballement thermique d'une réaction." },
+  { title: "Traitement de signaux vibratoires bruités par filtres de Kalman neuronaux", desc: "Éliminez les bruits de fond industriels pour isoler les signatures acoustiques pures révélant une anomalie de machine." },
+  { title: "Optimisation de la découpe laser de tôlerie industrielle par algorithmes de nesting", desc: "Disposez de façon optimale les pièces de géométries complexes sur les plaques de métal pour réduire les chutes à moins de 3%." },
+  { title: "Conception de systèmes optiques complexes par IA générative et ray-tracing", desc: "Automatisez le calcul de courbures de lentilles pour corriger les aberrations chromatiques dans des imageurs de haute technologie." },
+  { title: "Analyse acoustique de moteurs électriques pour la détection précoce de défauts de bobinage", desc: "Identifiez les anomalies de champ magnétique et de courts-circuits internes d'un stator par l'empreinte sonore du moteur." },
+  { title: "Optimisation de la consommation d'énergie de compresseurs d'air industriels par IA", desc: "Calculez le planning de mise en marche des centrales de compression d'air pour tirer parti des heures creuses d'électricité." },
+  { title: "Génération automatique de nomenclatures de pièces (BOM) CAO par reconnaissance visuelle", desc: "Simplifiez le passage de l'assemblage 3D aux listes d'achats en extrayant automatiquement les spécifications standards." },
+  { title: "Surveillance de l'usure d'outils d'usinage CNC par capteurs acoustiques d'émissions", desc: "Prévenez la casse des forets ou des plaquettes de coupe en suivant l'évolution des micro-fissures d'outils par Deep Learning." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA & Ingénierie Moderne", desc: "Validez vos compétences sur les PINNs, la CAO générative, la maintenance prédictive et la simulation d'élite pour obtenir votre diplôme d'ingénierie." }
+];
+
+export const baseConstructionLessons: Lesson[] = [
+  {
+    id: "cn_l1",
+    title: "IA & Conception BIM : Modélisation 3D Intelligente & Détection de Conflits",
+    description: "Apprenez comment l'IA optimise les modèles BIM (Building Information Modeling), automatise la synthèse et détecte les clashs géométriques entre réseaux.",
+    durationMin: 12,
+    steps: [
+      "Le BIM (Building Information Modeling) centralise toutes les données géométriques et techniques d'un ouvrage de construction dans une maquette 3D partagée.",
+      "Les algorithmes d'IA analysent les maquettes pour identifier automatiquement les 'clashs' ou conflits physiques, par exemple une conduite de ventilation traversant une poutre porteuse.",
+      "L'IA générative permet également d'automatiser l'agencement intérieur des réseaux de fluides (électricité, plomberie, CVC) en respectant les normes de sécurité et d'encombrement.",
+      "Conseil : En intégrant l'IA à la CAO BIM, vous réduisez de 80% les erreurs de conception avant le démarrage du chantier physique, évitant des retards très coûteux."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'instructions pour un agent IA spécialisé dans l'audit de maquette BIM. Demandez-lui d'analyser la maquette numérique d'un bâtiment R+5 pour y détecter les conflits entre le réseau de plomberie et l'ossature béton.",
+      systemTemplate: "Détection automatique de conflits géométriques (Clash Detection) dans les modèles IFC/BIM.",
+      placeholderText: "Saisissez votre prompt d'audit BIM...",
+      exampleSolution: "Agis en tant que Coordinateur BIM IA Senior. Analyse le modèle numérique au format IFC de notre projet de bureaux R+5. Détecte tous les conflits physiques (clashs) entre le réseau d'évacuation des eaux-vannes et les éléments de structure porteuse en béton armé (poutres, voiles). Fournis un rapport structuré avec les IDs d'éléments concernés et propose des alternatives de dévoiement de canalisation."
+    }
+  },
+  {
+    id: "cn_l2",
+    title: "Planification de Chantier par IA & Gestion de Chemin Critique",
+    description: "Découvrez comment l'IA optimise le planning de travaux (Gantt), coordonne les rotations de camions et s'ajuste aux aléas climatiques.",
+    durationMin: 15,
+    steps: [
+      "Planifier un grand projet de BTP réclame de coordonner des centaines de tâches interdépendantes, d'engins, de compagnons et de livraisons de matériaux.",
+      "Les outils de planification assistés par IA simulent des milliers de scénarios de plannings (méthode de Monte Carlo) pour évaluer la probabilité de retard et sécuriser le chemin critique.",
+      "L'IA ajuste dynamiquement le planning de coulage du béton en analysant en direct les prévisions météorologiques locales (températures extrêmes, précipitations d'eau).",
+      "Cette souplesse d'ordonnancement permet de lisser la charge de travail des équipes, de minimiser les temps d'attente des toupies de béton et de réduire l'empreinte carbone du chantier."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "cn_q2",
+      question: "Quel est l'intérêt principal d'utiliser l'IA pour la planification dynamique d'un chantier de BTP ?",
+      options: [
+        { text: "Elle recalcule instantanément l'ordonnancement de toutes les tâches de construction et les approvisionnements en fonction des retards réels de livraison et de la météo pour éviter l'arrêt des travaux.", isCorrect: true },
+        { text: "Elle permet d'ériger les murs en béton de façon 100% virtuelle sans faire intervenir d'ouvriers réels.", isCorrect: false },
+        { text: "Elle remplace le béton de ciment par une colle sémantique virtuelle de réseaux sociaux.", isCorrect: false },
+        { text: "Elle supprime la nécessité de demander des permis de construire auprès de la mairie.", isCorrect: false }
+      ],
+      explanation: "Parfait ! La force de l'IA réside dans sa capacité d'adaptation en temps réel aux impondérables du chantier (retards d'approvisionnement, intempéries, pannes d'engins), recalculant instantanément le chemin critique de construction pour minimiser les pénalités financières."
+    }
+  },
+  {
+    id: "cn_l3",
+    title: "Suivi de Chantier par Vision Artificielle & Sécurité des Équipes",
+    description: "Maîtrisez l'usage des caméras de chantier et des drones pour suivre l'avancement physique des travaux et garantir le port des EPI.",
+    durationMin: 18,
+    steps: [
+      "Le suivi d'avancement traditionnel d'un chantier repose sur des rapports manuels de conducteurs de travaux, souvent subjectifs et longs à consolider.",
+      "Les caméras fixes et les vols de drones réguliers capturent des photos et des nuages de points 3D du chantier en temps réel.",
+      "La vision artificielle compare ces photos à la maquette BIM de référence pour valider automatiquement le pourcentage de voiles coulés ou de façades posées.",
+      "De plus, les réseaux de détection d'objets analysent les images en direct pour identifier l'absence d'équipements de protection individuelle (EPI) comme le casque ou le gilet haute visibilité."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt d'instructions destiné à un modèle de vision par ordinateur pour analyser le flux vidéo en direct d'un chantier de pont en béton précontraint. L'objectif est de vérifier la sécurité (port du harnais de sécurité lors des travaux en hauteur) et de recenser le nombre d'engins actifs.",
+      systemTemplate: "Surveillance de sécurité de chantier (EPI) et décompte d'activité d'engins en direct par deep learning visuel.",
+      placeholderText: "Saisissez vos instructions d'analyse de sécurité et d'engins par vision artificielle...",
+      exampleSolution: "Agis en tant que Système de Surveillance Sécurité IA. Analyse le flux vidéo de la caméra N°4 braquée sur les piles du pont. Alerte immédiatement le chef de chantier si un ouvrier se trouve à plus de 2 mètres de hauteur sans harnais de sécurité arrimé à la ligne de vie. Compte également le nombre de camions bennes et de pelleteuses en mouvement actif sur la zone de terrassement."
+    }
+  }
+];
+
+export const constructionExtraLessonsData = [
+  { title: "Calcul de descente de charges et stabilité des structures assisté par IA", desc: "Utilisez les réseaux de neurones pour valider les sections de poutres en acier et le ferraillage du béton armé." },
+  { title: "Estimation de prix et devis automatiques par traitement de cahiers des charges (CCTP)", desc: "Faites analyser vos volumineux dossiers d'appels d'offres par l'IA pour extraire les quantités et estimer le prix global." },
+  { title: "Diagnostic thermique de bâtiments par thermographie drone et IA", desc: "Détectez instantanément les ponts thermiques, les défauts d'isolation et les infiltrations d'humidité dans les façades." },
+  { title: "Logistique d'approvisionnement circulaire et gestion des déchets de chantier par IA", desc: "Planifiez la collecte sélective et le réemploi des matériaux de déconstruction pour réduire l'impact environnemental des ouvrages." },
+  { title: "Optimisation de la formulation des bétons bas carbone par réseaux de neurones", desc: "Prédisez la résistance à la compression à 28 jours de bétons utilisant des liants alternatifs pour diviser par deux les émissions de CO2." },
+  { title: "Acoustique du bâtiment et prédiction d'isolement acoustique par IA", desc: "Simulez la propagation des bruits d'impacts et aériens à travers les parois complexes pour valider la conformité aux normes acoustiques." },
+  { title: "Suivi géotechnique et prévision de tassement des sols de fondation", desc: "Interprétez les données d'inclinomètres et de piézomètres par apprentissage automatique pour prévenir les risques de glissements ou fissures." },
+  { title: "Maintenance d'infrastructures d'art par reconnaissance visuelle de fissures sur ponts", desc: "Classez et mesurez automatiquement la gravité des fissures du béton par traitement d'images d'inspection périodique." },
+  { title: "Planification des flux et sécurité des piétons dans les gares et ERP par IA", desc: "Simulez les mouvements de foules pour concevoir des issues de secours et des cheminements fluides et sécurisés." },
+  { title: "Audit d'accessibilité PMR (Personnes à Mobilité Réduite) automatisé par maquette BIM", desc: "Faites vérifier la conformité des pentes de rampes, largeurs de portes et hauteurs d'équipements aux normes d'accessibilité PMR." },
+  { title: "Pilotage intelligent du chauffage et de la ventilation (Smart HVAC) par IA prédictive", desc: "Réduisez la consommation énergétique des bâtiments de 30% en adaptant le chauffage à l'occupation future et à l'inertie thermique." },
+  { title: "Prévention des risques de collisions d'engins de chantier par alertes de proximité IA", desc: "Équipez les grues et engins de terrassement de capteurs anticollision distinguant les piétons des obstacles inertes." },
+  { title: "Modélisation de l'ensoleillement et calcul d'apport solaire thermique de façades complexes", desc: "Optimisez la forme des brise-soleil et l'emplacement des vitrages pour maximiser la lumière naturelle sans surchauffe estivale." },
+  { title: "Analyse des sols par pénétrométrie dynamique et interpolations géostatistiques par IA", desc: "Générez des profils géologiques 3D continus de votre sous-sol pour dimensionner au plus juste vos fondations profondes." },
+  { title: "Contrôle de conformité réglementaire incendie automatique de plans 2D par IA", desc: "Soumettez vos plans d'architecte au format PDF pour vérifier le respect des distances d'évacuation et de coupe-feux réglementaires." },
+  { title: "Aide à la décision d'investissement de rénovation globale énergétique de parcs tertiaires", desc: "Simulez les bouquets de travaux de rénovation thermique pour obtenir le meilleur ratio coût-économie d'énergie sur 15 ans." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA & Construction (BTP)", desc: "Validez vos connaissances sur le BIM intelligent, le suivi par drone, la planification prédictive et la sécurité d'élite pour obtenir votre diplôme du BTP." }
+];
+
+export const baseMedicineLessons: Lesson[] = [
+  {
+    id: "md_l1",
+    title: "Introduction à l'IA en Médecine & Diagnostics Cliniques",
+    description: "Comprenez comment l'IA et l'imagerie médicale révolutionnent le diagnostic clinique, la détection précoce de pathologies et l'aide à la décision médicale.",
+    durationMin: 12,
+    steps: [
+      "La médecine moderne intègre l'IA pour analyser les images médicales (IRM, scanners, radiographies) avec une précision égalant ou dépassant parfois celle des experts humains.",
+      "Au lieu d'un simple diagnostic binaire, l'IA segmente les anomalies, quantifie les volumes de lésions et génère des cartes de chaleur montrant les zones d'intérêt clinique pour le médecin.",
+      "L'intégration d'algorithmes de Deep Learning dans les outils de radiologie permet de trier les examens par niveau d'urgence, priorisant ainsi les cas critiques pour une relecture rapide par le radiologue.",
+      "Conseil : L'IA ne remplace pas le médecin mais agit comme un assistant de second regard d'une vigilance infaillible, réduisant les erreurs de diagnostic de fatigue."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt décrivant un cahier des charges sémantique pour configurer un assistant IA de second regard en imagerie radiologique (ex: détection de nodules pulmonaires sur scanner thoracique) en précisant les critères de sensibilité, de faux positifs tolérés et de rapports standardisés.",
+      systemTemplate: "Configuration d'assistant d'aide au diagnostic d'imagerie clinique par vision artificielle.",
+      placeholderText: "Rôle: Assistant IA de diagnostic radiologique... \nTâche: Analyser les scanners thoraciques...",
+      exampleSolution: "Agis en tant que Radiologue Clinicien et Expert en IA Médicale. Rédige les consignes pour un modèle de vision par ordinateur chargé de détecter les nodules pulmonaires sur scanner thoracique. Sensibilité ciblée : supérieure à 95% pour les nodules >= 3mm. Définis un protocole de rejet des faux positifs liés aux vaisseaux sanguins ou aux cicatrices. Le rapport généré doit catégoriser les nodules selon l'échelle standardisée Lung-RADS."
+    }
+  },
+  {
+    id: "md_l2",
+    title: "IA & Recherche Scientifique : Découverte de Molécules et Génomique",
+    description: "Découvrez comment l'IA (comme AlphaFold) résout le repliement des protéines et conçoit de nouvelles molécules thérapeutiques virtuelles en un temps record.",
+    durationMin: 15,
+    steps: [
+      "La découverte de nouveaux médicaments prenait historiquement plus de 10 ans et des milliards de dollars, principalement en raison de tests empiriques in vitro laborieux.",
+      "Grâce à des modèles d'IA prédictifs avancés, les chercheurs simulent désormais l'interaction ligand-récepteur (molecular docking) de millions de composés virtuels en quelques heures.",
+      "L'IA résout également le problème cinquantenaire du repliement des protéines (protein folding), prédisant la structure 3D d'acides aminés à l'échelle atomique pour identifier de nouvelles cibles thérapeutiques.",
+      "Ces outils de conception générative de molécules (De Novo Drug Design) créent des molécules entièrement nouvelles, optimisées pour bloquer une protéine pathologique tout en minimisant la toxicité cellulaire."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "md_q2",
+      question: "Dans le cadre de la recherche de nouveaux médicaments par IA, quel outil emblématique a révolutionné la biologie structurale en prédisant la forme 3D des protéines ?",
+      options: [
+        { text: "AlphaFold de Google DeepMind, qui prédit avec précision la structure tridimensionnelle des protéines à partir de leur séquence d'acides aminés.", isCorrect: true },
+        { text: "Une feuille Excel effectuant des graphiques de ventes de boîtes de médicaments.", isCorrect: false },
+        { text: "Un outil de génération d'images artistiques pour illustrer des boîtes de comprimés.", isCorrect: false },
+        { text: "La désactivation logicielle de toutes les liaisons chimiques d'hydrogène.", isCorrect: false }
+      ],
+      explanation: "Parfait ! AlphaFold a résolu l'un des plus grands défis de la biologie moderne : prédire la structure 3D d'une protéine en quelques minutes, ouvrant la voie à une conception rationnelle et rapide de thérapies ciblées."
+    }
+  },
+  {
+    id: "md_l3",
+    title: "Traitement Automatique des Dossiers Médicaux & Rédaction Clinique",
+    description: "Apprenez à utiliser le Traitement Automatique du Langage Naturel (NLP) pour transcrire, structurer et synthétiser les comptes-rendus de consultations médicales.",
+    durationMin: 18,
+    steps: [
+      "Les médecins passent en moyenne un tiers de leur temps de travail à saisir des dossiers médicaux informatisés, au détriment du temps d'échange avec le patient.",
+      "Le NLP médical convertit les dictées vocales de consultations en comptes-rendus structurés, classant automatiquement les antécédents, les symptômes, les examens cliniques et les prescriptions.",
+      "L'IA extrait les concepts cliniques standardisés (codes CIM-10, SNOMED-CT) à partir de notes textuelles libres, facilitant ainsi l'encodage administratif hospitalier et les analyses épidémiologiques.",
+      "Règle de sécurité : Les données médicales sont soumises à des contraintes strictes de confidentialité (RGPD / HIPAA). Toute utilisation d'IA clinique exige des infrastructures souveraines sécurisées et anonymisées."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt structurant une note clinique brouillonne de consultation médicale en un compte-rendu médical d'une rigueur absolue respectant le plan type d'une observation hospitalière.",
+      systemTemplate: "Saisie clinique automatisée et codification structurée de comptes-rendus de consultation médicale.",
+      placeholderText: "Saisissez vos notes cliniques abrégées à structurer...",
+      exampleSolution: "Agis en tant que Secrétaire Médical augmenté par IA. Reçois ces notes brutes de consultation : 'Patient 54 ans, douleur thoracique irradiant bras gauche depuis 2h, sueurs, tabac+. ECG : sus-décalage ST en D2 D3 aVF'. Rédige un compte-rendu clinique rigoureux avec les sections : Motif d'admission, Antécédents/Facteurs de risque, Description clinique, Résultats ECG, et Conclusion diagnostique d'urgence (Suspicion de SCA ST+ inférieur)."
+    }
+  }
+];
+
+export const medicineExtraLessonsData = [
+  { title: "IA générative pour l'optimisation des dosages thérapeutiques personnalisés", desc: "Découvrez comment l'IA ajuste dynamiquement les posologies d'anticoagulants ou de chimiothérapies selon les données biologiques du patient." },
+  { title: "Analyse prédictive de la réponse immunitaire par Deep Learning génomique", desc: "Explorez la prédiction des profils d'anticorps face aux agents pathogènes pour accélérer la conception de vaccins personnalisés." },
+  { title: "Segmentation automatique de tumeurs cérébrales sur IRM par réseaux de neurones U-Net", desc: "Maîtrisez la délimitation millimétrique tridimensionnelle des tissus cancéreux pour guider la chirurgie et la radiothérapie." },
+  { title: "Recherche de cibles thérapeutiques contre le cancer par apprentissage par renforcement", desc: "Voyez comment l'IA explore virtuellement des millions de combinaisons biochimiques pour perturber la réplication tumorale." },
+  { title: "Synthèse de résumés d'essais cliniques multicentriques par modèles de langage (LLMs)", desc: "Automatisez la veille bibliographique médicale en extrayant les biais, cohortes et significativités statistiques (valeur p)." },
+  { title: "Détection précoce de la rétinopathie diabétique par classification d'images de fond d'œil", desc: "Analysez comment les réseaux convolutifs (CNNs) dépistent les micro-anévrismes rétiniens avant l'apparition de troubles visuels." },
+  { title: "Simulation moléculaire in silico pour accélérer l'identification d'antibiotiques candidats", desc: "Luttez contre l'antibiorésistance en sélectionnant de nouvelles structures chimiques létales pour les super-bactéries." },
+  { title: "Analyse du transcriptome par séquençage ARN de cellule unique (scRNA-seq) et clustering IA", desc: "Identifiez de nouvelles sous-populations cellulaires impliquées dans les maladies auto-immunes par apprentissage non supervisé." },
+  { title: "Prédiction du risque de réadmission hospitalière post-opératoire par modèles de gradient boosting", desc: "Évaluez les probabilités de complications précoces à partir des paramètres physiologiques post-opératoires des patients." },
+  { title: "Aide à la chirurgie mini-invasive par suivi d'instruments en temps réel et vision par ordinateur", desc: "Aidez les chirurgiens en superposant des repères d'imagerie 3D pré-opératoire sur le flux vidéo endoscopique en direct." },
+  { title: "Génération de données synthétiques de patients pour la recherche clinique respectant la confidentialité", desc: "Créez des bases de données médicales réalistes mais totalement anonymisées pour entraîner des IA sans risquer de fuite de données." },
+  { title: "Détection de signaux de pharmacovigilance par traitement de texte (NLP) sur réseaux sociaux", desc: "Identifiez les effets secondaires émergents ou non documentés de médicaments en analysant les retours d'expérience en ligne." },
+  { title: "Optimisation de l'alignement des faisceaux de radiothérapie oncologique par algorithmes d'IA", desc: "Maximisez la dose destructrice reçue par la tumeur tout en préservant à 100% les organes sains adjacents." },
+  { title: "Modélisation de la cinétique de liaison ligand-récepteur par réseaux de neurones de graphes (GNNs)", desc: "Représentez les molécules comme des graphes tridimensionnels pour modéliser la force d'arrimage d'un candidat médicament." },
+  { title: "Analyse de la motilité des spermatozoïdes par suivi vidéo automatisé et Deep Learning", desc: "Accélérez le diagnostic d'infertilité masculine en quantifiant précisément la vitesse et la trajectoire des cellules." },
+  { title: "Automatisation du tri de cohortes de patients par critères d'inclusion sémantiques", desc: "Analysez des milliers de dossiers médicaux pour identifier instantanément les patients éligibles à un nouvel essai clinique." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA, Médecine & Recherche", desc: "Validez vos compétences sur les diagnostics IA, AlphaFold, l'extraction NLP clinique et la recherche éthique pour obtenir votre diplôme." }
+];
+
+export const baseNgoLessons: Lesson[] = [
+  {
+    id: "ng_l1",
+    title: "IA & Optimisation des Campagnes de Dons et Collecte de Fonds",
+    description: "Découvrez comment l'IA prédictive et générative révolutionne le fundraising : rédaction d'appels personnalisés, segmentation d'audience et prédiction d'attrition des donateurs.",
+    durationMin: 14,
+    steps: [
+      "La collecte de fonds moderne repose sur la personnalisation de la relation donateur à grande échelle, une tâche chronophage pour les équipes réduites des ONG.",
+      "L'IA analyse les historiques de dons pour identifier les donateurs réguliers prêts à augmenter leur contribution (upgrade) et repérer les signaux faibles de désengagement (churn) avant qu'ils n'arrêtent leurs prélèvements.",
+      "Les modèles de langage permettent d'adaptateur instantanément le ton, l'angle émotionnel et l'urgence d'une campagne de plaidoyer selon que l'on s'adresse à un donateur institutionnel, un mécène d'entreprise ou un particulier.",
+      "Règle d'or : L'IA aide à formuler les messages et optimiser les canaux, mais l'authenticité de l'engagement de terrain reste le cœur de l'impact humanitaire."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour configurer un assistant IA de Relations Donateurs chargé de rédiger une lettre de fidélisation et de mise à niveau de don personnalisé, en y intégrant des variables d'impact concret et un ton chaleureux et transparent.",
+      systemTemplate: "Génération de campagnes de plaidoyer et d'engagement donateurs par intelligence sémantique.",
+      placeholderText: "Saisissez les paramètres de votre campagne d'appel aux dons...",
+      exampleSolution: "Agis en tant que Directeur du Fundraising pour une ONG internationale de protection de l'environnement. Rédige les instructions pour un modèle de langage afin d'écrire une lettre de fidélisation personnalisée pour des donateurs ayant donné entre 50 et 100€ l'année dernière. L'objectif est de les remercier chaleureusement en mentionnant que leur don a permis de planter 10 arbres, puis de leur proposer de passer à un don récurrent mensuel de 10€ pour pérenniser l'action sur le long terme."
+    }
+  },
+  {
+    id: "ng_l2",
+    title: "Mesure d'Impact (M&E) & Analyse Qualitative des Projets de Terrain",
+    description: "Apprenez à utiliser le Traitement Automatique du Langage Naturel pour synthétiser des centaines de rapports de mission et en extraire des indicateurs d'impact quantifiables.",
+    durationMin: 16,
+    steps: [
+      "Le suivi et l'évaluation (Monitoring & Evaluation) constituent un enjeu majeur pour justifier des subventions publiques et privées auprès des bailleurs de fonds.",
+      "Les rapports rédigés par les équipes de terrain contiennent une mine d'informations qualitatives (verbatim de bénéficiaires, récits de réussite, difficultés logistiques locales) souvent inexploitées car trop volumineuses.",
+      "L'IA NLP analyse et catégorise ces récits textuels non structurés pour en extraire des thèmes récurrents, détecter des biais d'implémentation et quantifier le taux de satisfaction des populations aidées.",
+      "En croisant ces analyses sémantiques avec des données géographiques, les ONG visualisent précisément les zones d'excellence et les foyers de blocage opérationnel."
+    ],
+    activityType: "quiz",
+    quiz: {
+      id: "ng_q2",
+      question: "Quelle méthode NLP permet d'extraire automatiquement les thématiques principales et les verbatims marquants de 500 rapports d'activités humanitaires rédigés en texte libre ?",
+      options: [
+        { text: "L'analyse thématique non supervisée (Topic Modeling) combinée à l'extraction d'entités nommées (NER) pour isoler les citations d'impact et les bénéficiaires clés.", isCorrect: true },
+        { text: "L'augmentation manuelle de la police d'écriture dans Word pour lire plus vite sur l'écran.", isCorrect: false },
+        { text: "Le renvoi systématique de tous les rapports aux équipes locales en leur demandant de tout récrire sous forme d'équations mathématiques.", isCorrect: false },
+        { text: "La suppression pure et simple de toutes les colonnes textuelles dans la base de données.", isCorrect: false }
+      ],
+      explanation: "Excellent ! Le Topic Modeling et la reconnaissance d'entités nommées (NER) permettent d'extraire automatiquement la substantifique moelle de volumes massifs de récits de terrain, transformant l'anecdote qualitative en preuve d'impact rigoureuse pour les bailleurs de fonds."
+    }
+  },
+  {
+    id: "ng_l3",
+    title: "IA & Logistique Humanitaire et Planification d'Urgence face aux Crises",
+    description: "Explorez l'utilisation de modèles prédictifs et d'optimisateurs de réseaux pour organiser la chaîne d'approvisionnement d'urgence et le secours aux populations.",
+    durationMin: 18,
+    steps: [
+      "Lors de catastrophes naturelles ou de crises humanitaires, l'efficacité de la logistique d'urgence (acheminement de nourriture, de médicaments et d'abris) détermine directement le nombre de vies sauvées.",
+      "L'IA prédictive combine l'analyse de données météorologiques extrêmes, d'imagerie satellite en temps réel et de flux de télécommunication pour cartographier les routes bloquées et prédire les mouvements de populations.",
+      "Des algorithmes d'optimisation de contraintes recalculent dynamiquement les plans de chargement et les itinéraires des convois humanitaires pour éviter les zones de conflit ou de crue tout en réduisant le temps d'acheminement.",
+      "Conseil pratique : L'utilisation de ces outils doit être couplée à des plans de secours non-technologiques en cas de coupure totale d'électricité et de réseaux de communication."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un protocole d'urgence destiné à une IA logistique pour organiser l'acheminement de kits de premiers secours dans une zone sinistrée par une inondation majeure en tenant compte des priorités de santé publique.",
+      systemTemplate: "Modélisation de logistique d'urgence et routage prédictif de convois de secours humanitaires.",
+      placeholderText: "Saisissez les variables de la zone sinistrée et des stocks d'urgence...",
+      exampleSolution: "Agis en tant que Coordinateur Logistique d'Urgence Humanitaire. Rédige un prompt demandant à un modèle d'optimisation de planifier le déploiement de 15 camions de secours. Priorise la livraison d'eau potable et de sérums antivenimeux vers les 3 cliniques de secteur isolées par la crue. Demande à l'IA d'estimer les itinéraires bis en évitant les ponts de moins de 5 tonnes et les zones de danger signalées comme inondées."
+    }
+  }
+];
+
+export const ngoExtraLessonsData = [
+  { title: "Optimisation de l'allocation des budgets de subventions par IA prédictive", desc: "Découvrez comment l'IA aide à simuler différents scénarios budgétaires pour maximiser l'impact social par dollar dépensé." },
+  { title: "Analyse d'imagerie satellite par vision artificielle pour le suivi de la déforestation", desc: "Maîtrisez les algorithmes de détection d'anomalies de couvert forestier pour lancer des alertes d'abattage illégal en temps réel." },
+  { title: "Traduction automatique multilingue instantanée pour les traducteurs humanitaires de terrain", desc: "Utilisez des modèles d'IA locaux pour briser les barrières de la langue lors des premiers contacts dans les camps de réfugiés." },
+  { title: "Prédiction des épidémies de choléra par modélisation IA corrélant météo et accès à l'eau", desc: "Apprenez à croiser les relevés pluviométriques et les données sanitaires pour pré-positionner les traitements de réhydratation." },
+  { title: "IA & Rédaction de propositions de financement complexes pour les bailleurs internationaux (UN, UE)", desc: "Optimisez la conformité administrative de vos dossiers d'appels à propositions en structurant logiquement vos cadres logiques." },
+  { title: "Évaluation de la pauvreté locale par analyse IA de la luminosité nocturne par satellite", desc: "Utilisez le Deep Learning pour estimer le développement économique de micro-régions dépourvues de statistiques officielles." },
+  { title: "Automatisation de la détection de fake news et désinformation en zone de conflit", desc: "Protégez vos équipes et vos bénéficiaires en repérant les campagnes coordonnées de déstabilisation sur les réseaux sociaux locaux." },
+  { title: "Génération automatique de contenus d'éducation et de sensibilisation pour les populations locales", desc: "Concevez des supports éducatifs illustrés et traduits dans les dialectes régionaux pour promouvoir les gestes de santé publique." },
+  { title: "Analyse sémantique des retours bénéficiaires pour corriger les projets d'aide en temps réel", desc: "Mettez en place des boîtes à suggestions virtuelles analysées par IA pour détecter les insatisfactions ou les abus de pouvoir." },
+  { title: "Planification prédictive de la maintenance des forages d'eau potable en milieu rural", desc: "Utilisez des capteurs de débit connectés et de l'IA pour planifier la réparation d'une pompe avant qu'elle ne tombe en panne." },
+  { title: "Optimisation des campagnes de plaidoyer numérique par tests A/B sémantiques automatisés", desc: "Mobilisez plus efficacement l'opinion publique en adaptant la tonalité de vos pétitions en ligne grâce à l'IA générative." },
+  { title: "Classification automatique des pièces justificatives et factures de projets décentralisés", desc: "Simplifiez l'audit comptable de vos bureaux locaux en classant automatiquement les reçus froissés ou photographiés sur le terrain." },
+  { title: "IA & Gestion éthique de la protection de l'identité des bénéficiaires vulnérables", desc: "Mettez en œuvre des outils d'anonymisation faciale automatique sur les photos d'illustrations de vos missions humanitaires." },
+  { title: "Cartographie participative augmentée par IA pour identifier les bidonvilles non répertoriés", desc: "Collaborez avec OpenStreetMap et l'IA pour dessiner instantanément les contours des habitations informelles après un séisme." },
+  { title: "Analyse prédictive de la vulnerability alimentaire des ménages ruraux par modèles IA", desc: "Prévoyez les périodes de soudure agricole en analysant les indices de prix du marché local et l'état des cultures." },
+  { title: "Optimisation des plannings de bénévoles par algorithmes de correspondance affinitaire", desc: "Associez les compétences des volontaires internationaux aux besoins critiques exprimés par les antennes locales d'ONG." },
+  { title: "Examen Final de Validation de Certification d'Expert en IA & Gestion d'ONG", desc: "Validez vos compétences sur le fundraising augmenté, la mesure d'impact NLP et la logistique de crise pour obtenir votre diplôme d'ONG." }
+];
+
 export const baseFinanceLessons: Lesson[] = [
   {
     id: "fn_l1",
@@ -2658,7 +2998,7 @@ function generateCourseLessons(
   for (let i = 0; i < (targetTotal - baseLessons.length); i++) {
     const lessonNum = startNum + i;
     const data = extraListData[i] || { title: `Module Spécialisé N°${lessonNum}`, desc: "Explorez un aspect avancé de cette discipline." };
-    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : courseId === "ai_finance" ? "fn" : "fr";
+    const prefix = courseId === "prompt_eng" ? "pe" : courseId === "copywriting" ? "cp" : courseId === "chatgpt_mastery" ? "cg" : courseId === "claude_mastery" ? "cl" : courseId === "gemini_mastery" ? "gm" : courseId === "deepseek_mastery" ? "ds" : courseId === "kimi_mastery" ? "ki" : courseId === "leonardo_mastery" ? "le" : courseId === "ai_social_selling" ? "ss" : courseId === "viral_video_audio" ? "vv" : courseId === "grok_mastery" ? "gk" : courseId === "copilot_mastery" ? "co" : courseId === "manus_mastery" ? "mn" : courseId === "perplexity_mastery" ? "px" : courseId === "admin_redaction" ? "ad" : courseId === "veo_mastery" ? "ve" : courseId === "lovable_mastery" ? "lv" : courseId === "procurement_mastery" ? "pm" : courseId === "nanobanana_mastery" ? "nb" : courseId === "suno_mastery" ? "su" : courseId === "video_editing_mastery" ? "vd" : courseId === "ai_agriculture_mastery" ? "ag" : courseId === "business_writing_mastery" ? "bw" : courseId === "ai_finance" ? "fn" : courseId === "ai_engineering_mastery" ? "eg" : courseId === "ai_construction_mastery" ? "cn" : courseId === "ai_medicine_mastery" ? "md" : courseId === "ai_ngo_mastery" ? "ng" : "fr";
     const id = `${prefix}_l${lessonNum}`;
     
     // Rotate activities evenly to make it look outstandingly rich
@@ -2975,6 +3315,150 @@ function generateCourseLessons(
         goal: "L'amener à reconsidérer son offre tarifaire en mettant en avant les volumes garantis à long terme.",
         placeholderText: `Rédigez votre argumentaire de négociation et d'ancrage pour ${data.title}...`,
         exampleSolution: `Nous apprécions la qualité de notre partenariat historique au titre de "${data.title}". Toutefois, l'augmentation tarifaire unitaire proposée de 12% est incompatible avec notre équilibre budgétaire. En engageant notre entreprise sur un volume garanti pluriannuel en hausse de 20%, nous attendons un maintien des marges et l'indexation de nos coûts sur des indices de cours de matières premières publics.`
+      };
+    }
+    // 6.5. AI ENGINEERING & INDUSTRIE
+    else if (courseId === "ai_engineering_mastery" || lowerTitle.includes("ingénierie") || lowerTitle.includes("engineering") || lowerTitle.includes("pièce") || lowerTitle.includes("matériau") || lowerTitle.includes("simulation") || lowerTitle.includes("moteur") || lowerTitle.includes("vibration") || lowerTitle.includes("capteur") || lowerTitle.includes("robot") || lowerTitle.includes("fluide") || lowerTitle.includes("maintenance")) {
+      steps = [
+        `Cette leçon aborde l'application concrète des innovations d'intelligence artificielle dans le cadre industriel, le design technique, et l'ingénierie moderne de précision. Vous découvrirez comment l'IA accélère la recherche de solutions géométriques ou structurelles optimales.`,
+        `Pour structurer vos modélisations : 1. Récupérez les contraintes mécaniques, de matière et de poids ; 2. Nettoyez et préparez les fichiers CAO ou les séries temporelles de capteurs physiques ; 3. Utilisez l'IA générative pour concevoir de nouvelles formes organiques ou optimiser la résistance ; 4. Intégrez des modèles de régression pour valider la tenue à la fatigue sans calculs FEA lourds.`,
+        `Les axes majeurs de l'ingénierie augmentée par IA comprennent : 1. La conception générative de pièces allégées haute résistance ; 2. La prédiction de pannes d'engins tournants par détection d'anomalies vibratoires ; 3. La simulation fluide ou aérodynamique temps réel par réseaux neuronaux physiques (PINNs).`,
+        `Conseil d'expert : Pour les capteurs industriels bruités, appliquez toujours des filtres de Kalman neuronaux ou d'analyse spectrale (FFT) avant d'alimenter vos modèles prédictifs. Validez l'exercice pour acquérir +50 XP et progresser vers votre diplôme d'élite.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans l'ingénierie industrielle moderne liée à : "${data.title}", quelle technologie associe les lois physiques avec l'apprentissage automatique ?`,
+        options: [
+          { text: "Les réseaux PINNs (Physics-Informed Neural Networks) qui incorporent les équations physiques dans leur fonction de perte.", isCorrect: true },
+          { text: "Les animations 3D de communication commerciale d'images de synthèse.", isCorrect: false },
+          { text: "La désactivation de toutes les lois de la gravité terrestre au sein du serveur de CAO.", isCorrect: false },
+          { text: "Les feuilles de calcul manuelles imprimées sans vérification d'unité physique.", isCorrect: false }
+        ],
+        explanation: `Félicitations ! Les PINNs intègrent directement des équations comme Navier-Stokes ou les lois thermiques dans le modèle de Deep Learning pour forcer l'apprentissage à respecter rigoureusement la réalité physique.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt d'instructions d'ingénierie sémantique décrivant le cahier des charges d'une optimisation de pièce ou système de : ${data.title}.`,
+        systemTemplate: `Ingénierie de précision et modélisation topologique assistée par IA : ${data.title}`,
+        placeholderText: `Saisissez les paramètres de charge, de matière et de géométrie pour ${data.title}...`,
+        exampleSolution: `Agis en tant qu'Ingénieur R&D Senior. Rédige un prompt d'optimisation topologique pour un carter de boîte de vitesses. Objectif : Réduire la masse de 25% tout en conservant une rigidité torsionnelle de 12 000 Nm/degré. Matériau : Magnésium. Force de charge dynamique : 8000 N sur l'arbre primaire. Contrainte : compatible usinage CNC 5 axes.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch de transition vers l'ingénierie assistée par IA : ${data.title}`,
+        audience: "Des directeurs industriels attachés aux simulations classiques de plusieurs heures.",
+        goal: "Les convaincre d'adopter des modèles neuronaux pour réduire leurs cycles de calcul de 1000x.",
+        placeholderText: `Saisissez votre argumentaire technique pour ${data.title}...`,
+        exampleSolution: `Le futur de "${data.title}" n'attend pas des heures de calcul sur supercalculateur. En entraînant des réseaux de neurones PINNs sur vos équations aérodynamiques et thermiques, nous prédisons le comportement des fluides en temps réel à l'écran. C'est l'assurance d'explorer 100 fois plus d'options de formes à coûts de R&D réduits.`
+      };
+    }
+    // 6.6. AI CONSTRUCTION & BTP
+    else if (courseId === "ai_construction_mastery" || lowerTitle.includes("bâtiment") || lowerTitle.includes("construction") || lowerTitle.includes("btp") || lowerTitle.includes("chantier") || lowerTitle.includes("maquette") || lowerTitle.includes("bim") || lowerTitle.includes("clash") || lowerTitle.includes("béton") || lowerTitle.includes("ouvrage") || lowerTitle.includes("planification")) {
+      steps = [
+        `Ce module sur "${data.title}" aborde la transformation numérique et l'intégration de l'intelligence artificielle au sein du secteur des Bâtiments et Travaux Publics (BTP). Du gros œuvre à la maintenance, l'IA fiabilise l'exécution des travaux et prévient les accidents.`,
+        `Pour optimiser vos projets de construction : 1. Utilisez des modèles d'audit automatique BIM (Building Information Modeling) pour lever les clashs géométriques ; 2. Recalculez le planning de Gantt de façon dynamique sous contraintes météo réelles ; 3. Utilisez la vision par ordinateur pour recenser l'avancement physique réel du chantier et surveiller les EPI de sécurité.`,
+        `Les axes d'innovation clés du BTP assisté par IA incluent : 1. L'optimisation des formulations de bétons bas carbone résistants ; 2. La détection de fissures ou désordres sur des infrastructures d'art par drones visuels ; 3. La régulation thermique prédictive du chauffage et de la ventilation (Smart HVAC) des bâtiments tertiaires.`,
+        `Conseil de chantier : La sécurité des équipes est absolue. Formez vos caméras de chantier à lancer des alertes automatiques en cas d'absence de harnais en hauteur ou de franchissement de zones de danger d'engins. Validez l'évaluation ci-contre pour décrocher +50 XP.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans la gestion et la sécurité d'un chantier de BTP lié à : "${data.title}", quelle application de l'IA apporte un bénéfice de sécurité immédiat ?`,
+        options: [
+          { text: "La vision artificielle qui analyse les flux vidéo de chantier en temps réel pour détecter l'absence d'EPI ou le non-arrimage des harnais de sécurité.", isCorrect: true },
+          { text: "L'impression 3D de tasses de café virtuelles pour les ouvriers de terrain.", isCorrect: false },
+          { text: "L'envoi automatique d'e-mails agressifs aux sous-traitants pendant leur sommeil.", isCorrect: false },
+          { text: "La suppression de toutes les grues et engins mécaniques de chantier.", isCorrect: false }
+        ],
+        explanation: `Excellent ! La vision par ordinateur (Deep Learning visuel) permet une surveillance de sécurité bienveillante et continue des compagnons de chantier, alertant instantanément d'un risque élevé de chute ou de collision d'engin.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt d'instructions BIM ou de planification dynamique de chantier pour : ${data.title}.`,
+        systemTemplate: `Planification prédictive de travaux et audit de maquette numérique BIM : ${data.title}`,
+        placeholderText: `Saisissez vos paramètres d'analyse BIM, de planning Gantt ou de sécurité pour ${data.title}...`,
+        exampleSolution: `Agis en tant que Directeur de Chantier BTP IA. Rédige un prompt d'optimisation de planning de coulage de béton pour un immeuble de bureaux de 5 étages. Contraintes : Risque d'averses continues à partir de vendredi, livraison de toupies limitée à 4 par heure, et temps de cure minimal requis de 48 heures. Propose le meilleur planning révisé.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch de sécurité et pilotage par maquette intelligente : ${data.title}`,
+        audience: "Des promoteurs immobiliers ou maîtres d'ouvrage cherchant à limiter les sinistres et surcoûts.",
+        goal: "Les convaincre d'adopter un suivi de chantier et des maquettes BIM augmentées par IA.",
+        placeholderText: `Rédigez votre argumentaire de valeur pour ${data.title}...`,
+        exampleSolution: `Construire avec "${data.title}" ne s'improvise plus. En croisant vos fichiers de plans BIM avec des inspections régulières par drone analysées par vision artificielle, notre solution identifie les écarts de pose millimétriques et prévient 95% des litiges d'exécution d'ouvrage. C'est l'assurance de livrer à l'heure, sans sinistre ni surcoût structurel.`
+      };
+    }
+    // 6.7. AI MEDICINE & CLINICAL RESEARCH
+    else if (courseId === "ai_medicine_mastery" || lowerTitle.includes("médecine") || lowerTitle.includes("medicine") || lowerTitle.includes("recherche") || lowerTitle.includes("clinique") || lowerTitle.includes("diagnostic") || lowerTitle.includes("molécule") || lowerTitle.includes("patient") || lowerTitle.includes("tumeur") || lowerTitle.includes("cancer") || lowerTitle.includes("biologie") || lowerTitle.includes("dose") || lowerTitle.includes("séquençage")) {
+      steps = [
+        `Ce module spécialisé sur "${data.title}" aborde la révolution de l'intelligence artificielle appliquée à la santé, la recherche biomédicale et la pratique clinique quotidienne.`,
+        `Pour structurer vos projets d'IA médicale : 1. Utilisez des modèles d'apprentissage profond pour segmenter des images cliniques (IRM, radio, fond d'œil) ; 2. Mettez en œuvre des outils NLP souverains pour transcrire et structurer vos comptes-rendus cliniques de consultation ; 3. Utilisez la modélisation génomique (comme les prédictions 3D d'AlphaFold) pour identifier et simuler des molécules d'intérêt in silico.`,
+        `Les axes majeurs d'intégration incluent également : 1. L'optimisation des dosages thérapeutiques personnalisés selon le métabolisme ; 2. La prédiction du risque de complications et de réadmission post-opératoire ; 3. La génération de cohortes et de données de patients synthétiques hautement fidèles préservant l'anonymat.`,
+        `Conseil éthique : La sécurité et la confidentialité des données de santé (RGPD/HIPAA) sont absolues. Assurez-vous d'utiliser uniquement des instances cloud souveraines ou des calculs locaux scellés. Validez l'évaluation ci-contre pour obtenir +50 XP.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'optimisation des processus de soins cliniques liés à : "${data.title}", quel aspect de sécurité et de conformité réglementaire est absolument non négociable ?`,
+        options: [
+          { text: "La stricte confidentialité et le cloisonnement souverain des données de santé identifiables des patients (RGPD, HIPAA, anonymisation par clés d'accès).", isCorrect: true },
+          { text: "L'obligation d'avoir une connexion constante avec des serveurs de réseaux sociaux pour partager les diagnostics.", isCorrect: false },
+          { text: "Le stockage exclusif des dossiers médicaux sous forme de commentaires de code HTML publics.", isCorrect: false },
+          { text: "L'interdiction de toute utilisation d'ordinateurs par le personnel hospitalier.", isCorrect: false }
+        ],
+        explanation: `Parfait ! Les données de santé sont hautement sensibles. L'intégration de l'IA doit impérativement s'accompagner d'architectures sécurisées respectant les normes souveraines (comme l'hébergement HDS en France ou HIPAA aux USA) avec chiffrement total et anonymisation rigoureuse.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt structuré de synthèse ou d'aide au diagnostic pour : ${data.title}.`,
+        systemTemplate: `Aide au diagnostic médical, traitement NLP clinique et modélisation de recherche pour : ${data.title}`,
+        placeholderText: `Saisissez vos paramètres cliniques, molécules, ou exigences d'anonymisation pour ${data.title}...`,
+        exampleSolution: `Agis en tant de Chercheur Principal en Pharmacologie et Expert IA. Rédige un prompt d'instructions destiné à un modèle de langage clinique pour analyser un résumé d'essai clinique de phase II concernant une nouvelle molécule contre le diabète de type 2. Le modèle doit extraire la taille de la cohorte, la significativité statistique (valeur p), et lister les effets indésirables déclarés avec leur fréquence.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch de valorisation de l'IA médicale face à un comité éthique et de direction d'un centre hospitalier : ${data.title}`,
+        audience: "Des membres de comité d'éthique, médecins chefs de service et directeurs d'hôpitaux.",
+        goal: "Les rassurer sur la sécurité, la précision et le gain de temps administratif libéré pour le soin du patient.",
+        placeholderText: `Rédigez votre argumentaire clinique et éthique pour ${data.title}...`,
+        exampleSolution: `L'intégration de notre solution d'IA clinique sur "${data.title}" n'est pas une substitution du diagnostic humain, mais un copilote de vigilance. En automatisant 80% des saisies administratives de dossiers médicaux et en alertant en temps réel sur les anomalies de signaux faibles, nos praticiens retrouvent leur cœur de métier : l'écoute et le soin au lit du patient, dans un cadre technologique souverain hautement sécurisé.`
+      };
+    }
+    // 6.8. AI IN NGOs & HUMANITARIAN ACTION
+    else if (courseId === "ai_ngo_mastery" || lowerTitle.includes("ong") || lowerTitle.includes("ngo") || lowerTitle.includes("humanitaire") || lowerTitle.includes("don") || lowerTitle.includes("bénéficiaire") || lowerTitle.includes("pauvreté") || lowerTitle.includes("fundraising") || lowerTitle.includes("plaidoyer")) {
+      steps = [
+        `Ce module spécialisé sur "${data.title}" explore la puissance de l'intelligence artificielle mise au service de l'impact social, de l'action humanitaire et de la gestion moderne des ONG.`,
+        `Pour amplifier l'impact de vos initiatives : 1. Utilisez des modèles sémantiques pour optimiser et personnaliser vos appels aux dons et fidéliser les donateurs ; 2. Analysez les volumineux rapports de mission qualitatifs (M&E) via le traitement automatique du langage pour extraire des indicateurs d'impact clairs ; 3. Utilisez l'imagerie satellite et des modèles prédictifs pour planifier la logistique de crise en temps réel.`,
+        `Les autres applications clés incluent : 1. L'adaptation multilingue des supports d'éducation locale ; 2. La prévision d'épidémies par croisement météo-sanitaire ; 3. Le filtrage comptable automatisé des justificatifs de projets décentralisés.`,
+        `Règle éthique essentielle : La protection des populations vulnérables exige une anonymisation totale de leurs données et visages avant tout traitement par des tiers. Validez l'évaluation ci-contre pour obtenir +50 XP.`
+      ];
+
+      customQuiz = {
+        id: `${prefix}_q${lessonNum}`,
+        question: `Dans le cadre de l'intégration de l'IA pour l'aide humanitaire liée à : "${data.title}", quelle précaution éthique est absolument prioritaire pour protéger les bénéficiaires ?`,
+        options: [
+          { text: "L'anonymisation rigoureuse de toutes les données personnelles et visages, l'utilisation de serveurs locaux ou chiffrés et le respect absolu de la dignité humaine.", isCorrect: true },
+          { text: "La diffusion publique des photos de bénéficiaires en texte brut pour attirer plus de clics sur les réseaux.", isCorrect: false },
+          { text: "L'obligation d'avoir une connexion constante avec des serveurs publicitaires.", isCorrect: false },
+          { text: "Le stockage exclusif des historiques de santé des populations sur des serveurs non sécurisés.", isCorrect: false }
+        ],
+        explanation: `Excellent ! Les bénéficiaires d'ONG sont des populations vulnérables. Toute utilisation d'IA doit respecter une déontologie stricte : sécurité absolue des données sensibles, non-divulgation d'informations de localisation précises en zone de conflit et respect de la vie privée.`
+      };
+
+      customPromptObjective = {
+        taskDescription: `Rédigez un prompt structuré de campagne d'impact ou de logistique d'urgence pour : ${data.title}.`,
+        systemTemplate: `Campagne d'impact social, évaluation qualitative et coordination humanitaire pour : ${data.title}`,
+        placeholderText: `Saisissez vos indicateurs d'impact, cibles de don, ou exigences logistiques pour ${data.title}...`,
+        exampleSolution: `Act as a senior program officer. Write an AI prompt to evaluate 50 text surveys of direct aid beneficiaries. The AI must extract common friction points, categorize suggestions by priority, and list any potential protection warnings in a structured dashboard format.`
+      };
+
+      customCopyObjective = {
+        scenario: `Pitch de valorisation de l'IA sociale et éthique devant un conseil d'administration ou un bailleur de fonds institutionnel : ${data.title}`,
+        audience: "Des directeurs de programmes, des bailleurs de subventions internationales et des responsables de l'éthique.",
+        goal: "Démontrer que l'IA permet de maximiser l'impact direct par dollar investi tout en respectant une déontologie irréprochable.",
+        placeholderText: `Rédigez votre argumentaire d'impact et de déontologie pour ${data.title}...`,
+        exampleSolution: `Notre démarche sur "${data.title}" utilise l'IA pour optimiser les tâches administratives complexes de suivi, libérant ainsi plus de temps humain pour l'action directe sur le terrain. Loin de déshumaniser notre mission, cela garantit une transparence absolue auprès de nos bailleurs de fonds et un acheminement plus rapide de l'aide là où les besoins sont les plus urgents, le tout sous le contrôle permanent de nos équipes et dans le respect total de l'éthique.`
       };
     }
     // 7. GENERIC FALLBACK (STILL HIGHLY INTENSE & DETAIL-RICH)
@@ -3312,6 +3796,50 @@ export const COURSES: Course[] = [
     estimatedHours: 15,
     totalLessons: 20,
     lessons: generateCourseLessons("ai_finance", baseFinanceLessons, financeExtraLessonsData, 20)
+  },
+  {
+    id: "ai_engineering_mastery",
+    title: "IA & Ingénierie Moderne : CAO, Simulation & Maintenance Prédictive",
+    category: "ai",
+    description: "Maîtrisez les applications réelles de l'IA dans l'ingénierie et l'industrie : conception générative CAO, jumeaux numériques, réseaux de neurones physiques (PINNs), traitement de signaux de capteurs et maintenance prédictive.",
+    iconName: "Cpu",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_engineering_mastery", baseEngineeringLessons, engineeringExtraLessonsData, 20)
+  },
+  {
+    id: "ai_construction_mastery",
+    title: "IA & Bâtiment et Travaux Publics : Conception BIM, Planification & Sécurité",
+    category: "ai",
+    description: "Maîtrisez les applications de l'IA dans le bâtiment et le génie civil : modélisation BIM intelligente, détection automatique de conflits (clashs), planification de chantier prédictive Gantt, suivi par drones et vision par ordinateur.",
+    iconName: "Briefcase",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_construction_mastery", baseConstructionLessons, constructionExtraLessonsData, 20)
+  },
+  {
+    id: "ai_medicine_mastery",
+    title: "IA & Médecine et Recherche : Diagnostics Cliniques & Bio-Informatique",
+    category: "ai",
+    description: "Devenez un expert de la santé et de la recherche assistées par IA : analyse de signaux cliniques, imagerie médicale d'élite, repliement protéique (AlphaFold), découverte rationnelle de médicaments et traitement NLP souverain de dossiers médicaux.",
+    iconName: "Heart",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_medicine_mastery", baseMedicineLessons, medicineExtraLessonsData, 20)
+  },
+  {
+    id: "ai_ngo_mastery",
+    title: "IA & Gestion des ONG et Action Humanitaire",
+    category: "ai",
+    description: "Devenez un expert de l'impact social augmenté : optimisez la collecte de fonds, analysez qualitativement vos rapports de terrain (M&E) via NLP, planifiez la logistique d'urgence et cartographiez les vulnérabilités.",
+    iconName: "Heart",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_ngo_mastery", baseNgoLessons, ngoExtraLessonsData, 20)
   }
 ];
 

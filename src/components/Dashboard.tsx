@@ -93,6 +93,7 @@ const getIconComponent = (name: string, className = "w-5 h-5") => {
     case "Video": return <Video className={`${className} text-amber-400`} />;
     case "Music": return <Music className={`${className} text-fuchsia-400`} />;
     case "Leaf": return <Leaf className={`${className} text-emerald-500`} />;
+    case "Heart": return <Heart className={`${className} text-rose-500`} />;
     default: return <Sparkles className={`${className} text-yellow-400`} />;
   }
 };
