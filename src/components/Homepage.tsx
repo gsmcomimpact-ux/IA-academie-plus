@@ -231,7 +231,7 @@ export default function Homepage({
 
   const localizedCourses = getLocalizedCourses(lang, COURSES);
 
-  const [activeTab, setActiveTab] = useState<"hero" | "courses" | "certs" | "pricing">("hero");
+  const [activeTab, setActiveTab] = useState<"hero" | "courses" | "pricing">("hero");
   const [demoCertName, setDemoCertName] = useState("");
   const [submittedDemo, setSubmittedDemo] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
@@ -268,7 +268,7 @@ export default function Homepage({
       const urlName = params.get("name");
       if (verifyCode) {
         setVerificationCode(verifyCode);
-        setActiveTab("certs");
+        setActiveTab("courses");
         
         const uppercaseCode = verifyCode.toUpperCase().trim();
         
@@ -457,11 +457,10 @@ export default function Homepage({
   const menuItems = [
     { id: "hero", label: lang === "fr" ? "Présentation" : "Overview", selector: "#hero-landing" },
     { id: "courses", label: lang === "fr" ? "Formations Catalog" : "Course Catalog", selector: "#courses-grid" },
-    { id: "certs", label: lang === "fr" ? "Diplômes Vérifiables" : "Credentials Portal", selector: "#certification-details" },
     { id: "pricing", label: lang === "fr" ? "Accès Unique" : "One-Time Access", selector: "#pricing-section" }
   ];
 
-  const scrollToSection = (selector: string, id: "hero" | "courses" | "certs" | "pricing") => {
+  const scrollToSection = (selector: string, id: "hero" | "courses" | "pricing") => {
     setActiveTab(id);
     const element = document.querySelector(selector);
     if (element) {
@@ -535,7 +534,7 @@ export default function Homepage({
 
           {/* STUDENTS CTAS OR LOGINS */}
           <div className="flex items-center gap-2">
-            {hasPaid && hasOnboarded ? (
+            {hasOnboarded ? (
               <>
                 <button
                   onClick={onGoToDashboard}
@@ -869,108 +868,7 @@ export default function Homepage({
         </div>
       </section>
 
-      {/* DYNAMIC PROMPT EVALUATOR SANDBOX PREVIEW WIDGET */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-tr from-slate-900 via-slate-950 to-slate-900 rounded-3xl border border-slate-900 space-y-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-xl pointer-events-none" />
-        
-        <div className="text-center space-y-2">
-          <span className="text-[9px] font-mono bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-extrabold px-3 py-1 rounded-full uppercase">
-            {lang === "fr" ? "ENTRAÎNEMENT INTERACTIF" : "INTERACTIVE DEMO BENCH"}
-          </span>
-          <h2 className="text-xl sm:text-2xl font-black text-white">
-            {lang === "fr" ? "Testez votre technique de prompt en direct !" : "Test your prompting skills instantly!"}
-          </h2>
-          <p className="text-xs text-slate-400 max-w-xl mx-auto">
-            {lang === "fr" 
-              ? "Saisissez un court exemple de prompt dans l'éditeur ci-dessous pour ressentir comment notre système d'IA évalue la clarté opérationnelle des consignes d'un étudiant."
-              : "Enter a brief structured prompt below to experience how our smart evaluation grading framework checks the semantic clarity of user prompts."}
-          </p>
-        </div>
 
-        <form onSubmit={handleEvaluatePrompt} className="max-w-2xl mx-auto space-y-4">
-          <div className="bg-slate-950 border border-slate-850 p-4 rounded-2xl relative">
-            <textarea
-              value={sandboxPrompt}
-              onChange={(e) => setSandboxPrompt(e.target.value)}
-              placeholder={lang === "fr" 
-                ? "Ex: Rédige-moi un courriel de relance client professionnel sans jargon..." 
-                : "e.g., Act as senior copywriting expert, write target customer email focusing on PAS dynamic model..."}
-              rows={3}
-              className="w-full bg-transparent text-xs text-slate-200 outline-none resize-none font-sans"
-            />
-            <div className="flex justify-between items-center mt-3 pt-3 border-t border-slate-900 font-mono text-[9px] text-slate-500">
-              <span className="flex items-center gap-1">
-                <Terminal className="w-3.5 h-3.5" /> 
-                {lang === "fr" ? "Méthode: Évaluation Formelle" : "Syllabus Analysis Mode"}
-              </span>
-              <button
-                type="submit"
-                disabled={evaluating || !sandboxPrompt.trim()}
-                className={`py-2 px-4 rounded-xl text-xs font-bold font-mono uppercase tracking-wider flex items-center gap-1.5 transition-all select-none cursor-pointer ${
-                  !sandboxPrompt.trim() 
-                    ? "bg-slate-900 text-slate-650 pointer-events-none" 
-                    : "bg-emerald-500 text-slate-950 shadow shadow-emerald-500/10 hover:bg-emerald-400"
-                }`}
-              >
-                {evaluating ? (
-                  <>
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                    {lang === "fr" ? "Évaluation..." : "Grading..."}
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-3.5 h-3.5" />
-                    {lang === "fr" ? "Évaluer mon Prompt" : "Evaluate My Structure"}
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </form>
-
-        {sandboxEvaluation && (
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl mx-auto bg-slate-900 border border-slate-850 p-5 rounded-2xl space-y-4 text-left"
-          >
-            {/* Score circle bar */}
-            <div className="flex items-center gap-4 border-b border-slate-950 pb-3">
-              <div className="relative flex items-center justify-center shrink-0">
-                <div className="w-12 h-12 rounded-full border border-slate-800 flex items-center justify-center font-bold text-xs text-emerald-400 bg-slate-950">
-                  {sandboxEvaluation.score}%
-                </div>
-              </div>
-              <div>
-                <h4 className="font-extrabold text-slate-200 text-xs uppercase font-mono tracking-wider">
-                  {lang === "fr" ? "Rapport d'analyse du Prompt" : "Semantic Grade Report"}
-                </h4>
-                <p className="text-[10px] text-slate-500 font-sans leading-none mt-1">
-                  ⭐ {sandboxEvaluation.score >= 80 ? (lang === "fr" ? "Excellent potentiel fonctionnel" : "Excellent structural coverage") : (lang === "fr" ? "Besoins d'ajustements structurels" : "Structural changes required")}
-                </p>
-              </div>
-            </div>
-
-            <p className="text-xs text-slate-300 leading-normal font-sans">
-              {sandboxEvaluation.feedback}
-            </p>
-
-            <div className="space-y-1.5 pt-1">
-              <h5 className="text-[10px] uppercase font-mono font-bold text-slate-400">
-                {lang === "fr" ? "Axes d'amélioration conseillés :" : "Syllabus Recommendations :"}
-              </h5>
-              <ul className="space-y-1">
-                {sandboxEvaluation.suggestions.map((suggestion, idx) => (
-                  <li key={idx} className="text-[11px] text-slate-450 flex items-start gap-1.5 font-sans leading-normal">
-                    <CheckSquare className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
-                    <span>{suggestion}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        )}
-      </section>
 
       {/* CORE SKILL ACADEMY CURRICULUM GRID WITH 22 COMPREHENSIVE COURSES */}
       <section id="courses-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 space-y-10">
@@ -1116,128 +1014,7 @@ export default function Homepage({
         </div>
       </section>
 
-      {/* DETAILED VERIFIABLE CERTIFICATION PORTAL CARDS */}
-      <section id="certification-details" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-slate-900 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        {/* Real Certification verification block */}
-        <div className="lg:col-span-6 bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-5 shadow-2xl relative">
-          <div className="absolute top-0 right-0 bg-emerald-505/10 border-b border-l border-slate-800 text-[10px] font-mono uppercase font-bold text-emerald-400 tracking-wider px-3.5 py-1.5 rounded-bl-xl">
-            {homeText.secureBadge}
-          </div>
 
-          <div className="space-y-1">
-            <h3 className="font-bold text-slate-200 text-sm font-mono uppercase">{homeText.verifyCardHeader}</h3>
-            <p className="text-[11px] text-slate-500">{homeText.verifyCardDesc}</p>
-          </div>
-
-          <form onSubmit={handleVerifyCert} className="space-y-4">
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-mono text-slate-400 uppercase block font-bold">{homeText.verifyInputLabel}</label>
-              <div className="flex gap-2">
-                <input 
-                  type="text"
-                  required
-                  value={verificationCode}
-                  onChange={(e) => setVerificationCode(e.target.value)}
-                  placeholder={homeText.verifyInputPlaceholder}
-                  className="flex-1 bg-slate-950 border border-slate-850 py-3 px-4 rounded-xl text-xs font-mono tracking-widest text-slate-200 focus:outline-none focus:border-emerald-500"
-                />
-                <button
-                  type="submit"
-                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-5 rounded-xl text-xs font-mono uppercase tracking-widest cursor-pointer shadow"
-                >
-                  {homeText.verifySubmit}
-                </button>
-              </div>
-            </div>
-          </form>
-
-          {verificationResult && (
-            <motion.div 
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`p-4 rounded-2xl border text-center ${
-                verificationResult.found 
-                  ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" 
-                  : "bg-red-500/10 border-red-500/20 text-red-400"
-              }`}
-            >
-              <Award className="w-8 h-8 mx-auto mb-2 text-emerald-400" />
-              {verificationResult.found ? (
-                <div className="space-y-1">
-                  <div className="text-xs font-bold uppercase tracking-widest font-mono">{homeText.certSuccessHeader}</div>
-                  <p className="text-xs text-slate-300 mt-1 font-sans">
-                    {homeText.certSuccessText} <strong>{verificationResult.recipient}</strong> {homeText.certSuccessCourse}
-                  </p>
-                  <p className="text-xs font-bold text-white italic">{verificationResult.course}</p>
-                </div>
-              ) : (
-                <div>
-                  <div className="text-xs font-bold uppercase tracking-widest font-mono">{homeText.certFailHeader}</div>
-                  <p className="text-[11px] text-slate-400 mt-1">
-                    {homeText.certFailText}
-                  </p>
-                </div>
-              )}
-            </motion.div>
-          )}
-
-          {/* Verification requirements */}
-          <div className="p-3.5 bg-slate-950/70 rounded-xl border border-slate-850 flex items-center gap-3">
-            <div className="p-2 bg-[#d4af37]/10 rounded-lg text-[#d4af37]">
-              <Award className="w-5 h-5" />
-            </div>
-            <p className="text-[10px] text-slate-500 leading-normal">
-              <strong>{homeText.verificationUnderLabel}</strong> {homeText.verificationUnderDesc}
-            </p>
-          </div>
-        </div>
-
-        {/* Credentials features detail lists */}
-        <div className="lg:col-span-6 space-y-6">
-          <span className="text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20 px-3 py-1 rounded-full inline-block">
-            {homeText.transparencyBadge}
-          </span>
-          <h2 className="text-2.5xl sm:text-4xl font-black text-white tracking-tight">
-            {homeText.transparencyHeader}
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-sans">
-            {homeText.transparencyDesc}
-          </p>
-
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <div className="p-1 bg-emerald-500/10 rounded-lg text-emerald-400 mt-0.5">
-                <Check className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xs text-slate-200">{homeText.bullet1Title}</h4>
-                <p className="text-[11px] text-slate-400 leading-normal">{homeText.bullet1Desc}</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <div className="p-1 bg-emerald-500/10 rounded-lg text-emerald-400 mt-0.5">
-                <Check className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xs text-slate-200">{homeText.bullet2Title}</h4>
-                <p className="text-[11px] text-slate-400 leading-normal">{homeText.bullet2Desc}</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <div className="p-1 bg-emerald-500/10 rounded-lg text-emerald-400 mt-0.5">
-                <Check className="w-4 h-4" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xs text-slate-200">{homeText.bullet3Title}</h4>
-                <p className="text-[11px] text-slate-400 leading-normal">{homeText.bullet3Desc}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* HIGHEST VALUE TESTIMONIALS (SOCIAL PROOF) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-900 space-y-12">

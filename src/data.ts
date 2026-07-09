@@ -1719,6 +1719,86 @@ const procurementExtraLessonsData = [
   { title: "L'Évaluation Finale : Certification d'Expert en Approvisionnement et Gestion des Risques", desc: "Prouvez vos aptitudes à identifier des gisements de productivité, à négocier des contrats et à protéger la chaîne de livraison globale." }
 ];
 
+const baseAiInternationalTradeLessons: Lesson[] = [
+  {
+    id: "tr_l1",
+    title: "IA & Optimisation de la Supply Chain Internationale & Conformité Douanière",
+    description: "Découvrez comment l'IA prédictive et la vision par ordinateur optimisent le transport des marchandises, réduisent les délais portuaires et automatisent la conformité douanière.",
+    durationMin: 15,
+    steps: [
+      "Le commerce international repose sur des chaînes logistiques hautement complexes impliquant de multiples acteurs, modes de transport et réglementations locales.",
+      "L'IA prédictive analyse les données météorologiques, le trafic maritime et la congestion des ports pour optimiser les itinéraires de fret multimodal et atténuer les retards de manière proactive.",
+      "La vision par ordinateur et le traitement intelligent des documents (IDP) automatisent la lecture des manifestes, des connaissements et la classification des codes du Système Harmonisé (SH).",
+      "Règle clé : L'automatisation des déclarations d'import-export avec l'IA doit toujours inclure une boucle de vérification humaine (Human-in-the-Loop) pour éviter des pénalités douanières coûteuses."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour configurer un assistant IA de conformité douanière chargé de classer des composants électroniques dans les codes du Système Harmonisé (SH) et de vérifier les listes de documents.",
+      systemTemplate: "Automatisation de la paperasse douanière internationale et vérification de la conformité.",
+      placeholderText: "Saisissez votre prompt pour configurer l'assistant douanier sémantique...",
+      exampleSolution: "Agis comme un Directeur de la Conformité Douanière. Configure un guide d'audit IA pour classer des microcontrôleurs importés sous le Système Harmonisé (SH) à 6 chiffres. Liste les documents indispensables (facture commerciale, certificat d'origine, Bill of Lading) et décris comment l'IA doit valider la cohérence des descriptions de produits."
+    }
+  },
+  {
+    id: "tr_l2",
+    title: "Market Intelligence : Modélisation Prédictive de la Demande et des Prix Globaux",
+    description: "Apprenez à croiser des métriques macroéconomiques, des signaux géopolitiques et des prix des matières premières pour repérer de nouveaux marchés d'exportation lucratifs.",
+    durationMin: 15,
+    steps: [
+      "La veille stratégique mondiale (Market Intelligence) permet aux exportateurs de détecter la demande émergente et de négocier des accords d'achat optimisés.",
+      "Les modèles d'IA analysent en temps réel les fluctuations des matières premières, les indices de fret maritime (ex: Baltic Dry Index) et les signaux de demande des consommateurs locaux.",
+      "Les modèles de Machine Learning simulent l'élasticité de la demande face aux variations des tarifs douaniers ou des barrières non-tarifaires.",
+      "L'analyse de sentiment géopolitique sur les flux d'actualités mondiaux aide à évaluer le risque souverain et à affiner la couverture des risques de change."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour simuler l'élasticité de la demande de produits laitiers fins sur le marché asiatique face à une hausse subite de 10% des barrières douanières.",
+      systemTemplate: "Simulation d'élasticité de marché et d'impact macroéconomique par l'IA.",
+      placeholderText: "Saisissez votre prompt de simulation d'impact tarifaire...",
+      exampleSolution: "Analyse l'impact d'une hausse tarifaire de 10% sur les importations de fromages français au Japon. Modélise la réaction de la demande des consommateurs de classe moyenne, suggère un ajustement des prix de vente Incoterms CIF Tokyo et identifie les opportunités de réorientation vers des zones franches."
+    }
+  },
+  {
+    id: "tr_l3",
+    title: "Négociation Interculturelle & Traduction Commerciale Souveraine",
+    description: "Déployez l'IA pour adapter les accords de distribution, localiser les propositions commerciales et négocier avec des partenaires mondiaux tout en respectant les coutumes commerciales locales.",
+    durationMin: 15,
+    steps: [
+      "Réussir sur les marchés d'exportation exige de communiquer de manière fluide et respectueuse avec des partenaires ayant des normes commerciales très diverses.",
+      "Les grands modèles de langage ne se contentent pas de traduire des mots : ils adaptent les niveaux de formalité (ex : le Keigo japonais), les nuances stylistiques et la rhétorique commerciale.",
+      "Pour des raisons de confidentialité stratégique, priorisez le traitement des contrats de distribution et des réponses aux appels d'offres internationaux via des modèles d'IA souverains ou locaux sécurisés hors ligne.",
+      "Conseil de négociation : Utilisez l'IA comme un simulateur de jeu de rôles interactif pour anticiper les contre-arguments des acheteurs étrangers."
+    ],
+    activityType: "prompt_sandbox",
+    promptObjective: {
+      taskDescription: "Rédigez un prompt pour un simulateur de négociation commerciale internationale croisant les coutumes d'affaires entre deux pays.",
+      systemTemplate: "Préparation à des négociations commerciales à enjeux élevés avec des distributeurs étrangers.",
+      placeholderText: "Formulez votre prompt de simulation de jeu de rôles interculturel...",
+      exampleSolution: "Agis comme un négociateur commercial expérimenté au Japon. Simule un jeu de rôles où je te propose un contrat de distribution exclusif de vin de Bordeaux. Adopte le niveau de formalité Keigo approprié, soulève les objections culturelles typiques liées à la taille des bouteilles et à la régularité des livraisons, et guide-moi sur la façon d'ajuster mes arguments."
+    }
+  }
+];
+
+const aiInternationalTradeExtraLessonsData = [
+  { title: "Détection Automatique des Fraudes Documentaires sur les Connaissements", desc: "Utilisez la vision par ordinateur et le traitement automatique du langage naturel pour analyser les factures d'expédition et détecter les fraudes." },
+  { title: "Optimisation Dynamique des Tarifs d'Exportation avec l'IA", desc: "Définissez un prix Incoterms optimal (FOB/CIF) sur des dizaines de marchés cibles en intégrant les prévisions tarifaires locales." },
+  { title: "Classification Douanière à Grande Échelle du Système Harmonisé (SH)", desc: "Mettez en œuvre des flux d'IA pour classer et cartographier des dizaines de milliers d'articles du catalogue pour l'import/export." },
+  { title: "Prédiction de la Congestion des Ports Mondiaux avec l'IA", desc: "Optimisez le timing d'expédition de vos conteneurs maritimes en modélisant le débit et les temps d'attente aux principaux hubs mondiaux." },
+  { title: "Contrats de Distribution Internationaux Générés par l'IA", desc: "Rédigez des contrats d'exclusivité sécurisés et localisés, parfaitement alignés sur les normes Incoterms de la CCI." },
+  { title: "Suivi Spatio-Temporel des Navires et Modélisation de l'ETA en Direct", desc: "Corrélez les balises maritimes AIS avec les modèles météorologiques pour prédire avec précision les heures d'arrivée." },
+  { title: "Audit ESG Éthique & Environnemental de la Supply Chain via NLP", desc: "Analysez automatiquement les déclarations des fournisseurs et les rapports d'usine pour garantir le respect des droits humains." },
+  { title: "Documentation de Conformité Export Multilingue Automatisée", desc: "Générez instantanément des certificats d'origine et des dossiers douaniers conformes dans les langues des marchés cibles." },
+  { title: "Social Listening & Analyse de Sentiment pour Marchés Émergents", desc: "Analysez les forums régionaux et les actualités locales pour détecter la demande organique sur les segments exportateurs." },
+  { title: "Simulation de Guerres Commerciales & Chocs Tarifaires par l'IA", desc: "Exécutez des simulations macroéconomiques pour mesurer l'impact des changements tarifaires soudains sur vos marges." },
+  { title: "Rapprochement Automatisé de Factures de Fret Multi-Devises", desc: "Rapprochez automatiquement les factures des transporteurs et les devis des transitaires dans diverses devises." },
+  { title: "Modélisation Prédictive de la Demande d'Importation Agroalimentaire", desc: "Prévoyez les besoins d'importation en entraînant des réseaux de neurones sur des indices de culture satellites et des projections climatiques." },
+  { title: "Couverture Forex et Conseil de Mitigement du Risque de Change", desc: "Analysez les tendances des devises pour recommander les moments opportuns pour la mise en place de contrats de change à terme." },
+  { title: "Sourcing Augmenté par l'IA pour Fournisseurs de Zones Franches Alternatives", desc: "Identifiez et évaluez instantanément des fournisseurs alternatifs lorsque les routes traditionnelles subissent des blocages." },
+  { title: "Retards Douaniers Prédictifs aux Corridors Frontaliers Terrestres", desc: "Modélisez les temps d'attente aux frontières pour coordonner l'approvisionnement des usines et la planification logistique." },
+  { title: "Optimisation des Flux de Retour & Logistique Inverse Transfrontalière", desc: "Calculez et arbitrez pour savoir s'il est préférable de réexpédier, détruire ou réparer localement les marchandises défectueuses." },
+  { title: "Examen Final & Certification Master en Commerce International et Logistique", desc: "Validez vos compétences en conformité douanière, gestion de crise logistique et tarification internationale pour obtenir votre certificat." }
+];
+
 
 const baseNanoBananaLessons: Lesson[] = [
   {
@@ -3851,6 +3931,17 @@ export const COURSES: Course[] = [
     estimatedHours: 15,
     totalLessons: 20,
     lessons: generateCourseLessons("procurement_mastery", baseProcurementLessons, procurementExtraLessonsData, 20)
+  },
+  {
+    id: "ai_international_trade_mastery",
+    title: "Intelligence Artificielle & Commerce International d'Élite",
+    category: "ai",
+    description: "Maîtrisez l'IA pour conquérir les marchés mondiaux : conformité douanière automatisée, classement des codes SH sémantique, négociation d'Incoterms 2020 optimisés et sécurisation des crédits documentaires par l'IA.",
+    iconName: "Globe",
+    difficulty: "Advanced",
+    estimatedHours: 15,
+    totalLessons: 20,
+    lessons: generateCourseLessons("ai_international_trade_mastery", baseAiInternationalTradeLessons, aiInternationalTradeExtraLessonsData, 20)
   },
   {
     id: "nanobanana_mastery",

@@ -94,6 +94,8 @@ export default function App() {
   const [selectedCertCourse, setSelectedCertCourse] = useState<Course | null>(null);
   const [selectedPromptsCourse, setSelectedPromptsCourse] = useState<Course | null>(null);
   const [showHomepage, setShowHomepage] = useState(true);
+  const [showSubscriptionBarrier, setShowSubscriptionBarrier] = useState(false);
+  const [confirmFreeLesson, setConfirmFreeLesson] = useState<{ courseId: string; lessonId: string } | null>(null);
 
   const handleToggleLang = () => {
     const nextLang = lang === "fr" ? "en" : "fr";
@@ -321,8 +323,22 @@ export default function App() {
 
   const handleSelectLesson = (courseId: string, lessonId: string) => {
     if (soundEnabled) playSound("click");
-    setActiveCourseId(courseId);
-    setActiveLessonId(lessonId);
+    
+    if (progress.hasPaid) {
+      setActiveCourseId(courseId);
+      setActiveLessonId(lessonId);
+    } else {
+      if (progress.freeLessonId) {
+        if (progress.freeLessonId === lessonId) {
+          setActiveCourseId(courseId);
+          setActiveLessonId(lessonId);
+        } else {
+          setShowSubscriptionBarrier(true);
+        }
+      } else {
+        setConfirmFreeLesson({ courseId, lessonId });
+      }
+    }
   };
 
   const handleSelectCourse = (courseId: string) => {
@@ -509,7 +525,7 @@ export default function App() {
 
 
       {/* Main app navigation header */}
-      {progress.onboarded && progress.hasPaid && (
+      {progress.onboarded && (
         <header className="bg-slate-950 border-b border-slate-900 sticky top-0 z-40 backdrop-blur">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
             
@@ -573,6 +589,15 @@ export default function App() {
             {/* Control items */}
             <div className="flex items-center gap-2.5">
               
+              {!progress.hasPaid && (
+                <button
+                  onClick={() => setShowSubscriptionBarrier(true)}
+                  className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans text-xs font-black py-2 px-3 sm:px-4 rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md shadow-emerald-505 animate-pulse select-none"
+                >
+                  🌟 {lang === "fr" ? "S'abonner" : "Subscribe"}
+                </button>
+              )}
+              
               {/* Student status badge */}
               <div className="hidden sm:flex items-center gap-2.5 bg-slate-900 border border-slate-850 px-3 py-1.5 rounded-xl select-none">
                 <div className="w-5 h-5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center font-bold text-[10px] uppercase font-mono">
@@ -631,7 +656,7 @@ export default function App() {
 
       {/* Primary body screen section switcher */}
       <main className={`flex-1 w-full bg-slate-952 flex flex-col ${
-        (showHomepage || !progress.onboarded || !progress.hasPaid) 
+        (showHomepage || !progress.onboarded || showSubscriptionBarrier) 
           ? "overflow-y-auto min-h-0" 
           : "overflow-hidden"
       }`}>
@@ -656,13 +681,29 @@ export default function App() {
             onComplete={handleOnboardingComplete} 
             onLoginClick={() => setShowLoginModal(true)}
           />
-        ) : !progress.hasPaid ? (
+        ) : showSubscriptionBarrier ? (
           <SubscriptionBarrier
             lang={lang}
             onboardingAnswers={progress.onboardingAnswers}
-            onPaymentComplete={handlePaymentComplete}
+            onPaymentComplete={(fullName, email, password, firstName, lastName, planId) => {
+              handlePaymentComplete(fullName, email, password, firstName, lastName);
+              // Save subscription plan selection to user state
+              saveProgress({
+                ...progress,
+                hasPaid: true,
+                fullName,
+                firstName: firstName || fullName.split(/\s+/)[0] || "",
+                lastName: lastName || fullName.split(/\s+/).slice(1).join(" ") || "",
+                password,
+                email,
+                subscriptionPlanId: planId || "annual",
+                registrationDate: new Date().toISOString()
+              });
+              setShowSubscriptionBarrier(false);
+            }}
             onReset={handleResetAppSimple}
             onLoginClick={() => setShowLoginModal(true)}
+            onClose={() => setShowSubscriptionBarrier(false)}
           />
         ) : activeLessonId ? (
           // Dynamic lesson player
@@ -703,6 +744,7 @@ export default function App() {
                 onToggleCopilot={() => setCopilotOpen(!copilotOpen)}
                 onViewCertificate={(course) => setSelectedCertCourse(course)}
                 onViewCorrectedPrompts={(course) => setSelectedPromptsCourse(course)}
+                onSubscribe={() => setShowSubscriptionBarrier(true)}
               />
             </div>
 
@@ -869,6 +911,76 @@ export default function App() {
           >
             <span>🌐 {lang.toUpperCase()}</span>
           </button>
+        </div>
+      )}
+
+      {/* FREE LESSON ACTIVATION MODAL */}
+      {confirmFreeLesson && (
+        <div className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-slate-900 border border-emerald-500/30 p-6 rounded-2xl max-w-md w-full shadow-2xl relative overflow-hidden text-left"
+          >
+            {/* Elegant visual indicator */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-indigo-500 to-emerald-400" />
+            
+            <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 border border-emerald-500/20">
+              <Sparkles className="w-6 h-6" />
+            </div>
+
+            <h3 className="text-lg font-bold text-white font-sans tracking-tight">
+              {lang === "fr" ? "Activer votre leçon gratuite" : "Unlock Your One Free Lesson"}
+            </h3>
+            
+            <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+              {lang === "fr" 
+                ? `Souhaitez-vous déverrouiller la leçon "${
+                    localizedCourses
+                      .find(c => c.id === confirmFreeLesson.courseId)
+                      ?.lessons.find(l => l.id === confirmFreeLesson.lessonId)
+                      ?.title || ""
+                  }" comme votre unique leçon gratuite d'essai ?`
+                : `Would you like to unlock "${
+                    localizedCourses
+                      .find(c => c.id === confirmFreeLesson.courseId)
+                      ?.lessons.find(l => l.id === confirmFreeLesson.lessonId)
+                      ?.title || ""
+                  }" as your single free trial lesson?`
+              }
+            </p>
+
+            <p className="text-[11px] text-slate-400 mt-3 leading-relaxed bg-slate-950/40 p-3 rounded-xl border border-slate-850">
+              {lang === "fr"
+                ? "Vous pourrez suivre cette leçon en entier, faire le quiz, utiliser la sandbox et le tuteur IA. Pour débloquer tous les autres cours de l'Académie, vous devrez vous abonner."
+                : "You will be able to complete this full lesson, take the quiz, use the sandbox and the AI tutor. To unlock all other academy courses, you will need to subscribe."
+              }
+            </p>
+
+            <div className="flex items-center gap-3 mt-6">
+              <button
+                onClick={() => {
+                  const updated = {
+                    ...progress,
+                    freeLessonId: confirmFreeLesson.lessonId
+                  };
+                  saveProgress(updated);
+                  setActiveCourseId(confirmFreeLesson.courseId);
+                  setActiveLessonId(confirmFreeLesson.lessonId);
+                  setConfirmFreeLesson(null);
+                }}
+                className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans text-xs font-black py-2.5 px-4 rounded-xl cursor-pointer text-center transition-colors"
+              >
+                {lang === "fr" ? "Oui, déverrouiller" : "Yes, Unlock"}
+              </button>
+              <button
+                onClick={() => setConfirmFreeLesson(null)}
+                className="flex-1 bg-slate-850 hover:bg-slate-800 text-slate-300 font-sans text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer text-center transition-colors border border-slate-800"
+              >
+                {lang === "fr" ? "Annuler" : "Cancel"}
+              </button>
+            </div>
+          </motion.div>
         </div>
       )}
     </div>

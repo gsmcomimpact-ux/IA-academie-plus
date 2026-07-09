@@ -80,6 +80,8 @@ export interface UserProgress {
   email?: string;
   hasPaid?: boolean;
   registrationDate?: string;
+  freeLessonId?: string;
+  subscriptionPlanId?: string;
 }
 
 export interface Message {

@@ -6,4 +6,30 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-serif-academic: "Cormorant Garamond", Georgia, Cambria, serif;
   --font-display-academic: "Cinzel", serif;
+
+  /* Premium Obsidian & Royal Amethyst Backgrounds */
+  --color-slate-950: #080511;
+  --color-slate-900: #100a22;
+  --color-slate-850: #181030;
+  --color-slate-800: #211640;
+  --color-slate-750: #291c50;
+  --color-slate-700: #322360;
+
+  /* Imperial Gold Accents (replacing Emerald) */
+  --color-emerald-50: #fdfaf2;
+  --color-emerald-100: #faf1d4;
+  --color-emerald-200: #f3e0a2;
+  --color-emerald-300: #ecc75f;
+  --color-emerald-400: #e4aa29;
+  --color-emerald-500: #d4921b;
+  --color-emerald-600: #b17211;
+  --color-emerald-700: #8c520f;
+  --color-emerald-800: #6d3a10;
+  --color-emerald-950: #1e0e01;
+
+  /* Royal Violet & Amethyst glows */
+  --color-indigo-400: #b59dfb;
+  --color-indigo-500: #8b5cf6;
+  --color-indigo-600: #7c3aed;
 }
+

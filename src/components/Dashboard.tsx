@@ -19,6 +19,7 @@ interface DashboardProps {
   onToggleCopilot: () => void;
   onViewCertificate: (course: Course) => void;
   onViewCorrectedPrompts: (course: Course) => void;
+  onSubscribe?: () => void;
 }
 
 const LOCAL_TRANS = {
@@ -98,7 +99,7 @@ const getIconComponent = (name: string, className = "w-5 h-5") => {
   }
 };
 
-export default function Dashboard({ lang, progress, onSelectLesson, onSelectCourse, onClaimDailyStreak, onToggleCopilot, onViewCertificate, onViewCorrectedPrompts }: DashboardProps) {
+export default function Dashboard({ lang, progress, onSelectLesson, onSelectCourse, onClaimDailyStreak, onToggleCopilot, onViewCertificate, onViewCorrectedPrompts, onSubscribe }: DashboardProps) {
   const t = (key: keyof typeof LOCAL_TRANS["fr"]) => {
     return LOCAL_TRANS[lang][key] || LOCAL_TRANS["fr"][key] || String(key);
   };
@@ -151,6 +152,56 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        
+        {/* Freemium Info Banner */}
+        {!progress.hasPaid && (
+          <div className="mb-6 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/45 to-slate-900 border border-emerald-500/30 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] uppercase font-mono tracking-widest font-black text-emerald-450 bg-emerald-500/10 border border-emerald-500/25 px-2 py-0.5 rounded">
+                  {lang === "fr" ? "Compte d'essai gratuit" : "Free Trial Account"}
+                </span>
+                <span className="text-[10px] uppercase font-mono tracking-widest font-bold text-slate-400">
+                  {progress.freeLessonId 
+                    ? (lang === "fr" ? "1 leçon d'essai activée" : "1 lesson trial activated")
+                    : (lang === "fr" ? "Choisissez votre leçon gratuite" : "Choose your free lesson")
+                  }
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed max-w-2xl mt-1.5 font-sans">
+                {progress.freeLessonId ? (
+                  lang === "fr" ? (
+                    <>
+                      Votre unique leçon d'essai gratuit est activée. Pour débloquer l'accès complet et instantané à nos <strong>18 formations exclusives</strong>, aux <strong>outils sandbox</strong> et obtenir votre <strong>certificat certifié</strong>, abonnez-vous dès aujourd'hui !
+                    </>
+                  ) : (
+                    <>
+                      Your single free trial lesson is activated. To unlock full instant access to all our <strong>18 professional courses</strong>, <strong>sandbox playgrounds</strong>, and claim your <strong>official certification</strong>, subscribe today!
+                    </>
+                  )
+                ) : (
+                  lang === "fr" ? (
+                    <>
+                      Bienvenue ! Vous bénéficiez d'une <strong>leçon gratuite de votre choix</strong>. Parcourez la roadmap de cours ci-dessous et cliquez sur "Commencer" pour activer votre leçon gratuite d'essai. Les autres leçons nécessitent un abonnement.
+                    </>
+                  ) : (
+                    <>
+                      Welcome! You get <strong>one free trial lesson of your absolute choice</strong>. Browse the roadmap below and click "Start" on any lesson to activate your free selection. Other lessons require a subscription.
+                    </>
+                  )
+                )}
+              </p>
+            </div>
+            {onSubscribe && (
+              <button
+                onClick={onSubscribe}
+                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans text-xs font-black py-2.5 px-5 rounded-xl transition-all cursor-pointer shadow-lg shrink-0 select-none"
+              >
+                🚀 {lang === "fr" ? "S'abonner" : "Subscribe Now"}
+              </button>
+            )}
+          </div>
+        )}
         
         {/* Upper User Hub Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 items-center bg-slate-900/40 border border-slate-900 p-6 rounded-2xl">
@@ -233,43 +284,65 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                 {activeCourse.lessons.map((lesson, idx) => {
                   const isCompleted = progress.completedLessonIds[lesson.id];
                   const isPreviousCompleted = idx === 0 || progress.completedLessonIds[activeCourse.lessons[idx - 1].id];
-                  const isActive = !isCompleted && isPreviousCompleted;
+                  
+                  const hasPaid = !!progress.hasPaid;
+                  const isFreeLesson = progress.freeLessonId === lesson.id;
+                  const hasFreeLessonChosen = !!progress.freeLessonId;
+                  
+                  // Gating condition
+                  const isLockedByPremium = !hasPaid && hasFreeLessonChosen && !isFreeLesson;
+                  
+                  const isCompletedFinal = isCompleted && (hasPaid || isFreeLesson);
+                  const isActiveFinal = !isCompletedFinal && (hasPaid ? isPreviousCompleted : (!hasFreeLessonChosen || isFreeLesson));
 
                   return (
                     <div 
                       key={lesson.id}
                       onClick={() => {
-                        if (isCompleted || isActive) {
-                          onSelectLesson(activeCourse.id, lesson.id);
-                        }
+                        onSelectLesson(activeCourse.id, lesson.id);
                       }}
-                      className={`p-4 rounded-xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
-                        isCompleted || isActive 
-                          ? "cursor-pointer hover:border-emerald-500/20" 
-                          : ""
-                      } ${
-                        isCompleted 
-                          ? "bg-slate-900/20 border-slate-900 opacity-80 hover:bg-slate-900/40" 
-                          : isActive
-                          ? "bg-gradient-to-tr from-slate-900 to-slate-950 border-emerald-500/30 hover:shadow-lg shadow-emerald-500/5 hover:border-emerald-500/55"
+                      className={`p-4 rounded-xl border transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 cursor-pointer ${
+                        isCompletedFinal 
+                          ? "bg-slate-900/20 border-slate-900 opacity-80 hover:bg-slate-900/40 hover:border-emerald-500/20" 
+                          : isActiveFinal
+                          ? "bg-gradient-to-tr from-slate-900 to-slate-950 border-emerald-500/30 hover:shadow-lg shadow-emerald-505 hover:border-emerald-550"
+                          : isLockedByPremium
+                          ? "bg-slate-950/45 border-slate-900/80 opacity-60 hover:border-emerald-500/10"
                           : "bg-slate-950/40 border-slate-900 opacity-50"
                       }`}
                     >
                       <div className="flex items-start gap-4">
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 font-mono text-sm font-bold mt-0.5 ${
-                          isCompleted
+                          isCompletedFinal
                             ? "bg-emerald-500/20 text-emerald-400"
-                            : isActive
-                            ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/10"
+                            : isActiveFinal
+                            ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-505"
+                            : isLockedByPremium
+                            ? "bg-slate-900 text-slate-600 border border-slate-800"
                             : "bg-slate-850 text-slate-600"
                         }`}>
-                          {isCompleted ? "✓" : (idx + 1)}
+                          {isCompletedFinal ? "✓" : isLockedByPremium ? "🔒" : (idx + 1)}
                         </div>
 
                         <div>
                           <div className="flex items-center gap-2 font-sans">
-                            <h4 className="font-semibold text-sm text-slate-200">{lesson.title}</h4>
-                            {isCompleted && <span className="text-[9px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">{lang === "fr" ? "Reçu +50 XP" : "Earned +50 XP"}</span>}
+                            <h4 className={`font-semibold text-sm ${isLockedByPremium ? "text-slate-400" : "text-slate-200"}`}>{lesson.title}</h4>
+                            {isCompletedFinal && <span className="text-[9px] font-mono uppercase font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">{lang === "fr" ? "Reçu +50 XP" : "Earned +50 XP"}</span>}
+                            {!hasPaid && !hasFreeLessonChosen && (
+                              <span className="text-[8px] font-mono uppercase font-black text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20 tracking-wider">
+                                {lang === "fr" ? "Option d'essai gratuit" : "Free Trial Option"}
+                              </span>
+                            )}
+                            {isFreeLesson && (
+                              <span className="text-[8px] font-mono uppercase font-black text-emerald-400 bg-emerald-500/15 px-1.5 py-0.5 rounded border border-emerald-500/30 tracking-wider">
+                                {lang === "fr" ? "Ma leçon gratuite" : "My Free Trial Lesson"}
+                              </span>
+                            )}
+                            {isLockedByPremium && (
+                              <span className="text-[8px] font-mono uppercase font-black text-amber-500 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 tracking-wider flex items-center gap-1">
+                                🌟 Premium
+                              </span>
+                            )}
                           </div>
                           <p className="text-xs text-slate-400 mt-1 max-w-md leading-relaxed">{lesson.description}</p>
                           <div className="flex items-center gap-3 mt-2 text-[10px] text-slate-500 font-mono">
@@ -280,7 +353,7 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                         </div>
                       </div>
 
-                      {isCompleted ? (
+                      {isCompletedFinal ? (
                         <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
                           <div className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 select-none">
                             <CheckCircle className="w-4 h-4" />
@@ -294,17 +367,27 @@ export default function Dashboard({ lang, progress, onSelectLesson, onSelectCour
                             <ChevronRight className="w-4 h-4" />
                           </button>
                         </div>
-                      ) : isActive ? (
+                      ) : isActiveFinal ? (
                         <button
                           id={`start-lesson-${lesson.id}`}
                           onClick={(e) => {
                             e.stopPropagation();
                             onSelectLesson(activeCourse.id, lesson.id);
                           }}
-                          className="bg-emerald-500 hover:bg-emerald-405 text-slate-950 font-bold py-2 px-4 rounded-lg text-xs flex items-center gap-1 font-mono transition-all cursor-pointer shadow shadow-emerald-500/5 shrink-0"
+                          className="bg-emerald-500 hover:bg-emerald-405 text-slate-950 font-bold py-2 px-4 rounded-lg text-xs flex items-center gap-1 font-mono transition-all cursor-pointer shadow shadow-emerald-505 shrink-0"
                         >
                           {t("startBtn")}
                           <ChevronRight className="w-4.5 h-4.5" />
+                        </button>
+                      ) : isLockedByPremium ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSelectLesson(activeCourse.id, lesson.id);
+                          }}
+                          className="text-xs font-mono text-amber-400 hover:bg-amber-500/10 bg-amber-500/5 px-3 py-1.5 rounded-lg border border-amber-500/20 shrink-0 cursor-pointer select-none font-bold transition-all"
+                        >
+                          🔒 {lang === "fr" ? "Déverrouiller" : "Unlock"}
                         </button>
                       ) : (
                         <div className="text-xs font-mono text-slate-600 flex items-center gap-1 bg-slate-900/50 px-3 py-1.5 rounded-lg border border-slate-900 shrink-0 select-none">

@@ -5,12 +5,110 @@ import {
   ArrowRight, Landmark, HelpCircle, Flame, Award, Globe, HelpCircle as HelpIcon 
 } from "lucide-react";
 
+const PLANS = {
+  fr: [
+    {
+      id: "monthly",
+      name: "Mensuel",
+      price: "9,99 $",
+      period: "/ mois",
+      saving: "Essai Flexible",
+      features: [
+        "Accès complet aux 18 formations IA",
+        "Retours du Tuteur IA en illimité",
+        "Pratique Sandbox interactive",
+        "Certificats nominatifs certifiés",
+        "Annulation à tout moment"
+      ]
+    },
+    {
+      id: "annual",
+      name: "Annuel",
+      price: "59,99 $",
+      period: "/ an",
+      saving: "ÉCONOMIE 50%",
+      badge: "RECOMMANDÉ",
+      features: [
+        "Équivaut à seulement 4,99 $ / mois",
+        "Accès complet aux 18 formations IA",
+        "Retours du Tuteur IA en illimité",
+        "Pratique Sandbox interactive",
+        "Certificats nominatifs certifiés",
+        "Garantie satisfait ou remboursé 30j"
+      ]
+    },
+    {
+      id: "lifetime",
+      name: "Accès à Vie",
+      price: "99,99 $",
+      period: " unique",
+      saving: "À VIE PRO",
+      features: [
+        "Payez une seule fois, accédez pour toujours",
+        "Accès à vie aux 18 formations IA",
+        "Nouveaux cours futurs inclus",
+        "Retours du Tuteur IA en illimité à vie",
+        "Certificats nominatifs certifiés",
+        "Garantie satisfait ou remboursé 30j"
+      ]
+    }
+  ],
+  en: [
+    {
+      id: "monthly",
+      name: "Monthly",
+      price: "$9.99",
+      period: "/ month",
+      saving: "Flexible Trial",
+      features: [
+        "Full access to 18+ AI courses",
+        "Unlimited AI Tutor feedback",
+        "Interactive Practice Sandbox",
+        "Nominative Certified Certificates",
+        "Cancel anytime"
+      ]
+    },
+    {
+      id: "annual",
+      name: "Annual",
+      price: "$59.99",
+      period: "/ year",
+      saving: "SAVE 50%",
+      badge: "BEST VALUE",
+      features: [
+        "Equivalent to just $4.99 / month",
+        "Full access to 18+ AI courses",
+        "Unlimited AI Tutor feedback",
+        "Interactive Practice Sandbox",
+        "Nominative Certified Certificates",
+        "30-day money back guarantee"
+      ]
+    },
+    {
+      id: "lifetime",
+      name: "Lifetime Access",
+      price: "$99.99",
+      period: " one-time",
+      saving: "MAX VALUE",
+      features: [
+        "Pay once, access forever",
+        "Lifetime access to 18+ AI courses",
+        "Future new courses included",
+        "Unlimited AI Tutor feedback forever",
+        "Nominative Certified Certificates",
+        "30-day money back guarantee"
+      ]
+    }
+  ]
+};
+
 interface SubscriptionBarrierProps {
   lang: "fr" | "en";
   onboardingAnswers: Record<string, string | string[]>;
-  onPaymentComplete: (fullName: string, email: string, password?: string, firstName?: string, lastName?: string) => void;
+  onPaymentComplete: (fullName: string, email: string, password?: string, firstName?: string, lastName?: string, planId?: string) => void;
   onReset: () => void;
   onLoginClick?: () => void;
+  onClose?: () => void;
 }
 
 const LOCAL_TRANS = {
@@ -134,7 +232,8 @@ const LOCAL_TRANS = {
   }
 };
 
-export default function SubscriptionBarrier({ lang, onboardingAnswers, onPaymentComplete, onReset, onLoginClick }: SubscriptionBarrierProps) {
+export default function SubscriptionBarrier({ lang, onboardingAnswers, onPaymentComplete, onReset, onLoginClick, onClose }: SubscriptionBarrierProps) {
+  const [selectedPlanId, setSelectedPlanId] = useState<"monthly" | "annual" | "lifetime">("annual");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -259,7 +358,7 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
 
     // Finished account registration and subscription
     const combinedFullName = `${firstName.trim()} ${lastName.trim()}`;
-    onPaymentComplete(combinedFullName, email.trim(), password, firstName.trim(), lastName.trim());
+    onPaymentComplete(combinedFullName, email.trim(), password, firstName.trim(), lastName.trim(), selectedPlanId);
   };
 
   // Focus specific highlight title based on onboarding
@@ -300,6 +399,14 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
           </span>
         </div>
         <div className="flex items-center gap-4">
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="text-xs font-sans font-bold text-slate-400 hover:text-white transition-colors bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-850 cursor-pointer flex items-center gap-1 shadow"
+            >
+              ✕ {lang === "fr" ? "Retour au cours" : "Back to Course"}
+            </button>
+          )}
           {onLoginClick && (
             <button
               onClick={onLoginClick}
@@ -334,14 +441,20 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
           </div>
 
           {/* Core pricing proposal banner */}
-          <div className="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl relative overflow-hidden flex items-center justify-between">
+          <div className="bg-slate-900/60 border border-emerald-500/10 p-5 rounded-2xl relative overflow-hidden flex items-center justify-between">
             <div>
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{t("feeUnique")}</div>
-              <div className="text-3xl font-black text-emerald-400 font-mono tracking-tight mt-1">20,00 $</div>
-              <div className="text-[10.5px] text-slate-400 mt-1">{t("noSub")}</div>
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                {lang === "fr" ? "Formule sélectionnée" : "Selected Plan"}
+              </div>
+              <div className="text-3xl font-black text-emerald-400 font-mono tracking-tight mt-1">
+                {PLANS[lang].find(p => p.id === selectedPlanId)?.price}
+              </div>
+              <div className="text-[10.5px] text-slate-400 mt-1 uppercase tracking-wider font-semibold font-mono text-indigo-300">
+                {PLANS[lang].find(p => p.id === selectedPlanId)?.name} {PLANS[lang].find(p => p.id === selectedPlanId)?.period}
+              </div>
             </div>
             <div className="bg-emerald-500/10 text-emerald-400 py-1.5 px-3 rounded-xl border border-emerald-500/20 text-center font-mono text-xs font-bold leading-none select-none">
-              {t("saving")}
+              {PLANS[lang].find(p => p.id === selectedPlanId)?.saving}
             </div>
           </div>
 
@@ -491,11 +604,67 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="space-y-5"
+                className="space-y-5 text-left"
               >
-                <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
+                {/* 3 PLANS SELECTION GROUP */}
+                <div className="space-y-3 pb-3 border-b border-slate-800/60">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
+                      {lang === "fr" ? "⭐ Étape 1 : Sélectionnez votre Formule d'Abonnement" : "⭐ Step 1: Select Your Subscription Plan"}
+                    </span>
+                    <span className="text-[9px] font-mono text-emerald-400 font-extrabold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider select-none">
+                      {lang === "fr" ? "Sans engagement" : "No contract"}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {PLANS[lang].map((plan) => {
+                      const isSelected = selectedPlanId === plan.id;
+                      return (
+                        <div
+                          key={plan.id}
+                          onClick={() => setSelectedPlanId(plan.id as any)}
+                          className={`p-4 rounded-xl border transition-all cursor-pointer relative flex flex-col justify-between text-left select-none ${
+                            isSelected
+                              ? "bg-slate-900 border-emerald-500/60 shadow-lg shadow-emerald-500/5 ring-1 ring-emerald-500/20"
+                              : "bg-slate-950/40 border-slate-850 hover:border-slate-800 hover:bg-slate-950/65"
+                          }`}
+                        >
+                          {plan.badge && (
+                            <span className="absolute -top-2.5 right-3.5 text-[8px] font-sans uppercase font-black bg-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full shadow select-none leading-none tracking-wider">
+                              {plan.badge}
+                            </span>
+                          )}
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
+                                isSelected ? "border-emerald-500 text-emerald-500 bg-emerald-500/15" : "border-slate-750"
+                              }`}>
+                                {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
+                              </div>
+                              <h4 className="font-extrabold text-[12px] text-white tracking-tight leading-none truncate">{plan.name}</h4>
+                            </div>
+                            
+                            <div className="mt-3">
+                              <span className="text-xl font-mono font-black text-white">{plan.price}</span>
+                              <span className="text-[10px] text-slate-400 font-mono">{plan.period}</span>
+                            </div>
+                          </div>
+                          
+                          <div className="mt-2.5 pt-2 border-t border-slate-850 flex items-center justify-between">
+                            <span className="text-[8px] font-mono text-emerald-400 font-bold uppercase tracking-wider">{plan.saving}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="border-b border-slate-800 pb-3 flex items-center justify-between pt-1">
                   <div>
-                    <h3 className="font-bold text-slate-200 text-sm font-mono uppercase">{t("title1")}</h3>
+                    <h3 className="font-bold text-slate-200 text-sm font-sans uppercase">
+                      {lang === "fr" ? "📋 Étape 2 : Coordonnées de Facturation" : "📋 Step 2: Billing Information"}
+                    </h3>
                     <p className="text-[11px] text-slate-500 mt-0.5">{t("sub1")}</p>
                   </div>
                   <User className="w-5 h-5 text-indigo-400" />
@@ -535,8 +704,16 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
 
                 <div className="border-b border-slate-800 pt-3 pb-3 flex items-center justify-between">
                   <div>
-                    <h3 className="font-bold text-slate-200 text-sm font-mono uppercase">{t("title2")}</h3>
-                    <p className="text-[11px] text-slate-500 mt-0.5">{t("sub2")}</p>
+                    <h3 className="font-bold text-slate-200 text-sm font-sans uppercase">
+                      {lang === "fr" 
+                        ? `💳 Étape 3 : Mode de règlement sécurisé (${PLANS["fr"].find(p => p.id === selectedPlanId)?.price})` 
+                        : `💳 Step 3: Secure Payment Method (${PLANS["en"].find(p => p.id === selectedPlanId)?.price})`}
+                    </h3>
+                    <p className="text-[11px] text-slate-505 mt-0.5">
+                      {lang === "fr"
+                        ? "Réglez votre abonnement sans frais cachés. Annulation simple."
+                        : "Pay your selected subscription. Safe and secure checkout with simple cancellation."}
+                    </p>
                   </div>
                   <Lock className="w-4 h-4 text-emerald-400" />
                 </div>
@@ -591,7 +768,7 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-mono text-slate-400 uppercase block">{t("expExpiry")}</label>
                         <input 
-                          type="text"
+                           type="text"
                           required
                           value={expiry}
                           onChange={(e) => setExpiry(formatExpiry(e.target.value))}
@@ -615,11 +792,17 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                   </div>
                 ) : (
                   <div className="p-5 rounded-2xl bg-slate-950/65 border border-slate-800 text-center space-y-2">
-                    <p className="text-xs text-slate-350">
-                      {t("paypalRedirect")}
+                    <p className="text-xs text-slate-350 leading-relaxed">
+                      {lang === "fr"
+                        ? `Vous allez être redirigé vers la passerelle sécurisée de PayPal pour autoriser votre règlement de ${PLANS["fr"].find(p => p.id === selectedPlanId)?.price} ${PLANS["fr"].find(p => p.id === selectedPlanId)?.period}.`
+                        : `You will be redirected to PayPal's secure gateway to authorize your payment of ${PLANS["en"].find(p => p.id === selectedPlanId)?.price} ${PLANS["en"].find(p => p.id === selectedPlanId)?.period}.`
+                      }
                     </p>
                     <p className="text-[10px] text-slate-500 font-mono">
-                      {t("paypalTip")}
+                      {lang === "fr"
+                        ? "Frais de service & taxes de scolarité compris. Accès élève immédiat dès confirmation."
+                        : "Taxes and service fees included. Immediate student credentials upon confirmation."
+                      }
                     </p>
                   </div>
                 )}
@@ -637,7 +820,10 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                   id="submit-payment-checkout"
                   className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-emerald-500/10 active:scale-[0.99] select-none"
                 >
-                  {t("submitBtn")}
+                  {lang === "fr" 
+                    ? `S'ABONNER • ${PLANS["fr"].find(p => p.id === selectedPlanId)?.price} ${PLANS["fr"].find(p => p.id === selectedPlanId)?.period}`
+                    : `SUBSCRIBE • ${PLANS["en"].find(p => p.id === selectedPlanId)?.price} ${PLANS["en"].find(p => p.id === selectedPlanId)?.period}`
+                  }
                   <ArrowRight className="w-4 h-4 shrink-0" />
                 </button>
 
@@ -660,7 +846,7 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                   <button
                     type="button"
                     onClick={() => {
-                      onPaymentComplete("Clara Martin", "clara@academie.plus", "password123", "Clara", "Martin");
+                      onPaymentComplete("Clara Martin", "clara@academie.plus", "password123", "Clara", "Martin", selectedPlanId);
                     }}
                     className="w-full py-2.5 px-4 rounded-xl border border-dashed border-indigo-500/40 text-indigo-400 bg-indigo-500/5 hover:bg-indigo-500/10 transition-all font-mono text-[11px] font-bold text-center cursor-pointer flex items-center justify-center gap-1.5"
                   >
