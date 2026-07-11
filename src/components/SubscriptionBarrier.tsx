@@ -8,44 +8,14 @@ import {
 const PLANS = {
   fr: [
     {
-      id: "monthly",
-      name: "Mensuel",
-      price: "9,99 $",
-      period: "/ mois",
-      saving: "Essai Flexible",
-      features: [
-        "Accès complet aux 18 formations IA",
-        "Retours du Tuteur IA en illimité",
-        "Pratique Sandbox interactive",
-        "Certificats nominatifs certifiés",
-        "Annulation à tout moment"
-      ]
-    },
-    {
-      id: "annual",
-      name: "Annuel",
-      price: "59,99 $",
-      period: "/ an",
-      saving: "ÉCONOMIE 50%",
-      badge: "RECOMMANDÉ",
-      features: [
-        "Équivaut à seulement 4,99 $ / mois",
-        "Accès complet aux 18 formations IA",
-        "Retours du Tuteur IA en illimité",
-        "Pratique Sandbox interactive",
-        "Certificats nominatifs certifiés",
-        "Garantie satisfait ou remboursé 30j"
-      ]
-    },
-    {
       id: "lifetime",
-      name: "Accès à Vie",
-      price: "99,99 $",
-      period: " unique",
-      saving: "À VIE PRO",
+      name: "Accès Unique",
+      price: "25,00 $",
+      period: " à vie",
+      saving: "Paiement Unique",
       features: [
         "Payez une seule fois, accédez pour toujours",
-        "Accès à vie aux 18 formations IA",
+        "Accès à vie à toutes les formations IA",
         "Nouveaux cours futurs inclus",
         "Retours du Tuteur IA en illimité à vie",
         "Certificats nominatifs certifiés",
@@ -55,44 +25,14 @@ const PLANS = {
   ],
   en: [
     {
-      id: "monthly",
-      name: "Monthly",
-      price: "$9.99",
-      period: "/ month",
-      saving: "Flexible Trial",
-      features: [
-        "Full access to 18+ AI courses",
-        "Unlimited AI Tutor feedback",
-        "Interactive Practice Sandbox",
-        "Nominative Certified Certificates",
-        "Cancel anytime"
-      ]
-    },
-    {
-      id: "annual",
-      name: "Annual",
-      price: "$59.99",
-      period: "/ year",
-      saving: "SAVE 50%",
-      badge: "BEST VALUE",
-      features: [
-        "Equivalent to just $4.99 / month",
-        "Full access to 18+ AI courses",
-        "Unlimited AI Tutor feedback",
-        "Interactive Practice Sandbox",
-        "Nominative Certified Certificates",
-        "30-day money back guarantee"
-      ]
-    },
-    {
       id: "lifetime",
       name: "Lifetime Access",
-      price: "$99.99",
+      price: "$25.00",
       period: " one-time",
-      saving: "MAX VALUE",
+      saving: "One-time Payment",
       features: [
         "Pay once, access forever",
-        "Lifetime access to 18+ AI courses",
+        "Lifetime access to all AI courses",
         "Future new courses included",
         "Unlimited AI Tutor feedback forever",
         "Nominative Certified Certificates",
@@ -124,19 +64,19 @@ const LOCAL_TRANS = {
     billingNamePlaceholder: "Nom complet du Payeur",
     email: "Adresse E-mail :",
     emailPlaceholder: "Ex: clara.martin@gmail.com",
-    title2: "2. PASSERELLE DE PAIEMENT SÉCURISÉE (20,00 $)",
+    title2: "2. PASSERELLE DE PAIEMENT SÉCURISÉE (25,00 $)",
     sub2: "Réglez l'inscription unique sans aucun frais caché.",
     cardTab: "Carte Bancaire",
     paypalTab: "PayPal / CB",
     cardNumber: "Numéro de Carte de Crédit :",
     expExpiry: "Expiration :",
     expCvc: "CVC (Cryptogramme) :",
-    paypalRedirect: "Vous allez être redirigé vers la passerelle cryptée de validation PayPal pour autoriser votre débit unique de 20,00 USD.",
+    paypalRedirect: "Vous allez être redirigé vers la passerelle cryptée de validation PayPal pour autoriser votre débit unique de 25,00 USD.",
     paypalTip: "Frais de service & taxes compris. Accès élève immédiat dès confirmation.",
-    submitBtn: "S'INSCRIRE ET PAYER PAIEMENT UNIQUE DE 20,00 $",
+    submitBtn: "S'INSCRIRE ET PAYER PAIEMENT UNIQUE DE 25,00 $",
     fillBttn: "⚡ CLIQUEZ ICI POUR REMPLIR LES CRÉDENTIELS DE FACTURATION DE TEST",
     bypassBtn: "🚀 BYPASSER LE PAIEMENT ET ACCÉDER AU CURSUS DIRECTEMENT (DÉMO RAPIDE)",
-    footnotePayment: "En procédant au règlement de $20, vous reconnaissez vous inscrire à l'IA Académie Plus et bénéficier d'une licence d'apprenant à vie. Cryptage AES-256 bits conforme PCI-DSS.",
+    footnotePayment: "En procédant au règlement de 25 $, vous reconnaissez vous inscrire à l'IA Académie Plus et bénéficier d'une licence d'apprenant à vie. Cryptage AES-256 bits conforme PCI-DSS.",
     errName: "Veuillez saisir votre nom complet.",
     errEmail: "Veuillez saisir une adresse e-mail valide.",
     errCard: "Numéro de carte invalide (16 chiffres requis).",
@@ -145,7 +85,7 @@ const LOCAL_TRANS = {
     loaderTitle: "Traitement de votre demande de paiement sécurisé...",
     loaderStep1: "🔑 Chiffrement SSL de la passerelle bancaire...",
     loaderStep2: "🔄 Transmission au réseau d'acquisition (Visa/Mastercard)...",
-    loaderStep3: "💳 Autorisation du débit unique de 20,00 $...",
+    loaderStep3: "💳 Autorisation du débit unique de 25,00 $...",
     loaderStep4: "✅ Transaction acceptée ! Préparation de vos cours scolaires...",
     
     // Account creation
@@ -183,19 +123,19 @@ const LOCAL_TRANS = {
     billingNamePlaceholder: "Payer's full name",
     email: "Email Address:",
     emailPlaceholder: "e.g. clara.martin@gmail.com",
-    title2: "2. SECURE PAYMENT GATEWAY ($20.00)",
+    title2: "2. SECURE PAYMENT GATEWAY ($25.00)",
     sub2: "Pay the single lifetime fee. Zero hidden costs.",
     cardTab: "Credit / Debit Card",
     paypalTab: "PayPal / Credit",
     cardNumber: "Credit Card Number:",
     expExpiry: "Expiration:",
     expCvc: "CVC (Security Code):",
-    paypalRedirect: "You will be redirected to PayPal's secure gateway to authorize your one-time payment of 20.00 USD.",
+    paypalRedirect: "You will be redirected to PayPal's secure gateway to authorize your one-time payment of 25.00 USD.",
     paypalTip: "Taxes and service fees included. Immediate student credentials upon confirmation.",
-    submitBtn: "ENROLL AND PAY ONE-TIME $20.00 FEE",
+    submitBtn: "ENROLL AND PAY ONE-TIME $25.00 FEE",
     fillBttn: "⚡ CLICK HERE TO FILL TEST BILLING DETAILS INSTANTLY",
     bypassBtn: "🚀 BYPASS PAYMENT AND ACCESS CURRICULUM (FAST DEMO)",
-    footnotePayment: "By proceeding with the $20 checkout, you enroll at AI Academy Plus and obtain a lifetime student license. AES-256 bits PCI-DSS compliant encryption.",
+    footnotePayment: "By proceeding with the $25 checkout, you enroll at AI Academy Plus and obtain a lifetime student license. AES-256 bits PCI-DSS compliant encryption.",
     errName: "Please enter your full name.",
     errEmail: "Please enter a valid email address.",
     errCard: "Invalid card number (16 digits required).",
@@ -204,7 +144,7 @@ const LOCAL_TRANS = {
     loaderTitle: "Processing secure transaction approval...",
     loaderStep1: "🔑 SSL Gateway cryptographic handshake...",
     loaderStep2: "🔄 Negotiating terminal acquisition network (Visa/MC)...",
-    loaderStep3: "💳 Single authorization request of $20.00...",
+    loaderStep3: "💳 Single authorization request of $25.00...",
     loaderStep4: "✅ Transaction accepted! Syncing syllabus modules...",
     
     // Account creation
@@ -233,7 +173,7 @@ const LOCAL_TRANS = {
 };
 
 export default function SubscriptionBarrier({ lang, onboardingAnswers, onPaymentComplete, onReset, onLoginClick, onClose }: SubscriptionBarrierProps) {
-  const [selectedPlanId, setSelectedPlanId] = useState<"monthly" | "annual" | "lifetime">("annual");
+  const [selectedPlanId, setSelectedPlanId] = useState<"monthly" | "annual" | "lifetime">("lifetime");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -606,57 +546,34 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                 exit={{ opacity: 0 }}
                 className="space-y-5 text-left"
               >
-                {/* 3 PLANS SELECTION GROUP */}
+                {/* SINGLE LIFETIME PLAN BANNER */}
                 <div className="space-y-3 pb-3 border-b border-slate-800/60">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider">
-                      {lang === "fr" ? "⭐ Étape 1 : Sélectionnez votre Formule d'Abonnement" : "⭐ Step 1: Select Your Subscription Plan"}
+                      {lang === "fr" ? "⭐ Étape 1 : Formule d'accès direct" : "⭐ Step 1: Direct Access Plan"}
                     </span>
-                    <span className="text-[9px] font-mono text-emerald-400 font-extrabold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded uppercase tracking-wider select-none">
-                      {lang === "fr" ? "Sans engagement" : "No contract"}
+                    <span className="text-[9px] font-mono text-emerald-400 font-extrabold bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded uppercase tracking-wider select-none">
+                      {lang === "fr" ? "Paiement Unique" : "One-Time Payment"}
                     </span>
                   </div>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {PLANS[lang].map((plan) => {
-                      const isSelected = selectedPlanId === plan.id;
-                      return (
-                        <div
-                          key={plan.id}
-                          onClick={() => setSelectedPlanId(plan.id as any)}
-                          className={`p-4 rounded-xl border transition-all cursor-pointer relative flex flex-col justify-between text-left select-none ${
-                            isSelected
-                              ? "bg-slate-900 border-emerald-500/60 shadow-lg shadow-emerald-500/5 ring-1 ring-emerald-500/20"
-                              : "bg-slate-950/40 border-slate-850 hover:border-slate-800 hover:bg-slate-950/65"
-                          }`}
-                        >
-                          {plan.badge && (
-                            <span className="absolute -top-2.5 right-3.5 text-[8px] font-sans uppercase font-black bg-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-full shadow select-none leading-none tracking-wider">
-                              {plan.badge}
-                            </span>
-                          )}
-                          <div>
-                            <div className="flex items-center gap-1.5">
-                              <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
-                                isSelected ? "border-emerald-500 text-emerald-500 bg-emerald-500/15" : "border-slate-750"
-                              }`}>
-                                {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />}
-                              </div>
-                              <h4 className="font-extrabold text-[12px] text-white tracking-tight leading-none truncate">{plan.name}</h4>
-                            </div>
-                            
-                            <div className="mt-3">
-                              <span className="text-xl font-mono font-black text-white">{plan.price}</span>
-                              <span className="text-[10px] text-slate-400 font-mono">{plan.period}</span>
-                            </div>
-                          </div>
-                          
-                          <div className="mt-2.5 pt-2 border-t border-slate-850 flex items-center justify-between">
-                            <span className="text-[8px] font-mono text-emerald-400 font-bold uppercase tracking-wider">{plan.saving}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
+                  <div className="bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl flex items-center justify-between">
+                    <div>
+                      <h4 className="font-extrabold text-[13px] text-white">
+                        {lang === "fr" ? "Accès à Vie Illimité (Toutes Formations)" : "Unlimited Lifetime Access (All Courses)"}
+                      </h4>
+                      <p className="text-[11px] text-slate-400 mt-1">
+                        {lang === "fr" ? "Aucun frais récurrent • Licence à vie certifiée" : "No recurring fees • Certified lifetime license"}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xl font-mono font-black text-emerald-400">
+                        {lang === "fr" ? "25,00 $" : "$25.00"}
+                      </span>
+                      <span className="text-[10px] text-slate-550 font-mono block">
+                        {lang === "fr" ? "unique" : "one-time"}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -709,10 +626,10 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                         ? `💳 Étape 3 : Mode de règlement sécurisé (${PLANS["fr"].find(p => p.id === selectedPlanId)?.price})` 
                         : `💳 Step 3: Secure Payment Method (${PLANS["en"].find(p => p.id === selectedPlanId)?.price})`}
                     </h3>
-                    <p className="text-[11px] text-slate-505 mt-0.5">
+                    <p className="text-[11px] text-slate-500 mt-0.5">
                       {lang === "fr"
-                        ? "Réglez votre abonnement sans frais cachés. Annulation simple."
-                        : "Pay your selected subscription. Safe and secure checkout with simple cancellation."}
+                        ? "Réglez vos frais d'inscription unique de 25,00 $ sans aucun frais caché."
+                        : "Pay your single lifetime activation fee of $25.00. Zero hidden costs."}
                     </p>
                   </div>
                   <Lock className="w-4 h-4 text-emerald-400" />
@@ -821,8 +738,8 @@ export default function SubscriptionBarrier({ lang, onboardingAnswers, onPayment
                   className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-4 rounded-2xl text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-emerald-500/10 active:scale-[0.99] select-none"
                 >
                   {lang === "fr" 
-                    ? `S'ABONNER • ${PLANS["fr"].find(p => p.id === selectedPlanId)?.price} ${PLANS["fr"].find(p => p.id === selectedPlanId)?.period}`
-                    : `SUBSCRIBE • ${PLANS["en"].find(p => p.id === selectedPlanId)?.price} ${PLANS["en"].find(p => p.id === selectedPlanId)?.period}`
+                    ? "REGLER ET S'INSCRIRE • 25,00 $"
+                    : "PAY AND ENROLL • $25.00"
                   }
                   <ArrowRight className="w-4 h-4 shrink-0" />
                 </button>

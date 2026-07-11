@@ -82,11 +82,11 @@ const LOCAL_TRANS = {
     bullet3Desc: "Pour être 100% conforme à l'identité légale requise dans le cadre d'un audit de compétences.",
     
     pricingBadge: "ACCÈS PREMIUM SANS ABONNEMENT",
-    pricingHeader: "Un Tarif Unique de 20$ Complètement Fixe",
-    pricingDesc: "Aucun abonnement récurrent. Aucun surcoût pour générer vos certificats. Réglez simplement 20 dollars une fois et accédez aux cours et examens d'élite à vie.",
+    pricingHeader: "Un Tarif Unique de 25$ Complètement Fixe",
+    pricingDesc: "Aucun abonnement récurrent. Aucun surcoût pour générer vos certificats. Réglez simplement 25 dollars une fois et accédez aux cours et examens d'élite à vie.",
     savingsBadge: "VALEUR PROFESSIONNELLE",
     pricingCardTitle: "DIPLÔME PRESTIGE UNIQUE",
-    pricingCardPrice: "20,00 $",
+    pricingCardPrice: "25,00 $",
     pricingCardPriceLabel: "unique",
     pricingCardDesc: "Aucun renouvellement d'abonnement. Accès illimité à vie.",
     pricingBullet1: "Cursus total ChatGPT / Gemini inclus",
@@ -106,7 +106,7 @@ const LOCAL_TRANS = {
       },
       {
         q: "Combien coûte la formation et comment fonctionne le paiement ?",
-        a: "L'accès à l'intégralité du cursus coûte $20 (frais d'activation uniques pour une licence à vie). Il n'y a aucun abonnement récurrent, aucun engagement caché ni frais supplémentaires. Ce montant unique comprend l'accès aux cours, l'évaluation et la génération de vos certificats officiels au format PDF."
+        a: "L'accès à l'intégralité du cursus coûte 25 $ (frais d'activation uniques pour une licence à vie). Il n'y a aucun abonnement récurrent, aucun engagement caché ni frais supplémentaires. Ce montant unique comprend l'accès aux cours, l'évaluation et la génération de vos certificats officiels au format PDF."
       },
       {
         q: "Comment puis-je générer et télécharger mon certificat en PDF ?",
@@ -126,7 +126,7 @@ const LOCAL_TRANS = {
     heroSub: "Master the real application secrets of ChatGPT, Claude, DeepSeek, and Lovable. Practice in an interactive prompt engineering sandbox, and obtain an official personalized completion certificate in high-quality printable PDF format instantly.",
     certPDF: "Official PDF Certifications",
     certPDFDesc: "With unique verifiable safety key",
-    activationFee: "Full Course Access: $20 one-time",
+    activationFee: "Full Course Access: $25 one-time",
     activationFeeDesc: "No subscription. Lifetime student access key.",
     startJourney: "Run My Onboarding Guide",
     exploreCourses: "Discover courses",
@@ -177,11 +177,11 @@ const LOCAL_TRANS = {
     bullet3Desc: "Ensures 100% compliance with verified legal credentials required during professional audits and reviews.",
     
     pricingBadge: "PREMIUM ACCESS WITHOUT SUBSCRIPTIONS",
-    pricingHeader: "One-Time $20 Access For Lifetime Membership",
-    pricingDesc: "No monthly bills. No upgrade fees. Make a single $20 payment and unlock modules, testing benches, and diplomas forever.",
+    pricingHeader: "One-Time $25 Access For Lifetime Membership",
+    pricingDesc: "No monthly bills. No upgrade fees. Make a single $25 payment and unlock modules, testing benches, and diplomas forever.",
     savingsBadge: "MAXIMUM RETURN",
     pricingCardTitle: "PRESTIGE LIFETIME CREDENTIALS",
-    pricingCardPrice: "20.00 $",
+    pricingCardPrice: "25.00 $",
     pricingCardPriceLabel: "one-time",
     pricingCardDesc: "No monthly bills. Unrestricted, perpetual lifetime membership.",
     pricingBullet1: "Total ChatGPT & Gemini Masterclass tracks",
@@ -201,7 +201,7 @@ const LOCAL_TRANS = {
       },
       {
         q: "How much does the program cost and how is payment structured?",
-        a: "Full lifetime access to our syllabus requires a single one-time activation fee of $20. There are no recurring monthly billing cycles, hidden upsells, or extra credentials fees. This single enrollment key includes all lessons, evaluations, updates, and custom A4 certificate generation exports."
+        a: "Full lifetime access to our syllabus requires a single one-time activation fee of $25. There are no recurring monthly billing cycles, hidden upsells, or extra credentials fees. This single enrollment key includes all lessons, evaluations, updates, and custom A4 certificate generation exports."
       },
       {
         q: "How can I build and download my certificate as a PDF?",
